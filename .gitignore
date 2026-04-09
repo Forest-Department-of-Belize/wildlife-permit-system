@@ -1,0 +1,7 @@
+code .gitignore
+```
+Add these lines:
+```
+node_modules/
+.env
+*.log
