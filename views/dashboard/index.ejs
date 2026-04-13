@@ -1,0 +1,103 @@
+<%- include('../layouts/main') %>
+<div class="page-header">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="text-muted">
+        <%= user.role === 'Wildlife Program Manager' ? 'All Forest Stations' : user.range_name %>
+    </p>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-6 col-lg-3">
+        <div class="stat-card">
+            <div class="stat-icon bg-primary">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <h3><%= stats.applicants %></h3>
+                <p>Total Applicants</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card">
+            <div class="stat-icon bg-success">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="stat-info">
+                <h3><%= stats.active_permits %></h3>
+                <p>Active Permits</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card">
+            <div class="stat-icon bg-warning">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="stat-info">
+                <h3><%= stats.pending_inspections %></h3>
+                <p>Pending Inspections</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card">
+            <div class="stat-icon bg-danger">
+                <i class="fas fa-dove"></i>
+            </div>
+            <div class="stat-info">
+                <h3><%= stats.confiscated_parrots %></h3>
+                <p>Confiscated Parrots</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="/applicants/create" class="btn btn-outline-primary">
+                        <i class="fas fa-user-plus me-2"></i>Add New Applicant
+                    </a>
+                    <a href="/permits/create" class="btn btn-outline-success">
+                        <i class="fas fa-plus me-2"></i>Issue New Permit
+                    </a>
+                    <a href="/inspections/create" class="btn btn-outline-warning">
+                        <i class="fas fa-calendar-plus me-2"></i>Schedule Inspection
+                    </a>
+                    <a href="/calls/create" class="btn btn-outline-info">
+                        <i class="fas fa-phone me-2"></i>Log a Call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">System Information</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-borderless mb-0">
+                    <tr>
+                        <td class="text-muted">Logged in as</td>
+                        <td><strong><%= user.first_name %> <%= user.last_name %></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">Role</td>
+                        <td><strong><%= user.role %></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">Station</td>
+                        <td><strong><%= user.range_name || 'All Stations' %></strong></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
