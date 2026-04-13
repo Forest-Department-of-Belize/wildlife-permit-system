@@ -9,7 +9,6 @@
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold" href="/dashboard">
@@ -47,7 +46,6 @@
     </nav>
 
     <div class="wrapper">
-        <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
             <ul class="sidebar-menu">
                 <li>
@@ -127,11 +125,16 @@
                         <span>Users</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/import" class="<%= locals.title && title.includes('Import') ? 'active' : '' %>">
+                        <i class="fas fa-upload"></i>
+                        <span>Import Data</span>
+                    </a>
+                </li>
                 <% } %>
             </ul>
         </div>
 
-        <!-- Main Content -->
         <div class="main-content" id="mainContent">
             <% if (locals.success) { %>
             <div class="alert alert-success alert-dismissible fade show mx-0 mt-0 rounded-0" role="alert">

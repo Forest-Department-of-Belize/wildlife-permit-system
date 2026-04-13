@@ -1,4 +1,33 @@
 const speciesModel = require('../models/speciesModel');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
+// Make sure uploads/species folder exists
+const uploadDir = 'public/images/species';
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, uploadDir),
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        cb(null, Date.now() + ext);
+    }
+});
+
+const upload = multer({
+    storage,
+    limits: { fileSize: 5 * 1024 * 1024 },
+    fileFilter: (req, file, cb) => {
+        const allowed = /jpeg|jpg|png|webp|gif/;
+        const ext = allowed.test(path.extname(file.originalname).toLowerCase());
+        const mime = allowed.test(file.mimetype);
+        if (ext && mime) return cb(null, true);
+        cb(new Error('Only image files are allowed'));
+    }
+});
 
 const index = async (req, res) => {
     try {
@@ -36,7 +65,15 @@ const create = (req, res) => {
 
 const store = async (req, res) => {
     try {
-        await speciesModel.create(req.body);
+        let imageUrl = req.body.image_url || null;
+        if (req.file) {
+            imageUrl = '/images/species/' + req.file.filename;
+        }
+        await speciesModel.create({
+            common_name: req.body.common_name,
+            scientific_name: req.body.scientific_name,
+            image_url: imageUrl
+        });
         req.session.success = 'Species added successfully';
         res.redirect('/species');
     } catch (err) {
@@ -65,7 +102,15 @@ const edit = async (req, res) => {
 
 const update = async (req, res) => {
     try {
-        await speciesModel.update(req.params.uuid, req.body);
+        let imageUrl = req.body.image_url || null;
+        if (req.file) {
+            imageUrl = '/images/species/' + req.file.filename;
+        }
+        await speciesModel.update(req.params.uuid, {
+            common_name: req.body.common_name,
+            scientific_name: req.body.scientific_name,
+            image_url: imageUrl
+        });
         req.session.success = 'Species updated successfully';
         res.redirect('/species');
     } catch (err) {
@@ -75,4 +120,4 @@ const update = async (req, res) => {
     }
 };
 
-module.exports = { index, view, create, store, edit, update };
+module.exports = { index, view, create, store, edit, update, upload };

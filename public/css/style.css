@@ -187,6 +187,18 @@ body {
     color: #424242;
 }
 
+/* Scrollable main content */
+.main-content {
+    overflow-y: auto;
+    height: calc(100vh - 56px);
+}
+
+/* Scrollable sidebar */
+.sidebar {
+    overflow-y: auto;
+    height: calc(100vh - 56px);
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     .sidebar {

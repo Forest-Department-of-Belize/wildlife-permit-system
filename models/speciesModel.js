@@ -17,9 +17,9 @@ const findByUuid = async (uuid) => {
 
 const create = async (data) => {
     const result = await pool.query(
-        `INSERT INTO parrot_species (common_name, scientific_name)
-         VALUES ($1, $2) RETURNING *`,
-        [data.common_name, data.scientific_name]
+        `INSERT INTO parrot_species (common_name, scientific_name, image_url)
+         VALUES ($1, $2, $3) RETURNING *`,
+        [data.common_name, data.scientific_name, data.image_url || null]
     );
     return result.rows[0];
 };
@@ -27,9 +27,9 @@ const create = async (data) => {
 const update = async (uuid, data) => {
     const result = await pool.query(
         `UPDATE parrot_species SET
-         common_name=$1, scientific_name=$2, updated_at=NOW()
-         WHERE uuid=$3 RETURNING *`,
-        [data.common_name, data.scientific_name, uuid]
+         common_name=$1, scientific_name=$2, image_url=$3, updated_at=NOW()
+         WHERE uuid=$4 RETURNING *`,
+        [data.common_name, data.scientific_name, data.image_url || null, uuid]
     );
     return result.rows[0];
 };

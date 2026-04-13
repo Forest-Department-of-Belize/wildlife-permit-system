@@ -79,7 +79,14 @@ const update = async (uuid, data) => {
          first_name = $1, last_name = $2, email = $3,
          role_id = $4, range_id = $5, updated_at = NOW()
          WHERE uuid = $6 RETURNING *`,
-        [data.first_name, data.last_name, data.email, data.role_id, data.range_id, uuid]
+        [
+            data.first_name,
+            data.last_name,
+            data.email,
+            data.role_id || null,
+            data.range_id && data.range_id !== '' ? parseInt(data.range_id) : null,
+            uuid
+        ]
     );
     return result.rows[0];
 };

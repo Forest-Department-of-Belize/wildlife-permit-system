@@ -66,6 +66,7 @@ app.use('/species', require('./routes/species'));
 app.use('/districts', require('./routes/districts'));
 app.use('/ranges', require('./routes/ranges'));
 app.use('/users', require('./routes/users'));
+app.use('/import', require('./routes/import'));
 
 // 404 handler
 app.use((req, res) => {
