@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const session = require('express-session');
 const PgSession = require('connect-pg-simple')(session);
+const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const pool = require('./db/index');
 require('dotenv').config();
@@ -9,13 +10,15 @@ require('dotenv').config();
 const app = express();
 
 // Security
-app.use(helmet({
-    contentSecurityPolicy: false
-}));
+app.use(helmet({ contentSecurityPolicy: false }));
 
 // View engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(expressLayouts);
+app.set('layout', 'layouts/main');
+app.set('layout extractScripts', true);
+app.set('layout extractStyles', true);
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -66,13 +69,26 @@ app.use('/users', require('./routes/users'));
 
 // 404 handler
 app.use((req, res) => {
-    res.status(404).render('404', { title: 'Page Not Found' });
+    res.status(404).send(`
+        <div style="font-family:sans-serif;text-align:center;margin-top:100px">
+            <h1 style="color:#2E7D32">404</h1>
+            <h2>Page Not Found</h2>
+            <a href="/dashboard" style="color:#2E7D32">Back to Dashboard</a>
+        </div>
+    `);
 });
 
 // Error handler
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).render('500', { title: 'Server Error' });
+    res.status(500).send(`
+        <div style="font-family:sans-serif;text-align:center;margin-top:100px">
+            <h1 style="color:#d32f2f">500</h1>
+            <h2>Server Error</h2>
+            <p>${err.message}</p>
+            <a href="/dashboard" style="color:#2E7D32">Back to Dashboard</a>
+        </div>
+    `);
 });
 
 // Start server

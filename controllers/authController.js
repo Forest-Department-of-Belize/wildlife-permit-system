@@ -15,12 +15,11 @@ const transporter = nodemailer.createTransport({
 
 const getLogin = (req, res) => {
     if (req.session.user) return res.redirect('/dashboard');
-    res.render('auth/login', { title: 'Login' });
+    res.render('auth/login', { title: 'Login', layout: 'layouts/auth' });
 };
 
 const postLogin = async (req, res) => {
     const { email, password } = req.body;
-
     try {
         const result = await pool.query(
             `SELECT u.*, r.name as role, r.permissions, rng.name as range_name
@@ -30,21 +29,16 @@ const postLogin = async (req, res) => {
              WHERE u.email = $1 AND u.is_active = true`,
             [email]
         );
-
         const user = result.rows[0];
-
         if (!user) {
             req.session.error = 'Invalid email or password';
             return res.redirect('/login');
         }
-
         const validPassword = await bcrypt.compare(password, user.password);
-
         if (!validPassword) {
             req.session.error = 'Invalid email or password';
             return res.redirect('/login');
         }
-
         req.session.user = {
             id: user.id,
             uuid: user.uuid,
@@ -57,13 +51,10 @@ const postLogin = async (req, res) => {
             range_name: user.range_name,
             permissions: user.permissions
         };
-
         if (user.first_login) {
-            return res.redirect('/profile/change-password');
+            return res.redirect('/users/profile');
         }
-
         res.redirect('/dashboard');
-
     } catch (err) {
         console.error(err);
         req.session.error = 'Something went wrong. Please try again.';
@@ -77,48 +68,38 @@ const logout = (req, res) => {
 };
 
 const getForgotPassword = (req, res) => {
-    res.render('auth/forgot-password', { title: 'Forgot Password' });
+    res.render('auth/forgot-password', { title: 'Forgot Password', layout: 'layouts/auth' });
 };
 
 const postForgotPassword = async (req, res) => {
     const { email } = req.body;
-
     try {
         const result = await pool.query(
-            'SELECT * FROM users WHERE email = $1',
-            [email]
+            'SELECT * FROM users WHERE email = $1', [email]
         );
-
         const user = result.rows[0];
-
         if (user) {
             const token = uuidv4();
             const expires = new Date(Date.now() + 3600000);
-
             await pool.query(
                 'UPDATE users SET reset_token = $1, reset_token_expires = $2 WHERE email = $3',
                 [token, expires, email]
             );
-
             const resetUrl = `${process.env.APP_URL}/reset-password/${token}`;
-
             await transporter.sendMail({
                 from: process.env.MAIL_FROM,
                 to: email,
                 subject: 'Password Reset - Wildlife Permit System',
                 html: `
                     <h2>Password Reset Request</h2>
-                    <p>You requested a password reset for your Wildlife Permit System account.</p>
                     <p>Click the link below to reset your password. This link expires in 1 hour.</p>
                     <a href="${resetUrl}">${resetUrl}</a>
                     <p>If you did not request this, please ignore this email.</p>
                 `
             });
         }
-
         req.session.success = 'If that email exists, a reset link has been sent';
         res.redirect('/login');
-
     } catch (err) {
         console.error(err);
         req.session.error = 'Something went wrong. Please try again.';
@@ -128,20 +109,20 @@ const postForgotPassword = async (req, res) => {
 
 const getResetPassword = async (req, res) => {
     const { token } = req.params;
-
     try {
         const result = await pool.query(
             'SELECT * FROM users WHERE reset_token = $1 AND reset_token_expires > NOW()',
             [token]
         );
-
         if (!result.rows[0]) {
             req.session.error = 'Invalid or expired reset link';
             return res.redirect('/login');
         }
-
-        res.render('auth/reset-password', { title: 'Reset Password', token });
-
+        res.render('auth/reset-password', { 
+            title: 'Reset Password', 
+            token, 
+            layout: 'layouts/auth' 
+        });
     } catch (err) {
         console.error(err);
         res.redirect('/login');
@@ -151,24 +132,19 @@ const getResetPassword = async (req, res) => {
 const postResetPassword = async (req, res) => {
     const { token } = req.params;
     const { password, confirm_password } = req.body;
-
     if (password !== confirm_password) {
         req.session.error = 'Passwords do not match';
         return res.redirect(`/reset-password/${token}`);
     }
-
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-
         await pool.query(
             `UPDATE users SET password = $1, reset_token = NULL, 
              reset_token_expires = NULL WHERE reset_token = $2`,
             [hashedPassword, token]
         );
-
         req.session.success = 'Password reset successfully. Please login.';
         res.redirect('/login');
-
     } catch (err) {
         console.error(err);
         res.redirect('/login');
@@ -177,24 +153,21 @@ const postResetPassword = async (req, res) => {
 
 const getSetupAccount = async (req, res) => {
     const { token } = req.params;
-
     try {
         const result = await pool.query(
             'SELECT * FROM users WHERE invite_token = $1 AND invite_token_expires > NOW()',
             [token]
         );
-
         if (!result.rows[0]) {
             req.session.error = 'Invalid or expired invite link';
             return res.redirect('/login');
         }
-
         res.render('auth/setup-account', { 
             title: 'Setup Account', 
             token,
-            user: result.rows[0]
+            user: result.rows[0],
+            layout: 'layouts/auth'
         });
-
     } catch (err) {
         console.error(err);
         res.redirect('/login');
@@ -204,25 +177,20 @@ const getSetupAccount = async (req, res) => {
 const postSetupAccount = async (req, res) => {
     const { token } = req.params;
     const { password, confirm_password } = req.body;
-
     if (password !== confirm_password) {
         req.session.error = 'Passwords do not match';
         return res.redirect(`/setup-account/${token}`);
     }
-
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-
         await pool.query(
             `UPDATE users SET password = $1, invite_token = NULL,
              invite_token_expires = NULL, first_login = false 
              WHERE invite_token = $2`,
             [hashedPassword, token]
         );
-
         req.session.success = 'Account setup successfully. Please login.';
         res.redirect('/login');
-
     } catch (err) {
         console.error(err);
         res.redirect('/login');

@@ -9,15 +9,158 @@
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <%- include('../partials/navbar') %>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="/dashboard">
+                <i class="fas fa-leaf me-2"></i>Wildlife Permit System
+            </a>
+            <button class="navbar-toggler" type="button" id="sidebarToggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <span class="nav-link text-light">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            <%= locals.user ? (user.range_name || 'All Stations') : '' %>
+                        </span>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>
+                            <%= locals.user ? user.first_name + ' ' + user.last_name : '' %>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/users/profile">
+                                <i class="fas fa-user me-2"></i>My Profile
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="/logout">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="wrapper">
-        <%- include('../partials/sidebar') %>
-        <div class="main-content">
-            <%- include('../partials/flash') %>
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="/dashboard" class="<%= title === 'Dashboard' ? 'active' : '' %>">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-header">Records</li>
+                <li>
+                    <a href="/applicants" class="<%= locals.title && title.includes('Applicant') ? 'active' : '' %>">
+                        <i class="fas fa-users"></i>
+                        <span>Applicants</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/parrots" class="<%= locals.title && title.includes('Parrot') ? 'active' : '' %>">
+                        <i class="fas fa-dove"></i>
+                        <span>Parrots</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/permits" class="<%= locals.title && title.includes('Permit') ? 'active' : '' %>">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Permits</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/applications" class="<%= locals.title && title.includes('Application') ? 'active' : '' %>">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Applications</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/inspections" class="<%= locals.title && title.includes('Inspection') ? 'active' : '' %>">
+                        <i class="fas fa-search"></i>
+                        <span>Inspections</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/calls" class="<%= locals.title && title.includes('Call') ? 'active' : '' %>">
+                        <i class="fas fa-phone"></i>
+                        <span>Calls</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/offenses" class="<%= locals.title && title.includes('Offense') ? 'active' : '' %>">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Offenses</span>
+                    </a>
+                </li>
+                <% if (locals.user && (user.role === 'Wildlife Program Manager' || user.role === 'Range OIC')) { %>
+                <li class="menu-header">Administration</li>
+                <li>
+                    <a href="/species" class="<%= locals.title && title.includes('Species') ? 'active' : '' %>">
+                        <i class="fas fa-feather"></i>
+                        <span>Species</span>
+                    </a>
+                </li>
+                <% } %>
+                <% if (locals.user && user.role === 'Wildlife Program Manager') { %>
+                <li>
+                    <a href="/districts" class="<%= locals.title && title.includes('District') ? 'active' : '' %>">
+                        <i class="fas fa-map"></i>
+                        <span>Districts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ranges" class="<%= locals.title && title.includes('Range') || locals.title && title.includes('Station') ? 'active' : '' %>">
+                        <i class="fas fa-tree"></i>
+                        <span>Forest Stations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/users" class="<%= locals.title && title.includes('User') ? 'active' : '' %>">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <% if (locals.success) { %>
+            <div class="alert alert-success alert-dismissible fade show mx-0 mt-0 rounded-0" role="alert">
+                <i class="fas fa-check-circle me-2"></i><%= success %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <% } %>
+            <% if (locals.error) { %>
+            <div class="alert alert-danger alert-dismissible fade show mx-0 mt-0 rounded-0" role="alert">
+                <i class="fas fa-exclamation-circle me-2"></i><%= error %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <% } %>
             <%- body %>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/main.js"></script>
+    <script>
+        document.getElementById('sidebarToggler').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('mainContent').classList.toggle('expanded');
+        });
+        setTimeout(function() {
+            document.querySelectorAll('.alert').forEach(function(alert) {
+                new bootstrap.Alert(alert).close();
+            });
+        }, 5000);
+    </script>
 </body>
 </html>

@@ -1,9 +1,10 @@
-<%- include('../layouts/main') %>
-<div class="page-header">
-    <h1 class="page-title">Dashboard</h1>
-    <p class="text-muted">
-        <%= user.role === 'Wildlife Program Manager' ? 'All Forest Stations' : user.range_name %>
-    </p>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        <h1 class="page-title">Dashboard</h1>
+        <p class="text-muted mb-0">
+            <%= locals.user && user.role === 'Wildlife Program Manager' ? 'All Forest Stations' : (locals.user ? user.range_name : '') %>
+        </p>
+    </div>
 </div>
 
 <div class="row g-4 mb-4">
@@ -86,15 +87,15 @@
                 <table class="table table-borderless mb-0">
                     <tr>
                         <td class="text-muted">Logged in as</td>
-                        <td><strong><%= user.first_name %> <%= user.last_name %></strong></td>
+                        <td><strong><%= locals.user ? user.first_name + ' ' + user.last_name : '' %></strong></td>
                     </tr>
                     <tr>
                         <td class="text-muted">Role</td>
-                        <td><strong><%= user.role %></strong></td>
+                        <td><strong><%= locals.user ? user.role : '' %></strong></td>
                     </tr>
                     <tr>
                         <td class="text-muted">Station</td>
-                        <td><strong><%= user.range_name || 'All Stations' %></strong></td>
+                        <td><strong><%= locals.user ? (user.range_name || 'All Stations') : '' %></strong></td>
                     </tr>
                 </table>
             </div>

@@ -4,30 +4,27 @@ const { getRangeFilter } = require('../middleware/rangeFilter');
 const index = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
-        const rangeFilter = rangeId ? 'WHERE range_id = $1' : '';
-        const params = rangeId ? [rangeId] : [];
 
         const applicantsResult = await pool.query(
-            `SELECT COUNT(*) FROM applicants`,
-            []
+            'SELECT COUNT(*) FROM applicants'
         );
 
         const permitsResult = await pool.query(
-            `SELECT COUNT(*) FROM permits 
-             ${rangeId ? 'WHERE range_id = $1' : ''} 
-             AND status = 'Active'`,
-            params
+            rangeId
+                ? "SELECT COUNT(*) FROM permits WHERE range_id = $1 AND status = 'Active'"
+                : "SELECT COUNT(*) FROM permits WHERE status = 'Active'",
+            rangeId ? [rangeId] : []
         );
 
         const inspectionsResult = await pool.query(
-            `SELECT COUNT(*) FROM inspections 
-             ${rangeId ? 'WHERE range_id = $1 AND' : 'WHERE'} 
-             inspection_status = 'scheduled'`,
-            params
+            rangeId
+                ? "SELECT COUNT(*) FROM inspections WHERE range_id = $1 AND inspection_status = 'scheduled'"
+                : "SELECT COUNT(*) FROM inspections WHERE inspection_status = 'scheduled'",
+            rangeId ? [rangeId] : []
         );
 
         const parrrotsResult = await pool.query(
-            `SELECT COUNT(*) FROM parrots WHERE confiscated = true`
+            'SELECT COUNT(*) FROM parrots WHERE confiscated = true'
         );
 
         res.render('dashboard/index', {
