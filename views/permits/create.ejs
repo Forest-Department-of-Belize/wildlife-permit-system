@@ -1,0 +1,81 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <h1 class="page-title">Add New Permit</h1>
+    <a href="/permits" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-1"></i>Back
+    </a>
+</div>
+
+<form method="POST" action="/permits">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Applicant <span class="text-danger">*</span></label>
+                    <select name="applicant_id" class="form-select" required>
+                        <option value="">Select Applicant</option>
+                        <% applicants.forEach(a => { %>
+                        <option value="<%= a.id %>"><%= a.last_name %>, <%= a.first_name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Forest Station <span class="text-danger">*</span></label>
+                    <select name="range_id" class="form-select" required>
+                        <option value="">Select Station</option>
+                        <% ranges.forEach(r => { %>
+                        <option value="<%= r.id %>" <%= user.range_id == r.id ? 'selected' : '' %>><%= r.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Permit Number <span class="text-danger">*</span></label>
+                    <input type="text" name="permit_number" class="form-control" required>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Reference Number</label>
+                    <input type="text" name="reference_number" class="form-control">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Application Date</label>
+                    <input type="date" name="application_date" class="form-control">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Issue Date</label>
+                    <input type="date" name="issue_date" class="form-control">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Number of Pets</label>
+                    <input type="number" name="number_of_pets" class="form-control" min="0" value="0">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-select">
+                        <option value="Processing">Processing</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="Suspended">Suspended</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Housing Description</label>
+                    <textarea name="housing" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Permit Picture URL</label>
+                    <input type="text" name="picture_url" class="form-control" placeholder="Google Drive link or URL">
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Comments</label>
+                    <textarea name="permit_comments" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save me-2"></i>Save Permit
+        </button>
+        <a href="/permits" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>

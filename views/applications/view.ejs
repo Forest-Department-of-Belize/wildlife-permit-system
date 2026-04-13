@@ -1,0 +1,29 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <h1 class="page-title">Application Record</h1>
+    <div>
+        <% if (user && user.permissions && user.permissions.includes('applications-edit')) { %>
+        <a href="/applications/<%= application.uuid %>/edit" class="btn btn-outline-secondary me-2"><i class="fas fa-edit me-1"></i>Edit</a>
+        <% } %>
+        <a href="/applications" class="btn btn-outline-primary"><i class="fas fa-arrow-left me-1"></i>Back</a>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"><h6 class="mb-0">Application Details</h6></div>
+    <div class="card-body">
+        <table class="table table-borderless table-sm">
+            <tr><td class="text-muted">Applicant</td><td><a href="/applicants/<%= application.applicant_uuid %>"><%= application.applicant_name %></a></td></tr>
+            <tr><td class="text-muted">Reference Number</td><td><%= application.reference_number || '-' %></td></tr>
+            <tr><td class="text-muted">Forest Station</td><td><%= application.range_name || '-' %></td></tr>
+            <tr><td class="text-muted">Application Date</td><td><%= application.application_date ? new Date(application.application_date).toLocaleDateString() : '-' %></td></tr>
+            <tr><td class="text-muted">Date Received</td><td><%= application.date_received ? new Date(application.date_received).toLocaleDateString() : '-' %></td></tr>
+            <tr><td class="text-muted">Status</td><td><%= application.application_status || '-' %></td></tr>
+            <tr><td class="text-muted">Signed</td><td><%= application.application_signed ? 'Yes' : 'No' %></td></tr>
+            <tr><td class="text-muted">Applied Previously</td><td><%= application.applied_previously ? 'Yes' : 'No' %></td></tr>
+            <tr><td class="text-muted">Previously Approved</td><td><%= application.previously_approved ? 'Yes' : 'No' %></td></tr>
+            <tr><td class="text-muted">Followup Done</td><td><%= application.followup_done ? 'Yes' : 'No' %></td></tr>
+            <tr><td class="text-muted">Followup Details</td><td><%= application.followup_details || '-' %></td></tr>
+            <tr><td class="text-muted">Comments</td><td><%= application.application_comments || '-' %></td></tr>
+        </table>
+    </div>
+</div>

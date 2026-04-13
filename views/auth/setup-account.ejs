@@ -1,0 +1,23 @@
+<%- include('../layouts/auth') %>
+<div class="auth-card">
+    <div class="auth-header">
+        <i class="fas fa-leaf auth-icon"></i>
+        <h2>Set Up Your Account</h2>
+        <p>Welcome <%= user.first_name %>! Please set your password.</p>
+    </div>
+    <form method="POST" action="/setup-account/<%= token %>">
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control form-control-lg"
+                   placeholder="Choose a password" required minlength="8">
+        </div>
+        <div class="mb-4">
+            <label class="form-label">Confirm Password</label>
+            <input type="password" name="confirm_password" class="form-control form-control-lg"
+                   placeholder="Confirm your password" required minlength="8">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+            Activate Account
+        </button>
+    </form>
+</div>

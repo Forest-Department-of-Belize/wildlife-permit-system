@@ -1,0 +1,80 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <h1 class="page-title">Edit Call Record</h1>
+    <a href="/calls/<%= call.uuid %>" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-1"></i>Back</a>
+</div>
+<form method="POST" action="/calls/<%= call.uuid %>">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Officer</label>
+                    <select name="officer_id" class="form-select">
+                        <% officers.forEach(o => { %>
+                        <option value="<%= o.id %>" <%= call.officer_id == o.id ? 'selected' : '' %>><%= o.first_name %> <%= o.last_name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Number Called</label>
+                    <input type="text" name="number_called" class="form-control" value="<%= call.number_called || '' %>">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Call Date</label>
+                    <input type="date" name="call_date" class="form-control"
+                        value="<%= call.call_date ? new Date(call.call_date).toISOString().split('T')[0] : '' %>">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Language</label>
+                    <select name="language" class="form-select">
+                        <option value="English" <%= call.language === 'English' ? 'selected' : '' %>>English</option>
+                        <option value="Spanish" <%= call.language === 'Spanish' ? 'selected' : '' %>>Spanish</option>
+                        <option value="Creole" <%= call.language === 'Creole' ? 'selected' : '' %>>Creole</option>
+                        <option value="Garifuna" <%= call.language === 'Garifuna' ? 'selected' : '' %>>Garifuna</option>
+                        <option value="Maya" <%= call.language === 'Maya' ? 'selected' : '' %>>Maya</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <div class="row g-2">
+                        <div class="col-6 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_functional"
+                                    id="isFunctional" <%= call.is_functional ? 'checked' : '' %>>
+                                <label class="form-check-label" for="isFunctional">Functional</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_answered"
+                                    id="isAnswered" <%= call.is_answered ? 'checked' : '' %>>
+                                <label class="form-check-label" for="isAnswered">Answered</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_applicant"
+                                    id="isApplicant" <%= call.is_applicant ? 'checked' : '' %>>
+                                <label class="form-check-label" for="isApplicant">Was Applicant</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="is_fully_completed"
+                                    id="isCompleted" <%= call.is_fully_completed ? 'checked' : '' %>>
+                                <label class="form-check-label" for="isCompleted">Fully Completed</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Call Comments</label>
+                    <textarea name="call_comments" class="form-control" rows="3"><%= call.call_comments || '' %></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save me-2"></i>Update Call</button>
+        <a href="/calls/<%= call.uuid %>" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>

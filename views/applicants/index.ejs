@@ -1,0 +1,83 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        <h1 class="page-title">Applicants</h1>
+        <p class="text-muted mb-0"><%= applicants.length %> records found</p>
+    </div>
+    <% if (user && user.permissions && user.permissions.includes('applicants-add')) { %>
+    <a href="/applicants/create" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>Add Applicant
+    </a>
+    <% } %>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control"
+                   placeholder="Search by name, email, phone or ID number...">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover" id="applicantsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>District</th>
+                        <th>Parrots</th>
+                        <th>Permits</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% applicants.forEach(a => { %>
+                    <tr>
+                        <td>
+                            <strong><%= a.last_name %>, <%= a.first_name %></strong>
+                            <% if (a.middle_name) { %>
+                                <span class="text-muted"> <%= a.middle_name %></span>
+                            <% } %>
+                        </td>
+                        <td>
+                            <%= a.contact_number || '-' %>
+                            <% if (a.contact_number_whatsapp) { %>
+                                <i class="fab fa-whatsapp text-success ms-1"></i>
+                            <% } %>
+                        </td>
+                        <td><%= a.district_name || '-' %></td>
+                        <td><%= a.parrot_count || 0 %></td>
+                        <td><%= a.permit_count || 0 %></td>
+                        <td>
+                            <a href="/applicants/<%= a.uuid %>" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <% if (user && user.permissions && user.permissions.includes('applicants-edit')) { %>
+                            <a href="/applicants/<%= a.uuid %>/edit" class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                    <% if (applicants.length === 0) { %>
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">
+                            No applicants found
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    const value = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#applicantsTable tbody tr');
+    rows.forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(value) ? '' : 'none';
+    });
+});
+</script>

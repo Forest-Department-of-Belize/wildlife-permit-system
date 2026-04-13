@@ -1,0 +1,30 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <h1 class="page-title">Parrot Species</h1>
+    <% if (user && user.permissions && user.permissions.includes('species-add')) { %>
+    <a href="/species/create" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Add Species</a>
+    <% } %>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead><tr><th>Common Name</th><th>Scientific Name</th><th>Actions</th></tr></thead>
+                <tbody>
+                    <% species.forEach(s => { %>
+                    <tr>
+                        <td><%= s.common_name %></td>
+                        <td><em><%= s.scientific_name || '-' %></em></td>
+                        <td>
+                            <a href="/species/<%= s.uuid %>" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
+                            <% if (user && user.permissions && user.permissions.includes('species-edit')) { %>
+                            <a href="/species/<%= s.uuid %>/edit" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

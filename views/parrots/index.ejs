@@ -1,0 +1,71 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        <h1 class="page-title">Parrots</h1>
+        <p class="text-muted mb-0"><%= parrots.length %> records found</p>
+    </div>
+    <% if (user && user.permissions && user.permissions.includes('parrots-add')) { %>
+    <a href="/parrots/create" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>Add Parrot
+    </a>
+    <% } %>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search parrots...">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Band No.</th>
+                        <th>Name</th>
+                        <th>Species</th>
+                        <th>Applicant</th>
+                        <th>Sex</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% parrots.forEach(p => { %>
+                    <tr>
+                        <td><%= p.band_number || '-' %></td>
+                        <td><%= p.pet_name || '-' %></td>
+                        <td><%= p.species_name || '-' %></td>
+                        <td><a href="/applicants/<%= p.applicant_uuid %>"><%= p.applicant_name || '-' %></a></td>
+                        <td><%= p.sex || '-' %></td>
+                        <td>
+                            <span class="badge bg-<%= p.confiscated ? 'danger' : 'success' %>">
+                                <%= p.confiscated ? 'Confiscated' : 'Active' %>
+                            </span>
+                        </td>
+                        <td>
+                            <a href="/parrots/<%= p.uuid %>" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <% if (user && user.permissions && user.permissions.includes('parrots-edit')) { %>
+                            <a href="/parrots/<%= p.uuid %>/edit" class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                    <% if (parrots.length === 0) { %>
+                    <tr><td colspan="7" class="text-center text-muted py-4">No parrots found</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    const value = this.value.toLowerCase();
+    document.querySelectorAll('#dataTable tbody tr').forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(value) ? '' : 'none';
+    });
+});
+</script>

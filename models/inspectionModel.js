@@ -1,0 +1,106 @@
+const pool = require('../db/index');
+
+const getAll = async (rangeId = null) => {
+    const query = rangeId
+        ? `SELECT i.*,
+           a.first_name || ' ' || a.last_name as applicant_name,
+           a.uuid as applicant_uuid,
+           u.first_name || ' ' || u.last_name as inspector_name
+           FROM inspections i
+           LEFT JOIN applicants a ON i.applicant_id = a.id
+           LEFT JOIN users u ON i.inspector_id = u.id
+           WHERE i.range_id = $1
+           ORDER BY i.inspection_date DESC`
+        : `SELECT i.*,
+           a.first_name || ' ' || a.last_name as applicant_name,
+           a.uuid as applicant_uuid,
+           u.first_name || ' ' || u.last_name as inspector_name
+           FROM inspections i
+           LEFT JOIN applicants a ON i.applicant_id = a.id
+           LEFT JOIN users u ON i.inspector_id = u.id
+           ORDER BY i.inspection_date DESC`;
+
+    const result = await pool.query(query, rangeId ? [rangeId] : []);
+    return result.rows;
+};
+
+const findByUuid = async (uuid) => {
+    const result = await pool.query(
+        `SELECT i.*,
+         a.first_name || ' ' || a.last_name as applicant_name,
+         a.uuid as applicant_uuid,
+         u.first_name || ' ' || u.last_name as inspector_name,
+         r.name as range_name
+         FROM inspections i
+         LEFT JOIN applicants a ON i.applicant_id = a.id
+         LEFT JOIN users u ON i.inspector_id = u.id
+         LEFT JOIN ranges r ON i.range_id = r.id
+         WHERE i.uuid = $1`,
+        [uuid]
+    );
+    return result.rows[0];
+};
+
+const create = async (data) => {
+    const result = await pool.query(
+        `INSERT INTO inspections (
+            applicant_id, inspector_id, range_id,
+            inspection_date, inspection_status, notes,
+            followup_date, followup_notes, birds_described,
+            hand_tame, instructions_for_applicant, expected_recheck,
+            preconditions_comments
+        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+        RETURNING *`,
+        [
+            data.applicant_id, data.inspector_id, data.range_id,
+            data.inspection_date, data.inspection_status || 'scheduled',
+            data.notes, data.followup_date || null,
+            data.followup_notes, data.birds_described,
+            data.hand_tame === 'on', data.instructions_for_applicant,
+            data.expected_recheck || null, data.preconditions_comments
+        ]
+    );
+    return result.rows[0];
+};
+
+const update = async (uuid, data) => {
+    const result = await pool.query(
+        `UPDATE inspections SET
+            inspection_date=$1, inspector_id=$2,
+            inspection_status=$3, notes=$4,
+            followup_date=$5, followup_notes=$6,
+            birds_described=$7, hand_tame=$8,
+            instructions_for_applicant=$9,
+            expected_recheck=$10, preconditions_comments=$11,
+            updated_at=NOW()
+         WHERE uuid=$12 RETURNING *`,
+        [
+            data.inspection_date, data.inspector_id,
+            data.inspection_status, data.notes,
+            data.followup_date || null, data.followup_notes,
+            data.birds_described, data.hand_tame === 'on',
+            data.instructions_for_applicant,
+            data.expected_recheck || null,
+            data.preconditions_comments, uuid
+        ]
+    );
+    return result.rows[0];
+};
+
+const confiscateParrots = async (inspectionId, parrotIds) => {
+    await pool.query(
+        `UPDATE parrots SET confiscated = false, inspection_id = NULL
+         WHERE inspection_id = $1`,
+        [inspectionId]
+    );
+
+    if (parrotIds && parrotIds.length > 0) {
+        await pool.query(
+            `UPDATE parrots SET confiscated = true, inspection_id = $1
+             WHERE id = ANY($2::int[])`,
+            [inspectionId, parrotIds]
+        );
+    }
+};
+
+module.exports = { getAll, findByUuid, create, update, confiscateParrots };

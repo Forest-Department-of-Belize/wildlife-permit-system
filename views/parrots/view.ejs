@@ -1,0 +1,56 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        <h1 class="page-title"><%= parrot.pet_name || 'Unnamed Parrot' %></h1>
+        <p class="text-muted mb-0">Band: <%= parrot.band_number || 'N/A' %></p>
+    </div>
+    <div>
+        <% if (user && user.permissions && user.permissions.includes('parrots-edit')) { %>
+        <a href="/parrots/<%= parrot.uuid %>/edit" class="btn btn-outline-secondary me-2">
+            <i class="fas fa-edit me-1"></i>Edit
+        </a>
+        <% } %>
+        <a href="/parrots" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left me-1"></i>Back
+        </a>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"><h6 class="mb-0">Parrot Information</h6></div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr><td class="text-muted">Band Number</td><td><%= parrot.band_number || '-' %></td></tr>
+                    <tr><td class="text-muted">Pet Name</td><td><%= parrot.pet_name || '-' %></td></tr>
+                    <tr><td class="text-muted">Species</td><td><%= parrot.species_name || '-' %></td></tr>
+                    <tr><td class="text-muted">Sex</td><td><%= parrot.sex || '-' %></td></tr>
+                    <tr><td class="text-muted">Age (months)</td><td><%= parrot.parrot_age_months || '-' %></td></tr>
+                    <tr><td class="text-muted">Method Obtained</td><td><%= parrot.method_obtained || '-' %></td></tr>
+                    <tr><td class="text-muted">Ownership (months)</td><td><%= parrot.period_of_ownership_months || '-' %></td></tr>
+                    <tr><td class="text-muted">Applicant</td>
+                        <td><a href="/applicants/<%= parrot.applicant_uuid %>"><%= parrot.applicant_name || '-' %></a></td></tr>
+                </table>
+            </div>
+            <div class="col-12 col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr><td class="text-muted">Housing</td><td><%= parrot.housing_details || '-' %></td></tr>
+                    <tr><td class="text-muted">Has Parrot</td><td><%= parrot.has_parrot || '-' %></td></tr>
+                    <tr><td class="text-muted">Healthy</td><td><%= parrot.is_healthy ? 'Yes' : 'No' %></td></tr>
+                    <tr><td class="text-muted">Health Comments</td><td><%= parrot.health_comments || '-' %></td></tr>
+                    <tr><td class="text-muted">Confiscated</td>
+                        <td><span class="badge bg-<%= parrot.confiscated ? 'danger' : 'success' %>">
+                            <%= parrot.confiscated ? 'Yes' : 'No' %>
+                        </span></td></tr>
+                    <tr><td class="text-muted">Comments</td><td><%= parrot.bird_comments || '-' %></td></tr>
+                </table>
+            </div>
+        </div>
+        <% if (parrot.stories) { %>
+        <div class="mt-3">
+            <strong>Stories</strong>
+            <p class="mt-1"><%= parrot.stories %></p>
+        </div>
+        <% } %>
+    </div>
+</div>

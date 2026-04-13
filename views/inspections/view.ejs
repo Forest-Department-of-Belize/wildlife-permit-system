@@ -1,0 +1,74 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <h1 class="page-title">Inspection Record</h1>
+    <div>
+        <% if (user && user.permissions && user.permissions.includes('inspections-edit')) { %>
+        <a href="/inspections/<%= inspection.uuid %>/edit" class="btn btn-outline-secondary me-2"><i class="fas fa-edit me-1"></i>Edit</a>
+        <% } %>
+        <a href="/inspections" class="btn btn-outline-primary"><i class="fas fa-arrow-left me-1"></i>Back</a>
+    </div>
+</div>
+<div class="row g-4">
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <div class="card-header"><h6 class="mb-0">Inspection Details</h6></div>
+            <div class="card-body">
+                <table class="table table-borderless table-sm mb-0">
+                    <tr><td class="text-muted">Applicant</td>
+                        <td><a href="/applicants/<%= inspection.applicant_uuid %>"><%= inspection.applicant_name || '-' %></a></td></tr>
+                    <tr><td class="text-muted">Inspector</td><td><%= inspection.inspector_name || '-' %></td></tr>
+                    <tr><td class="text-muted">Station</td><td><%= inspection.range_name || '-' %></td></tr>
+                    <tr><td class="text-muted">Date</td>
+                        <td><%= inspection.inspection_date ? new Date(inspection.inspection_date).toLocaleDateString() : '-' %></td></tr>
+                    <tr><td class="text-muted">Status</td>
+                        <td><span class="badge bg-<%= inspection.inspection_status === 'approved' ? 'success' : inspection.inspection_status === 'scheduled' ? 'warning' : inspection.inspection_status === 'confiscate' ? 'danger' : 'secondary' %>">
+                            <%= inspection.inspection_status %>
+                        </span></td></tr>
+                    <tr><td class="text-muted">Notes</td><td><%= inspection.notes || '-' %></td></tr>
+                    <tr><td class="text-muted">Follow Up Date</td>
+                        <td><%= inspection.followup_date ? new Date(inspection.followup_date).toLocaleDateString() : '-' %></td></tr>
+                    <tr><td class="text-muted">Follow Up Notes</td><td><%= inspection.followup_notes || '-' %></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <div class="card-header"><h6 class="mb-0">Precondition Details</h6></div>
+            <div class="card-body">
+                <table class="table table-borderless table-sm mb-0">
+                    <tr><td class="text-muted">Birds Described</td><td><%= inspection.birds_described || '-' %></td></tr>
+                    <tr><td class="text-muted">Hand Tame</td><td><%= inspection.hand_tame ? 'Yes' : 'No' %></td></tr>
+                    <tr><td class="text-muted">Date Acquired</td>
+                        <td><%= inspection.date_acquired ? new Date(inspection.date_acquired).toLocaleDateString() : '-' %></td></tr>
+                    <tr><td class="text-muted">Instructions</td><td><%= inspection.instructions_for_applicant || '-' %></td></tr>
+                    <tr><td class="text-muted">Expected Recheck</td>
+                        <td><%= inspection.expected_recheck ? new Date(inspection.expected_recheck).toLocaleDateString() : '-' %></td></tr>
+                    <tr><td class="text-muted">Comments</td><td><%= inspection.preconditions_comments || '-' %></td></tr>
+                </table>
+            </div>
+        </div>
+        <% if (parrots && parrots.length > 0) { %>
+        <div class="card mt-3">
+            <div class="card-header"><h6 class="mb-0">Parrots</h6></div>
+            <div class="card-body">
+                <table class="table table-sm mb-0">
+                    <thead><tr><th>Band No.</th><th>Name</th><th>Species</th><th>Confiscated</th></tr></thead>
+                    <tbody>
+                        <% parrots.forEach(p => { %>
+                        <tr>
+                            <td><%= p.band_number || '-' %></td>
+                            <td><%= p.pet_name || '-' %></td>
+                            <td><%= p.species_name || '-' %></td>
+                            <td><span class="badge bg-<%= p.confiscated ? 'danger' : 'success' %>">
+                                <%= p.confiscated ? 'Yes' : 'No' %>
+                            </span></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>

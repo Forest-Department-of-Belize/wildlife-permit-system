@@ -1,0 +1,41 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <h1 class="page-title">Call Record</h1>
+    <div>
+        <% if (user && user.permissions && user.permissions.includes('calls-edit')) { %>
+        <a href="/calls/<%= call.uuid %>/edit" class="btn btn-outline-secondary me-2"><i class="fas fa-edit me-1"></i>Edit</a>
+        <% } %>
+        <a href="/calls" class="btn btn-outline-primary"><i class="fas fa-arrow-left me-1"></i>Back</a>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"><h6 class="mb-0">Call Details</h6></div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr><td class="text-muted">Applicant</td><td><a href="/applicants/<%= call.applicant_uuid %>"><%= call.applicant_name %></a></td></tr>
+                    <tr><td class="text-muted">Officer</td><td><%= call.officer_name || '-' %></td></tr>
+                    <tr><td class="text-muted">Number Called</td><td><%= call.number_called || '-' %></td></tr>
+                    <tr><td class="text-muted">Date</td><td><%= call.call_date ? new Date(call.call_date).toLocaleDateString() : '-' %></td></tr>
+                    <tr><td class="text-muted">Language</td><td><%= call.language || '-' %></td></tr>
+                    <tr><td class="text-muted">Functional</td><td><%= call.is_functional ? 'Yes' : 'No' %></td></tr>
+                    <tr><td class="text-muted">Answered</td><td><%= call.is_answered ? 'Yes' : 'No' %></td></tr>
+                    <tr><td class="text-muted">Was Applicant</td><td><%= call.is_applicant ? 'Yes' : 'No' %></td></tr>
+                </table>
+            </div>
+            <div class="col-12 col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr><td class="text-muted">Consent to Call</td><td><%= call.call_now_consent ? 'Yes' : 'No' %></td></tr>
+                    <tr><td class="text-muted">Consent Call Later</td><td><%= call.call_later_consent ? 'Yes' : 'No' %></td></tr>
+                    <tr><td class="text-muted">Call Later Date</td><td><%= call.call_later_date ? new Date(call.call_later_date).toLocaleDateString() : '-' %></td></tr>
+                    <tr><td class="text-muted">Fully Completed</td><td><%= call.is_fully_completed ? 'Yes' : 'No' %></td></tr>
+                    <tr><td class="text-muted">Digital Resources Consent</td><td><%= call.consents_digital_resources ? 'Yes' : 'No' %></td></tr>
+                    <tr><td class="text-muted">Neighbors with Parrots</td><td><%= call.num_neighbors_parrots || '-' %></td></tr>
+                    <tr><td class="text-muted">Neighborhood Description</td><td><%= call.neighborhood_description || '-' %></td></tr>
+                    <tr><td class="text-muted">Comments</td><td><%= call.call_comments || '-' %></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<%- include('../layouts/main') %>
+<div class="page-header d-flex justify-content-between align-items-center">
+    <h1 class="page-title"><%= viewUser.first_name %> <%= viewUser.last_name %></h1>
+    <div>
+        <a href="/users/<%= viewUser.uuid %>/edit" class="btn btn-outline-secondary me-2"><i class="fas fa-edit me-1"></i>Edit</a>
+        <a href="/users" class="btn btn-outline-primary"><i class="fas fa-arrow-left me-1"></i>Back</a>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"><h6 class="mb-0">User Information</h6></div>
+    <div class="card-body">
+        <table class="table table-borderless table-sm">
+            <tr><td class="text-muted">Full Name</td><td><%= viewUser.first_name %> <%= viewUser.last_name %></td></tr>
+            <tr><td class="text-muted">Email</td><td><%= viewUser.email %></td></tr>
+            <tr><td class="text-muted">Role</td><td><%= viewUser.role || '-' %></td></tr>
+            <tr><td class="text-muted">Station</td><td><%= viewUser.range_name || 'All Stations' %></td></tr>
+            <tr><td class="text-muted">Status</td>
+                <td><span class="badge bg-<%= viewUser.is_active ? 'success' : 'secondary' %>">
+                    <%= viewUser.is_active ? 'Active' : 'Inactive' %>
+                </span></td></tr>
+            <tr><td class="text-muted">Account Setup</td>
+                <td><span class="badge bg-<%= viewUser.invite_token ? 'warning' : 'success' %>">
+                    <%= viewUser.invite_token ? 'Pending' : 'Complete' %>
+                </span></td></tr>
+        </table>
+    </div>
+</div>
