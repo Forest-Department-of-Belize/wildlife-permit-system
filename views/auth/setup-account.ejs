@@ -8,10 +8,10 @@
         <div class="mb-3">
             <label class="form-label">Password</label>
             <div class="input-group">
-                <input type="password" name="password" id="password1"
+                <input type="password" name="password" id="pwd1"
                        class="form-control form-control-lg"
                        placeholder="Choose a password" required minlength="8">
-                <button class="btn btn-outline-secondary" type="button" id="toggleBtn1">
+                <button class="btn btn-outline-secondary" type="button" id="togglePwd1">
                     <i class="fas fa-eye" id="icon1"></i>
                 </button>
             </div>
@@ -19,10 +19,10 @@
         <div class="mb-4">
             <label class="form-label">Confirm Password</label>
             <div class="input-group">
-                <input type="password" name="confirm_password" id="password2"
+                <input type="password" name="confirm_password" id="pwd2"
                        class="form-control form-control-lg"
                        placeholder="Confirm your password" required minlength="8">
-                <button class="btn btn-outline-secondary" type="button" id="toggleBtn2">
+                <button class="btn btn-outline-secondary" type="button" id="togglePwd2">
                     <i class="fas fa-eye" id="icon2"></i>
                 </button>
             </div>
@@ -31,16 +31,18 @@
     </form>
 </div>
 <script>
-    document.getElementById('toggleBtn1').addEventListener('click', function() {
-        var f = document.getElementById('password1');
+window.addEventListener('load', function() {
+    document.getElementById('togglePwd1').addEventListener('click', function() {
+        var f = document.getElementById('pwd1');
         var i = document.getElementById('icon1');
         f.type = f.type === 'password' ? 'text' : 'password';
         i.className = f.type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
     });
-    document.getElementById('toggleBtn2').addEventListener('click', function() {
-        var f = document.getElementById('password2');
+    document.getElementById('togglePwd2').addEventListener('click', function() {
+        var f = document.getElementById('pwd2');
         var i = document.getElementById('icon2');
         f.type = f.type === 'password' ? 'text' : 'password';
         i.className = f.type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
     });
+});
 </script>

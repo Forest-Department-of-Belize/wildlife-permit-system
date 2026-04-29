@@ -13,11 +13,11 @@
         <div class="mb-4">
             <label class="form-label">Password</label>
             <div class="input-group">
-                <input type="password" name="password" id="loginPassword"
+                <input type="password" name="password" id="loginPwd"
                        class="form-control form-control-lg"
                        placeholder="Enter your password" required>
-                <button class="btn btn-outline-secondary" type="button" id="toggleLogin">
-                    <i class="fas fa-eye" id="loginIcon"></i>
+                <button class="btn btn-outline-secondary" type="button" id="toggleLoginPwd">
+                    <i class="fas fa-eye" id="loginPwdIcon"></i>
                 </button>
             </div>
         </div>
@@ -28,10 +28,12 @@
     </form>
 </div>
 <script>
-    document.getElementById('toggleLogin').addEventListener('click', function() {
-        var f = document.getElementById('loginPassword');
-        var i = document.getElementById('loginIcon');
+window.addEventListener('load', function() {
+    document.getElementById('toggleLoginPwd').addEventListener('click', function() {
+        var f = document.getElementById('loginPwd');
+        var i = document.getElementById('loginPwdIcon');
         f.type = f.type === 'password' ? 'text' : 'password';
         i.className = f.type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
     });
+});
 </script>

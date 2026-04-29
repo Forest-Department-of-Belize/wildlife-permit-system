@@ -14,7 +14,11 @@ const index = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
         const users = await userModel.getAll(rangeId);
-        res.render('users/index', { title: 'Users', users });
+        res.render('users/index', { 
+            title: 'Users', 
+            users,
+            appUrl: process.env.APP_URL
+        });
     } catch (err) {
         console.error(err);
         res.redirect('/dashboard');
