@@ -67,12 +67,42 @@ const create = async (req, res) => {
 
 const store = async (req, res) => {
     try {
+        const errors = [];
+
+        if (!req.body.first_name || req.body.first_name.trim() === '') {
+            errors.push('First name is required');
+        }
+        if (!req.body.last_name || req.body.last_name.trim() === '') {
+            errors.push('Last name is required');
+        }
+        if (req.body.email && req.body.email.trim() !== '') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(req.body.email)) {
+                errors.push('Please enter a valid email address');
+            }
+        }
+        if (req.body.contact_number && req.body.contact_number.trim() !== '') {
+            const phoneRegex = /^[\d\s\-\+\(\)]{7,15}$/;
+            if (!phoneRegex.test(req.body.contact_number)) {
+                errors.push('Please enter a valid phone number');
+            }
+        }
+
+        if (errors.length > 0) {
+            req.session.error = errors.join(', ');
+            return res.redirect('/applicants/create');
+        }
+
         const applicant = await applicantModel.create(req.body);
         req.session.success = 'Applicant added successfully';
         res.redirect(`/applicants/${applicant.uuid}`);
     } catch (err) {
         console.error(err);
-        req.session.error = 'Failed to add applicant';
+        if (err.code === '23505') {
+            req.session.error = 'An applicant with that ID number already exists';
+        } else {
+            req.session.error = 'Failed to add applicant. Please try again.';
+        }
         res.redirect('/applicants/create');
     }
 };
@@ -126,7 +156,11 @@ const destroy = async (req, res) => {
         res.redirect('/applicants');
     } catch (err) {
         console.error(err);
-        req.session.error = 'Failed to delete applicant. Make sure all related records are removed first.';
+        if (err.code === '23503') {
+            req.session.error = 'Cannot delete this applicant because they have related records. Delete their parrots, permits, inspections and calls first.';
+        } else {
+            req.session.error = 'Failed to delete applicant. Please try again.';
+        }
         res.redirect(`/applicants/${req.params.uuid}`);
     }
 };

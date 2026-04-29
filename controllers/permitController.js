@@ -57,6 +57,23 @@ const create = async (req, res) => {
 
 const store = async (req, res) => {
     try {
+        const errors = [];
+
+        if (!req.body.applicant_id) {
+            errors.push('Please select an applicant');
+        }
+        if (!req.body.permit_number || req.body.permit_number.trim() === '') {
+            errors.push('Permit number is required');
+        }
+        if (!req.body.range_id && !req.session.user.range_id) {
+            errors.push('Please select a forest station');
+        }
+
+        if (errors.length > 0) {
+            req.session.error = errors.join(', ');
+            return res.redirect('/permits/create');
+        }
+
         if (!req.body.range_id && req.session.user.range_id) {
             req.body.range_id = req.session.user.range_id;
         }
@@ -65,11 +82,14 @@ const store = async (req, res) => {
         res.redirect(`/permits/${permit.uuid}`);
     } catch (err) {
         console.error(err);
-        req.session.error = 'Failed to add permit';
+        if (err.code === '23505') {
+            req.session.error = 'A permit with that number already exists';
+        } else {
+            req.session.error = 'Failed to add permit. Please try again.';
+        }
         res.redirect('/permits/create');
     }
 };
-
 const edit = async (req, res) => {
     try {
         const permit = await permitModel.findByUuid(req.params.uuid);

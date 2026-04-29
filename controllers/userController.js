@@ -56,6 +56,28 @@ const getRoles = async () => {
 };
 
 const store = async (req, res) => {
+    const errors = [];
+if (!req.body.first_name || req.body.first_name.trim() === '') {
+    errors.push('First name is required');
+}
+if (!req.body.last_name || req.body.last_name.trim() === '') {
+    errors.push('Last name is required');
+}
+if (!req.body.email || req.body.email.trim() === '') {
+    errors.push('Email is required');
+} else {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(req.body.email)) {
+        errors.push('Please enter a valid email address');
+    }
+}
+if (!req.body.role_id) {
+    errors.push('Please select a role');
+}
+if (errors.length > 0) {
+    req.session.error = errors.join(', ');
+    return res.redirect('/users/create');
+}
     try {
         const token = uuidv4();
         const expires = new Date(Date.now() + 48 * 3600000);
