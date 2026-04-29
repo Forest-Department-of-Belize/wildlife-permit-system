@@ -199,49 +199,31 @@ body {
     height: calc(100vh - 56px);
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-    .sidebar {
-        transform: translateX(-100%);
-    }
-    .sidebar.open {
-        transform: translateX(0);
-    }
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding: 15px;
-    }
-}
-/* Mobile fixes */
-@media (max-width: 768px) {
-    /* Sidebar becomes overlay */
     .sidebar {
         position: fixed;
         top: 56px;
-        left: -240px;
+        left: 0;
         height: calc(100vh - 56px);
-        transition: left 0.3s ease;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
         z-index: 999;
     }
 
     .sidebar.open {
-        left: 0;
+        transform: translateX(0);
     }
 
-    /* Main content takes full width */
     .main-content {
         margin-left: 0 !important;
         width: 100% !important;
         padding: 10px !important;
     }
 
-    /* Tables scroll horizontally */
     .table-responsive {
         overflow-x: auto;
     }
 
-    /* Tabs scroll horizontally on mobile */
     .nav-tabs {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -255,7 +237,6 @@ body {
         font-size: 13px;
     }
 
-    /* Cards full width */
     .stat-card {
         padding: 15px;
     }
@@ -264,19 +245,16 @@ body {
         font-size: 22px;
     }
 
-    /* Page header stacks on mobile */
     .page-header {
         flex-direction: column;
         align-items: flex-start !important;
         gap: 10px;
     }
 
-    /* Forms full width */
     .form-control, .form-select {
         font-size: 16px !important;
     }
 
-    /* Overlay when sidebar is open */
     .sidebar-overlay {
         display: none;
         position: fixed;
