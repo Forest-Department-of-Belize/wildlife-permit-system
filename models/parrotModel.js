@@ -102,4 +102,11 @@ const update = async (uuid, data) => {
     return result.rows[0];
 };
 
+const remove = async (uuid) => {
+    await pool.query(
+        'DELETE FROM parrots WHERE uuid = $1',
+        [uuid]
+    );
+};
+
 module.exports = { getAll, findByUuid, create, update };

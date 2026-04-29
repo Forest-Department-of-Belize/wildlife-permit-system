@@ -100,4 +100,16 @@ const update = async (req, res) => {
     }
 };
 
-module.exports = { index, view, create, store, edit, update };
+const destroy = async (req, res) => {
+    try {
+        await parrotModel.remove(req.params.uuid);
+        req.session.success = 'Parrot deleted successfully';
+        res.redirect('/parrots');
+    } catch (err) {
+        console.error(err);
+        req.session.error = 'Failed to delete parrot';
+        res.redirect('/parrots');
+    }
+};
+
+module.exports = { index, view, create, store, edit, update, destroy };
