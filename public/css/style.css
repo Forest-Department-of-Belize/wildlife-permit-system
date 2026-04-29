@@ -213,3 +213,82 @@ body {
         padding: 15px;
     }
 }
+/* Mobile fixes */
+@media (max-width: 768px) {
+    /* Sidebar becomes overlay */
+    .sidebar {
+        position: fixed;
+        top: 56px;
+        left: -240px;
+        height: calc(100vh - 56px);
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    /* Main content takes full width */
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 10px !important;
+    }
+
+    /* Tables scroll horizontally */
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    /* Tabs scroll horizontally on mobile */
+    .nav-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-tabs .nav-link {
+        white-space: nowrap;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    /* Cards full width */
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-info h3 {
+        font-size: 22px;
+    }
+
+    /* Page header stacks on mobile */
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 10px;
+    }
+
+    /* Forms full width */
+    .form-control, .form-select {
+        font-size: 16px !important;
+    }
+
+    /* Overlay when sidebar is open */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 56px);
+        background: rgba(0,0,0,0.5);
+        z-index: 998;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+}
