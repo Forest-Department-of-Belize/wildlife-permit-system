@@ -27,7 +27,7 @@ const create = async (data) => {
 const update = async (uuid, data) => {
     const result = await pool.query(
         `UPDATE parrot_species SET
-         common_name=$1, scientific_name=$2, image_url=$3, updated_at=NOW()
+         common_name=$1, scientific_name=$2, image_url=$3
          WHERE uuid=$4 RETURNING *`,
         [data.common_name, data.scientific_name, data.image_url || null, uuid]
     );
