@@ -1,17 +1,10 @@
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
 const pool = require('../db/index');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 require('dotenv').config();
 
-const transporter = nodemailer.createTransport({
-    host: process.env.MAIL_HOST,
-    port: process.env.MAIL_PORT,
-    auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-    }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const getLogin = (req, res) => {
     if (req.session.user) return res.redirect('/dashboard');
@@ -86,19 +79,30 @@ const postForgotPassword = async (req, res) => {
                 [token, expires, email]
             );
             const resetUrl = `${process.env.APP_URL}/reset-password/${token}`;
-            await transporter.sendMail({
-                from: process.env.MAIL_FROM,
-                to: email,
-                subject: 'Password Reset - Wildlife Permit System',
-                html: `
-                    <h2>Password Reset Request</h2>
-                    <p>Click the link below to reset your password. This link expires in 1 hour.</p>
-                    <a href="${resetUrl}">${resetUrl}</a>
-                    <p>If you did not request this, please ignore this email.</p>
-                `
-            });
+            try {
+                await resend.emails.send({
+                    from: 'Wildlife Permit System <onboarding@resend.dev>',
+                    to: email,
+                    subject: 'Password Reset - Wildlife Permit System',
+                    html: `
+                        <h2>Password Reset Request</h2>
+                        <p>Click the link below to reset your password. 
+                           This link expires in 1 hour.</p>
+                        <a href="${resetUrl}" style="background:#2E7D32;color:white;
+                           padding:12px 24px;text-decoration:none;border-radius:5px;
+                           display:inline-block;margin:10px 0;">
+                           Reset My Password
+                        </a>
+                        <p>If you did not request this, please ignore this email.</p>
+                        <p>Belize Forestry Department</p>
+                    `
+                });
+                console.log('Password reset email sent to:', email);
+            } catch (mailErr) {
+                console.error('Email failed:', mailErr.message);
+            }
         }
-        req.session.success = 'If that email exists, a reset link has been sent';
+        req.session.success = 'If that email exists a reset link has been sent';
         res.redirect('/login');
     } catch (err) {
         console.error(err);
@@ -118,10 +122,10 @@ const getResetPassword = async (req, res) => {
             req.session.error = 'Invalid or expired reset link';
             return res.redirect('/login');
         }
-        res.render('auth/reset-password', { 
-            title: 'Reset Password', 
-            token, 
-            layout: 'layouts/auth' 
+        res.render('auth/reset-password', {
+            title: 'Reset Password',
+            token,
+            layout: 'layouts/auth'
         });
     } catch (err) {
         console.error(err);
@@ -139,7 +143,7 @@ const postResetPassword = async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         await pool.query(
-            `UPDATE users SET password = $1, reset_token = NULL, 
+            `UPDATE users SET password = $1, reset_token = NULL,
              reset_token_expires = NULL WHERE reset_token = $2`,
             [hashedPassword, token]
         );
@@ -162,8 +166,8 @@ const getSetupAccount = async (req, res) => {
             req.session.error = 'Invalid or expired invite link';
             return res.redirect('/login');
         }
-        res.render('auth/setup-account', { 
-            title: 'Setup Account', 
+        res.render('auth/setup-account', {
+            title: 'Setup Account',
             token,
             user: result.rows[0],
             layout: 'layouts/auth'
@@ -185,7 +189,7 @@ const postSetupAccount = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         await pool.query(
             `UPDATE users SET password = $1, invite_token = NULL,
-             invite_token_expires = NULL, first_login = false 
+             invite_token_expires = NULL, first_login = false
              WHERE invite_token = $2`,
             [hashedPassword, token]
         );

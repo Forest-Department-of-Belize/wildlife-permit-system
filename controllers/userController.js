@@ -3,30 +3,18 @@ const rangeModel = require('../models/rangeModel');
 const roleModel = require('../models/roleModel');
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const { getRangeFilter } = require('../middleware/rangeFilter');
 require('dotenv').config();
 const pool = require('../db/index');
 
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    requireTLS: true,
-    auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-    }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const index = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
         const users = await userModel.getAll(rangeId);
-        res.render('users/index', {
-            title: 'Users',
-            users
-        });
+        res.render('users/index', { title: 'Users', users });
     } catch (err) {
         console.error(err);
         res.redirect('/dashboard');
@@ -40,10 +28,7 @@ const view = async (req, res) => {
             req.session.error = 'User not found';
             return res.redirect('/users');
         }
-        res.render('users/view', {
-            title: 'View User',
-            viewUser: user
-        });
+        res.render('users/view', { title: 'View User', viewUser: user });
     } catch (err) {
         console.error(err);
         res.redirect('/users');
@@ -52,15 +37,8 @@ const view = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const [ranges, roles] = await Promise.all([
-            rangeModel.getAll(),
-            getRoles()
-        ]);
-        res.render('users/create', {
-            title: 'Add New User',
-            ranges,
-            roles
-        });
+        const [ranges, roles] = await Promise.all([rangeModel.getAll(), getRoles()]);
+        res.render('users/create', { title: 'Add New User', ranges, roles });
     } catch (err) {
         console.error(err);
         res.redirect('/users');
@@ -78,7 +56,7 @@ const store = async (req, res) => {
         const token = uuidv4();
         const expires = new Date(Date.now() + 48 * 3600000);
 
-        const newUser = await userModel.create({
+        await userModel.create({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
@@ -91,16 +69,16 @@ const store = async (req, res) => {
         const setupUrl = `${process.env.APP_URL}/setup-account/${token}`;
 
         try {
-            await transporter.sendMail({
-                from: process.env.MAIL_FROM,
+            await resend.emails.send({
+                from: 'Wildlife Permit System <onboarding@resend.dev>',
                 to: req.body.email,
                 subject: 'You have been invited to Wildlife Permit System',
                 html: `
                     <h2>Welcome to the Wildlife Permit System</h2>
                     <p>Hello ${req.body.first_name},</p>
-                    <p>You have been invited to access the Belize Forestry Department 
+                    <p>You have been invited to access the Belize Forestry Department
                        Wildlife Permit Management System.</p>
-                    <p>Click the link below to set up your account. 
+                    <p>Click the link below to set up your account.
                        This link expires in 48 hours.</p>
                     <a href="${setupUrl}" style="background:#2E7D32;color:white;
                        padding:12px 24px;text-decoration:none;border-radius:5px;
@@ -115,7 +93,7 @@ const store = async (req, res) => {
             req.session.success = `Invitation sent to ${req.body.email}`;
         } catch (mailErr) {
             console.error('Email failed:', mailErr.message);
-            req.session.success = `User created successfully! Email could not be sent automatically. Share this setup link with ${req.body.first_name}: ${setupUrl}`;
+            req.session.success = `User created! Email could not be sent. Share this setup link with ${req.body.first_name}: ${setupUrl}`;
         }
 
         res.redirect('/users');
@@ -138,16 +116,8 @@ const edit = async (req, res) => {
             req.session.error = 'User not found';
             return res.redirect('/users');
         }
-        const [ranges, roles] = await Promise.all([
-            rangeModel.getAll(),
-            getRoles()
-        ]);
-        res.render('users/edit', {
-            title: 'Edit User',
-            editUser,
-            ranges,
-            roles
-        });
+        const [ranges, roles] = await Promise.all([rangeModel.getAll(), getRoles()]);
+        res.render('users/edit', { title: 'Edit User', editUser, ranges, roles });
     } catch (err) {
         console.error(err);
         res.redirect('/users');
@@ -169,10 +139,7 @@ const update = async (req, res) => {
 const profile = async (req, res) => {
     try {
         const profileUser = await userModel.findByUuid(req.session.user.uuid);
-        res.render('users/profile', {
-            title: 'My Profile',
-            profileUser
-        });
+        res.render('users/profile', { title: 'My Profile', profileUser });
     } catch (err) {
         console.error(err);
         res.redirect('/dashboard');
@@ -182,7 +149,6 @@ const profile = async (req, res) => {
 const updateProfile = async (req, res) => {
     try {
         const { current_password, new_password, confirm_password } = req.body;
-
         if (new_password) {
             if (new_password !== confirm_password) {
                 req.session.error = 'New passwords do not match';
@@ -201,11 +167,9 @@ const updateProfile = async (req, res) => {
             const hashed = await bcrypt.hash(new_password, 10);
             await userModel.updatePassword(req.session.user.id, hashed);
         }
-
         await userModel.update(req.session.user.uuid, req.body);
         req.session.user.first_name = req.body.first_name;
         req.session.user.last_name = req.body.last_name;
-
         req.session.success = 'Profile updated successfully';
         res.redirect('/users/profile');
     } catch (err) {
@@ -222,16 +186,13 @@ const resendInvite = async (req, res) => {
             req.session.error = 'User not found';
             return res.redirect('/users');
         }
-
         const token = uuidv4();
         const expires = new Date(Date.now() + 48 * 3600000);
         await userModel.updateInviteToken(inviteUser.id, token, expires);
-
         const setupUrl = `${process.env.APP_URL}/setup-account/${token}`;
-
         try {
-            await transporter.sendMail({
-                from: process.env.MAIL_FROM,
+            await resend.emails.send({
+                from: 'Wildlife Permit System <onboarding@resend.dev>',
                 to: inviteUser.email,
                 subject: 'Your Wildlife Permit System Invitation',
                 html: `
@@ -245,9 +206,8 @@ const resendInvite = async (req, res) => {
             req.session.success = 'Invitation resent successfully';
         } catch (mailErr) {
             console.error('Email failed:', mailErr.message);
-            req.session.success = `Email could not be sent automatically. Share this setup link with ${inviteUser.first_name}: ${setupUrl}`;
+            req.session.success = `Email could not be sent. Share this setup link with ${inviteUser.first_name}: ${setupUrl}`;
         }
-
         res.redirect('/users');
     } catch (err) {
         console.error(err);
@@ -263,23 +223,21 @@ const deactivate = async (req, res) => {
             req.session.error = 'User not found';
             return res.redirect('/users');
         }
-
         await pool.query(
             'UPDATE users SET is_active = false WHERE uuid = $1',
             [req.params.uuid]
         );
-
         try {
-            await transporter.sendMail({
-                from: process.env.MAIL_FROM,
+            await resend.emails.send({
+                from: 'Wildlife Permit System <onboarding@resend.dev>',
                 to: deactivateUser.email,
                 subject: 'Your Wildlife Permit System Account Has Been Deactivated',
                 html: `
                     <h2>Account Deactivated</h2>
                     <p>Hello ${deactivateUser.first_name},</p>
-                    <p>Your account on the Belize Forestry Department Wildlife Permit 
+                    <p>Your account on the Belize Forestry Department Wildlife Permit
                        Management System has been deactivated by an administrator.</p>
-                    <p>If you believe this was done in error please contact your 
+                    <p>If you believe this was done in error please contact your
                        supervisor or the Wildlife Program Manager.</p>
                     <p>Belize Forestry Department</p>
                 `
@@ -287,10 +245,8 @@ const deactivate = async (req, res) => {
         } catch (mailErr) {
             console.error('Email failed:', mailErr.message);
         }
-
         req.session.success = `${deactivateUser.first_name} ${deactivateUser.last_name}'s account has been deactivated`;
         res.redirect('/users');
-
     } catch (err) {
         console.error(err);
         req.session.error = 'Failed to deactivate user';
@@ -305,21 +261,19 @@ const reactivate = async (req, res) => {
             req.session.error = 'User not found';
             return res.redirect('/users');
         }
-
         await pool.query(
             'UPDATE users SET is_active = true WHERE uuid = $1',
             [req.params.uuid]
         );
-
         try {
-            await transporter.sendMail({
-                from: process.env.MAIL_FROM,
+            await resend.emails.send({
+                from: 'Wildlife Permit System <onboarding@resend.dev>',
                 to: reactivateUser.email,
                 subject: 'Your Wildlife Permit System Account Has Been Reactivated',
                 html: `
                     <h2>Account Reactivated</h2>
                     <p>Hello ${reactivateUser.first_name},</p>
-                    <p>Your account on the Belize Forestry Department Wildlife Permit 
+                    <p>Your account on the Belize Forestry Department Wildlife Permit
                        Management System has been reactivated.</p>
                     <p>You can now log in at: <a href="${process.env.APP_URL}">${process.env.APP_URL}</a></p>
                     <p>Belize Forestry Department</p>
@@ -328,10 +282,8 @@ const reactivate = async (req, res) => {
         } catch (mailErr) {
             console.error('Email failed:', mailErr.message);
         }
-
         req.session.success = `${reactivateUser.first_name} ${reactivateUser.last_name}'s account has been reactivated`;
         res.redirect('/users');
-
     } catch (err) {
         console.error(err);
         req.session.error = 'Failed to reactivate user';
