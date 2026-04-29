@@ -45,7 +45,7 @@
                             </a>
                             <% if (u.invite_token && user.role === 'Wildlife Program Manager') { %>
                             <button class="btn btn-sm btn-outline-warning" title="Copy Setup Link"
-                                    onclick="copySetupLink('<%= appUrl %>/setup-account/<%= u.invite_token %>', '<%= u.first_name %>')">
+                                    onclick="copySetupLink('<%= u.invite_token %>', '<%= u.first_name %>')">
                                 <i class="fas fa-copy"></i>
                             </button>
                             <form method="POST" action="/users/<%= u.uuid %>/resend-invite" style="display:inline">
@@ -84,11 +84,16 @@
 </div>
 
 <script>
-function copySetupLink(url, name) {
-    navigator.clipboard.writeText(url).then(function() {
-        alert('Setup link for ' + name + ' copied!\n\nSend this link via WhatsApp:\n' + url);
-    }).catch(function() {
+function copySetupLink(token, name) {
+    var url = window.location.origin + '/setup-account/' + token;
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(function() {
+            alert('Setup link for ' + name + ' copied!\n\nSend via WhatsApp:\n' + url);
+        }).catch(function() {
+            prompt('Copy this link and send to ' + name + ' via WhatsApp:', url);
+        });
+    } else {
         prompt('Copy this link and send to ' + name + ' via WhatsApp:', url);
-    });
+    }
 }
 </script>
