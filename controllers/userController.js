@@ -8,7 +8,7 @@ const { getRangeFilter } = require('../middleware/rangeFilter');
 require('dotenv').config();
 const pool = require('../db/index');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder');
 
 const index = async (req, res) => {
     try {
@@ -69,7 +69,8 @@ const store = async (req, res) => {
         const setupUrl = `${process.env.APP_URL}/setup-account/${token}`;
 
         try {
-            await resend.emails.send({
+            console.log('RESEND KEY CHECK:', process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.substring(0, 10) : 'MISSING');
+            const emailResult = await resend.emails.send({
                 from: 'Wildlife Permit System <onboarding@resend.dev>',
                 to: req.body.email,
                 subject: 'You have been invited to Wildlife Permit System',
@@ -89,6 +90,7 @@ const store = async (req, res) => {
                     <p>Belize Forestry Department</p>
                 `
             });
+            console.log('Resend response:', JSON.stringify(emailResult));
             console.log('Invitation email sent to:', req.body.email);
             req.session.success = `Invitation sent to ${req.body.email}`;
         } catch (mailErr) {
@@ -191,7 +193,7 @@ const resendInvite = async (req, res) => {
         await userModel.updateInviteToken(inviteUser.id, token, expires);
         const setupUrl = `${process.env.APP_URL}/setup-account/${token}`;
         try {
-            await resend.emails.send({
+            const emailResult = await resend.emails.send({
                 from: 'Wildlife Permit System <onboarding@resend.dev>',
                 to: inviteUser.email,
                 subject: 'Your Wildlife Permit System Invitation',
@@ -203,6 +205,7 @@ const resendInvite = async (req, res) => {
                     <p>This link expires in 48 hours.</p>
                 `
             });
+            console.log('Resend response:', JSON.stringify(emailResult));
             req.session.success = 'Invitation resent successfully';
         } catch (mailErr) {
             console.error('Email failed:', mailErr.message);
