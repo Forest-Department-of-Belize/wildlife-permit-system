@@ -5,6 +5,7 @@ const { Resend } = require('resend');
 require('dotenv').config();
 
 const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder');
+console.log('Resend API Key loaded:', process.env.RESEND_API_KEY ? 'YES' : 'NO - MISSING');
 
 const getLogin = (req, res) => {
     if (req.session.user) return res.redirect('/dashboard');
