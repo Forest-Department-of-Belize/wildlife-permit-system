@@ -36,3 +36,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 5000);
 });
+
+// Auto logout after 10 minutes of inactivity
+let inactivityTimer;
+
+function resetTimer() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(function() {
+        window.location.href = '/logout';
+    }, 10 * 60 * 1000); // 10 minutes
+}
+
+// Reset timer on any user activity
+['click', 'mousemove', 'keypress', 'scroll', 'touchstart'].forEach(function(event) {
+    document.addEventListener(event, resetTimer, true);
+});
+
+resetTimer();
