@@ -19,7 +19,6 @@ const index = async (req, res) => {
         res.redirect('/dashboard');
     }
 };
-};
 
 const view = async (req, res) => {
     try {
