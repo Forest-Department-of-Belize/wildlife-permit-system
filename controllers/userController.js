@@ -90,29 +90,34 @@ const store = async (req, res) => {
 
         const setupUrl = `${process.env.APP_URL}/setup-account/${token}`;
 
-        await transporter.sendMail({
-            from: process.env.MAIL_FROM,
-            to: req.body.email,
-            subject: 'You have been invited to Wildlife Permit System',
-            html: `
-                <h2>Welcome to the Wildlife Permit System</h2>
-                <p>Hello ${req.body.first_name},</p>
-                <p>You have been invited to access the Belize Forestry Department 
-                   Wildlife Permit Management System.</p>
-                <p>Click the link below to set up your account. 
-                   This link expires in 48 hours.</p>
-                <a href="${setupUrl}" style="background:#2E7D32;color:white;
-                   padding:12px 24px;text-decoration:none;border-radius:5px;
-                   display:inline-block;margin:10px 0;">
-                   Set Up My Account
-                </a>
-                <p>If you did not expect this invitation, please ignore this email.</p>
-                <p>Belize Forestry Department</p>
-            `
-        });
+        try {
+            await transporter.sendMail({
+                from: process.env.MAIL_FROM,
+                to: req.body.email,
+                subject: 'You have been invited to Wildlife Permit System',
+                html: `
+                    <h2>Welcome to the Wildlife Permit System</h2>
+                    <p>Hello ${req.body.first_name},</p>
+                    <p>You have been invited to access the Belize Forestry Department 
+                       Wildlife Permit Management System.</p>
+                    <p>Click the link below to set up your account. 
+                       This link expires in 48 hours.</p>
+                    <a href="${setupUrl}" style="background:#2E7D32;color:white;
+                       padding:12px 24px;text-decoration:none;border-radius:5px;
+                       display:inline-block;margin:10px 0;">
+                       Set Up My Account
+                    </a>
+                    <p>If you did not expect this invitation, please ignore this email.</p>
+                    <p>Belize Forestry Department</p>
+                `
+            });
+            console.log('Invitation email sent to:', req.body.email);
+            req.session.success = `Invitation sent to ${req.body.email}`;
+        } catch (mailErr) {
+            console.error('Email failed:', mailErr.message);
+            req.session.success = `User created successfully! Email could not be sent automatically. Share this setup link with ${req.body.first_name}: ${setupUrl}`;
+        }
 
-        console.log('Invitation email sent to:', req.body.email);
-        req.session.success = `Invitation sent to ${req.body.email}`;
         res.redirect('/users');
 
     } catch (err) {
@@ -224,21 +229,25 @@ const resendInvite = async (req, res) => {
 
         const setupUrl = `${process.env.APP_URL}/setup-account/${token}`;
 
-        await transporter.sendMail({
-            from: process.env.MAIL_FROM,
-            to: inviteUser.email,
-            subject: 'Your Wildlife Permit System Invitation',
-            html: `
-                <h2>Account Setup - Wildlife Permit System</h2>
-                <p>Hello ${inviteUser.first_name},</p>
-                <p>Here is your updated invitation link to set up your account.</p>
-                <a href="${setupUrl}">Set Up My Account</a>
-                <p>This link expires in 48 hours.</p>
-            `
-        });
+        try {
+            await transporter.sendMail({
+                from: process.env.MAIL_FROM,
+                to: inviteUser.email,
+                subject: 'Your Wildlife Permit System Invitation',
+                html: `
+                    <h2>Account Setup - Wildlife Permit System</h2>
+                    <p>Hello ${inviteUser.first_name},</p>
+                    <p>Here is your updated invitation link to set up your account.</p>
+                    <a href="${setupUrl}">Set Up My Account</a>
+                    <p>This link expires in 48 hours.</p>
+                `
+            });
+            req.session.success = 'Invitation resent successfully';
+        } catch (mailErr) {
+            console.error('Email failed:', mailErr.message);
+            req.session.success = `Email could not be sent automatically. Share this setup link with ${inviteUser.first_name}: ${setupUrl}`;
+        }
 
-        console.log('Invite resent to:', inviteUser.email);
-        req.session.success = 'Invitation resent successfully';
         res.redirect('/users');
     } catch (err) {
         console.error(err);
@@ -260,22 +269,25 @@ const deactivate = async (req, res) => {
             [req.params.uuid]
         );
 
-        await transporter.sendMail({
-            from: process.env.MAIL_FROM,
-            to: deactivateUser.email,
-            subject: 'Your Wildlife Permit System Account Has Been Deactivated',
-            html: `
-                <h2>Account Deactivated</h2>
-                <p>Hello ${deactivateUser.first_name},</p>
-                <p>Your account on the Belize Forestry Department Wildlife Permit 
-                   Management System has been deactivated by an administrator.</p>
-                <p>If you believe this was done in error please contact your 
-                   supervisor or the Wildlife Program Manager.</p>
-                <p>Belize Forestry Department</p>
-            `
-        });
+        try {
+            await transporter.sendMail({
+                from: process.env.MAIL_FROM,
+                to: deactivateUser.email,
+                subject: 'Your Wildlife Permit System Account Has Been Deactivated',
+                html: `
+                    <h2>Account Deactivated</h2>
+                    <p>Hello ${deactivateUser.first_name},</p>
+                    <p>Your account on the Belize Forestry Department Wildlife Permit 
+                       Management System has been deactivated by an administrator.</p>
+                    <p>If you believe this was done in error please contact your 
+                       supervisor or the Wildlife Program Manager.</p>
+                    <p>Belize Forestry Department</p>
+                `
+            });
+        } catch (mailErr) {
+            console.error('Email failed:', mailErr.message);
+        }
 
-        console.log('Account deactivated:', deactivateUser.email);
         req.session.success = `${deactivateUser.first_name} ${deactivateUser.last_name}'s account has been deactivated`;
         res.redirect('/users');
 
@@ -299,21 +311,24 @@ const reactivate = async (req, res) => {
             [req.params.uuid]
         );
 
-        await transporter.sendMail({
-            from: process.env.MAIL_FROM,
-            to: reactivateUser.email,
-            subject: 'Your Wildlife Permit System Account Has Been Reactivated',
-            html: `
-                <h2>Account Reactivated</h2>
-                <p>Hello ${reactivateUser.first_name},</p>
-                <p>Your account on the Belize Forestry Department Wildlife Permit 
-                   Management System has been reactivated.</p>
-                <p>You can now log in at: <a href="${process.env.APP_URL}">${process.env.APP_URL}</a></p>
-                <p>Belize Forestry Department</p>
-            `
-        });
+        try {
+            await transporter.sendMail({
+                from: process.env.MAIL_FROM,
+                to: reactivateUser.email,
+                subject: 'Your Wildlife Permit System Account Has Been Reactivated',
+                html: `
+                    <h2>Account Reactivated</h2>
+                    <p>Hello ${reactivateUser.first_name},</p>
+                    <p>Your account on the Belize Forestry Department Wildlife Permit 
+                       Management System has been reactivated.</p>
+                    <p>You can now log in at: <a href="${process.env.APP_URL}">${process.env.APP_URL}</a></p>
+                    <p>Belize Forestry Department</p>
+                `
+            });
+        } catch (mailErr) {
+            console.error('Email failed:', mailErr.message);
+        }
 
-        console.log('Account reactivated:', reactivateUser.email);
         req.session.success = `${reactivateUser.first_name} ${reactivateUser.last_name}'s account has been reactivated`;
         res.redirect('/users');
 
