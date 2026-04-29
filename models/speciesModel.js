@@ -23,7 +23,6 @@ const create = async (data) => {
     );
     return result.rows[0];
 };
-
 const update = async (uuid, data) => {
     const result = await pool.query(
         `UPDATE parrot_species SET
