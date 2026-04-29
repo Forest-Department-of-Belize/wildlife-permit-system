@@ -1,24 +1,41 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null) => {
-    const query = rangeId
-        ? `SELECT p.*, 
-           a.first_name || ' ' || a.last_name as applicant_name,
-           r.name as range_name
-           FROM permits p
-           LEFT JOIN applicants a ON p.applicant_id = a.id
-           LEFT JOIN ranges r ON p.range_id = r.id
-           WHERE p.range_id = $1
-           ORDER BY p.created_at DESC`
-        : `SELECT p.*,
-           a.first_name || ' ' || a.last_name as applicant_name,
-           r.name as range_name
-           FROM permits p
-           LEFT JOIN applicants a ON p.applicant_id = a.id
-           LEFT JOIN ranges r ON p.range_id = r.id
-           ORDER BY p.created_at DESC`;
+const getAll = async (rangeId = null, search = null) => {
+    let whereConditions = [];
+    let params = [];
+    let paramCount = 1;
 
-    const result = await pool.query(query, rangeId ? [rangeId] : []);
+    if (rangeId) {
+        whereConditions.push(`p.range_id = $${paramCount}`);
+        params.push(rangeId);
+        paramCount++;
+    }
+
+    if (search) {
+        whereConditions.push(`(
+            p.permit_number ILIKE $${paramCount} OR
+            p.reference_number ILIKE $${paramCount} OR
+            a.first_name ILIKE $${paramCount} OR
+            a.last_name ILIKE $${paramCount}
+        )`);
+        params.push(`%${search}%`);
+        paramCount++;
+    }
+
+    const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
+
+    const result = await pool.query(
+        `SELECT p.*,
+         a.first_name || ' ' || a.last_name as applicant_name,
+         r.name as range_name
+         FROM permits p
+         LEFT JOIN applicants a ON p.applicant_id = a.id
+         LEFT JOIN ranges r ON p.range_id = r.id
+         ${whereClause}
+         ORDER BY p.created_at DESC
+         LIMIT 100`,
+        params
+    );
     return result.rows;
 };
 

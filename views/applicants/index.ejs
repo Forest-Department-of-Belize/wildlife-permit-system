@@ -14,9 +14,20 @@
 <div class="card">
     <div class="card-body">
         <div class="mb-3">
-            <input type="text" id="searchInput" class="form-control"
-                   placeholder="Search by name, email, phone or ID number...">
-        </div>
+    <form method="GET" action="/applicants" class="d-flex gap-2">
+        <input type="text" name="search" class="form-control"
+               placeholder="Search by name, phone, email or ID..."
+               value="<%= search %>">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+        </button>
+        <% if (search) { %>
+        <a href="/applicants" class="btn btn-outline-secondary">
+            <i class="fas fa-times"></i>
+        </a>
+        <% } %>
+    </form>
+</div>
         <div class="table-responsive">
             <table class="table table-hover" id="applicantsTable">
                 <thead>

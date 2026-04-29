@@ -1,26 +1,43 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null) => {
-    const query = rangeId
-        ? `SELECT i.*,
-           a.first_name || ' ' || a.last_name as applicant_name,
-           a.uuid as applicant_uuid,
-           u.first_name || ' ' || u.last_name as inspector_name
-           FROM inspections i
-           LEFT JOIN applicants a ON i.applicant_id = a.id
-           LEFT JOIN users u ON i.inspector_id = u.id
-           WHERE i.range_id = $1
-           ORDER BY i.inspection_date DESC`
-        : `SELECT i.*,
-           a.first_name || ' ' || a.last_name as applicant_name,
-           a.uuid as applicant_uuid,
-           u.first_name || ' ' || u.last_name as inspector_name
-           FROM inspections i
-           LEFT JOIN applicants a ON i.applicant_id = a.id
-           LEFT JOIN users u ON i.inspector_id = u.id
-           ORDER BY i.inspection_date DESC`;
+const getAll = async (rangeId = null, search = null) => {
+    let whereConditions = [];
+    let params = [];
+    let paramCount = 1;
 
-    const result = await pool.query(query, rangeId ? [rangeId] : []);
+    if (rangeId) {
+        whereConditions.push(`i.range_id = $${paramCount}`);
+        params.push(rangeId);
+        paramCount++;
+    }
+
+    if (search) {
+        whereConditions.push(`(
+            a.first_name ILIKE $${paramCount} OR
+            a.last_name ILIKE $${paramCount} OR
+            i.inspection_status ILIKE $${paramCount} OR
+            u.first_name ILIKE $${paramCount} OR
+            u.last_name ILIKE $${paramCount}
+        )`);
+        params.push(`%${search}%`);
+        paramCount++;
+    }
+
+    const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
+
+    const result = await pool.query(
+        `SELECT i.*,
+         a.first_name || ' ' || a.last_name as applicant_name,
+         a.uuid as applicant_uuid,
+         u.first_name || ' ' || u.last_name as inspector_name
+         FROM inspections i
+         LEFT JOIN applicants a ON i.applicant_id = a.id
+         LEFT JOIN users u ON i.inspector_id = u.id
+         ${whereClause}
+         ORDER BY i.inspection_date DESC
+         LIMIT 100`,
+        params
+    );
     return result.rows;
 };
 

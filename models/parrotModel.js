@@ -1,24 +1,42 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null) => {
-    const query = rangeId
-        ? `SELECT p.*, ps.common_name as species_name,
-           a.first_name || ' ' || a.last_name as applicant_name,
-           a.uuid as applicant_uuid
-           FROM parrots p
-           LEFT JOIN parrot_species ps ON p.species_id = ps.id
-           LEFT JOIN applicants a ON p.applicant_id = a.id
-           WHERE p.range_id = $1
-           ORDER BY p.created_at DESC`
-        : `SELECT p.*, ps.common_name as species_name,
-           a.first_name || ' ' || a.last_name as applicant_name,
-           a.uuid as applicant_uuid
-           FROM parrots p
-           LEFT JOIN parrot_species ps ON p.species_id = ps.id
-           LEFT JOIN applicants a ON p.applicant_id = a.id
-           ORDER BY p.created_at DESC`;
+const getAll = async (rangeId = null, search = null) => {
+    let whereConditions = [];
+    let params = [];
+    let paramCount = 1;
 
-    const result = await pool.query(query, rangeId ? [rangeId] : []);
+    if (rangeId) {
+        whereConditions.push(`p.range_id = $${paramCount}`);
+        params.push(rangeId);
+        paramCount++;
+    }
+
+    if (search) {
+        whereConditions.push(`(
+            p.band_number ILIKE $${paramCount} OR
+            p.pet_name ILIKE $${paramCount} OR
+            ps.common_name ILIKE $${paramCount} OR
+            a.first_name ILIKE $${paramCount} OR
+            a.last_name ILIKE $${paramCount}
+        )`);
+        params.push(`%${search}%`);
+        paramCount++;
+    }
+
+    const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
+
+    const result = await pool.query(
+        `SELECT p.*, ps.common_name as species_name,
+         a.first_name || ' ' || a.last_name as applicant_name,
+         a.uuid as applicant_uuid
+         FROM parrots p
+         LEFT JOIN parrot_species ps ON p.species_id = ps.id
+         LEFT JOIN applicants a ON p.applicant_id = a.id
+         ${whereClause}
+         ORDER BY p.created_at DESC
+         LIMIT 100`,
+        params
+    );
     return result.rows;
 };
 

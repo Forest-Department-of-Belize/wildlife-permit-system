@@ -1,28 +1,48 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null) => {
-    const query = rangeId
-        ? `SELECT a.*, d.name as district_name,
-           (SELECT COUNT(*) FROM permits p WHERE p.applicant_id = a.id) as permit_count,
-           (SELECT COUNT(*) FROM parrots pr WHERE pr.applicant_id = a.id) as parrot_count
-           FROM applicants a
-           LEFT JOIN districts d ON a.district_id = d.id
-           WHERE a.id IN (
-               SELECT DISTINCT applicant_id FROM permits WHERE range_id = $1
-               UNION
-               SELECT DISTINCT applicant_id FROM applications WHERE range_id = $1
-               UNION
-               SELECT DISTINCT applicant_id FROM inspections WHERE range_id = $1
-           )
-           ORDER BY a.last_name, a.first_name`
-        : `SELECT a.*, d.name as district_name,
-           (SELECT COUNT(*) FROM permits p WHERE p.applicant_id = a.id) as permit_count,
-           (SELECT COUNT(*) FROM parrots pr WHERE pr.applicant_id = a.id) as parrot_count
-           FROM applicants a
-           LEFT JOIN districts d ON a.district_id = d.id
-           ORDER BY a.last_name, a.first_name`;
+const getAll = async (rangeId = null, search = null) => {
+    let whereConditions = [];
+    let params = [];
+    let paramCount = 1;
 
-    const result = await pool.query(query, rangeId ? [rangeId] : []);
+    if (rangeId) {
+        whereConditions.push(`a.id IN (
+            SELECT DISTINCT applicant_id FROM permits WHERE range_id = $${paramCount}
+            UNION
+            SELECT DISTINCT applicant_id FROM applications WHERE range_id = $${paramCount}
+            UNION
+            SELECT DISTINCT applicant_id FROM inspections WHERE range_id = $${paramCount}
+        )`);
+        params.push(rangeId);
+        paramCount++;
+    }
+
+    if (search) {
+        whereConditions.push(`(
+            a.first_name ILIKE $${paramCount} OR
+            a.last_name ILIKE $${paramCount} OR
+            a.contact_number ILIKE $${paramCount} OR
+            a.email ILIKE $${paramCount} OR
+            a.government_id_number ILIKE $${paramCount} OR
+            a.address1 ILIKE $${paramCount}
+        )`);
+        params.push(`%${search}%`);
+        paramCount++;
+    }
+
+    const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
+
+    const result = await pool.query(
+        `SELECT a.*, d.name as district_name,
+         (SELECT COUNT(*) FROM permits p WHERE p.applicant_id = a.id) as permit_count,
+         (SELECT COUNT(*) FROM parrots pr WHERE pr.applicant_id = a.id) as parrot_count
+         FROM applicants a
+         LEFT JOIN districts d ON a.district_id = d.id
+         ${whereClause}
+         ORDER BY a.last_name, a.first_name
+         LIMIT 100`,
+        params
+    );
     return result.rows;
 };
 

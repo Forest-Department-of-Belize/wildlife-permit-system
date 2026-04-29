@@ -6,10 +6,12 @@ const { getRangeFilter } = require('../middleware/rangeFilter');
 const index = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
-        const parrots = await parrotModel.getAll(rangeId);
+        const search = req.query.search || null;
+        const parrots = await parrotModel.getAll(rangeId, search);
         res.render('parrots/index', {
             title: 'Parrots',
-            parrots
+            parrots,
+            search: search || ''
         });
     } catch (err) {
         console.error(err);
