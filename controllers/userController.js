@@ -6,10 +6,12 @@ const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
 const { getRangeFilter } = require('../middleware/rangeFilter');
 require('dotenv').config();
+const pool = require('../db/index');
 
 const transporter = nodemailer.createTransport({
-    host: process.env.MAIL_HOST,
-    port: process.env.MAIL_PORT,
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS
@@ -108,11 +110,17 @@ const store = async (req, res) => {
             `
         });
 
+        console.log('Invitation email sent to:', req.body.email);
         req.session.success = `Invitation sent to ${req.body.email}`;
         res.redirect('/users');
+
     } catch (err) {
         console.error(err);
-        req.session.error = 'Failed to create user';
+        if (err.code === '23505') {
+            req.session.error = 'A user with that email address already exists';
+        } else {
+            req.session.error = 'Failed to create user. Please try again.';
+        }
         res.redirect('/users/create');
     }
 };
@@ -228,11 +236,89 @@ const resendInvite = async (req, res) => {
             `
         });
 
+        console.log('Invite resent to:', inviteUser.email);
         req.session.success = 'Invitation resent successfully';
         res.redirect('/users');
     } catch (err) {
         console.error(err);
         req.session.error = 'Failed to resend invitation';
+        res.redirect('/users');
+    }
+};
+
+const deactivate = async (req, res) => {
+    try {
+        const deactivateUser = await userModel.findByUuid(req.params.uuid);
+        if (!deactivateUser) {
+            req.session.error = 'User not found';
+            return res.redirect('/users');
+        }
+
+        await pool.query(
+            'UPDATE users SET is_active = false WHERE uuid = $1',
+            [req.params.uuid]
+        );
+
+        await transporter.sendMail({
+            from: process.env.MAIL_FROM,
+            to: deactivateUser.email,
+            subject: 'Your Wildlife Permit System Account Has Been Deactivated',
+            html: `
+                <h2>Account Deactivated</h2>
+                <p>Hello ${deactivateUser.first_name},</p>
+                <p>Your account on the Belize Forestry Department Wildlife Permit 
+                   Management System has been deactivated by an administrator.</p>
+                <p>If you believe this was done in error please contact your 
+                   supervisor or the Wildlife Program Manager.</p>
+                <p>Belize Forestry Department</p>
+            `
+        });
+
+        console.log('Account deactivated:', deactivateUser.email);
+        req.session.success = `${deactivateUser.first_name} ${deactivateUser.last_name}'s account has been deactivated`;
+        res.redirect('/users');
+
+    } catch (err) {
+        console.error(err);
+        req.session.error = 'Failed to deactivate user';
+        res.redirect('/users');
+    }
+};
+
+const reactivate = async (req, res) => {
+    try {
+        const reactivateUser = await userModel.findByUuid(req.params.uuid);
+        if (!reactivateUser) {
+            req.session.error = 'User not found';
+            return res.redirect('/users');
+        }
+
+        await pool.query(
+            'UPDATE users SET is_active = true WHERE uuid = $1',
+            [req.params.uuid]
+        );
+
+        await transporter.sendMail({
+            from: process.env.MAIL_FROM,
+            to: reactivateUser.email,
+            subject: 'Your Wildlife Permit System Account Has Been Reactivated',
+            html: `
+                <h2>Account Reactivated</h2>
+                <p>Hello ${reactivateUser.first_name},</p>
+                <p>Your account on the Belize Forestry Department Wildlife Permit 
+                   Management System has been reactivated.</p>
+                <p>You can now log in at: <a href="${process.env.APP_URL}">${process.env.APP_URL}</a></p>
+                <p>Belize Forestry Department</p>
+            `
+        });
+
+        console.log('Account reactivated:', reactivateUser.email);
+        req.session.success = `${reactivateUser.first_name} ${reactivateUser.last_name}'s account has been reactivated`;
+        res.redirect('/users');
+
+    } catch (err) {
+        console.error(err);
+        req.session.error = 'Failed to reactivate user';
         res.redirect('/users');
     }
 };

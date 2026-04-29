@@ -13,5 +13,7 @@ router.get('/:uuid', isLoggedIn, isAdminOrOIC, c.view);
 router.get('/:uuid/edit', isLoggedIn, isAdminOrOIC, c.edit);
 router.post('/:uuid/resend-invite', isLoggedIn, isAdmin, c.resendInvite);
 router.post('/:uuid', isLoggedIn, isAdminOrOIC, c.update);
+router.post('/:uuid/deactivate', isLoggedIn, isAdmin, c.deactivate);
+router.post('/:uuid/reactivate', isLoggedIn, isAdmin, c.reactivate);
 
 module.exports = router;
