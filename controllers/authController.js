@@ -4,7 +4,7 @@ const pool = require('../db/index');
 const { Resend } = require('resend');
 require('dotenv').config();
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder');
 
 const getLogin = (req, res) => {
     if (req.session.user) return res.redirect('/dashboard');
