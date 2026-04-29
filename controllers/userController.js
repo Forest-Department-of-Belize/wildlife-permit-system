@@ -325,5 +325,6 @@ const reactivate = async (req, res) => {
 
 module.exports = {
     index, view, create, store, edit,
-    update, profile, updateProfile, resendInvite
+    update, profile, updateProfile, resendInvite,
+    deactivate, reactivate
 };
