@@ -1,4 +1,3 @@
-
 <div class="page-header d-flex justify-content-between align-items-center">
     <div>
         <h1 class="page-title">
@@ -9,6 +8,14 @@
         <p class="text-muted mb-0">Applicant Record</p>
     </div>
     <div>
+        <% if (user && user.permissions && user.permissions.includes('applicants-delete')) { %>
+        <form method="POST" action="/applicants/<%= applicant.uuid %>/delete" style="display:inline"
+              onsubmit="return confirm('Delete this applicant and all their related records? This cannot be undone.')">
+            <button type="submit" class="btn btn-danger me-2">
+                <i class="fas fa-trash me-1"></i>Delete
+            </button>
+        </form>
+        <% } %>
         <% if (user && user.permissions && user.permissions.includes('applicants-edit')) { %>
         <a href="/applicants/<%= applicant.uuid %>/edit" class="btn btn-outline-secondary me-2">
             <i class="fas fa-edit me-1"></i>Edit

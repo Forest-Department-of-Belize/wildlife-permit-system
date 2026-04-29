@@ -119,4 +119,16 @@ const search = async (req, res) => {
     }
 };
 
-module.exports = { index, view, create, store, edit, update, search };
+const destroy = async (req, res) => {
+    try {
+        await applicantModel.remove(req.params.uuid);
+        req.session.success = 'Applicant deleted successfully';
+        res.redirect('/applicants');
+    } catch (err) {
+        console.error(err);
+        req.session.error = 'Failed to delete applicant. Make sure all related records are removed first.';
+        res.redirect(`/applicants/${req.params.uuid}`);
+    }
+};
+
+module.exports = { index, view, create, store, edit, update, search, destroy };

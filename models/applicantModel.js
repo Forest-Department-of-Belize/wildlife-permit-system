@@ -222,17 +222,15 @@ const search = async (query, rangeId = null) => {
     );
     return result.rows;
 };
+const remove = async (uuid) => {
+    await pool.query(
+        'DELETE FROM applicants WHERE uuid = $1',
+        [uuid]
+    );
+};
 
 module.exports = {
-    getAll,
-    findByUuid,
-    getParrots,
-    getPermits,
-    getApplications,
-    getInspections,
-    getCalls,
-    getOffenses,
-    create,
-    update,
-    search
+    getAll, findByUuid, getParrots, getPermits,
+    getApplications, getInspections, getCalls,
+    getOffenses, create, update, search, remove
 };

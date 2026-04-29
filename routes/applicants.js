@@ -11,5 +11,6 @@ router.post('/', isLoggedIn, hasPermission('applicants-add'), c.store);
 router.get('/:uuid', isLoggedIn, hasPermission('applicants-view'), c.view);
 router.get('/:uuid/edit', isLoggedIn, hasPermission('applicants-edit'), c.edit);
 router.post('/:uuid', isLoggedIn, hasPermission('applicants-edit'), c.update);
+router.post('/:uuid/delete', isLoggedIn, hasPermission('applicants-delete'), c.destroy);
 
 module.exports = router;
