@@ -43,11 +43,7 @@
                             <a href="/users/<%= u.uuid %>/edit" class="btn btn-sm btn-outline-secondary">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <% if (u.invite_token && user.role === 'Wildlife Program Manager') { %>
-<a href="/setup-account/<%= u.invite_token %>" target="_blank" 
-   class="btn btn-sm btn-outline-warning" title="Open Setup Link">
-    <i class="fas fa-external-link-alt"></i>
-</a>
+                           <% if (u.invite_token && user.role === 'Wildlife Program Manager') { %>
 <button class="btn btn-sm btn-outline-warning" title="Copy Setup Link"
         onclick="var url=window.location.origin+'/setup-account/'+'<%= u.invite_token %>'; prompt('Send this to <%= u.first_name %> via WhatsApp:',url);">
     <i class="fas fa-copy"></i>
