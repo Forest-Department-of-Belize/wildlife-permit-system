@@ -9,6 +9,9 @@ require('dotenv').config();
 
 const app = express();
 
+// Trust proxy for Render
+app.set('trust proxy', 1);
+
 // Security
 app.use(helmet({ contentSecurityPolicy: false }));
 
@@ -32,17 +35,16 @@ app.use(session({
     store: new PgSession({
         pool: pool,
         tableName: 'session',
-        ttl: 600 // Server cleans up sessions after 10 minutes
+        ttl: 600
     }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    rolling: true, // Reset timer on every request
+    rolling: true,
     cookie: {
-        secure: process.env.NODE_ENV === 'production',
+        secure: false,
         httpOnly: true,
-        maxAge: 1000 * 60 * 10 // 10 minutes
-        // No 'expires' means it's also cleared when browser closes
+        maxAge: 1000 * 60 * 10
     }
 }));
 
