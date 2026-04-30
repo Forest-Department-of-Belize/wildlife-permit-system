@@ -54,9 +54,11 @@ const view = async (req, res) => {
 
 const create = async (req, res) => {
     try {
+        const districts = await districtModel.getAll();
         const ranges = await rangeModel.getAll();
         res.render('applicants/create', {
             title: 'Add New Applicant',
+            districts,
             ranges
         });
     } catch (err) {
