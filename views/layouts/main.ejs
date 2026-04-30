@@ -180,11 +180,28 @@
             });
         }, 5000);
 
+        // Tab close detection - logout when tab is closed and reopened
+        window.addEventListener('load', function() {
+            if (!sessionStorage.getItem('tabOpen')) {
+                // Tab was closed and reopened - logout
+                fetch('/logout', { method: 'GET' }).then(function() {
+                    window.location.href = '/login';
+                });
+            }
+            sessionStorage.setItem('tabOpen', 'true');
+        });
+
+        // Clear flag when tab closes
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('tabOpen');
+        });
+
         // Auto logout after 10 minutes of inactivity
         let inactivityTimer;
         function resetTimer() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(function() {
+                sessionStorage.removeItem('tabOpen');
                 window.location.href = '/logout';
             }, 10 * 60 * 1000);
         }
