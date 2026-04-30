@@ -54,10 +54,10 @@ const view = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const districts = await districtModel.getAll();
+        const ranges = await rangeModel.getAll();
         res.render('applicants/create', {
             title: 'Add New Applicant',
-            districts
+            ranges
         });
     } catch (err) {
         console.error(err);
@@ -68,7 +68,6 @@ const create = async (req, res) => {
 const store = async (req, res) => {
     try {
         const errors = [];
-
         if (!req.body.first_name || req.body.first_name.trim() === '') {
             errors.push('First name is required');
         }
@@ -87,10 +86,14 @@ const store = async (req, res) => {
                 errors.push('Please enter a valid phone number');
             }
         }
-
         if (errors.length > 0) {
             req.session.error = errors.join(', ');
             return res.redirect('/applicants/create');
+        }
+
+        // Auto assign ranger's station
+        if (!req.body.range_id && req.session.user.range_id) {
+            req.body.range_id = req.session.user.range_id;
         }
 
         const applicant = await applicantModel.create(req.body);

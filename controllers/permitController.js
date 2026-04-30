@@ -90,6 +90,7 @@ const store = async (req, res) => {
         res.redirect('/permits/create');
     }
 };
+
 const edit = async (req, res) => {
     try {
         const permit = await permitModel.findByUuid(req.params.uuid);

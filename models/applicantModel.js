@@ -6,16 +6,10 @@ const getAll = async (rangeId = null, search = null) => {
     let paramCount = 1;
 
     if (rangeId) {
-        whereConditions.push(`a.id IN (
-            SELECT DISTINCT applicant_id FROM permits WHERE range_id = $${paramCount}
-            UNION
-            SELECT DISTINCT applicant_id FROM applications WHERE range_id = $${paramCount}
-            UNION
-            SELECT DISTINCT applicant_id FROM inspections WHERE range_id = $${paramCount}
-        )`);
-        params.push(rangeId);
-        paramCount++;
-    }
+    whereConditions.push(`a.range_id = $${paramCount}`);
+    params.push(rangeId);
+    paramCount++;
+}
 
     if (search) {
         whereConditions.push(`(
