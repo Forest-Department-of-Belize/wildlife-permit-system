@@ -109,4 +109,4 @@ const remove = async (uuid) => {
     );
 };
 
-module.exports = { getAll, findByUuid, create, update };
+module.exports = { getAll, findByUuid, create, update, remove };
