@@ -31,14 +31,18 @@ app.use(express.json());
 app.use(session({
     store: new PgSession({
         pool: pool,
-        tableName: 'session'
+        tableName: 'session',
+        ttl: 600 // Server cleans up sessions after 10 minutes
     }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    rolling: true, // Reset timer on every request
     cookie: {
-        secure: false,
-        maxAge: 1000 * 60 * 60 * 8
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: true,
+        maxAge: 1000 * 60 * 10 // 10 minutes
+        // No 'expires' means it's also cleared when browser closes
     }
 }));
 
