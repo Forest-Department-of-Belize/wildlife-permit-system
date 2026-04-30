@@ -48,6 +48,22 @@ app.use(session({
     }
 }));
 
+// Prevent browser caching - force recheck with server
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+    next();
+});
+
+// Prevent browser caching
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+    next();
+});
+
 // Global variables for views
 app.use((req, res, next) => {
     res.locals.user = req.session.user || null;
