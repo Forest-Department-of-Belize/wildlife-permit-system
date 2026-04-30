@@ -129,7 +129,7 @@ const create = async (data) => {
     const result = await pool.query(
         `INSERT INTO applicants (
             first_name, middle_name, last_name, date_of_birth,
-            address1, address2, district_id, contact_number,
+            address1, address2, district_id, range_id, contact_number,
             contact_number_whatsapp, contact_number_secondary,
             contact_number_secondary_whatsapp, email, occupation,
             company, government_id_type, government_id_number,
@@ -139,12 +139,13 @@ const create = async (data) => {
             applicant_comments, ownership_comments
         ) VALUES (
             $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,
-            $15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28
+            $15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29
         ) RETURNING *`,
         [
             data.first_name, data.middle_name, data.last_name,
             data.date_of_birth || null, data.address1, data.address2,
-            data.district_id || null, data.contact_number,
+            data.district_id || null, data.range_id || null,
+            data.contact_number,
             data.contact_number_whatsapp === 'on',
             data.contact_number_secondary,
             data.contact_number_secondary_whatsapp === 'on',
