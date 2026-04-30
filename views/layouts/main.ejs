@@ -23,7 +23,7 @@
                 <i class="fas fa-user me-1"></i>
                 <%= locals.user ? user.first_name + ' ' + user.last_name : '' %>
             </a>
-            <a href="/logout" class="btn btn-sm btn-outline-light d-none d-md-inline">
+            <a href="/logout" class="btn btn-sm btn-danger d-none d-md-inline">
                 <i class="fas fa-sign-out-alt me-1"></i>Logout
             </a>
             <button class="navbar-toggler" type="button" id="sidebarToggler">
@@ -128,9 +128,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/logout" class="btn btn-sm btn-danger">
-                     <i class="fas fa-sign-out-alt me-1"></i>
-                     <span class="d-none d-md-inline">Logout</span>
+                    <a href="/logout" class="text-danger-sidebar">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
                     </a>
                 </li>
             </ul>
