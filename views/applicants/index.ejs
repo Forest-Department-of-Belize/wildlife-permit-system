@@ -63,7 +63,7 @@
                 </thead>
                 <tbody>
                     <% applicants.forEach(a => { %>
-                    <tr>
+                    <tr style="cursor:pointer;" ondblclick="window.location='/applicants/<%= a.uuid %>'">
                         <td>
                             <strong><%= a.last_name %>, <%= a.first_name %></strong>
                             <% if (a.middle_name) { %>
