@@ -8,11 +8,62 @@ const index = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
         const search = req.query.search || null;
+        const view = req.query.view || 'list';
         const inspections = await inspectionModel.getAll(rangeId, search);
+
+        // Calendar data
+        const today = new Date();
+        const calYear  = parseInt(req.query.year)  || today.getFullYear();
+        const calMonth = parseInt(req.query.month) || (today.getMonth() + 1);
+
+        const monthNames = ['January','February','March','April','May','June',
+                            'July','August','September','October','November','December'];
+        const monthName = monthNames[calMonth - 1];
+        const firstDay  = new Date(calYear, calMonth - 1, 1).getDay();
+        const daysInMonth = new Date(calYear, calMonth, 0).getDate();
+
+        const prevMonth = calMonth === 1  ? 12 : calMonth - 1;
+        const prevYear  = calMonth === 1  ? calYear - 1 : calYear;
+        const nextMonth = calMonth === 12 ? 1  : calMonth + 1;
+        const nextYear  = calMonth === 12 ? calYear + 1 : calYear;
+
+        const STATUS_COLORS = {
+            scheduled:  '#FFC107',
+            approved:   '#2E7D32',
+            confiscate: '#C62828',
+            completed:  '#1565C0'
+        };
+
+        const calEvents = {};
+        inspections.forEach(i => {
+            if (!i.inspection_date) return;
+            const d = new Date(i.inspection_date);
+            const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+            if (!calEvents[key]) calEvents[key] = [];
+            calEvents[key].push({
+                uuid: i.uuid,
+                applicant: (i.applicant_name || '').split(' ').pop(),
+                status: i.inspection_status,
+                color: STATUS_COLORS[i.inspection_status] || '#607D8B'
+            });
+        });
+
         res.render('inspections/index', {
             title: 'Inspections',
             inspections,
-            search: search || ''
+            search: search || '',
+            view,
+            calYear,
+            calMonth,
+            monthName,
+            firstDay,
+            daysInMonth,
+            prevMonth, prevYear,
+            nextMonth, nextYear,
+            calEvents,
+            todayDay:   today.getDate(),
+            todayMonth: today.getMonth() + 1,
+            todayYear:  today.getFullYear()
         });
     } catch (err) {
         console.error(err);
