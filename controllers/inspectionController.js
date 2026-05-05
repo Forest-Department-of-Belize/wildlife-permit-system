@@ -42,14 +42,21 @@ const view = async (req, res) => {
 const create = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
-        const [{ applicants }, inspectors] = await Promise.all([
-            applicantModel.getAll(rangeId),
-            userModel.getAll(rangeId)
-        ]);
+        const { applicants } = await applicantModel.getAll(rangeId);
+
+        let preselectedApplicant = null;
+        let applicantUuid = null;
+
+        if (req.query.applicant) {
+            applicantUuid = req.query.applicant;
+            preselectedApplicant = await applicantModel.findByUuid(applicantUuid);
+        }
+
         res.render('inspections/create', {
             title: 'Schedule Inspection',
             applicants,
-            inspectors
+            preselectedApplicant,
+            applicantUuid
         });
     } catch (err) {
         console.error(err);
@@ -78,6 +85,9 @@ const store = async (req, res) => {
         }
         const inspection = await inspectionModel.create(req.body);
         req.session.success = 'Inspection scheduled successfully';
+        if (req.body.applicant_uuid) {
+            return res.redirect(`/applicants/${req.body.applicant_uuid}`);
+        }
         res.redirect(`/inspections/${inspection.uuid}`);
     } catch (err) {
         console.error(err);

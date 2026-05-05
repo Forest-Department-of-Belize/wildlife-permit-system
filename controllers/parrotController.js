@@ -39,14 +39,25 @@ const view = async (req, res) => {
 const create = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
-        const [{applicants}, species] = await Promise.all([
+        const [{ applicants }, species] = await Promise.all([
             applicantModel.getAll(rangeId),
             speciesModel.getAll()
         ]);
+
+        let preselectedApplicant = null;
+        let applicantUuid = null;
+
+        if (req.query.applicant) {
+            applicantUuid = req.query.applicant;
+            preselectedApplicant = await applicantModel.findByUuid(applicantUuid);
+        }
+
         res.render('parrots/create', {
             title: 'Add New Parrot',
             applicants,
-            species
+            species,
+            preselectedApplicant,
+            applicantUuid
         });
     } catch (err) {
         console.error(err);
@@ -61,6 +72,9 @@ const store = async (req, res) => {
         }
         const parrot = await parrotModel.create(req.body);
         req.session.success = 'Parrot added successfully';
+        if (req.body.applicant_uuid) {
+            return res.redirect(`/applicants/${req.body.applicant_uuid}`);
+        }
         res.redirect(`/parrots/${parrot.uuid}`);
     } catch (err) {
         console.error(err);

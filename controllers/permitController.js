@@ -57,10 +57,21 @@ const create = async (req, res) => {
             applicantModel.getAll(rangeId),
             rangeModel.getAll()
         ]);
+
+        let preselectedApplicant = null;
+        let applicantUuid = null;
+
+        if (req.query.applicant) {
+            applicantUuid = req.query.applicant;
+            preselectedApplicant = await applicantModel.findByUuid(applicantUuid);
+        }
+
         res.render('permits/create', {
             title: 'Add New Permit',
             applicants,
-            ranges
+            ranges,
+            preselectedApplicant,
+            applicantUuid
         });
     } catch (err) {
         console.error(err);
@@ -71,7 +82,6 @@ const create = async (req, res) => {
 const store = async (req, res) => {
     try {
         const errors = [];
-
         if (!req.body.applicant_id) {
             errors.push('Please select an applicant');
         }
@@ -81,17 +91,18 @@ const store = async (req, res) => {
         if (!req.body.range_id && !req.session.user.range_id) {
             errors.push('Please select a forest station');
         }
-
         if (errors.length > 0) {
             req.session.error = errors.join(', ');
             return res.redirect('/permits/create');
         }
-
         if (!req.body.range_id && req.session.user.range_id) {
             req.body.range_id = req.session.user.range_id;
         }
         const permit = await permitModel.create(req.body);
         req.session.success = 'Permit added successfully';
+        if (req.body.applicant_uuid) {
+            return res.redirect(`/applicants/${req.body.applicant_uuid}`);
+        }
         res.redirect(`/permits/${permit.uuid}`);
     } catch (err) {
         console.error(err);

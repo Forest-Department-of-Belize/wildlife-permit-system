@@ -1,23 +1,28 @@
-
 <div class="page-header d-flex justify-content-between align-items-center">
     <h1 class="page-title">Add New Permit</h1>
-    <a href="/permits" class="btn btn-outline-secondary">
+    <a href="<%= locals.applicantUuid ? '/applicants/' + locals.applicantUuid : '/permits' %>" class="btn btn-outline-secondary">
         <i class="fas fa-arrow-left me-1"></i>Back
     </a>
 </div>
 
 <form method="POST" action="/permits">
+    <input type="hidden" name="applicant_uuid" value="<%= locals.applicantUuid || '' %>">
     <div class="card">
         <div class="card-body">
             <div class="row g-3">
                 <div class="col-12 col-md-6">
                     <label class="form-label">Applicant <span class="text-danger">*</span></label>
+                    <% if (locals.preselectedApplicant) { %>
+                    <input type="hidden" name="applicant_id" value="<%= preselectedApplicant.id %>">
+                    <input type="text" class="form-control" value="<%= preselectedApplicant.last_name %>, <%= preselectedApplicant.first_name %>" disabled>
+                    <% } else { %>
                     <select name="applicant_id" class="form-select" required>
                         <option value="">Select Applicant</option>
                         <% applicants.forEach(a => { %>
                         <option value="<%= a.id %>"><%= a.last_name %>, <%= a.first_name %></option>
                         <% }) %>
                     </select>
+                    <% } %>
                 </div>
                 <div class="col-12 col-md-6">
                     <label class="form-label">Forest Station <span class="text-danger">*</span></label>
@@ -76,6 +81,6 @@
         <button type="submit" class="btn btn-primary">
             <i class="fas fa-save me-2"></i>Save Permit
         </button>
-        <a href="/permits" class="btn btn-outline-secondary">Cancel</a>
+        <a href="<%= locals.applicantUuid ? '/applicants/' + locals.applicantUuid : '/permits' %>" class="btn btn-outline-secondary">Cancel</a>
     </div>
 </form>
