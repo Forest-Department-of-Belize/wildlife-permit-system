@@ -1,6 +1,7 @@
 const applicantModel = require('../models/applicantModel');
 const districtModel = require('../models/districtModel');
 const rangeModel = require('../models/rangeModel');
+const pool = require('../db/index');
 const { getRangeFilter } = require('../middleware/rangeFilter');
 
 const index = async (req, res) => {
@@ -96,7 +97,7 @@ const store = async (req, res) => {
         }
         if (req.body.contact_number && req.body.contact_number.trim() !== '') {
             const phoneRegex = /^[\d\s\-\+\(\)]{7,15}$/;
-            if (!phoneRegex.test(req.body.contact_number)) {
+            if (!phoneRegex.test(req.body.contact_number)) {const pool = require('../db/index');
                 errors.push('Please enter a valid phone number');
             }
         }
@@ -194,4 +195,19 @@ const updateNotes = async (req, res) => {
     }
 };
 
-module.exports = { index, view, create, store, edit, update, updateNotes, search, destroy };
+const updateStatus = async (req, res) => {
+    try {
+        await pool.query(
+            'UPDATE applicants SET process_status=$1, updated_at=NOW() WHERE uuid=$2',
+            [req.body.process_status, req.params.uuid]
+        );
+        req.session.success = 'Status updated successfully';
+        res.redirect(`/applicants/${req.params.uuid}`);
+    } catch (err) {
+        console.error(err);
+        req.session.error = 'Failed to update status';
+        res.redirect(`/applicants/${req.params.uuid}`);
+    }
+};
+
+module.exports = { index, view, create, store, edit, update, updateNotes, search, destroy, updateStatus };

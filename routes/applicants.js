@@ -13,5 +13,6 @@ router.get('/:uuid/edit', isLoggedIn, hasPermission('applicants-edit'), c.edit);
 router.post('/:uuid', isLoggedIn, hasPermission('applicants-edit'), c.update);
 router.post('/:uuid/notes', isLoggedIn, hasPermission('applicants-edit'), c.updateNotes);
 router.post('/:uuid/delete', isLoggedIn, hasPermission('applicants-delete'), c.destroy);
+router.post('/:uuid/status', isLoggedIn, hasPermission('applicants-edit'), c.updateStatus);
 
 module.exports = router;
