@@ -43,8 +43,8 @@
                                 District <i class="fas fa-sort<%= sort === 'district_name' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
                             </a>
                         </th>
-                        <th>Parrots</th>
-                        <th>Permits</th>
+                        <th>Status</th>
+                        <th>Inspection</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -64,8 +64,29 @@
                             <% } %>
                         </td>
                         <td><%= a.district_name || '-' %></td>
-                        <td><%= a.parrot_count || 0 %></td>
-                        <td><%= a.permit_count || 0 %></td>
+                        <td>
+                            <%
+                            const psMap = {
+                                'Pending Call': 'secondary',
+                                'Called': 'info',
+                                'Inspection Booked': 'warning',
+                                'Inspection Done': 'primary',
+                                'Pending Compliance': 'danger',
+                                'Approved Awaiting Banding': 'success',
+                                'Approved': 'success',
+                                'Rejected': 'dark'
+                            };
+                            const psColor = psMap[a.process_status] || 'secondary';
+                            %>
+                            <span class="badge bg-<%= psColor %>"><%= a.process_status || 'Pending Call' %></span>
+                        </td>
+                        <td>
+                            <% if (parseInt(a.pending_inspection_count) > 0) { %>
+                                <small class="text-warning"><i class="fas fa-calendar-check me-1"></i><%= a.pending_inspector || 'Unassigned' %></small>
+                            <% } else { %>
+                                <span class="text-muted small">—</span>
+                            <% } %>
+                        </td>
                         <td>
                             <a href="/applicants/<%= a.uuid %>" class="btn btn-sm btn-outline-primary">
                                 <i class="fas fa-eye"></i>

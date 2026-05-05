@@ -7,59 +7,115 @@
     </div>
 </div>
 
+<!-- Stat Cards -->
 <div class="row g-4 mb-4">
     <div class="col-6 col-lg-3">
         <div class="stat-card">
-            <div class="stat-icon bg-primary">
-                <i class="fas fa-users"></i>
-            </div>
-            <div class="stat-info">
-                <h3><%= stats.applicants %></h3>
-                <p>Total Applicants</p>
-            </div>
+            <div class="stat-icon bg-primary"><i class="fas fa-users"></i></div>
+            <div class="stat-info"><h3><%= stats.applicants %></h3><p>Total Applicants</p></div>
         </div>
     </div>
     <div class="col-6 col-lg-3">
         <div class="stat-card">
-            <div class="stat-icon bg-success">
-                <i class="fas fa-file-alt"></i>
-            </div>
-            <div class="stat-info">
-                <h3><%= stats.active_permits %></h3>
-                <p>Active Permits</p>
-            </div>
+            <div class="stat-icon bg-success"><i class="fas fa-file-alt"></i></div>
+            <div class="stat-info"><h3><%= stats.active_permits %></h3><p>Active Permits</p></div>
         </div>
     </div>
     <div class="col-6 col-lg-3">
         <div class="stat-card">
-            <div class="stat-icon bg-warning">
-                <i class="fas fa-search"></i>
-            </div>
-            <div class="stat-info">
-                <h3><%= stats.pending_inspections %></h3>
-                <p>Pending Inspections</p>
-            </div>
+            <div class="stat-icon bg-warning"><i class="fas fa-search"></i></div>
+            <div class="stat-info"><h3><%= stats.pending_inspections %></h3><p>Pending Inspections</p></div>
         </div>
     </div>
     <div class="col-6 col-lg-3">
         <div class="stat-card">
-            <div class="stat-icon bg-danger">
-                <i class="fas fa-dove"></i>
+            <div class="stat-icon bg-danger"><i class="fas fa-dove"></i></div>
+            <div class="stat-info"><h3><%= stats.confiscated_parrots %></h3><p>Confiscated Parrots</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Row 1 -->
+<div class="row g-4 mb-4">
+    <div class="col-12 col-lg-6">
+        <div class="card h-100">
+            <div class="card-header"><h6 class="mb-0"><i class="fas fa-chart-pie me-2 text-success"></i>Permits by Status</h6></div>
+            <div class="card-body d-flex align-items-center justify-content-center">
+                <canvas id="permitStatusChart" height="220"></canvas>
             </div>
-            <div class="stat-info">
-                <h3><%= stats.confiscated_parrots %></h3>
-                <p>Confiscated Parrots</p>
+        </div>
+    </div>
+    <div class="col-12 col-lg-6">
+        <div class="card h-100">
+            <div class="card-header"><h6 class="mb-0"><i class="fas fa-chart-pie me-2 text-warning"></i>Inspections by Status</h6></div>
+            <div class="card-body d-flex align-items-center justify-content-center">
+                <canvas id="inspectionStatusChart" height="220"></canvas>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row g-4">
+<!-- Charts Row 2 -->
+<div class="row g-4 mb-4">
     <div class="col-12 col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">Quick Actions</h5>
+        <div class="card h-100">
+            <div class="card-header"><h6 class="mb-0"><i class="fas fa-chart-bar me-2 text-primary"></i>Permits by Station</h6></div>
+            <div class="card-body">
+                <canvas id="permitStationChart" height="220"></canvas>
             </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-6">
+        <div class="card h-100">
+            <div class="card-header"><h6 class="mb-0"><i class="fas fa-chart-bar me-2 text-info"></i>Applicants by Station</h6></div>
+            <div class="card-body">
+                <canvas id="applicantStationChart" height="220"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bottom Row: Recent Inspections + Quick Actions -->
+<div class="row g-4">
+    <div class="col-12 col-lg-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h6 class="mb-0"><i class="fas fa-calendar-check me-2"></i>Recent Inspections</h6>
+                <a href="/inspections" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover mb-0">
+                        <thead><tr><th>Date</th><th>Applicant</th><th>Inspector</th><th>Status</th></tr></thead>
+                        <tbody>
+                            <% recentInspections.forEach(i => { %>
+                            <tr>
+                                <td><%= i.inspection_date ? new Date(i.inspection_date).toLocaleDateString() : '-' %></td>
+                                <td>
+                                    <% if (i.applicant_uuid) { %>
+                                        <a href="/applicants/<%= i.applicant_uuid %>"><%= i.applicant_name %></a>
+                                    <% } else { %><%= i.applicant_name || '-' %><% } %>
+                                </td>
+                                <td><%= i.inspector_name || '-' %></td>
+                                <td>
+                                    <span class="badge bg-<%= i.inspection_status === 'approved' ? 'success' : i.inspection_status === 'scheduled' ? 'warning' : i.inspection_status === 'confiscate' ? 'danger' : 'secondary' %>">
+                                        <%= i.inspection_status %>
+                                    </span>
+                                </td>
+                            </tr>
+                            <% }) %>
+                            <% if (recentInspections.length === 0) { %>
+                            <tr><td colspan="4" class="text-center text-muted py-3">No inspections yet</td></tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-4">
+        <div class="card">
+            <div class="card-header"><h5 class="mb-0">Quick Actions</h5></div>
             <div class="card-body">
                 <div class="d-grid gap-2">
                     <a href="/applicants/create" class="btn btn-outline-primary">
@@ -71,34 +127,96 @@
                     <a href="/inspections/create" class="btn btn-outline-warning">
                         <i class="fas fa-calendar-plus me-2"></i>Schedule Inspection
                     </a>
-                    <a href="/calls/create" class="btn btn-outline-info">
-                        <i class="fas fa-phone me-2"></i>Log a Call
-                    </a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-12 col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">System Information</h5>
-            </div>
+        <div class="card mt-3">
+            <div class="card-header"><h6 class="mb-0">Session Info</h6></div>
             <div class="card-body">
-                <table class="table table-borderless mb-0">
-                    <tr>
-                        <td class="text-muted">Logged in as</td>
-                        <td><strong><%= locals.user ? user.first_name + ' ' + user.last_name : '' %></strong></td>
-                    </tr>
-                    <tr>
-                        <td class="text-muted">Role</td>
-                        <td><strong><%= locals.user ? user.role : '' %></strong></td>
-                    </tr>
-                    <tr>
-                        <td class="text-muted">Station</td>
-                        <td><strong><%= locals.user ? (user.range_name || 'All Stations') : '' %></strong></td>
-                    </tr>
+                <table class="table table-borderless table-sm mb-0">
+                    <tr><td class="text-muted">User</td><td><strong><%= locals.user ? user.first_name + ' ' + user.last_name : '' %></strong></td></tr>
+                    <tr><td class="text-muted">Role</td><td><strong><%= locals.user ? user.role : '' %></strong></td></tr>
+                    <tr><td class="text-muted">Station</td><td><strong><%= locals.user ? (user.range_name || 'All Stations') : '' %></strong></td></tr>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
+<% /* Pass chart data to JS safely */ %>
+<script>
+const chartData = {
+    permitsByStatus: <%- JSON.stringify(charts.permitsByStatus) %>,
+    permitsByStation: <%- JSON.stringify(charts.permitsByStation) %>,
+    applicantsByStation: <%- JSON.stringify(charts.applicantsByStation) %>,
+    inspectionsByStatus: <%- JSON.stringify(charts.inspectionsByStatus) %>
+};
+</script>
+
+<script>
+(function() {
+    if (typeof Chart === 'undefined' || !chartData) return;
+
+    const PIE_COLORS  = ['#2E7D32','#FFC107','#1565C0','#C62828','#6A1B9A','#00838F','#558B2F','#EF6C00'];
+    const BAR_GREEN   = 'rgba(46,125,50,0.8)';
+    const BAR_BLUE    = 'rgba(21,101,192,0.8)';
+    Chart.defaults.font.family = "'Segoe UI', sans-serif";
+    Chart.defaults.font.size   = 12;
+
+    function shortLabel(s) {
+        return s.replace('Forest Station','FS').replace('Headquarters','HQ').replace(' District','');
+    }
+
+    // 1. Permits by Status (doughnut)
+    const psByStatus = chartData.permitsByStatus;
+    if (psByStatus.length && document.getElementById('permitStatusChart')) {
+        new Chart(document.getElementById('permitStatusChart'), {
+            type: 'doughnut',
+            data: {
+                labels: psByStatus.map(r => r.status || 'Unknown'),
+                datasets: [{ data: psByStatus.map(r => parseInt(r.count)), backgroundColor: PIE_COLORS, borderWidth: 2 }]
+            },
+            options: { plugins: { legend: { position: 'bottom' } }, maintainAspectRatio: false }
+        });
+    }
+
+    // 2. Inspections by Status (doughnut)
+    const insByStatus = chartData.inspectionsByStatus;
+    if (insByStatus.length && document.getElementById('inspectionStatusChart')) {
+        new Chart(document.getElementById('inspectionStatusChart'), {
+            type: 'doughnut',
+            data: {
+                labels: insByStatus.map(r => r.inspection_status || 'Unknown'),
+                datasets: [{ data: insByStatus.map(r => parseInt(r.count)), backgroundColor: PIE_COLORS, borderWidth: 2 }]
+            },
+            options: { plugins: { legend: { position: 'bottom' } }, maintainAspectRatio: false }
+        });
+    }
+
+    // 3. Permits by Station (bar)
+    const psStation = chartData.permitsByStation;
+    if (psStation.length && document.getElementById('permitStationChart')) {
+        new Chart(document.getElementById('permitStationChart'), {
+            type: 'bar',
+            data: {
+                labels: psStation.map(r => shortLabel(r.station)),
+                datasets: [{ label: 'Permits', data: psStation.map(r => parseInt(r.count)), backgroundColor: BAR_GREEN, borderRadius: 4 }]
+            },
+            options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }, maintainAspectRatio: false }
+        });
+    }
+
+    // 4. Applicants by Station (bar)
+    const apStation = chartData.applicantsByStation;
+    if (apStation.length && document.getElementById('applicantStationChart')) {
+        new Chart(document.getElementById('applicantStationChart'), {
+            type: 'bar',
+            data: {
+                labels: apStation.map(r => shortLabel(r.station)),
+                datasets: [{ label: 'Applicants', data: apStation.map(r => parseInt(r.count)), backgroundColor: BAR_BLUE, borderRadius: 4 }]
+            },
+            options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }, maintainAspectRatio: false }
+        });
+    }
+})();
+</script>

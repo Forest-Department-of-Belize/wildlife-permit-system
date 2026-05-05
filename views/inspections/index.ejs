@@ -4,65 +4,270 @@
         <h1 class="page-title">Inspections</h1>
         <p class="text-muted mb-0"><%= inspections.length %> records found</p>
     </div>
-    <% if (user && user.permissions && user.permissions.includes('inspections-add')) { %>
-    <a href="/inspections/create" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Schedule Inspection</a>
-    <% } %>
+    <div class="d-flex gap-2">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-secondary active" id="btnListView">
+                <i class="fas fa-list"></i> List
+            </button>
+            <button type="button" class="btn btn-outline-secondary" id="btnCalView">
+                <i class="fas fa-calendar-alt"></i> Calendar
+            </button>
+        </div>
+        <% if (user && user.permissions && user.permissions.includes('inspections-add')) { %>
+        <a href="/inspections/create" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Schedule</a>
+        <% } %>
+    </div>
 </div>
-<div class="card">
-    <div class="card-body">
-        <div class="mb-3">
+
+<!-- Search (list only) -->
+<div id="listSearch" class="mb-3">
     <form method="GET" action="/inspections" class="d-flex gap-2">
         <input type="text" name="search" class="form-control"
                placeholder="Search by applicant name or status..."
                value="<%= search %>">
-        <button type="submit" class="btn btn-primary">
-            <i class="fas fa-search"></i>
-        </button>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
         <% if (search) { %>
-        <a href="/inspections" class="btn btn-outline-secondary">
-            <i class="fas fa-times"></i>
-        </a>
+        <a href="/inspections" class="btn btn-outline-secondary"><i class="fas fa-times"></i></a>
         <% } %>
     </form>
 </div>
-        <div class="table-responsive">
-            <table class="table table-hover" id="dataTable">
-                <thead>
-                    <tr><th>Date</th><th>Applicant</th><th>Inspector</th><th>Status</th><th>Follow Up</th><th>Actions</th></tr>
-                </thead>
-                <tbody>
-                    <% inspections.forEach(i => { %>
-                    <tr>
-                        <td><%= i.inspection_date ? new Date(i.inspection_date).toLocaleDateString() : '-' %></td>
-                        <td><a href="/applicants/<%= i.applicant_uuid %>"><%= i.applicant_name || '-' %></a></td>
-                        <td><%= i.inspector_name || '-' %></td>
-                        <td>
-                            <span class="badge bg-<%= i.inspection_status === 'approved' ? 'success' : i.inspection_status === 'scheduled' ? 'warning' : i.inspection_status === 'confiscate' ? 'danger' : 'secondary' %>">
-                                <%= i.inspection_status %>
-                            </span>
-                        </td>
-                        <td><%= i.followup_date ? new Date(i.followup_date).toLocaleDateString() : '-' %></td>
-                        <td>
-                            <a href="/inspections/<%= i.uuid %>" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
-                            <% if (user && user.permissions && user.permissions.includes('inspections-edit')) { %>
-                            <a href="/inspections/<%= i.uuid %>/edit" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-                            <% } %>
-                        </td>
-                    </tr>
-                    <% }) %>
-                    <% if (inspections.length === 0) { %>
-                    <tr><td colspan="6" class="text-center text-muted py-4">No inspections found</td></tr>
-                    <% } %>
-                </tbody>
-            </table>
+
+<!-- LIST VIEW -->
+<div id="listView">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr><th>Date</th><th>Applicant</th><th>Inspector</th><th>Status</th><th>Follow Up</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody>
+                        <% inspections.forEach(i => { %>
+                        <tr>
+                            <td><%= i.inspection_date ? new Date(i.inspection_date).toLocaleDateString() : '-' %></td>
+                            <td><a href="/applicants/<%= i.applicant_uuid %>"><%= i.applicant_name || '-' %></a></td>
+                            <td><%= i.inspector_name || '-' %></td>
+                            <td>
+                                <span class="badge bg-<%= i.inspection_status === 'approved' ? 'success' : i.inspection_status === 'scheduled' ? 'warning' : i.inspection_status === 'confiscate' ? 'danger' : 'secondary' %>">
+                                    <%= i.inspection_status %>
+                                </span>
+                            </td>
+                            <td><%= i.followup_date ? new Date(i.followup_date).toLocaleDateString() : '-' %></td>
+                            <td>
+                                <a href="/inspections/<%= i.uuid %>" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
+                                <% if (user && user.permissions && user.permissions.includes('inspections-edit')) { %>
+                                <a href="/inspections/<%= i.uuid %>/edit" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
+                                <% } %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                        <% if (inspections.length === 0) { %>
+                        <tr><td colspan="6" class="text-center text-muted py-4">No inspections found</td></tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- CALENDAR VIEW -->
+<div id="calView" style="display:none">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <button class="btn btn-outline-secondary btn-sm" id="calPrev"><i class="fas fa-chevron-left"></i> Prev</button>
+                <h5 class="mb-0" id="calTitle"></h5>
+                <button class="btn btn-outline-secondary btn-sm" id="calNext">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div id="calGrid"></div>
+            <!-- Legend -->
+            <div class="d-flex gap-3 mt-3 flex-wrap">
+                <span><span class="badge bg-warning">●</span> Scheduled</span>
+                <span><span class="badge bg-success">●</span> Approved</span>
+                <span><span class="badge bg-danger">●</span> Confiscate</span>
+                <span><span class="badge bg-secondary">●</span> Other</span>
+            </div>
+        </div>
+    </div>
+    <!-- Event detail popup -->
+    <div id="calPopup" class="card shadow-lg" style="display:none;position:fixed;z-index:9999;min-width:260px;max-width:340px;top:50%;left:50%;transform:translate(-50%,-50%)">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <strong id="popupTitle">Inspection</strong>
+            <button class="btn-close btn-sm" id="popupClose"></button>
+        </div>
+        <div class="card-body" id="popupBody"></div>
+    </div>
+    <div id="calBackdrop" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.3)"></div>
+</div>
+
+<!-- Pass inspection data to JS -->
 <script>
-document.getElementById('searchInput').addEventListener('keyup', function() {
-    const value = this.value.toLowerCase();
-    document.querySelectorAll('#dataTable tbody tr').forEach(row => {
-        row.style.display = row.textContent.toLowerCase().includes(value) ? '' : 'none';
+const inspectionEvents = <%- JSON.stringify(inspections.map(i => ({
+    uuid: i.uuid,
+    date: i.inspection_date,
+    applicant: i.applicant_name,
+    applicant_uuid: i.applicant_uuid,
+    inspector: i.inspector_name || '',
+    status: i.inspection_status,
+    followup: i.followup_date
+}))) %>;
+</script>
+<script>
+(function() {
+    // --- Toggle List / Calendar ---
+    const listView   = document.getElementById('listView');
+    const calView    = document.getElementById('calView');
+    const listSearch = document.getElementById('listSearch');
+    const btnList    = document.getElementById('btnListView');
+    const btnCal     = document.getElementById('btnCalView');
+
+    function showList() {
+        listView.style.display = '';
+        listSearch.style.display = '';
+        calView.style.display = 'none';
+        btnList.classList.add('active');
+        btnCal.classList.remove('active');
+        localStorage.setItem('inspView','list');
+    }
+    function showCal() {
+        listView.style.display = 'none';
+        listSearch.style.display = 'none';
+        calView.style.display = '';
+        btnCal.classList.add('active');
+        btnList.classList.remove('active');
+        localStorage.setItem('inspView','cal');
+        renderCal();
+    }
+
+    btnList.addEventListener('click', showList);
+    btnCal.addEventListener('click', showCal);
+
+    // Restore last choice
+    if (localStorage.getItem('inspView') === 'cal') showCal();
+
+    // --- Calendar ---
+    let calYear, calMonth;
+    const today = new Date();
+    calYear  = today.getFullYear();
+    calMonth = today.getMonth(); // 0-indexed
+
+    const STATUS_COLORS = {
+        scheduled: '#FFC107',
+        approved:  '#2E7D32',
+        confiscate:'#C62828',
+        completed: '#1565C0'
+    };
+
+    function getColor(status) {
+        return STATUS_COLORS[status] || '#607D8B';
+    }
+
+    function renderCal() {
+        const title = document.getElementById('calTitle');
+        const grid  = document.getElementById('calGrid');
+        const monthNames = ['January','February','March','April','May','June',
+                            'July','August','September','October','November','December'];
+        title.textContent = monthNames[calMonth] + ' ' + calYear;
+
+        const firstDay  = new Date(calYear, calMonth, 1).getDay();
+        const daysInMon = new Date(calYear, calMonth + 1, 0).getDate();
+
+        // Build event map: 'YYYY-MM-DD' -> [events]
+        const evMap = {};
+        inspectionEvents.forEach(ev => {
+            if (!ev.date) return;
+            const d = new Date(ev.date);
+            const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+            if (!evMap[key]) evMap[key] = [];
+            evMap[key].push(ev);
+        });
+
+        const dayAbbr = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        let html = '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">';
+        dayAbbr.forEach(d => {
+            html += `<div style="text-align:center;font-weight:600;font-size:12px;padding:6px 0;color:#555">${d}</div>`;
+        });
+
+        // Leading blanks
+        for (let b = 0; b < firstDay; b++) {
+            html += '<div style="min-height:80px;background:#f8f9fa;border-radius:4px"></div>';
+        }
+
+        for (let day = 1; day <= daysInMon; day++) {
+            const key = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(day).padStart(2,'0');
+            const evs = evMap[key] || [];
+            const isToday = (day === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear());
+            const bgCell = isToday ? '#e8f5e9' : '#fff';
+            const borderToday = isToday ? '2px solid #2E7D32' : '1px solid #e0e0e0';
+
+            let evHtml = evs.slice(0,3).map(ev => {
+                const col = getColor(ev.status);
+                const name = (ev.applicant || '').split(' ').slice(-1)[0]; // last name only
+                return `<div class="cal-event" data-uuid="${ev.uuid}"
+                    style="background:${col};color:#fff;border-radius:3px;padding:1px 4px;
+                           font-size:11px;margin-top:2px;cursor:pointer;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"
+                    onclick="showPopup('${ev.uuid}')">
+                    ${name}
+                </div>`;
+            }).join('');
+            if (evs.length > 3) {
+                evHtml += `<div style="font-size:10px;color:#888;margin-top:2px">+${evs.length-3} more</div>`;
+            }
+
+            html += `<div style="min-height:80px;background:${bgCell};border:${borderToday};border-radius:4px;padding:4px;position:relative">
+                <span style="font-size:12px;font-weight:${isToday?'700':'400'};color:${isToday?'#2E7D32':'#333'}">${day}</span>
+                ${evHtml}
+            </div>`;
+        }
+
+        html += '</div>';
+        grid.innerHTML = html;
+    }
+
+    document.getElementById('calPrev').addEventListener('click', function() {
+        calMonth--;
+        if (calMonth < 0) { calMonth = 11; calYear--; }
+        renderCal();
     });
-});
+    document.getElementById('calNext').addEventListener('click', function() {
+        calMonth++;
+        if (calMonth > 11) { calMonth = 0; calYear++; }
+        renderCal();
+    });
+
+    // Popup
+    function showPopup(uuid) {
+        const ev = inspectionEvents.find(e => e.uuid === uuid);
+        if (!ev) return;
+        const statusBadge = {
+            scheduled: 'warning', approved: 'success',
+            confiscate: 'danger', completed: 'primary'
+        };
+        const col = statusBadge[ev.status] || 'secondary';
+        const fdate = ev.followup ? new Date(ev.followup).toLocaleDateString() : '—';
+        const idate = ev.date ? new Date(ev.date).toLocaleDateString() : '—';
+        document.getElementById('popupTitle').textContent = ev.applicant || 'Inspection';
+        document.getElementById('popupBody').innerHTML = `
+            <table class="table table-sm table-borderless mb-2">
+                <tr><td class="text-muted">Date</td><td><strong>${idate}</strong></td></tr>
+                <tr><td class="text-muted">Inspector</td><td>${ev.inspector || '—'}</td></tr>
+                <tr><td class="text-muted">Status</td><td><span class="badge bg-${col}">${ev.status}</span></td></tr>
+                <tr><td class="text-muted">Follow Up</td><td>${fdate}</td></tr>
+            </table>
+            <a href="/inspections/${ev.uuid}" class="btn btn-sm btn-outline-primary w-100">
+                <i class="fas fa-eye me-1"></i>View Full Record
+            </a>`;
+        document.getElementById('calPopup').style.display = '';
+        document.getElementById('calBackdrop').style.display = '';
+    }
+    window.showPopup = showPopup;
+
+    document.getElementById('popupClose').addEventListener('click', closePopup);
+    document.getElementById('calBackdrop').addEventListener('click', closePopup);
+    function closePopup() {
+        document.getElementById('calPopup').style.display = 'none';
+        document.getElementById('calBackdrop').style.display = 'none';
+    }
+})();
 </script>

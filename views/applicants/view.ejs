@@ -35,6 +35,23 @@
                 <table class="table table-borderless table-sm mb-0">
                     <tr><td class="text-muted">Full Name</td>
                         <td><strong><%= applicant.first_name %> <%= applicant.middle_name || '' %> <%= applicant.last_name %></strong></td></tr>
+                    <tr><td class="text-muted">Process Status</td>
+                        <td>
+                            <%
+                            const psMap2 = {
+                                'Pending Call': 'secondary',
+                                'Called': 'info',
+                                'Inspection Booked': 'warning',
+                                'Inspection Done': 'primary',
+                                'Pending Compliance': 'danger',
+                                'Approved Awaiting Banding': 'success',
+                                'Approved': 'success',
+                                'Rejected': 'dark'
+                            };
+                            const psColor2 = psMap2[applicant.process_status] || 'secondary';
+                            %>
+                            <span class="badge bg-<%= psColor2 %>"><%= applicant.process_status || 'Pending Call' %></span>
+                        </td></tr>
                     <tr><td class="text-muted">Date of Birth</td>
                         <td><%= applicant.date_of_birth ? new Date(applicant.date_of_birth).toLocaleDateString() : '-' %></td></tr>
                     <tr><td class="text-muted">District</td>
@@ -97,11 +114,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#applications">
-                            Applications <span class="badge bg-secondary"><%= applications.length %></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#inspections">
                             Inspections <span class="badge bg-secondary"><%= inspections.length %></span>
                         </a>
@@ -114,6 +126,11 @@
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" href="#offenses">
                             Offenses <span class="badge bg-secondary"><%= offenses.length %></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#notes">
+                            <i class="fas fa-sticky-note me-1"></i>Notes
                         </a>
                     </li>
                 </ul>
@@ -187,25 +204,7 @@
                     </div>
 
                     <div class="tab-pane fade" id="applications">
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead><tr><th>Reference</th><th>Station</th><th>Date</th><th>Status</th><th></th></tr></thead>
-                                <tbody>
-                                    <% applications.forEach(a => { %>
-                                    <tr>
-                                        <td><%= a.reference_number || '-' %></td>
-                                        <td><%= a.range_name || '-' %></td>
-                                        <td><%= a.application_date ? new Date(a.application_date).toLocaleDateString() : '-' %></td>
-                                        <td><%= a.application_status || '-' %></td>
-                                        <td><a href="/applications/<%= a.uuid %>" class="btn btn-sm btn-outline-primary">View</a></td>
-                                    </tr>
-                                    <% }) %>
-                                    <% if (applications.length === 0) { %>
-                                    <tr><td colspan="5" class="text-center text-muted">No applications recorded</td></tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
+                        <p class="text-muted">Applications are managed through Permits.</p>
                     </div>
 
                     <div class="tab-pane fade" id="inspections">
@@ -277,6 +276,30 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="notes">
+                        <% if (user && user.permissions && user.permissions.includes('applicants-edit')) { %>
+                        <form method="POST" action="/applicants/<%= applicant.uuid %>/notes">
+                            <div class="mb-3">
+                                <label class="form-label text-muted small">Internal Notes</label>
+                                <textarea name="applicant_notes" class="form-control" rows="10"
+                                    placeholder="Add any notes about this applicant here..."><%= applicant.applicant_notes || '' %></textarea>
+                                <div class="form-text">These notes are for internal use only.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-1"></i>Save Notes
+                            </button>
+                        </form>
+                        <% } else { %>
+                        <div class="p-2">
+                            <% if (applicant.applicant_notes) { %>
+                                <p class="mb-0" style="white-space:pre-wrap"><%= applicant.applicant_notes %></p>
+                            <% } else { %>
+                                <p class="text-muted">No notes recorded.</p>
+                            <% } %>
+                        </div>
+                        <% } %>
                     </div>
 
                 </div>

@@ -2,7 +2,7 @@
 <div class="page-header d-flex justify-content-between align-items-center">
     <div>
         <h1 class="page-title">Permits</h1>
-        <p class="text-muted mb-0"><%= permits.length %> records found</p>
+        <p class="text-muted mb-0"><%= total %> records found — showing page <%= page %> of <%= totalPages %></p>
     </div>
     <% if (user && user.permissions && user.permissions.includes('permits-add')) { %>
     <a href="/permits/create" class="btn btn-primary">
@@ -14,30 +14,52 @@
 <div class="card">
     <div class="card-body">
         <div class="mb-3">
-    <form method="GET" action="/permits" class="d-flex gap-2">
-        <input type="text" name="search" class="form-control"
-               placeholder="Search by permit number, reference or applicant..."
-               value="<%= search %>">
-        <button type="submit" class="btn btn-primary">
-            <i class="fas fa-search"></i>
-        </button>
-        <% if (search) { %>
-        <a href="/permits" class="btn btn-outline-secondary">
-            <i class="fas fa-times"></i>
-        </a>
-        <% } %>
-    </form>
-</div>
+            <form method="GET" action="/permits" class="d-flex gap-2">
+                <input type="text" name="search" class="form-control"
+                       placeholder="Search by permit number, reference or applicant..."
+                       value="<%= search %>">
+                <input type="hidden" name="sort" value="<%= sort %>">
+                <input type="hidden" name="dir" value="<%= dir %>">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+                <% if (search) { %>
+                <a href="/permits" class="btn btn-outline-secondary">
+                    <i class="fas fa-times"></i>
+                </a>
+                <% } %>
+            </form>
+        </div>
         <div class="table-responsive">
-            <table class="table table-hover" id="permitsTable">
+            <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Permit No.</th>
-                        <th>Applicant</th>
+                        <th>
+                            <a href="/permits?page=1&search=<%= search %>&sort=permit_number&dir=<%= sort === 'permit_number' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                                Permit No. <i class="fas fa-sort<%= sort === 'permit_number' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
+                            </a>
+                        </th>
+                        <th>
+                            <a href="/permits?page=1&search=<%= search %>&sort=applicant_name&dir=<%= sort === 'applicant_name' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                                Applicant <i class="fas fa-sort<%= sort === 'applicant_name' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
+                            </a>
+                        </th>
                         <th>Reference</th>
-                        <th>Station</th>
-                        <th>Issue Date</th>
-                        <th>Status</th>
+                        <th>
+                            <a href="/permits?page=1&search=<%= search %>&sort=range_name&dir=<%= sort === 'range_name' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                                Station <i class="fas fa-sort<%= sort === 'range_name' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
+                            </a>
+                        </th>
+                        <th>
+                            <a href="/permits?page=1&search=<%= search %>&sort=issue_date&dir=<%= sort === 'issue_date' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                                Issue Date <i class="fas fa-sort<%= sort === 'issue_date' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
+                            </a>
+                        </th>
+                        <th>
+                            <a href="/permits?page=1&search=<%= search %>&sort=status&dir=<%= sort === 'status' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                                Status <i class="fas fa-sort<%= sort === 'status' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
+                            </a>
+                        </th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -45,7 +67,13 @@
                     <% permits.forEach(p => { %>
                     <tr>
                         <td><%= p.permit_number || '-' %></td>
-                        <td><%= p.applicant_name || '-' %></td>
+                        <td>
+                            <% if (p.applicant_uuid) { %>
+                                <a href="/applicants/<%= p.applicant_uuid %>" class="text-decoration-none"><%= p.applicant_name || '-' %></a>
+                            <% } else { %>
+                                <%= p.applicant_name || '-' %>
+                            <% } %>
+                        </td>
                         <td><%= p.reference_number || '-' %></td>
                         <td><%= p.range_name || '-' %></td>
                         <td><%= p.issue_date ? new Date(p.issue_date).toLocaleDateString() : '-' %></td>
@@ -72,14 +100,31 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Pagination -->
+        <% if (totalPages > 1) { %>
+        <nav class="mt-3">
+            <ul class="pagination justify-content-center mb-0">
+                <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
+                    <a class="page-link" href="/permits?page=<%= page - 1 %>&search=<%= search %>&sort=<%= sort %>&dir=<%= dir %>">
+                        <i class="fas fa-chevron-left"></i> Prev
+                    </a>
+                </li>
+                <% for (let i = Math.max(1, page - 2); i <= Math.min(totalPages, page + 2); i++) { %>
+                <li class="page-item <%= i === page ? 'active' : '' %>">
+                    <a class="page-link" href="/permits?page=<%= i %>&search=<%= search %>&sort=<%= sort %>&dir=<%= dir %>"><%= i %></a>
+                </li>
+                <% } %>
+                <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
+                    <a class="page-link" href="/permits?page=<%= page + 1 %>&search=<%= search %>&sort=<%= sort %>&dir=<%= dir %>">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+            <p class="text-center text-muted small mt-2">
+                Showing <%= (page - 1) * 30 + 1 %> — <%= Math.min(page * 30, total) %> of <%= total %> permits
+            </p>
+        </nav>
+        <% } %>
     </div>
 </div>
-
-<script>
-document.getElementById('searchInput').addEventListener('keyup', function() {
-    const value = this.value.toLowerCase();
-    document.querySelectorAll('#permitsTable tbody tr').forEach(row => {
-        row.style.display = row.textContent.toLowerCase().includes(value) ? '' : 'none';
-    });
-});
-</script>

@@ -159,6 +159,19 @@
                                 <option value="Pending" <%= applicant.applicant_status === 'Pending' ? 'selected' : '' %>>Pending</option>
                             </select>
                         </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Process Stage</label>
+                            <select name="process_status" class="form-select">
+                                <option value="Pending Call" <%= (applicant.process_status || 'Pending Call') === 'Pending Call' ? 'selected' : '' %>>Pending Call</option>
+                                <option value="Called" <%= applicant.process_status === 'Called' ? 'selected' : '' %>>Called</option>
+                                <option value="Inspection Booked" <%= applicant.process_status === 'Inspection Booked' ? 'selected' : '' %>>Inspection Booked</option>
+                                <option value="Inspection Done" <%= applicant.process_status === 'Inspection Done' ? 'selected' : '' %>>Inspection Done</option>
+                                <option value="Pending Compliance" <%= applicant.process_status === 'Pending Compliance' ? 'selected' : '' %>>Pending Compliance</option>
+                                <option value="Approved Awaiting Banding" <%= applicant.process_status === 'Approved Awaiting Banding' ? 'selected' : '' %>>Approved Awaiting Banding</option>
+                                <option value="Approved" <%= applicant.process_status === 'Approved' ? 'selected' : '' %>>Approved</option>
+                                <option value="Rejected" <%= applicant.process_status === 'Rejected' ? 'selected' : '' %>>Rejected</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
