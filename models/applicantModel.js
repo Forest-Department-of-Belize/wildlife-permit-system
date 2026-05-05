@@ -1,6 +1,6 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sort = 'last_name', dir = 'asc') => {
+const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, letter = null, district = null) => {
     let whereConditions = [];
     let params = [];
     let paramCount = 1;
@@ -24,12 +24,19 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sor
         paramCount++;
     }
 
-    const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
+    if (letter) {
+        whereConditions.push(`a.last_name ILIKE $${paramCount}`);
+        params.push(`${letter}%`);
+        paramCount++;
+    }
 
-    // Whitelist sort columns to prevent SQL injection
-    const allowedSorts = { 'last_name': 'a.last_name', 'district_name': 'd.name' };
-    const sortCol = allowedSorts[sort] || 'a.last_name';
-    const sortDir = dir === 'desc' ? 'DESC' : 'ASC';
+    if (district) {
+        whereConditions.push(`a.district_id = $${paramCount}`);
+        params.push(district);
+        paramCount++;
+    }
+
+    const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
 
     const countResult = await pool.query(
         `SELECT COUNT(*) FROM applicants a LEFT JOIN districts d ON a.district_id = d.id ${whereClause}`,
@@ -46,7 +53,7 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sor
          FROM applicants a
          LEFT JOIN districts d ON a.district_id = d.id
          ${whereClause}
-         ORDER BY ${sortCol} ${sortDir}
+         ORDER BY a.last_name, a.first_name
          LIMIT $${paramCount} OFFSET $${paramCount + 1}`,
         [...params, limit, offset]
     );
@@ -103,9 +110,8 @@ const getApplications = async (applicantId) => {
 
 const getInspections = async (applicantId) => {
     const result = await pool.query(
-        `SELECT i.*, u.first_name || ' ' || u.last_name as inspector_name
+        `SELECT i.*
          FROM inspections i
-         LEFT JOIN users u ON i.inspector_id = u.id
          WHERE i.applicant_id = $1
          ORDER BY i.inspection_date DESC`,
         [applicantId]
@@ -234,6 +240,7 @@ const search = async (query, rangeId = null) => {
     );
     return result.rows;
 };
+
 const updateNotes = async (uuid, notes) => {
     const result = await pool.query(
         `UPDATE applicants SET applicant_notes=$1, updated_at=NOW() WHERE uuid=$2 RETURNING *`,
@@ -243,10 +250,7 @@ const updateNotes = async (uuid, notes) => {
 };
 
 const remove = async (uuid) => {
-    await pool.query(
-        'DELETE FROM applicants WHERE uuid = $1',
-        [uuid]
-    );
+    await pool.query('DELETE FROM applicants WHERE uuid = $1', [uuid]);
 };
 
 module.exports = {
