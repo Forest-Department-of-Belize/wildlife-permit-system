@@ -10,8 +10,10 @@ const index = async (req, res) => {
         const page = parseInt(req.query.page) || 1;
         const limit = 30;
         const offset = (page - 1) * limit;
+        const sort = req.query.sort || 'last_name';
+        const dir = req.query.dir || 'asc';
 
-        const { applicants, total } = await applicantModel.getAll(rangeId, search, limit, offset);
+        const { applicants, total } = await applicantModel.getAll(rangeId, search, limit, offset, sort, dir);
         const totalPages = Math.ceil(total / limit);
 
         res.render('applicants/index', {
@@ -20,7 +22,9 @@ const index = async (req, res) => {
             search: search || '',
             page,
             totalPages,
-            total
+            total,
+            sort,
+            dir
         });
     } catch (err) {
         console.error(err);

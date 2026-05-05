@@ -1,6 +1,6 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null, search = null, limit = 30, offset = 0) => {
+const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sort = 'last_name', dir = 'asc') => {
     let whereConditions = [];
     let params = [];
     let paramCount = 1;
@@ -26,14 +26,17 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0) => 
 
     const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
 
-    // Get total count
+    // Whitelist sort columns to prevent SQL injection
+    const allowedSorts = { 'last_name': 'a.last_name', 'district_name': 'd.name' };
+    const sortCol = allowedSorts[sort] || 'a.last_name';
+    const sortDir = dir === 'desc' ? 'DESC' : 'ASC';
+
     const countResult = await pool.query(
         `SELECT COUNT(*) FROM applicants a ${whereClause}`,
         params
     );
     const total = parseInt(countResult.rows[0].count);
 
-    // Get paginated results
     const result = await pool.query(
         `SELECT a.*, d.name as district_name,
          (SELECT COUNT(*) FROM permits p WHERE p.applicant_id = a.id) as permit_count,
@@ -41,7 +44,7 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0) => 
          FROM applicants a
          LEFT JOIN districts d ON a.district_id = d.id
          ${whereClause}
-         ORDER BY a.last_name, a.first_name
+         ORDER BY ${sortCol} ${sortDir}
          LIMIT $${paramCount} OFFSET $${paramCount + 1}`,
         [...params, limit, offset]
     );

@@ -16,6 +16,8 @@
                 <input type="text" name="search" class="form-control"
                        placeholder="Search by name, phone, email or ID..."
                        value="<%= search %>">
+                <input type="hidden" name="sort" value="<%= sort %>">
+                <input type="hidden" name="dir" value="<%= dir %>">
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-search"></i>
                 </button>
@@ -30,9 +32,17 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>
+                            <a href="/applicants?page=1&search=<%= search %>&sort=last_name&dir=<%= sort === 'last_name' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                                Name <i class="fas fa-sort<%= sort === 'last_name' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
+                            </a>
+                        </th>
                         <th>Contact</th>
-                        <th>District</th>
+                        <th>
+                            <a href="/applicants?page=1&search=<%= search %>&sort=district_name&dir=<%= sort === 'district_name' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                                District <i class="fas fa-sort<%= sort === 'district_name' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
+                            </a>
+                        </th>
                         <th>Parrots</th>
                         <th>Permits</th>
                         <th>Actions</th>
@@ -82,26 +92,25 @@
         <nav class="mt-3">
             <ul class="pagination justify-content-center mb-0">
                 <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
-                    <a class="page-link" href="/applicants?page=<%= page - 1 %>&search=<%= search %>">
+                    <a class="page-link" href="/applicants?page=<%= page - 1 %>&search=<%= search %>&sort=<%= sort %>&dir=<%= dir %>">
                         <i class="fas fa-chevron-left"></i> Prev
                     </a>
                 </li>
                 <% for (let i = Math.max(1, page - 2); i <= Math.min(totalPages, page + 2); i++) { %>
                 <li class="page-item <%= i === page ? 'active' : '' %>">
-                    <a class="page-link" href="/applicants?page=<%= i %>&search=<%= search %>"><%= i %></a>
+                    <a class="page-link" href="/applicants?page=<%= i %>&search=<%= search %>&sort=<%= sort %>&dir=<%= dir %>"><%= i %></a>
                 </li>
                 <% } %>
                 <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
-                    <a class="page-link" href="/applicants?page=<%= page + 1 %>&search=<%= search %>">
+                    <a class="page-link" href="/applicants?page=<%= page + 1 %>&search=<%= search %>&sort=<%= sort %>&dir=<%= dir %>">
                         Next <i class="fas fa-chevron-right"></i>
                     </a>
                 </li>
             </ul>
             <p class="text-center text-muted small mt-2">
-                Showing <%= (page - 1) * 30 + 1 %> - <%= Math.min(page * 30, total) %> of <%= total %> applicants
+                Showing <%= (page - 1) * 30 + 1 %> — <%= Math.min(page * 30, total) %> of <%= total %> applicants
             </p>
         </nav>
         <% } %>
-
     </div>
 </div>
