@@ -1,4 +1,3 @@
-
 <div class="page-header d-flex justify-content-between align-items-center">
     <div>
         <h1 class="page-title">Inspections</h1>
@@ -81,7 +80,6 @@
                 <button class="btn btn-outline-secondary btn-sm" id="calNext">Next <i class="fas fa-chevron-right"></i></button>
             </div>
             <div id="calGrid"></div>
-            <!-- Legend -->
             <div class="d-flex gap-3 mt-3 flex-wrap">
                 <span><span class="badge bg-warning">●</span> Scheduled</span>
                 <span><span class="badge bg-success">●</span> Approved</span>
@@ -90,7 +88,6 @@
             </div>
         </div>
     </div>
-    <!-- Event detail popup -->
     <div id="calPopup" class="card shadow-lg" style="display:none;position:fixed;z-index:9999;min-width:260px;max-width:340px;top:50%;left:50%;transform:translate(-50%,-50%)">
         <div class="card-header d-flex justify-content-between align-items-center">
             <strong id="popupTitle">Inspection</strong>
@@ -101,9 +98,8 @@
     <div id="calBackdrop" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.3)"></div>
 </div>
 
-<!-- Pass inspection data to JS -->
 <script>
-const inspectionEvents = <%- JSON.stringify(inspections.map(i => ({
+var inspectionEvents = <%- JSON.stringify(inspections.map(function(i) { return {
     uuid: i.uuid,
     date: i.inspection_date,
     applicant: i.applicant_name,
@@ -111,163 +107,143 @@ const inspectionEvents = <%- JSON.stringify(inspections.map(i => ({
     inspector: i.inspector_name || '',
     status: i.inspection_status,
     followup: i.followup_date
-}))) %>;
-</script>
-<script>
-(function() {
-    // --- Toggle List / Calendar ---
-    const listView   = document.getElementById('listView');
-    const calView    = document.getElementById('calView');
-    const listSearch = document.getElementById('listSearch');
-    const btnList    = document.getElementById('btnListView');
-    const btnCal     = document.getElementById('btnCalView');
+}; })) %>;
 
-    function showList() {
-        listView.style.display = '';
-        listSearch.style.display = '';
-        calView.style.display = 'none';
-        btnList.classList.add('active');
-        btnCal.classList.remove('active');
-        localStorage.setItem('inspView','list');
-    }
-    function showCal() {
-        listView.style.display = 'none';
-        listSearch.style.display = 'none';
-        calView.style.display = '';
-        btnCal.classList.add('active');
-        btnList.classList.remove('active');
-        localStorage.setItem('inspView','cal');
-        renderCal();
-    }
+var listView   = document.getElementById('listView');
+var calView    = document.getElementById('calView');
+var listSearch = document.getElementById('listSearch');
+var btnList    = document.getElementById('btnListView');
+var btnCal     = document.getElementById('btnCalView');
 
-    btnList.addEventListener('click', showList);
-    btnCal.addEventListener('click', showCal);
+function showList() {
+    listView.style.display = '';
+    listSearch.style.display = '';
+    calView.style.display = 'none';
+    btnList.classList.add('active');
+    btnCal.classList.remove('active');
+}
 
-    // Restore last choice
-    if (localStorage.getItem('inspView') === 'cal') showCal();
+function showCal() {
+    listView.style.display = 'none';
+    listSearch.style.display = 'none';
+    calView.style.display = '';
+    btnCal.classList.add('active');
+    btnList.classList.remove('active');
+    renderCal();
+}
 
-    // --- Calendar ---
-    let calYear, calMonth;
-    const today = new Date();
-    calYear  = today.getFullYear();
-    calMonth = today.getMonth(); // 0-indexed
+btnList.addEventListener('click', showList);
+btnCal.addEventListener('click', showCal);
 
-    const STATUS_COLORS = {
-        scheduled: '#FFC107',
-        approved:  '#2E7D32',
-        confiscate:'#C62828',
-        completed: '#1565C0'
-    };
+var calYear  = new Date().getFullYear();
+var calMonth = new Date().getMonth();
+var today    = new Date();
 
-    function getColor(status) {
-        return STATUS_COLORS[status] || '#607D8B';
-    }
+var STATUS_COLORS = {
+    scheduled:  '#FFC107',
+    approved:   '#2E7D32',
+    confiscate: '#C62828',
+    completed:  '#1565C0'
+};
 
-    function renderCal() {
-        const title = document.getElementById('calTitle');
-        const grid  = document.getElementById('calGrid');
-        const monthNames = ['January','February','March','April','May','June',
-                            'July','August','September','October','November','December'];
-        title.textContent = monthNames[calMonth] + ' ' + calYear;
+function getColor(status) {
+    return STATUS_COLORS[status] || '#607D8B';
+}
 
-        const firstDay  = new Date(calYear, calMonth, 1).getDay();
-        const daysInMon = new Date(calYear, calMonth + 1, 0).getDate();
+function renderCal() {
+    var title = document.getElementById('calTitle');
+    var grid  = document.getElementById('calGrid');
+    var monthNames = ['January','February','March','April','May','June',
+                      'July','August','September','October','November','December'];
+    title.textContent = monthNames[calMonth] + ' ' + calYear;
 
-        // Build event map: 'YYYY-MM-DD' -> [events]
-        const evMap = {};
-        inspectionEvents.forEach(ev => {
-            if (!ev.date) return;
-            const d = new Date(ev.date);
-            const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-            if (!evMap[key]) evMap[key] = [];
-            evMap[key].push(ev);
-        });
+    var firstDay  = new Date(calYear, calMonth, 1).getDay();
+    var daysInMon = new Date(calYear, calMonth + 1, 0).getDate();
 
-        const dayAbbr = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-        let html = '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">';
-        dayAbbr.forEach(d => {
-            html += `<div style="text-align:center;font-weight:600;font-size:12px;padding:6px 0;color:#555">${d}</div>`;
-        });
-
-        // Leading blanks
-        for (let b = 0; b < firstDay; b++) {
-            html += '<div style="min-height:80px;background:#f8f9fa;border-radius:4px"></div>';
-        }
-
-        for (let day = 1; day <= daysInMon; day++) {
-            const key = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(day).padStart(2,'0');
-            const evs = evMap[key] || [];
-            const isToday = (day === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear());
-            const bgCell = isToday ? '#e8f5e9' : '#fff';
-            const borderToday = isToday ? '2px solid #2E7D32' : '1px solid #e0e0e0';
-
-            let evHtml = evs.slice(0,3).map(ev => {
-                const col = getColor(ev.status);
-                const name = (ev.applicant || '').split(' ').slice(-1)[0]; // last name only
-                return `<div class="cal-event" data-uuid="${ev.uuid}"
-                    style="background:${col};color:#fff;border-radius:3px;padding:1px 4px;
-                           font-size:11px;margin-top:2px;cursor:pointer;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"
-                    onclick="showPopup('${ev.uuid}')">
-                    ${name}
-                </div>`;
-            }).join('');
-            if (evs.length > 3) {
-                evHtml += `<div style="font-size:10px;color:#888;margin-top:2px">+${evs.length-3} more</div>`;
-            }
-
-            html += `<div style="min-height:80px;background:${bgCell};border:${borderToday};border-radius:4px;padding:4px;position:relative">
-                <span style="font-size:12px;font-weight:${isToday?'700':'400'};color:${isToday?'#2E7D32':'#333'}">${day}</span>
-                ${evHtml}
-            </div>`;
-        }
-
-        html += '</div>';
-        grid.innerHTML = html;
-    }
-
-    document.getElementById('calPrev').addEventListener('click', function() {
-        calMonth--;
-        if (calMonth < 0) { calMonth = 11; calYear--; }
-        renderCal();
-    });
-    document.getElementById('calNext').addEventListener('click', function() {
-        calMonth++;
-        if (calMonth > 11) { calMonth = 0; calYear++; }
-        renderCal();
+    var evMap = {};
+    inspectionEvents.forEach(function(ev) {
+        if (!ev.date) return;
+        var d   = new Date(ev.date);
+        var key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        if (!evMap[key]) evMap[key] = [];
+        evMap[key].push(ev);
     });
 
-    // Popup
-    function showPopup(uuid) {
-        const ev = inspectionEvents.find(e => e.uuid === uuid);
-        if (!ev) return;
-        const statusBadge = {
-            scheduled: 'warning', approved: 'success',
-            confiscate: 'danger', completed: 'primary'
-        };
-        const col = statusBadge[ev.status] || 'secondary';
-        const fdate = ev.followup ? new Date(ev.followup).toLocaleDateString() : '—';
-        const idate = ev.date ? new Date(ev.date).toLocaleDateString() : '—';
-        document.getElementById('popupTitle').textContent = ev.applicant || 'Inspection';
-        document.getElementById('popupBody').innerHTML = `
-            <table class="table table-sm table-borderless mb-2">
-                <tr><td class="text-muted">Date</td><td><strong>${idate}</strong></td></tr>
-                <tr><td class="text-muted">Inspector</td><td>${ev.inspector || '—'}</td></tr>
-                <tr><td class="text-muted">Status</td><td><span class="badge bg-${col}">${ev.status}</span></td></tr>
-                <tr><td class="text-muted">Follow Up</td><td>${fdate}</td></tr>
-            </table>
-            <a href="/inspections/${ev.uuid}" class="btn btn-sm btn-outline-primary w-100">
-                <i class="fas fa-eye me-1"></i>View Full Record
-            </a>`;
-        document.getElementById('calPopup').style.display = '';
-        document.getElementById('calBackdrop').style.display = '';
-    }
-    window.showPopup = showPopup;
+    var dayAbbr = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var html = '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">';
+    dayAbbr.forEach(function(d) {
+        html += '<div style="text-align:center;font-weight:600;font-size:12px;padding:6px 0;color:#555">' + d + '</div>';
+    });
 
-    document.getElementById('popupClose').addEventListener('click', closePopup);
-    document.getElementById('calBackdrop').addEventListener('click', closePopup);
-    function closePopup() {
-        document.getElementById('calPopup').style.display = 'none';
-        document.getElementById('calBackdrop').style.display = 'none';
+    for (var b = 0; b < firstDay; b++) {
+        html += '<div style="min-height:80px;background:#f8f9fa;border-radius:4px"></div>';
     }
-})();
+
+    for (var day = 1; day <= daysInMon; day++) {
+        var key = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(day).padStart(2,'0');
+        var evs = evMap[key] || [];
+        var isToday = (day === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear());
+        var bgCell = isToday ? '#e8f5e9' : '#fff';
+        var borderCell = isToday ? '2px solid #2E7D32' : '1px solid #e0e0e0';
+
+        var evHtml = evs.slice(0,3).map(function(ev) {
+            var col  = getColor(ev.status);
+            var name = (ev.applicant || '').split(' ').pop();
+            return '<div onclick="showPopup(\'' + ev.uuid + '\')" style="background:' + col + ';color:#fff;border-radius:3px;padding:1px 4px;font-size:11px;margin-top:2px;cursor:pointer;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">' + name + '</div>';
+        }).join('');
+
+        if (evs.length > 3) {
+            evHtml += '<div style="font-size:10px;color:#888;margin-top:2px">+' + (evs.length - 3) + ' more</div>';
+        }
+
+        html += '<div style="min-height:80px;background:' + bgCell + ';border:' + borderCell + ';border-radius:4px;padding:4px">';
+        html += '<span style="font-size:12px;font-weight:' + (isToday?'700':'400') + ';color:' + (isToday?'#2E7D32':'#333') + '">' + day + '</span>';
+        html += evHtml + '</div>';
+    }
+
+    html += '</div>';
+    grid.innerHTML = html;
+}
+
+function showPopup(uuid) {
+    var ev = null;
+    for (var i = 0; i < inspectionEvents.length; i++) {
+        if (inspectionEvents[i].uuid === uuid) { ev = inspectionEvents[i]; break; }
+    }
+    if (!ev) return;
+    var statusBadge = { scheduled:'warning', approved:'success', confiscate:'danger', completed:'primary' };
+    var col   = statusBadge[ev.status] || 'secondary';
+    var idate = ev.date    ? new Date(ev.date).toLocaleDateString()    : '—';
+    var fdate = ev.followup ? new Date(ev.followup).toLocaleDateString() : '—';
+    document.getElementById('popupTitle').textContent = ev.applicant || 'Inspection';
+    document.getElementById('popupBody').innerHTML =
+        '<table class="table table-sm table-borderless mb-2">' +
+        '<tr><td class="text-muted">Date</td><td><strong>' + idate + '</strong></td></tr>' +
+        '<tr><td class="text-muted">Inspector</td><td>' + (ev.inspector || '—') + '</td></tr>' +
+        '<tr><td class="text-muted">Status</td><td><span class="badge bg-' + col + '">' + ev.status + '</span></td></tr>' +
+        '<tr><td class="text-muted">Follow Up</td><td>' + fdate + '</td></tr>' +
+        '</table>' +
+        '<a href="/inspections/' + ev.uuid + '" class="btn btn-sm btn-outline-primary w-100"><i class="fas fa-eye me-1"></i>View Full Record</a>';
+    document.getElementById('calPopup').style.display = '';
+    document.getElementById('calBackdrop').style.display = '';
+}
+
+document.getElementById('popupClose').addEventListener('click', function() {
+    document.getElementById('calPopup').style.display = 'none';
+    document.getElementById('calBackdrop').style.display = 'none';
+});
+document.getElementById('calBackdrop').addEventListener('click', function() {
+    document.getElementById('calPopup').style.display = 'none';
+    document.getElementById('calBackdrop').style.display = 'none';
+});
+document.getElementById('calPrev').addEventListener('click', function() {
+    calMonth--;
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    renderCal();
+});
+document.getElementById('calNext').addEventListener('click', function() {
+    calMonth++;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    renderCal();
+});
 </script>
