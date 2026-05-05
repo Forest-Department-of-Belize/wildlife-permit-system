@@ -7,15 +7,23 @@ const index = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
         const search = req.query.search || null;
-        const applicants = await applicantModel.getAll(rangeId, search);
+        const page = parseInt(req.query.page) || 1;
+        const limit = 30;
+        const offset = (page - 1) * limit;
+
+        const { applicants, total } = await applicantModel.getAll(rangeId, search, limit, offset);
+        const totalPages = Math.ceil(total / limit);
+
         res.render('applicants/index', {
             title: 'Applicants',
             applicants,
-            search: search || ''
+            search: search || '',
+            page,
+            totalPages,
+            total
         });
     } catch (err) {
         console.error(err);
-        req.session.error = 'Failed to load applicants';
         res.redirect('/dashboard');
     }
 };

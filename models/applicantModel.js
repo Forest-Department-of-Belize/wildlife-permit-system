@@ -1,15 +1,15 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null, search = null) => {
+const getAll = async (rangeId = null, search = null, limit = 30, offset = 0) => {
     let whereConditions = [];
     let params = [];
     let paramCount = 1;
 
     if (rangeId) {
-    whereConditions.push(`a.range_id = $${paramCount}`);
-    params.push(rangeId);
-    paramCount++;
-}
+        whereConditions.push(`a.range_id = $${paramCount}`);
+        params.push(rangeId);
+        paramCount++;
+    }
 
     if (search) {
         whereConditions.push(`(
@@ -26,6 +26,14 @@ const getAll = async (rangeId = null, search = null) => {
 
     const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
 
+    // Get total count
+    const countResult = await pool.query(
+        `SELECT COUNT(*) FROM applicants a ${whereClause}`,
+        params
+    );
+    const total = parseInt(countResult.rows[0].count);
+
+    // Get paginated results
     const result = await pool.query(
         `SELECT a.*, d.name as district_name,
          (SELECT COUNT(*) FROM permits p WHERE p.applicant_id = a.id) as permit_count,
@@ -34,10 +42,11 @@ const getAll = async (rangeId = null, search = null) => {
          LEFT JOIN districts d ON a.district_id = d.id
          ${whereClause}
          ORDER BY a.last_name, a.first_name
-         LIMIT 100`,
-        params
+         LIMIT $${paramCount} OFFSET $${paramCount + 1}`,
+        [...params, limit, offset]
     );
-    return result.rows;
+
+    return { applicants: result.rows, total };
 };
 
 const findByUuid = async (uuid) => {

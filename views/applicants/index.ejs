@@ -1,8 +1,7 @@
-
 <div class="page-header d-flex justify-content-between align-items-center">
     <div>
         <h1 class="page-title">Applicants</h1>
-        <p class="text-muted mb-0"><%= applicants.length %> records found</p>
+        <p class="text-muted mb-0"><%= total %> records found — showing page <%= page %> of <%= totalPages %></p>
     </div>
     <% if (user && user.permissions && user.permissions.includes('applicants-add')) { %>
     <a href="/applicants/create" class="btn btn-primary">
@@ -10,26 +9,25 @@
     </a>
     <% } %>
 </div>
-
 <div class="card">
     <div class="card-body">
         <div class="mb-3">
-    <form method="GET" action="/applicants" class="d-flex gap-2">
-        <input type="text" name="search" class="form-control"
-               placeholder="Search by name, phone, email or ID..."
-               value="<%= search %>">
-        <button type="submit" class="btn btn-primary">
-            <i class="fas fa-search"></i>
-        </button>
-        <% if (search) { %>
-        <a href="/applicants" class="btn btn-outline-secondary">
-            <i class="fas fa-times"></i>
-        </a>
-        <% } %>
-    </form>
-</div>
+            <form method="GET" action="/applicants" class="d-flex gap-2">
+                <input type="text" name="search" class="form-control"
+                       placeholder="Search by name, phone, email or ID..."
+                       value="<%= search %>">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+                <% if (search) { %>
+                <a href="/applicants" class="btn btn-outline-secondary">
+                    <i class="fas fa-times"></i>
+                </a>
+                <% } %>
+            </form>
+        </div>
         <div class="table-responsive">
-            <table class="table table-hover" id="applicantsTable">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -72,23 +70,38 @@
                     <% }) %>
                     <% if (applicants.length === 0) { %>
                     <tr>
-                        <td colspan="6" class="text-center text-muted py-4">
-                            No applicants found
-                        </td>
+                        <td colspan="6" class="text-center text-muted py-4">No applicants found</td>
                     </tr>
                     <% } %>
                 </tbody>
             </table>
         </div>
+
+        <!-- Pagination -->
+        <% if (totalPages > 1) { %>
+        <nav class="mt-3">
+            <ul class="pagination justify-content-center mb-0">
+                <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
+                    <a class="page-link" href="/applicants?page=<%= page - 1 %>&search=<%= search %>">
+                        <i class="fas fa-chevron-left"></i> Prev
+                    </a>
+                </li>
+                <% for (let i = Math.max(1, page - 2); i <= Math.min(totalPages, page + 2); i++) { %>
+                <li class="page-item <%= i === page ? 'active' : '' %>">
+                    <a class="page-link" href="/applicants?page=<%= i %>&search=<%= search %>"><%= i %></a>
+                </li>
+                <% } %>
+                <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
+                    <a class="page-link" href="/applicants?page=<%= page + 1 %>&search=<%= search %>">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+            <p class="text-center text-muted small mt-2">
+                Showing <%= (page - 1) * 30 + 1 %> - <%= Math.min(page * 30, total) %> of <%= total %> applicants
+            </p>
+        </nav>
+        <% } %>
+
     </div>
 </div>
-
-<script>
-document.getElementById('searchInput').addEventListener('keyup', function() {
-    const value = this.value.toLowerCase();
-    const rows = document.querySelectorAll('#applicantsTable tbody tr');
-    rows.forEach(row => {
-        row.style.display = row.textContent.toLowerCase().includes(value) ? '' : 'none';
-    });
-});
-</script>
