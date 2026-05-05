@@ -12,37 +12,50 @@
 <div class="card">
     <div class="card-body">
         <div class="mb-3">
-            <form method="GET" action="/applicants" class="d-flex gap-2">
-                <input type="text" name="search" class="form-control"
-                       placeholder="Search by name, phone, email or ID..."
-                       value="<%= search %>">
-                <input type="hidden" name="sort" value="<%= sort %>">
-                <input type="hidden" name="dir" value="<%= dir %>">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                </button>
-                <% if (search) { %>
-                <a href="/applicants" class="btn btn-outline-secondary">
-                    <i class="fas fa-times"></i>
-                </a>
-                <% } %>
+            <form method="GET" action="/applicants" class="row g-2">
+                <div class="col-12 col-md-4">
+                    <input type="text" name="search" class="form-control"
+                           placeholder="Search by name, phone, email or ID..."
+                           value="<%= search %>">
+                </div>
+                <div class="col-6 col-md-2">
+                    <select name="district" class="form-select">
+                        <option value="">All Districts</option>
+                        <option value="1" <%= district == '1' ? 'selected' : '' %>>Belize</option>
+                        <option value="2" <%= district == '2' ? 'selected' : '' %>>Cayo</option>
+                        <option value="3" <%= district == '3' ? 'selected' : '' %>>Corozal</option>
+                        <option value="4" <%= district == '4' ? 'selected' : '' %>>Orange Walk</option>
+                        <option value="5" <%= district == '5' ? 'selected' : '' %>>Stann Creek</option>
+                        <option value="6" <%= district == '6' ? 'selected' : '' %>>Toledo</option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-2">
+                    <select name="letter" class="form-select">
+                        <option value="">All Names</option>
+                        <% ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'].forEach(function(l) { %>
+                        <option value="<%= l %>" <%= letter === l ? 'selected' : '' %>><%= l %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="col-6 col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="fas fa-filter me-1"></i>Filter
+                    </button>
+                </div>
+                <div class="col-6 col-md-2">
+                    <a href="/applicants" class="btn btn-outline-secondary w-100">
+                        <i class="fas fa-times me-1"></i>Clear
+                    </a>
+                </div>
             </form>
         </div>
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>
-                            <a href="/applicants?page=1&search=<%= search %>&sort=last_name&dir=<%= sort === 'last_name' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
-                                Name <i class="fas fa-sort<%= sort === 'last_name' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
-                            </a>
-                        </th>
+                        <th>Name</th>
                         <th>Contact</th>
-                        <th>
-                            <a href="/applicants?page=1&search=<%= search %>&sort=district_name&dir=<%= sort === 'district_name' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
-                                District <i class="fas fa-sort<%= sort === 'district_name' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
-                            </a>
-                        </th>
+                        <th>District</th>
                         <th>Status</th>
                         <th>Inspection</th>
                         <th>Actions</th>
@@ -113,17 +126,17 @@
         <nav class="mt-3">
             <ul class="pagination justify-content-center mb-0">
                 <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
-                    <a class="page-link" href="/applicants?page=<%= page - 1 %>&search=<%= search %>&sort=<%= sort %>&dir=<%= dir %>">
+                    <a class="page-link" href="/applicants?page=<%= page - 1 %>&search=<%= search %>&letter=<%= letter %>&district=<%= district %>">
                         <i class="fas fa-chevron-left"></i> Prev
                     </a>
                 </li>
                 <% for (let i = Math.max(1, page - 2); i <= Math.min(totalPages, page + 2); i++) { %>
                 <li class="page-item <%= i === page ? 'active' : '' %>">
-                    <a class="page-link" href="/applicants?page=<%= i %>&search=<%= search %>&sort=<%= sort %>&dir=<%= dir %>"><%= i %></a>
+                    <a class="page-link" href="/applicants?page=<%= i %>&search=<%= search %>&letter=<%= letter %>&district=<%= district %>"><%= i %></a>
                 </li>
                 <% } %>
                 <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
-                    <a class="page-link" href="/applicants?page=<%= page + 1 %>&search=<%= search %>&sort=<%= sort %>&dir=<%= dir %>">
+                    <a class="page-link" href="/applicants?page=<%= page + 1 %>&search=<%= search %>&letter=<%= letter %>&district=<%= district %>">
                         Next <i class="fas fa-chevron-right"></i>
                     </a>
                 </li>
