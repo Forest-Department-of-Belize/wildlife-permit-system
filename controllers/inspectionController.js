@@ -42,7 +42,7 @@ const view = async (req, res) => {
 const create = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
-        const [applicants, inspectors] = await Promise.all([
+        const [{ applicants }, inspectors] = await Promise.all([
             applicantModel.getAll(rangeId),
             userModel.getAll(rangeId)
         ]);

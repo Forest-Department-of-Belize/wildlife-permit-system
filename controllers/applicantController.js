@@ -182,4 +182,16 @@ const destroy = async (req, res) => {
     }
 };
 
-module.exports = { index, view, create, store, edit, update, search, destroy };
+const updateNotes = async (req, res) => {
+    try {
+        await applicantModel.updateNotes(req.params.uuid, req.body.applicant_notes || '');
+        req.session.success = 'Notes saved successfully';
+        res.redirect(`/applicants/${req.params.uuid}#notes`);
+    } catch (err) {
+        console.error(err);
+        req.session.error = 'Failed to save notes';
+        res.redirect(`/applicants/${req.params.uuid}#notes`);
+    }
+};
+
+module.exports = { index, view, create, store, edit, update, updateNotes, search, destroy };

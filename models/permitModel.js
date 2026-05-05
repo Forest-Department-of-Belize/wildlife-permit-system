@@ -1,6 +1,6 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null, search = null) => {
+const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sort = 'created_at', dir = 'desc') => {
     let whereConditions = [];
     let params = [];
     let paramCount = 1;
@@ -24,19 +24,40 @@ const getAll = async (rangeId = null, search = null) => {
 
     const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
 
+    const allowedSorts = {
+        'permit_number': 'p.permit_number',
+        'applicant_name': 'a.last_name',
+        'range_name': 'r.name',
+        'issue_date': 'p.issue_date',
+        'status': 'p.status',
+        'created_at': 'p.created_at'
+    };
+    const sortCol = allowedSorts[sort] || 'p.created_at';
+    const sortDir = dir === 'asc' ? 'ASC' : 'DESC';
+
+    const countResult = await pool.query(
+        `SELECT COUNT(*) FROM permits p
+         LEFT JOIN applicants a ON p.applicant_id = a.id
+         LEFT JOIN ranges r ON p.range_id = r.id
+         ${whereClause}`,
+        params
+    );
+    const total = parseInt(countResult.rows[0].count);
+
     const result = await pool.query(
         `SELECT p.*,
          a.first_name || ' ' || a.last_name as applicant_name,
+         a.uuid as applicant_uuid,
          r.name as range_name
          FROM permits p
          LEFT JOIN applicants a ON p.applicant_id = a.id
          LEFT JOIN ranges r ON p.range_id = r.id
          ${whereClause}
-         ORDER BY p.created_at DESC
-         LIMIT 100`,
-        params
+         ORDER BY ${sortCol} ${sortDir}
+         LIMIT $${paramCount} OFFSET $${paramCount + 1}`,
+        [...params, limit, offset]
     );
-    return result.rows;
+    return { permits: result.rows, total };
 };
 
 const findByUuid = async (uuid) => {

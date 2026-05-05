@@ -7,11 +7,24 @@ const index = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
         const search = req.query.search || null;
-        const permits = await permitModel.getAll(rangeId, search);
+        const page = parseInt(req.query.page) || 1;
+        const limit = 30;
+        const offset = (page - 1) * limit;
+        const sort = req.query.sort || 'created_at';
+        const dir = req.query.dir || 'desc';
+
+        const { permits, total } = await permitModel.getAll(rangeId, search, limit, offset, sort, dir);
+        const totalPages = Math.ceil(total / limit);
+
         res.render('permits/index', {
             title: 'Permits',
             permits,
-            search: search || ''
+            search: search || '',
+            page,
+            totalPages,
+            total,
+            sort,
+            dir
         });
     } catch (err) {
         console.error(err);
@@ -40,7 +53,7 @@ const view = async (req, res) => {
 const create = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
-        const [applicants, ranges] = await Promise.all([
+        const [{ applicants }, ranges] = await Promise.all([
             applicantModel.getAll(rangeId),
             rangeModel.getAll()
         ]);

@@ -32,7 +32,7 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sor
     const sortDir = dir === 'desc' ? 'DESC' : 'ASC';
 
     const countResult = await pool.query(
-        `SELECT COUNT(*) FROM applicants a ${whereClause}`,
+        `SELECT COUNT(*) FROM applicants a LEFT JOIN districts d ON a.district_id = d.id ${whereClause}`,
         params
     );
     const total = parseInt(countResult.rows[0].count);
@@ -40,7 +40,9 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sor
     const result = await pool.query(
         `SELECT a.*, d.name as district_name,
          (SELECT COUNT(*) FROM permits p WHERE p.applicant_id = a.id) as permit_count,
-         (SELECT COUNT(*) FROM parrots pr WHERE pr.applicant_id = a.id) as parrot_count
+         (SELECT COUNT(*) FROM parrots pr WHERE pr.applicant_id = a.id) as parrot_count,
+         (SELECT COUNT(*) FROM inspections i WHERE i.applicant_id = a.id AND i.inspection_status = 'scheduled') as pending_inspection_count,
+         (SELECT inspector_name FROM inspections i WHERE i.applicant_id = a.id AND i.inspection_status = 'scheduled' ORDER BY i.inspection_date DESC LIMIT 1) as pending_inspector
          FROM applicants a
          LEFT JOIN districts d ON a.district_id = d.id
          ${whereClause}
@@ -148,10 +150,10 @@ const create = async (data) => {
             applicant_status, info_source, parrot_diet, enclosure_type,
             cage_location, cage_size_feet, shared_separate,
             does_fly_free, fly_free_when, are_wings_cut,
-            applicant_comments, ownership_comments
+            applicant_comments, ownership_comments, process_status, applicant_notes
         ) VALUES (
             $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,
-            $15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29
+            $15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31
         ) RETURNING *`,
         [
             data.first_name, data.middle_name, data.last_name,
@@ -168,7 +170,8 @@ const create = async (data) => {
             data.cage_size_feet, data.shared_separate,
             data.does_fly_free === 'on',
             data.fly_free_when, data.are_wings_cut === 'on',
-            data.applicant_comments, data.ownership_comments
+            data.applicant_comments, data.ownership_comments,
+            data.process_status || 'Pending Call', data.applicant_notes || null
         ]
     );
     return result.rows[0];
@@ -188,8 +191,9 @@ const update = async (uuid, data) => {
             cage_size_feet=$21, shared_separate=$22,
             does_fly_free=$23, fly_free_when=$24,
             are_wings_cut=$25, applicant_comments=$26,
-            ownership_comments=$27, updated_at=NOW()
-         WHERE uuid=$28 RETURNING *`,
+            ownership_comments=$27, process_status=$28,
+            updated_at=NOW()
+         WHERE uuid=$29 RETURNING *`,
         [
             data.first_name, data.middle_name, data.last_name,
             data.date_of_birth || null, data.address1, data.address2,
@@ -204,7 +208,8 @@ const update = async (uuid, data) => {
             data.cage_size_feet, data.shared_separate,
             data.does_fly_free === 'on', data.fly_free_when,
             data.are_wings_cut === 'on', data.applicant_comments,
-            data.ownership_comments, uuid
+            data.ownership_comments, data.process_status || 'Pending Call',
+            uuid
         ]
     );
     return result.rows[0];
@@ -229,6 +234,14 @@ const search = async (query, rangeId = null) => {
     );
     return result.rows;
 };
+const updateNotes = async (uuid, notes) => {
+    const result = await pool.query(
+        `UPDATE applicants SET applicant_notes=$1, updated_at=NOW() WHERE uuid=$2 RETURNING *`,
+        [notes, uuid]
+    );
+    return result.rows[0];
+};
+
 const remove = async (uuid) => {
     await pool.query(
         'DELETE FROM applicants WHERE uuid = $1',
@@ -239,5 +252,5 @@ const remove = async (uuid) => {
 module.exports = {
     getAll, findByUuid, getParrots, getPermits,
     getApplications, getInspections, getCalls,
-    getOffenses, create, update, search, remove
+    getOffenses, create, update, updateNotes, search, remove
 };
