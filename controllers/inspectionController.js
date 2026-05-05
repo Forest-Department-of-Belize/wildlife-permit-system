@@ -60,22 +60,19 @@ const create = async (req, res) => {
 const store = async (req, res) => {
     try {
         const errors = [];
-
         if (!req.body.applicant_id) {
             errors.push('Please select an applicant');
         }
-        if (!req.body.inspector_id) {
-            errors.push('Please select an inspector');
+        if (!req.body.inspector_name || req.body.inspector_name.trim() === '') {
+            errors.push('Inspector name is required');
         }
         if (!req.body.inspection_date) {
             errors.push('Inspection date is required');
         }
-
         if (errors.length > 0) {
             req.session.error = errors.join(', ');
             return res.redirect('/inspections/create');
         }
-
         if (!req.body.range_id && req.session.user.range_id) {
             req.body.range_id = req.session.user.range_id;
         }
@@ -96,15 +93,10 @@ const edit = async (req, res) => {
             req.session.error = 'Inspection not found';
             return res.redirect('/inspections');
         }
-        const rangeId = getRangeFilter(req);
-        const [inspectors, parrots] = await Promise.all([
-            userModel.getAll(rangeId),
-            applicantModel.getParrots(inspection.applicant_id)
-        ]);
+        const parrots = await applicantModel.getParrots(inspection.applicant_id);
         res.render('inspections/edit', {
             title: 'Edit Inspection',
             inspection,
-            inspectors,
             parrots
         });
     } catch (err) {

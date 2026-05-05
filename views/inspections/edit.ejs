@@ -1,4 +1,3 @@
-
 <div class="page-header d-flex justify-content-between align-items-center">
     <h1 class="page-title">Edit Inspection</h1>
     <a href="/inspections/<%= inspection.uuid %>" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-1"></i>Back</a>
@@ -8,12 +7,10 @@
         <div class="card-body">
             <div class="row g-3">
                 <div class="col-12 col-md-6">
-                    <label class="form-label">Inspector</label>
-                    <select name="inspector_id" class="form-select">
-                        <% inspectors.forEach(i => { %>
-                        <option value="<%= i.id %>" <%= inspection.inspector_id == i.id ? 'selected' : '' %>><%= i.first_name %> <%= i.last_name %></option>
-                        <% }) %>
-                    </select>
+                    <label class="form-label">Inspector Name</label>
+                    <input type="text" name="inspector_name" class="form-control"
+                           placeholder="Enter officer name"
+                           value="<%= inspection.inspector_name || '' %>">
                 </div>
                 <div class="col-12 col-md-6">
                     <label class="form-label">Inspection Date</label>
@@ -47,11 +44,14 @@
                     <textarea name="instructions_for_applicant" class="form-control" rows="2"><%= inspection.instructions_for_applicant || '' %></textarea>
                 </div>
                 <div class="col-12 col-md-6">
-                    <label class="form-label">Expected Recheck</label>
+                    <label class="form-label">Expected Recheck Date</label>
                     <input type="date" name="expected_recheck" class="form-control"
                         value="<%= inspection.expected_recheck ? new Date(inspection.expected_recheck).toISOString().split('T')[0] : '' %>">
                 </div>
-                <% if (inspection.inspection_status === 'confiscate' || true) { %>
+                <div class="col-12">
+                    <label class="form-label">Precondition Comments</label>
+                    <textarea name="preconditions_comments" class="form-control" rows="2"><%= inspection.preconditions_comments || '' %></textarea>
+                </div>
                 <div class="col-12">
                     <label class="form-label">Parrots to Confiscate</label>
                     <div class="border rounded p-3">
@@ -71,7 +71,6 @@
                         <% } %>
                     </div>
                 </div>
-                <% } %>
             </div>
         </div>
     </div>

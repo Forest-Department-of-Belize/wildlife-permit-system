@@ -1,4 +1,3 @@
-
 <div class="page-header d-flex justify-content-between align-items-center">
     <h1 class="page-title">Schedule Inspection</h1>
     <a href="/inspections" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-1"></i>Back</a>
@@ -17,13 +16,9 @@
                     </select>
                 </div>
                 <div class="col-12 col-md-6">
-                    <label class="form-label">Inspector <span class="text-danger">*</span></label>
-                    <select name="inspector_id" class="form-select" required>
-                        <option value="">Select Inspector</option>
-                        <% inspectors.forEach(i => { %>
-                        <option value="<%= i.id %>"><%= i.first_name %> <%= i.last_name %></option>
-                        <% }) %>
-                    </select>
+                    <label class="form-label">Inspector Name <span class="text-danger">*</span></label>
+                    <input type="text" name="inspector_name" class="form-control"
+                           placeholder="Enter officer name" required>
                 </div>
                 <div class="col-12 col-md-6">
                     <label class="form-label">Inspection Date <span class="text-danger">*</span></label>
