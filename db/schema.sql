@@ -1,69 +1,82 @@
+-- ============================================================
+-- Captive Wildlife Permit Management System
+-- Belize Forestry Department
+-- Database Schema & Seed Data
+-- ============================================================
+
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Districts
+-- ============================================================
+-- ROLES
+-- ============================================================
+CREATE TABLE IF NOT EXISTS roles (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    permissions JSON DEFAULT '[]',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ============================================================
+-- DISTRICTS
+-- ============================================================
 CREATE TABLE IF NOT EXISTS districts (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
     name VARCHAR(100) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Ranges (Forest Stations)
+-- ============================================================
+-- RANGES (Forest Stations)
+-- ============================================================
 CREATE TABLE IF NOT EXISTS ranges (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
     name VARCHAR(100) NOT NULL,
     district_id INTEGER REFERENCES districts(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Roles
-CREATE TABLE IF NOT EXISTS roles (
-    id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    permissions JSONB DEFAULT '[]',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Users
+-- ============================================================
+-- USERS
+-- ============================================================
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255),
     role_id INTEGER REFERENCES roles(id),
     range_id INTEGER REFERENCES ranges(id),
-    invite_token VARCHAR(255),
-    invite_token_expires TIMESTAMP,
+    is_active BOOLEAN DEFAULT true,
+    setup_token VARCHAR(255),
+    setup_token_expires TIMESTAMP,
     reset_token VARCHAR(255),
     reset_token_expires TIMESTAMP,
-    is_active BOOLEAN DEFAULT true,
-    first_login BOOLEAN DEFAULT true,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Parrot Species
-CREATE TABLE IF NOT EXISTS parrot_species (
-    id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
-    common_name VARCHAR(100) NOT NULL,
-    scientific_name VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- ============================================================
+-- SESSION
+-- ============================================================
+CREATE TABLE IF NOT EXISTS session (
+    sid VARCHAR NOT NULL PRIMARY KEY,
+    sess JSON NOT NULL,
+    expire TIMESTAMP(6) NOT NULL
 );
+CREATE INDEX IF NOT EXISTS IDX_session_expire ON session(expire);
 
--- Applicants
+-- ============================================================
+-- APPLICANTS
+-- ============================================================
 CREATE TABLE IF NOT EXISTS applicants (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
     eri_applicant_id VARCHAR(50),
     first_name VARCHAR(100) NOT NULL,
     middle_name VARCHAR(100),
@@ -72,6 +85,7 @@ CREATE TABLE IF NOT EXISTS applicants (
     address1 VARCHAR(255),
     address2 VARCHAR(255),
     district_id INTEGER REFERENCES districts(id),
+    range_id INTEGER REFERENCES ranges(id),
     contact_number VARCHAR(20),
     contact_number_whatsapp BOOLEAN DEFAULT false,
     contact_number_secondary VARCHAR(20),
@@ -93,41 +107,36 @@ CREATE TABLE IF NOT EXISTS applicants (
     are_wings_cut BOOLEAN DEFAULT false,
     applicant_comments TEXT,
     ownership_comments TEXT,
+    process_status VARCHAR(100) DEFAULT 'Pending Call',
+    applicant_notes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE INDEX IF NOT EXISTS idx_applicants_range ON applicants(range_id);
+CREATE INDEX IF NOT EXISTS idx_applicants_district ON applicants(district_id);
 
--- Applications
-CREATE TABLE IF NOT EXISTS applications (
+-- ============================================================
+-- PARROT SPECIES
+-- ============================================================
+CREATE TABLE IF NOT EXISTS parrot_species (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
-    eri_application_id VARCHAR(50),
-    applicant_id INTEGER REFERENCES applicants(id),
-    range_id INTEGER REFERENCES ranges(id),
-    info_source VARCHAR(100),
-    application_status VARCHAR(50),
-    application_date DATE,
-    date_received DATE,
-    reference_number VARCHAR(100),
-    application_signed BOOLEAN DEFAULT false,
-    followup_done BOOLEAN DEFAULT false,
-    followup_details TEXT,
-    applied_previously BOOLEAN DEFAULT false,
-    applied_previously_date DATE,
-    previously_approved BOOLEAN DEFAULT false,
-    application_experience TEXT,
-    application_comments TEXT,
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
+    common_name VARCHAR(100) NOT NULL,
+    scientific_name VARCHAR(100),
+    image_url TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Permits
+-- ============================================================
+-- PERMITS
+-- ============================================================
 CREATE TABLE IF NOT EXISTS permits (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
     applicant_id INTEGER REFERENCES applicants(id),
     range_id INTEGER REFERENCES ranges(id),
-    application_id INTEGER REFERENCES applications(id),
+    application_id INTEGER,
     info_source VARCHAR(100),
     permit_number VARCHAR(100),
     reference_number VARCHAR(100),
@@ -141,45 +150,65 @@ CREATE TABLE IF NOT EXISTS permits (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE INDEX IF NOT EXISTS idx_permits_applicant ON permits(applicant_id);
+CREATE INDEX IF NOT EXISTS idx_permits_range ON permits(range_id);
 
--- Parrots
+-- ============================================================
+-- PARROTS
+-- ============================================================
 CREATE TABLE IF NOT EXISTS parrots (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
-    eri_bird_id VARCHAR(50),
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
     applicant_id INTEGER REFERENCES applicants(id),
     species_id INTEGER REFERENCES parrot_species(id),
     permit_id INTEGER REFERENCES permits(id),
     range_id INTEGER REFERENCES ranges(id),
-    info_source VARCHAR(100),
     band_number VARCHAR(100),
     pet_name VARCHAR(100),
     sex VARCHAR(20),
-    parrot_age_months NUMERIC,
+    parrot_age_months INTEGER,
     method_obtained VARCHAR(100),
-    period_of_ownership_months NUMERIC,
-    end_date DATE,
+    period_of_ownership_months INTEGER,
     housing_details TEXT,
     has_parrot VARCHAR(20),
     why_no_parrot TEXT,
-    parrot_status VARCHAR(50),
-    confiscated BOOLEAN DEFAULT false,
-    inspection_id INTEGER,
     is_healthy BOOLEAN DEFAULT true,
     health_comments TEXT,
     stories TEXT,
     bird_comments TEXT,
+    info_source VARCHAR(100),
+    eri_bird_id VARCHAR(50),
+    confiscated BOOLEAN DEFAULT false,
+    inspection_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_parrots_applicant ON parrots(applicant_id);
+
+-- ============================================================
+-- APPLICATIONS
+-- ============================================================
+CREATE TABLE IF NOT EXISTS applications (
+    id SERIAL PRIMARY KEY,
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
+    applicant_id INTEGER REFERENCES applicants(id),
+    range_id INTEGER REFERENCES ranges(id),
+    status VARCHAR(50) DEFAULT 'Pending',
+    application_date DATE,
+    notes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Inspections
+-- ============================================================
+-- INSPECTIONS
+-- ============================================================
 CREATE TABLE IF NOT EXISTS inspections (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
     applicant_id INTEGER REFERENCES applicants(id),
-    inspector_id INTEGER REFERENCES users(id),
     range_id INTEGER REFERENCES ranges(id),
+    inspector_name TEXT,
     inspection_date DATE,
     inspection_status VARCHAR(50) DEFAULT 'scheduled',
     notes TEXT,
@@ -187,97 +216,135 @@ CREATE TABLE IF NOT EXISTS inspections (
     followup_notes TEXT,
     birds_described TEXT,
     hand_tame BOOLEAN DEFAULT false,
-    date_acquired DATE,
     instructions_for_applicant TEXT,
     expected_recheck DATE,
     preconditions_comments TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE INDEX IF NOT EXISTS idx_inspections_applicant ON inspections(applicant_id);
 
--- Add foreign key for parrots inspection_id
-ALTER TABLE parrots ADD CONSTRAINT fk_parrot_inspection
-    FOREIGN KEY (inspection_id) REFERENCES inspections(id);
-
--- Calls
+-- ============================================================
+-- CALLS
+-- ============================================================
 CREATE TABLE IF NOT EXISTS calls (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
-    eri_call_id VARCHAR(50),
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
     applicant_id INTEGER REFERENCES applicants(id),
     officer_id INTEGER REFERENCES users(id),
+    officer_name TEXT,
     number_called VARCHAR(20),
     call_date DATE,
     language VARCHAR(50),
     is_functional BOOLEAN DEFAULT false,
     is_answered BOOLEAN DEFAULT false,
     is_applicant BOOLEAN DEFAULT false,
-    know_applicant BOOLEAN DEFAULT false,
-    relation_applicant VARCHAR(100),
-    new_applicant_contact VARCHAR(100),
+    is_fully_completed BOOLEAN DEFAULT false,
     call_now_consent BOOLEAN DEFAULT false,
     call_later_consent BOOLEAN DEFAULT false,
     call_later_date DATE,
-    is_fully_completed BOOLEAN DEFAULT false,
-    scheduled_followup BOOLEAN DEFAULT false,
-    followup_date DATE,
     consents_digital_resources BOOLEAN DEFAULT false,
-    num_neighbors_parrots INTEGER,
+    num_neighbors_parrots INTEGER DEFAULT 0,
     neighborhood_description TEXT,
     call_comments TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE INDEX IF NOT EXISTS idx_calls_applicant ON calls(applicant_id);
 
--- Compound Offenses
+-- ============================================================
+-- COMPOUND OFFENSES
+-- ============================================================
 CREATE TABLE IF NOT EXISTS compound_offenses (
     id SERIAL PRIMARY KEY,
-    uuid UUID DEFAULT uuid_generate_v4() UNIQUE NOT NULL,
-    eri_confiscation_id VARCHAR(50),
+    uuid UUID NOT NULL DEFAULT uuid_generate_v4(),
     applicant_id INTEGER REFERENCES applicants(id),
     officer_id INTEGER REFERENCES users(id),
+    officer_name TEXT,
     range_id INTEGER REFERENCES ranges(id),
     offense_date DATE,
     illegal_wildlife TEXT,
-    hand_tame BOOLEAN DEFAULT false,
-    date_acquired DATE,
-    prior_history BOOLEAN DEFAULT false,
-    health_issues TEXT,
-    diet_notes TEXT,
     cage_size_feet VARCHAR(50),
-    cage_confiscated BOOLEAN DEFAULT false,
     cage_location VARCHAR(100),
     reason_confiscated TEXT,
+    hand_tame BOOLEAN DEFAULT false,
+    prior_history BOOLEAN DEFAULT false,
+    cage_confiscated BOOLEAN DEFAULT false,
     signed_officer BOOLEAN DEFAULT false,
     signed_offender BOOLEAN DEFAULT false,
     signed_date DATE,
+    health_issues TEXT,
+    diet_notes TEXT,
     offense_comments TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE INDEX IF NOT EXISTS idx_offenses_applicant ON compound_offenses(applicant_id);
 
--- Audit Logs
+-- ============================================================
+-- AUDIT LOGS
+-- ============================================================
 CREATE TABLE IF NOT EXISTS audit_logs (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id),
-    action VARCHAR(50) NOT NULL,
-    table_name VARCHAR(100) NOT NULL,
+    action VARCHAR(100),
+    table_name VARCHAR(100),
     record_id INTEGER,
-    changes JSONB,
+    details TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Indexes for performance
-CREATE INDEX IF NOT EXISTS idx_applicants_uuid ON applicants(uuid);
-CREATE INDEX IF NOT EXISTS idx_applicants_district ON applicants(district_id);
-CREATE INDEX IF NOT EXISTS idx_permits_applicant ON permits(applicant_id);
-CREATE INDEX IF NOT EXISTS idx_permits_range ON permits(range_id);
-CREATE INDEX IF NOT EXISTS idx_permits_status ON permits(status);
-CREATE INDEX IF NOT EXISTS idx_parrots_applicant ON parrots(applicant_id);
-CREATE INDEX IF NOT EXISTS idx_parrots_range ON parrots(range_id);
-CREATE INDEX IF NOT EXISTS idx_inspections_applicant ON inspections(applicant_id);
-CREATE INDEX IF NOT EXISTS idx_inspections_range ON inspections(range_id);
-CREATE INDEX IF NOT EXISTS idx_calls_applicant ON calls(applicant_id);
-CREATE INDEX IF NOT EXISTS idx_offenses_range ON compound_offenses(range_id);
-CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
-CREATE INDEX IF NOT EXISTS idx_users_range ON users(range_id);
+-- ============================================================
+-- SEED DATA
+-- ============================================================
+
+-- Roles
+INSERT INTO roles (name, permissions) VALUES
+('Wildlife Program Manager', '["applicants-view","applicants-add","applicants-edit","applicants-delete","parrots-view","parrots-add","parrots-edit","parrots-delete","permits-view","permits-add","permits-edit","permits-delete","applications-view","applications-add","applications-edit","applications-delete","inspections-view","inspections-add","inspections-edit","inspections-delete","calls-view","calls-add","calls-edit","calls-delete","offenses-view","offenses-add","offenses-edit","offenses-delete","species-view","species-add","species-edit","species-delete","districts-view","districts-add","districts-edit","districts-delete","ranges-view","ranges-add","ranges-edit","ranges-delete","users-view","users-add","users-edit","users-delete"]'),
+('Range OIC', '["applicants-view","applicants-add","applicants-edit","applicants-delete","parrots-view","parrots-add","parrots-edit","parrots-delete","permits-view","permits-add","permits-edit","inspections-view","inspections-add","inspections-edit","calls-view","calls-add","calls-edit","offenses-view","offenses-add","offenses-edit","species-view","species-add","species-edit"]'),
+('Range Staff', '["applicants-view","applicants-add","applicants-edit","parrots-view","parrots-add","parrots-edit","permits-view","permits-add","inspections-view","inspections-add","calls-view","calls-add","offenses-view","offenses-add"]'),
+('Intern', '["applicants-view","applicants-add","applicants-edit","parrots-view","parrots-add","parrots-edit","permits-view","permits-add","inspections-view","inspections-add"]')
+ON CONFLICT (name) DO NOTHING;
+
+-- Districts
+INSERT INTO districts (name) VALUES
+('Belize'),
+('Cayo'),
+('Corozal'),
+('Orange Walk'),
+('Stann Creek'),
+('Toledo')
+ON CONFLICT DO NOTHING;
+
+-- Forest Stations
+INSERT INTO ranges (name, district_id) VALUES
+('Orange Walk Forest Station', 4),
+('Belmopan Headquarters', 2),
+('San Ignacio Forest Station', 2),
+('Douglas D Silva Forest Station', 2),
+('Savanna Forest Station', 5),
+('Machaca Forest Station', 6)
+ON CONFLICT DO NOTHING;
+
+-- Parrot Species
+INSERT INTO parrot_species (common_name, scientific_name) VALUES
+('Scarlet Macaw', 'Ara macao'),
+('Yellow-headed Parrot', 'Amazona oratrix'),
+('Mealy Parrot', 'Amazona farinosa'),
+('Red-lored Parrot', 'Amazona autumnalis'),
+('White-fronted Parrot', 'Amazona albifrons'),
+('White-crowned Parrot', 'Pionus senilis'),
+('Yellow-lored Parrot', 'Amazona xantholora'),
+('Brown-hooded Parrot', 'Pyrilia haematotis'),
+('Olive-throated Parakeet', 'Eupsittula nana')
+ON CONFLICT DO NOTHING;
+
+-- Admin User (password: Admin@2026)
+-- Note: Password is bcrypt hashed. Generate a new hash if needed.
+-- To generate: node -e "const bcrypt = require('bcrypt'); bcrypt.hash('Admin@2026', 10).then(h => console.log(h))"
+INSERT INTO users (first_name, last_name, email, password, role_id, is_active)
+SELECT 'Admin', 'User', 'admin@forestry.gov.bz',
+    '$2b$10$YourHashHere',
+    r.id, true
+FROM roles r WHERE r.name = 'Wildlife Program Manager'
+ON CONFLICT (email) DO NOTHING;
