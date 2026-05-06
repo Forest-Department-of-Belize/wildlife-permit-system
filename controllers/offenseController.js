@@ -38,16 +38,25 @@ const view = async (req, res) => {
 const create = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
-        const [{applicants}, officers, ranges] = await Promise.all([
+        const [{ applicants }, ranges] = await Promise.all([
             applicantModel.getAll(rangeId),
-            userModel.getAll(rangeId),
             rangeModel.getAll()
         ]);
+
+        let preselectedApplicant = null;
+        let applicantUuid = null;
+
+        if (req.query.applicant) {
+            applicantUuid = req.query.applicant;
+            preselectedApplicant = await applicantModel.findByUuid(applicantUuid);
+        }
+
         res.render('offenses/create', {
             title: 'Add New Offense',
             applicants,
-            officers,
-            ranges
+            ranges,
+            preselectedApplicant,
+            applicantUuid
         });
     } catch (err) {
         console.error(err);
@@ -65,6 +74,9 @@ const store = async (req, res) => {
         }
         const offense = await offenseModel.create(req.body);
         req.session.success = 'Offense recorded successfully';
+        if (req.body.applicant_uuid) {
+            return res.redirect(`/applicants/${req.body.applicant_uuid}`);
+        }
         res.redirect(`/offenses/${offense.uuid}`);
     } catch (err) {
         console.error(err);
@@ -81,14 +93,10 @@ const edit = async (req, res) => {
             return res.redirect('/offenses');
         }
         const rangeId = getRangeFilter(req);
-        const [officers, ranges] = await Promise.all([
-            userModel.getAll(rangeId),
-            rangeModel.getAll()
-        ]);
+        const ranges = await rangeModel.getAll();
         res.render('offenses/edit', {
             title: 'Edit Offense',
             offense,
-            officers,
             ranges
         });
     } catch (err) {

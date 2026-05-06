@@ -37,14 +37,21 @@ const view = async (req, res) => {
 const create = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
-        const [{applicants}, officers] = await Promise.all([
-            applicantModel.getAll(rangeId),
-            userModel.getAll(rangeId)
-        ]);
+        const { applicants } = await applicantModel.getAll(rangeId);
+
+        let preselectedApplicant = null;
+        let applicantUuid = null;
+
+        if (req.query.applicant) {
+            applicantUuid = req.query.applicant;
+            preselectedApplicant = await applicantModel.findByUuid(applicantUuid);
+        }
+
         res.render('calls/create', {
             title: 'Log New Call',
             applicants,
-            officers
+            preselectedApplicant,
+            applicantUuid
         });
     } catch (err) {
         console.error(err);
@@ -59,6 +66,9 @@ const store = async (req, res) => {
         }
         const call = await callModel.create(req.body);
         req.session.success = 'Call logged successfully';
+        if (req.body.applicant_uuid) {
+            return res.redirect(`/applicants/${req.body.applicant_uuid}`);
+        }
         res.redirect(`/calls/${call.uuid}`);
     } catch (err) {
         console.error(err);
@@ -74,12 +84,9 @@ const edit = async (req, res) => {
             req.session.error = 'Call record not found';
             return res.redirect('/calls');
         }
-        const rangeId = getRangeFilter(req);
-        const officers = await userModel.getAll(rangeId);
         res.render('calls/edit', {
             title: 'Edit Call',
-            call,
-            officers
+            call
         });
     } catch (err) {
         console.error(err);
