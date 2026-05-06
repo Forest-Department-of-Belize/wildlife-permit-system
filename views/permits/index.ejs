@@ -12,15 +12,31 @@
 
 <div class="card">
     <div class="card-body">
+
+        <!-- SEARCH -->
+        <div class="mb-2">
+            <form method="GET" action="/permits" class="d-flex gap-2">
+                <input type="text" name="search" class="form-control"
+                       placeholder="Search by permit number, reference or applicant..."
+                       value="<%= search %>">
+                <input type="hidden" name="sort" value="<%= sort %>">
+                <input type="hidden" name="dir" value="<%= dir %>">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+                <% if (search) { %>
+                <a href="/permits" class="btn btn-outline-secondary"><i class="fas fa-times"></i></a>
+                <% } %>
+            </form>
+        </div>
+
+        <!-- FILTER -->
         <div class="mb-3">
             <form method="GET" action="/permits" class="row g-2">
-                <div class="col-12 col-md-4">
-                    <input type="text" name="search" class="form-control"
-                           placeholder="Search by permit number, reference or applicant..."
-                           value="<%= search %>">
-                </div>
-                <div class="col-6 col-md-2">
-                    <select name="status" class="form-select">
+                <input type="hidden" name="sort" value="<%= sort %>">
+                <input type="hidden" name="dir" value="<%= dir %>">
+                <div class="col-6 col-md-3">
+                    <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
                         <option value="">All Statuses</option>
                         <option value="Active" <%= locals.status == 'Active' ? 'selected' : '' %>>Active</option>
                         <option value="Processing" <%= locals.status == 'Processing' ? 'selected' : '' %>>Processing</option>
@@ -29,47 +45,41 @@
                         <option value="Expired" <%= locals.status == 'Expired' ? 'selected' : '' %>>Expired</option>
                     </select>
                 </div>
-                <input type="hidden" name="sort" value="<%= sort %>">
-                <input type="hidden" name="dir" value="<%= dir %>">
-                <div class="col-6 col-md-2">
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="fas fa-filter me-1"></i>Filter
-                    </button>
-                </div>
-                <div class="col-6 col-md-2">
-                    <a href="/permits" class="btn btn-outline-secondary w-100">
-                        <i class="fas fa-times me-1"></i>Clear
+                <div class="col-6 col-md-3">
+                    <a href="/permits" class="btn btn-outline-secondary btn-sm w-100">
+                        <i class="fas fa-times me-1"></i>Clear Filters
                     </a>
                 </div>
             </form>
         </div>
+
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>
-                            <a href="/permits?page=1&search=<%= search %>&sort=permit_number&dir=<%= sort === 'permit_number' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                            <a href="/permits?page=1&search=<%= search %>&sort=permit_number&dir=<%= sort === 'permit_number' && dir === 'asc' ? 'desc' : 'asc' %>&status=<%= locals.status || '' %>" class="text-dark text-decoration-none">
                                 Permit No. <i class="fas fa-sort<%= sort === 'permit_number' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="/permits?page=1&search=<%= search %>&sort=applicant_name&dir=<%= sort === 'applicant_name' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                            <a href="/permits?page=1&search=<%= search %>&sort=applicant_name&dir=<%= sort === 'applicant_name' && dir === 'asc' ? 'desc' : 'asc' %>&status=<%= locals.status || '' %>" class="text-dark text-decoration-none">
                                 Applicant <i class="fas fa-sort<%= sort === 'applicant_name' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
                             </a>
                         </th>
                         <th>Reference</th>
                         <th>
-                            <a href="/permits?page=1&search=<%= search %>&sort=range_name&dir=<%= sort === 'range_name' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                            <a href="/permits?page=1&search=<%= search %>&sort=range_name&dir=<%= sort === 'range_name' && dir === 'asc' ? 'desc' : 'asc' %>&status=<%= locals.status || '' %>" class="text-dark text-decoration-none">
                                 Station <i class="fas fa-sort<%= sort === 'range_name' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="/permits?page=1&search=<%= search %>&sort=issue_date&dir=<%= sort === 'issue_date' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                            <a href="/permits?page=1&search=<%= search %>&sort=issue_date&dir=<%= sort === 'issue_date' && dir === 'asc' ? 'desc' : 'asc' %>&status=<%= locals.status || '' %>" class="text-dark text-decoration-none">
                                 Issue Date <i class="fas fa-sort<%= sort === 'issue_date' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="/permits?page=1&search=<%= search %>&sort=status&dir=<%= sort === 'status' && dir === 'asc' ? 'desc' : 'asc' %>" class="text-dark text-decoration-none">
+                            <a href="/permits?page=1&search=<%= search %>&sort=status&dir=<%= sort === 'status' && dir === 'asc' ? 'desc' : 'asc' %>&status=<%= locals.status || '' %>" class="text-dark text-decoration-none">
                                 Status <i class="fas fa-sort<%= sort === 'status' ? (dir === 'asc' ? '-up' : '-down') : '' %> ms-1"></i>
                             </a>
                         </th>
