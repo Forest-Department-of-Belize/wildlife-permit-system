@@ -1,376 +1,87 @@
 <div class="page-header d-flex justify-content-between align-items-center">
-    <div>
-        <h1 class="page-title">
-            <%= applicant.first_name %>
-            <% if (applicant.middle_name) { %><%= applicant.middle_name %><% } %>
-            <%= applicant.last_name %>
-        </h1>
-        <p class="text-muted mb-0">Applicant Record</p>
-    </div>
-    <div>
-        <% if (user && user.permissions && user.permissions.includes('applicants-delete')) { %>
-        <form method="POST" action="/applicants/<%= applicant.uuid %>/delete" style="display:inline"
-              onsubmit="return confirm('Delete this applicant and all their related records? This cannot be undone.')">
-            <button type="submit" class="btn btn-danger me-2">
-                <i class="fas fa-trash me-1"></i>Delete
-            </button>
-        </form>
-        <% } %>
-        <% if (user && user.permissions && user.permissions.includes('applicants-edit')) { %>
-        <a href="/applicants/<%= applicant.uuid %>/edit" class="btn btn-outline-secondary me-2">
-            <i class="fas fa-edit me-1"></i>Edit
-        </a>
-        <% } %>
-        <a href="/applicants" class="btn btn-outline-primary">
-            <i class="fas fa-arrow-left me-1"></i>Back
-        </a>
-    </div>
+    <h1 class="page-title">Schedule Inspection</h1>
+    <a href="<%= locals.applicantUuid ? '/applicants/' + locals.applicantUuid : '/inspections' %>" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-1"></i>Back
+    </a>
 </div>
-
-<!-- Progress Tracker -->
-<%
-const stages = ['Pending Call','Called','Inspection Booked','Inspection Done','Pending Compliance','Approved Awaiting Banding','Approved'];
-const currentStage = applicant.process_status || 'Pending Call';
-const currentIndex = stages.indexOf(currentStage);
-const progressPct = currentIndex < 0 ? 0 : Math.round((currentIndex / (stages.length - 1)) * 100);
-%>
-<div class="card mb-4">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <h6 class="mb-0"><i class="fas fa-tasks me-2 text-success"></i>Application Progress</h6>
-        <% if (user && user.permissions && user.permissions.includes('applicants-edit')) { %>
-        <form method="POST" action="/applicants/<%= applicant.uuid %>/status" class="d-flex gap-2 align-items-center mb-0">
-            <select name="process_status" class="form-select form-select-sm" style="width:auto">
-                <% stages.forEach(function(s) { %>
-                <option value="<%= s %>" <%= currentStage === s ? 'selected' : '' %>><%= s %></option>
-                <% }) %>
-                <option value="Rejected" <%= currentStage === 'Rejected' ? 'selected' : '' %>>Rejected</option>
-            </select>
-            <button type="submit" class="btn btn-sm btn-success">Update</button>
-        </form>
-        <% } %>
-    </div>
-    <div class="card-body pb-2">
-        <div class="d-flex justify-content-between mb-1">
-            <% stages.forEach(function(s, idx) { %>
-            <div class="text-center" style="flex:1;">
-                <div class="rounded-circle mx-auto d-flex align-items-center justify-content-center mb-1"
-                     style="width:32px;height:32px;font-size:12px;
-                     background:<%= idx <= currentIndex ? '#2E7D32' : '#e0e0e0' %>;
-                     color:<%= idx <= currentIndex ? '#fff' : '#999' %>;">
-                    <% if (idx < currentIndex) { %>
-                        <i class="fas fa-check"></i>
+<form method="POST" action="/inspections">
+    <input type="hidden" name="applicant_uuid" value="<%= locals.applicantUuid || '' %>">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Applicant <span class="text-danger">*</span></label>
+                    <% if (locals.preselectedApplicant) { %>
+                    <input type="hidden" name="applicant_id" value="<%= preselectedApplicant.id %>">
+                    <input type="text" class="form-control" value="<%= preselectedApplicant.last_name %>, <%= preselectedApplicant.first_name %>" disabled>
                     <% } else { %>
-                        <%= idx + 1 %>
+                    <select name="applicant_id" class="form-select" required>
+                        <option value="">Select Applicant</option>
+                        <% applicants.forEach(a => { %>
+                        <option value="<%= a.id %>"><%= a.last_name %>, <%= a.first_name %></option>
+                        <% }) %>
+                    </select>
                     <% } %>
                 </div>
-                <div class="d-none d-md-block" style="font-size:10px;color:<%= idx <= currentIndex ? '#2E7D32' : '#999' %>;font-weight:<%= idx === currentIndex ? 'bold' : 'normal' %>">
-                    <%= s.replace('Awaiting Banding','') %>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Inspector Name <span class="text-danger">*</span></label>
+                    <input type="text" name="inspector_name" class="form-control"
+                           placeholder="Enter officer name" required>
                 </div>
-            </div>
-            <% if (idx < stages.length - 1) { %>
-            <div style="flex:0.5;margin-top:14px;">
-                <div style="height:3px;background:<%= idx < currentIndex ? '#2E7D32' : '#e0e0e0' %>"></div>
-            </div>
-            <% } %>
-            <% }) %>
-        </div>
-    </div>
-</div>
-
-<div class="row g-4">
-    <div class="col-12 col-lg-4">
-        <div class="card">
-            <div class="card-header"><h6 class="mb-0">Personal Information</h6></div>
-            <div class="card-body">
-                <table class="table table-borderless table-sm mb-0">
-                    <tr><td class="text-muted">Full Name</td>
-                        <td><strong><%= applicant.first_name %> <%= applicant.middle_name || '' %> <%= applicant.last_name %></strong></td></tr>
-                    <tr><td class="text-muted">Status</td>
-                        <td>
-                            <%
-                            const psMap2 = {
-                                'Pending Call': 'secondary',
-                                'Called': 'info',
-                                'Inspection Booked': 'warning',
-                                'Inspection Done': 'primary',
-                                'Pending Compliance': 'danger',
-                                'Approved Awaiting Banding': 'success',
-                                'Approved': 'success',
-                                'Rejected': 'dark'
-                            };
-                            const psColor2 = psMap2[currentStage] || 'secondary';
-                            %>
-                            <span class="badge bg-<%= psColor2 %>"><%= currentStage %></span>
-                        </td></tr>
-                    <tr><td class="text-muted">Date of Birth</td>
-                        <td><%= applicant.date_of_birth ? new Date(applicant.date_of_birth).toLocaleDateString() : '-' %></td></tr>
-                    <tr><td class="text-muted">District</td>
-                        <td><%= applicant.district_name || '-' %></td></tr>
-                    <tr><td class="text-muted">Address</td>
-                        <td><%= applicant.address1 || '-' %><% if (applicant.address2) { %>, <%= applicant.address2 %><% } %></td></tr>
-                    <tr><td class="text-muted">Phone</td>
-                        <td><%= applicant.contact_number || '-' %>
-                            <% if (applicant.contact_number_whatsapp) { %>
-                                <i class="fab fa-whatsapp text-success ms-1"></i>
-                            <% } %>
-                        </td></tr>
-                    <tr><td class="text-muted">Alt Phone</td>
-                        <td><%= applicant.contact_number_secondary || '-' %></td></tr>
-                    <tr><td class="text-muted">Email</td>
-                        <td><%= applicant.email || '-' %></td></tr>
-                    <tr><td class="text-muted">Occupation</td>
-                        <td><%= applicant.occupation || '-' %></td></tr>
-                    <tr><td class="text-muted">ID Type</td>
-                        <td><%= applicant.government_id_type || '-' %></td></tr>
-                    <tr><td class="text-muted">ID Number</td>
-                        <td><%= applicant.government_id_number || '-' %></td></tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="card mt-3">
-            <div class="card-header"><h6 class="mb-0">Housing & Care</h6></div>
-            <div class="card-body">
-                <table class="table table-borderless table-sm mb-0">
-                    <tr><td class="text-muted">Enclosure Type</td>
-                        <td><%= applicant.enclosure_type || '-' %></td></tr>
-                    <tr><td class="text-muted">Cage Size</td>
-                        <td><%= applicant.cage_size_feet || '-' %></td></tr>
-                    <tr><td class="text-muted">Cage Location</td>
-                        <td><%= applicant.cage_location || '-' %></td></tr>
-                    <tr><td class="text-muted">Diet</td>
-                        <td><%= applicant.parrot_diet || '-' %></td></tr>
-                    <tr><td class="text-muted">Flies Free</td>
-                        <td><%= applicant.does_fly_free ? 'Yes' : 'No' %></td></tr>
-                    <tr><td class="text-muted">Wings Cut</td>
-                        <td><%= applicant.are_wings_cut ? 'Yes' : 'No' %></td></tr>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-12 col-lg-8">
-        <div class="card">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs" id="applicantTabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#parrots">
-                            Parrots <span class="badge bg-secondary"><%= parrots.length %></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#permits">
-                            Permits <span class="badge bg-secondary"><%= permits.length %></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#inspections">
-                            Inspections <span class="badge bg-secondary"><%= inspections.length %></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#calls">
-                            Calls <span class="badge bg-secondary"><%= calls.length %></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#offenses">
-                            Offenses <span class="badge bg-secondary"><%= offenses.length %></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#notes">
-                            <i class="fas fa-sticky-note me-1"></i>Notes
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="card-body">
-                <div class="tab-content">
-
-                    <!-- PARROTS TAB -->
-                    <div class="tab-pane fade show active" id="parrots">
-                        <% if (user && user.permissions && user.permissions.includes('parrots-add')) { %>
-                        <a href="/parrots/create?applicant=<%= applicant.uuid %>" class="btn btn-sm btn-primary mb-3">
-                            <i class="fas fa-plus me-1"></i>Add Parrot
-                        </a>
-                        <% } %>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead><tr><th>Band No.</th><th>Name</th><th>Species</th><th>Sex</th><th>Status</th><th></th></tr></thead>
-                                <tbody>
-                                    <% parrots.forEach(p => { %>
-                                    <tr>
-                                        <td><%= p.band_number || '-' %></td>
-                                        <td><%= p.pet_name || '-' %></td>
-                                        <td><%= p.species_name || '-' %></td>
-                                        <td><%= p.sex || '-' %></td>
-                                        <td>
-                                            <% if (p.confiscated) { %>
-                                                <span class="badge bg-danger">Confiscated</span>
-                                            <% } else { %>
-                                                <span class="badge bg-success">Active</span>
-                                            <% } %>
-                                        </td>
-                                        <td><a href="/parrots/<%= p.uuid %>" class="btn btn-xs btn-outline-primary btn-sm">View</a></td>
-                                    </tr>
-                                    <% }) %>
-                                    <% if (parrots.length === 0) { %>
-                                    <tr><td colspan="6" class="text-center text-muted">No parrots recorded</td></tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Inspection Date <span class="text-danger">*</span></label>
+                    <input type="date" name="inspection_date" class="form-control" required>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Status</label>
+                    <select name="inspection_status" class="form-select">
+                        <option value="scheduled">Scheduled</option>
+                        <option value="approved">Approved</option>
+                        <option value="precondition">Precondition</option>
+                        <option value="confiscate">Confiscate</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Notes</label>
+                    <textarea name="notes" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Follow Up Date</label>
+                    <input type="date" name="followup_date" class="form-control">
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Follow Up Notes</label>
+                    <textarea name="followup_notes" class="form-control" rows="2"></textarea>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Birds Described</label>
+                    <input type="text" name="birds_described" class="form-control">
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-end">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="hand_tame" id="handTame">
+                        <label class="form-check-label" for="handTame">Hand Tame</label>
                     </div>
-
-                    <!-- PERMITS TAB -->
-                    <div class="tab-pane fade" id="permits">
-                        <% if (user && user.permissions && user.permissions.includes('permits-add')) { %>
-                        <a href="/permits/create?applicant=<%= applicant.uuid %>" class="btn btn-sm btn-primary mb-3">
-                            <i class="fas fa-plus me-1"></i>Add Permit
-                        </a>
-                        <% } %>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead><tr><th>Permit No.</th><th>Reference</th><th>Station</th><th>Status</th><th></th></tr></thead>
-                                <tbody>
-                                    <% permits.forEach(p => { %>
-                                    <tr>
-                                        <td><%= p.permit_number || '-' %></td>
-                                        <td><%= p.reference_number || '-' %></td>
-                                        <td><%= p.range_name || '-' %></td>
-                                        <td>
-                                            <span class="badge bg-<%= p.status === 'Active' ? 'success' : p.status === 'Processing' ? 'warning' : p.status === 'Suspended' ? 'danger' : 'secondary' %>">
-                                                <%= p.status || '-' %>
-                                            </span>
-                                        </td>
-                                        <td><a href="/permits/<%= p.uuid %>" class="btn btn-sm btn-outline-primary">View</a></td>
-                                    </tr>
-                                    <% }) %>
-                                    <% if (permits.length === 0) { %>
-                                    <tr><td colspan="5" class="text-center text-muted">No permits recorded</td></tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- INSPECTIONS TAB -->
-                    <div class="tab-pane fade" id="inspections">
-                        <% if (user && user.permissions && user.permissions.includes('inspections-add')) { %>
-                        <a href="/inspections/create?applicant=<%= applicant.uuid %>" class="btn btn-sm btn-primary mb-3">
-                            <i class="fas fa-plus me-1"></i>Schedule Inspection
-                        </a>
-                        <% } %>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead><tr><th>Date</th><th>Inspector</th><th>Status</th><th>Follow Up</th><th></th></tr></thead>
-                                <tbody>
-                                    <% inspections.forEach(i => { %>
-                                    <tr>
-                                        <td><%= i.inspection_date ? new Date(i.inspection_date).toLocaleDateString() : '-' %></td>
-                                        <td><%= i.inspector_name || '-' %></td>
-                                        <td>
-                                            <span class="badge bg-<%= i.inspection_status === 'approved' ? 'success' : i.inspection_status === 'scheduled' ? 'warning' : i.inspection_status === 'confiscate' ? 'danger' : 'secondary' %>">
-                                                <%= i.inspection_status %>
-                                            </span>
-                                        </td>
-                                        <td><%= i.followup_date ? new Date(i.followup_date).toLocaleDateString() : '-' %></td>
-                                        <td><a href="/inspections/<%= i.uuid %>" class="btn btn-sm btn-outline-primary">View</a></td>
-                                    </tr>
-                                    <% }) %>
-                                    <% if (inspections.length === 0) { %>
-                                    <tr><td colspan="5" class="text-center text-muted">No inspections recorded</td></tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- CALLS TAB -->
-                    <div class="tab-pane fade" id="calls">
-                        <% if (user && user.permissions && user.permissions.includes('calls-add')) { %>
-                        <a href="/calls/create?applicant=<%= applicant.uuid %>" class="btn btn-sm btn-primary mb-3">
-                            <i class="fas fa-plus me-1"></i>Log Call
-                        </a>
-                        <% } %>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead><tr><th>Date</th><th>Officer</th><th>Number</th><th>Answered</th><th>Completed</th><th></th></tr></thead>
-                                <tbody>
-                                    <% calls.forEach(c => { %>
-                                    <tr>
-                                        <td><%= c.call_date ? new Date(c.call_date).toLocaleDateString() : '-' %></td>
-                                        <td><%= c.officer_name || '-' %></td>
-                                        <td><%= c.number_called || '-' %></td>
-                                        <td><span class="badge bg-<%= c.is_answered ? 'success' : 'danger' %>"><%= c.is_answered ? 'Yes' : 'No' %></span></td>
-                                        <td><span class="badge bg-<%= c.is_fully_completed ? 'success' : 'warning' %>"><%= c.is_fully_completed ? 'Yes' : 'No' %></span></td>
-                                        <td><a href="/calls/<%= c.uuid %>" class="btn btn-sm btn-outline-primary">View</a></td>
-                                    </tr>
-                                    <% }) %>
-                                    <% if (calls.length === 0) { %>
-                                    <tr><td colspan="6" class="text-center text-muted">No calls recorded</td></tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- OFFENSES TAB -->
-                    <div class="tab-pane fade" id="offenses">
-                        <% if (user && user.permissions && user.permissions.includes('offenses-add')) { %>
-                        <a href="/offenses/create?applicant=<%= applicant.uuid %>" class="btn btn-sm btn-danger mb-3">
-                            <i class="fas fa-plus me-1"></i>Log Offense
-                        </a>
-                        <% } %>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead><tr><th>Date</th><th>Officer</th><th>Wildlife</th><th>Station</th><th></th></tr></thead>
-                                <tbody>
-                                    <% offenses.forEach(o => { %>
-                                    <tr>
-                                        <td><%= o.offense_date ? new Date(o.offense_date).toLocaleDateString() : '-' %></td>
-                                        <td><%= o.officer_name || '-' %></td>
-                                        <td><%= o.illegal_wildlife ? o.illegal_wildlife.substring(0, 40) + '...' : '-' %></td>
-                                        <td><%= o.range_name || '-' %></td>
-                                        <td><a href="/offenses/<%= o.uuid %>" class="btn btn-sm btn-outline-primary">View</a></td>
-                                    </tr>
-                                    <% }) %>
-                                    <% if (offenses.length === 0) { %>
-                                    <tr><td colspan="5" class="text-center text-muted">No offenses recorded</td></tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- NOTES TAB -->
-                    <div class="tab-pane fade" id="notes">
-                        <% if (user && user.permissions && user.permissions.includes('applicants-edit')) { %>
-                        <form method="POST" action="/applicants/<%= applicant.uuid %>/notes">
-                            <div class="mb-3">
-                                <label class="form-label text-muted small">Internal Notes</label>
-                                <textarea name="applicant_notes" class="form-control" rows="10"
-                                    placeholder="Add any notes about this applicant here..."><%= applicant.applicant_notes || '' %></textarea>
-                                <div class="form-text">These notes are for internal use only.</div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save me-1"></i>Save Notes
-                            </button>
-                        </form>
-                        <% } else { %>
-                        <div class="p-2">
-                            <% if (applicant.applicant_notes) { %>
-                                <p class="mb-0" style="white-space:pre-wrap"><%= applicant.applicant_notes %></p>
-                            <% } else { %>
-                                <p class="text-muted">No notes recorded.</p>
-                            <% } %>
-                        </div>
-                        <% } %>
-                    </div>
-
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Instructions for Applicant</label>
+                    <textarea name="instructions_for_applicant" class="form-control" rows="2"></textarea>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Expected Recheck Date</label>
+                    <input type="date" name="expected_recheck" class="form-control">
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Precondition Comments</label>
+                    <textarea name="preconditions_comments" class="form-control" rows="2"></textarea>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="mt-4 d-flex gap-2">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save me-2"></i>Save Inspection
+        </button>
+        <a href="<%= locals.applicantUuid ? '/applicants/' + locals.applicantUuid : '/inspections' %>" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>
