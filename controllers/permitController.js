@@ -7,13 +7,14 @@ const index = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
         const search = req.query.search || null;
+        const status = req.query.status || null;
         const page = parseInt(req.query.page) || 1;
         const limit = 30;
         const offset = (page - 1) * limit;
         const sort = req.query.sort || 'created_at';
         const dir = req.query.dir || 'desc';
 
-        const { permits, total } = await permitModel.getAll(rangeId, search, limit, offset, sort, dir);
+        const { permits, total } = await permitModel.getAll(rangeId, search, limit, offset, sort, dir, status);
         const totalPages = Math.ceil(total / limit);
 
         res.render('permits/index', {
@@ -24,7 +25,8 @@ const index = async (req, res) => {
             totalPages,
             total,
             sort,
-            dir
+            dir,
+            status
         });
     } catch (err) {
         console.error(err);

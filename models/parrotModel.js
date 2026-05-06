@@ -1,6 +1,6 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null, search = null) => {
+const getAll = async (rangeId = null, search = null, status = null) => {
     let whereConditions = [];
     let params = [];
     let paramCount = 1;
@@ -10,7 +10,6 @@ const getAll = async (rangeId = null, search = null) => {
         params.push(rangeId);
         paramCount++;
     }
-
     if (search) {
         whereConditions.push(`(
             p.band_number ILIKE $${paramCount} OR
@@ -22,9 +21,13 @@ const getAll = async (rangeId = null, search = null) => {
         params.push(`%${search}%`);
         paramCount++;
     }
+    if (status === 'confiscated') {
+        whereConditions.push(`p.confiscated = true`);
+    } else if (status === 'active') {
+        whereConditions.push(`p.confiscated = false`);
+    }
 
     const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
-
     const result = await pool.query(
         `SELECT p.*, ps.common_name as species_name,
          a.first_name || ' ' || a.last_name as applicant_name,

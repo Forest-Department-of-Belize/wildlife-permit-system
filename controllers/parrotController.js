@@ -7,11 +7,13 @@ const index = async (req, res) => {
     try {
         const rangeId = getRangeFilter(req);
         const search = req.query.search || null;
-        const parrots = await parrotModel.getAll(rangeId, search);
+        const parrotStatus = req.query.status || null;
+        const parrots = await parrotModel.getAll(rangeId, search, parrotStatus);
         res.render('parrots/index', {
             title: 'Parrots',
             parrots,
-            search: search || ''
+            search: search || '',
+            parrotStatus
         });
     } catch (err) {
         console.error(err);

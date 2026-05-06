@@ -41,7 +41,7 @@
                 </thead>
                 <tbody>
                     <% inspections.forEach(i => { %>
-                    <tr>
+<tr style="cursor:pointer;" ondblclick="window.location='/inspections/<%= i.uuid %>'">
                         <td><%= i.inspection_date ? new Date(i.inspection_date).toLocaleDateString() : '-' %></td>
                         <td><a href="/applicants/<%= i.applicant_uuid %>"><%= i.applicant_name || '-' %></a></td>
                         <td><%= i.inspector_name || '-' %></td>

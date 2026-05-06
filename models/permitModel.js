@@ -1,6 +1,6 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sort = 'created_at', dir = 'desc') => {
+const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sort = 'created_at', dir = 'desc', status = null) => {
     let whereConditions = [];
     let params = [];
     let paramCount = 1;
@@ -10,7 +10,6 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sor
         params.push(rangeId);
         paramCount++;
     }
-
     if (search) {
         whereConditions.push(`(
             p.permit_number ILIKE $${paramCount} OR
@@ -21,9 +20,13 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, sor
         params.push(`%${search}%`);
         paramCount++;
     }
+    if (status) {
+        whereConditions.push(`p.status = $${paramCount}`);
+        params.push(status);
+        paramCount++;
+    }
 
     const whereClause = whereConditions.length > 0 ? 'WHERE ' + whereConditions.join(' AND ') : '';
-
     const allowedSorts = {
         'permit_number': 'p.permit_number',
         'applicant_name': 'a.last_name',
