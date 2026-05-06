@@ -1,6 +1,6 @@
 const pool = require('../db/index');
 
-const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, letter = null, district = null) => {
+const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, letter = null, district = null, status = null) => {
     let whereConditions = [];
     let params = [];
     let paramCount = 1;
@@ -10,7 +10,6 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, let
         params.push(rangeId);
         paramCount++;
     }
-
     if (search) {
         whereConditions.push(`(
             a.first_name ILIKE $${paramCount} OR
@@ -23,16 +22,19 @@ const getAll = async (rangeId = null, search = null, limit = 30, offset = 0, let
         params.push(`%${search}%`);
         paramCount++;
     }
-
     if (letter) {
         whereConditions.push(`a.last_name ILIKE $${paramCount}`);
         params.push(`${letter}%`);
         paramCount++;
     }
-
     if (district) {
         whereConditions.push(`a.district_id = $${paramCount}`);
         params.push(district);
+        paramCount++;
+    }
+    if (status) {
+        whereConditions.push(`a.process_status = $${paramCount}`);
+        params.push(status);
         paramCount++;
     }
 

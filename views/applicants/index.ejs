@@ -11,15 +11,29 @@
 </div>
 <div class="card">
     <div class="card-body">
+
+        <!-- SEARCH — works independently -->
+        <div class="mb-2">
+            <form method="GET" action="/applicants" class="d-flex gap-2">
+                <input type="text" name="search" class="form-control"
+                       placeholder="Search by name, phone, email or ID..."
+                       value="<%= search %>">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+                <% if (search) { %>
+                <a href="/applicants" class="btn btn-outline-secondary">
+                    <i class="fas fa-times"></i>
+                </a>
+                <% } %>
+            </form>
+        </div>
+
+        <!-- FILTER — works independently -->
         <div class="mb-3">
             <form method="GET" action="/applicants" class="row g-2">
-                <div class="col-12 col-md-4">
-                    <input type="text" name="search" class="form-control"
-                           placeholder="Search by name, phone, email or ID..."
-                           value="<%= search %>">
-                </div>
-                <div class="col-6 col-md-2">
-                    <select name="district" class="form-select">
+                <div class="col-6 col-md-3">
+                    <select name="district" class="form-select form-select-sm" onchange="this.form.submit()">
                         <option value="">All Districts</option>
                         <option value="1" <%= district == '1' ? 'selected' : '' %>>Belize</option>
                         <option value="2" <%= district == '2' ? 'selected' : '' %>>Cayo</option>
@@ -29,26 +43,35 @@
                         <option value="6" <%= district == '6' ? 'selected' : '' %>>Toledo</option>
                     </select>
                 </div>
-                <div class="col-6 col-md-2">
-                    <select name="letter" class="form-select">
+                <div class="col-6 col-md-3">
+                    <select name="letter" class="form-select form-select-sm" onchange="this.form.submit()">
                         <option value="">All Names</option>
                         <% ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'].forEach(function(l) { %>
                         <option value="<%= l %>" <%= letter === l ? 'selected' : '' %>><%= l %></option>
                         <% }) %>
                     </select>
                 </div>
-                <div class="col-6 col-md-2">
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="fas fa-filter me-1"></i>Filter
-                    </button>
+                <div class="col-6 col-md-3">
+                    <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                        <option value="">All Statuses</option>
+                        <option value="Pending Call" <%= locals.status == 'Pending Call' ? 'selected' : '' %>>Pending Call</option>
+                        <option value="Called" <%= locals.status == 'Called' ? 'selected' : '' %>>Called</option>
+                        <option value="Inspection Booked" <%= locals.status == 'Inspection Booked' ? 'selected' : '' %>>Inspection Booked</option>
+                        <option value="Inspection Done" <%= locals.status == 'Inspection Done' ? 'selected' : '' %>>Inspection Done</option>
+                        <option value="Pending Compliance" <%= locals.status == 'Pending Compliance' ? 'selected' : '' %>>Pending Compliance</option>
+                        <option value="Approved Awaiting Banding" <%= locals.status == 'Approved Awaiting Banding' ? 'selected' : '' %>>Approved Awaiting Banding</option>
+                        <option value="Approved" <%= locals.status == 'Approved' ? 'selected' : '' %>>Approved</option>
+                        <option value="Rejected" <%= locals.status == 'Rejected' ? 'selected' : '' %>>Rejected</option>
+                    </select>
                 </div>
-                <div class="col-6 col-md-2">
-                    <a href="/applicants" class="btn btn-outline-secondary w-100">
-                        <i class="fas fa-times me-1"></i>Clear
+                <div class="col-6 col-md-3">
+                    <a href="/applicants" class="btn btn-outline-secondary btn-sm w-100">
+                        <i class="fas fa-times me-1"></i>Clear Filters
                     </a>
                 </div>
             </form>
         </div>
+
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
@@ -126,17 +149,17 @@
         <nav class="mt-3">
             <ul class="pagination justify-content-center mb-0">
                 <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
-                    <a class="page-link" href="/applicants?page=<%= page - 1 %>&search=<%= search %>&letter=<%= letter %>&district=<%= district %>">
+                    <a class="page-link" href="/applicants?page=<%= page - 1 %>&search=<%= search %>&letter=<%= letter %>&district=<%= district %>&status=<%= locals.status || '' %>">
                         <i class="fas fa-chevron-left"></i> Prev
                     </a>
                 </li>
                 <% for (let i = Math.max(1, page - 2); i <= Math.min(totalPages, page + 2); i++) { %>
                 <li class="page-item <%= i === page ? 'active' : '' %>">
-                    <a class="page-link" href="/applicants?page=<%= i %>&search=<%= search %>&letter=<%= letter %>&district=<%= district %>"><%= i %></a>
+                    <a class="page-link" href="/applicants?page=<%= i %>&search=<%= search %>&letter=<%= letter %>&district=<%= district %>&status=<%= locals.status || '' %>"><%= i %></a>
                 </li>
                 <% } %>
                 <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
-                    <a class="page-link" href="/applicants?page=<%= page + 1 %>&search=<%= search %>&letter=<%= letter %>&district=<%= district %>">
+                    <a class="page-link" href="/applicants?page=<%= page + 1 %>&search=<%= search %>&letter=<%= letter %>&district=<%= district %>&status=<%= locals.status || '' %>">
                         Next <i class="fas fa-chevron-right"></i>
                     </a>
                 </li>
