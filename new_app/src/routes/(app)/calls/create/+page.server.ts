@@ -2,10 +2,12 @@ import type { Actions, PageServerLoad } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
 import { createCall } from '$lib/server/commands/calls';
 import { listApplicants } from '$lib/server/queries/applicants';
+import { getRangeFilter } from '$lib/utils/range-filter';
 
-export const load: PageServerLoad = async ({ url }) => {
+export const load: PageServerLoad = async ({ url, locals }) => {
 	const applicantId = url.searchParams.get('applicant') || undefined;
-	const applicantsResult = await listApplicants({ limit: 1000, offset: 0 });
+	const rangeId = getRangeFilter(locals.user!);
+	const applicantsResult = await listApplicants({ rangeId, limit: 1000, offset: 0 });
 	return {
 		applicants: applicantsResult.applicants,
 		preselectedApplicantId: applicantId ? Number(applicantId) : undefined

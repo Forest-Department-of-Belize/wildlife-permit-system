@@ -1,5 +1,5 @@
 import type { Actions, PageServerLoad } from './$types';
-import { error, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { getApplicantByUuid } from '$lib/server/queries/applicants';
 import { listDistricts } from '$lib/server/queries/common';
 import { updateApplicant } from '$lib/server/commands/applicants';
@@ -16,6 +16,7 @@ export const load: PageServerLoad = async ({ params }) => {
 export const actions: Actions = {
 	default: async ({ request, params, cookies }) => {
 		const fd = await request.formData();
+		try {
 		await updateApplicant(params.uuid, {
 			firstName: (fd.get('first_name') as string).trim(),
 			middleName: (fd.get('middle_name') as string) || undefined,
@@ -46,6 +47,10 @@ export const actions: Actions = {
 			processStatus: (fd.get('process_status') as string) || 'Pending Call'
 		});
 		cookies.set('flash', JSON.stringify({ type: 'success', message: 'Applicant updated' }), { path: '/', maxAge: 30 });
+		} catch (e) {
+			if (e instanceof Response || (e as any)?.status) throw e;
+			return fail(500, { error: 'Failed to update applicant' });
+		}
 		redirect(302, `/applicants/${params.uuid}`);
 	}
 };

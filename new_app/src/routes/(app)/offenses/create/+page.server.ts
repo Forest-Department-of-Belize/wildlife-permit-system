@@ -3,11 +3,13 @@ import { fail, redirect } from '@sveltejs/kit';
 import { createOffense } from '$lib/server/commands/offenses';
 import { listApplicants } from '$lib/server/queries/applicants';
 import { listRanges } from '$lib/server/queries/common';
+import { getRangeFilter } from '$lib/utils/range-filter';
 
-export const load: PageServerLoad = async ({ url }) => {
+export const load: PageServerLoad = async ({ url, locals }) => {
 	const applicantId = url.searchParams.get('applicant') || undefined;
+	const rangeId = getRangeFilter(locals.user!);
 	const [applicantsResult, ranges] = await Promise.all([
-		listApplicants({ limit: 1000, offset: 0 }),
+		listApplicants({ rangeId, limit: 1000, offset: 0 }),
 		listRanges()
 	]);
 	return {

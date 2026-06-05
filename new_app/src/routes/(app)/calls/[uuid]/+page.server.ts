@@ -1,5 +1,5 @@
-import type { Actions, PageServerLoad } from './$types';
-import { error, redirect } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
+import { error } from '@sveltejs/kit';
 import { getCallByUuid } from '$lib/server/queries/calls';
 
 export const load: PageServerLoad = async ({ params }) => {

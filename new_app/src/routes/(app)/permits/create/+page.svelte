@@ -22,9 +22,13 @@
 		<div class="card-body">
 			<div class="grid grid-2">
 				<div class="form-group">
-					<label class="form-label" for="applicant_id">Applicant ID *</label>
-					<input class="form-input" type="number" id="applicant_id" name="applicant_id" value={data.preselectedApplicantId} required />
-					<small style="color:var(--gray-600);">Enter the applicant's numeric ID</small>
+					<label class="form-label" for="applicant_id">Applicant *</label>
+					<select class="form-select" id="applicant_id" name="applicant_id" required>
+						<option value="">Select Applicant...</option>
+						{#each data.applicants as a}
+							<option value={a.id} selected={data.preselectedApplicantId === a.id}>{a.lastName}, {a.firstName} {a.middleName || ''}</option>
+						{/each}
+					</select>
 				</div>
 				<div class="form-group">
 					<label class="form-label" for="range_id">Station / Range</label>

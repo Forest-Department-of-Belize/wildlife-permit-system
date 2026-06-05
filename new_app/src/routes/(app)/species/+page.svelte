@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { hasPermission, isAdminOrOIC } from '$lib/utils/permissions';
+	import { hasPermission } from '$lib/utils/permissions';
 
 	let { data } = $props();
 	const user = $derived(data.user);

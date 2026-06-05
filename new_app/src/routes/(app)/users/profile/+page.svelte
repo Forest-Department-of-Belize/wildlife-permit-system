@@ -59,11 +59,11 @@
 			<div class="grid grid-2">
 				<div class="form-group">
 					<label class="form-label">Role</label>
-					<p>{user.role}</p>
+					<p>{user.role ?? '-'}</p>
 				</div>
 				<div class="form-group">
 					<label class="form-label">Forest Station</label>
-					<p>{user.rangeName || 'All Stations'}</p>
+					<p>{user.rangeName ?? 'All Stations'}</p>
 				</div>
 			</div>
 		</div>

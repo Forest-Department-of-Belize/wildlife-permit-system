@@ -12,10 +12,7 @@ export async function getDistrictByUuid(uuid: string) {
 }
 
 export async function listRanges(districtId?: number) {
-	if (districtId) {
-		return db.select().from(ranges).where(eq(ranges.districtId, districtId)).orderBy(asc(ranges.name));
-	}
-	return db
+	const query = db
 		.select({
 			id: ranges.id,
 			uuid: ranges.uuid,
@@ -28,6 +25,11 @@ export async function listRanges(districtId?: number) {
 		.from(ranges)
 		.leftJoin(districts, eq(ranges.districtId, districts.id))
 		.orderBy(asc(ranges.name));
+
+	if (districtId) {
+		return query.where(eq(ranges.districtId, districtId));
+	}
+	return query;
 }
 
 export async function getRangeByUuid(uuid: string) {

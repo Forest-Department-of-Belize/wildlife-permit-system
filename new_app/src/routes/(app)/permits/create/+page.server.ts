@@ -1,12 +1,18 @@
 import type { Actions, PageServerLoad } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
 import { listRanges } from '$lib/server/queries/common';
+import { listApplicants } from '$lib/server/queries/applicants';
 import { createPermit } from '$lib/server/commands/permits';
+import { getRangeFilter } from '$lib/utils/range-filter';
 
-export const load: PageServerLoad = async ({ url }) => {
-	const ranges = await listRanges();
-	const preselectedApplicantId = url.searchParams.get('applicant') || '';
-	return { ranges, preselectedApplicantId };
+export const load: PageServerLoad = async ({ url, locals }) => {
+	const rangeId = getRangeFilter(locals.user!);
+	const [ranges, applicantsResult] = await Promise.all([
+		listRanges(),
+		listApplicants({ rangeId, limit: 1000, offset: 0 })
+	]);
+	const preselectedApplicantId = url.searchParams.get('applicant') ? Number(url.searchParams.get('applicant')) : undefined;
+	return { ranges, applicants: applicantsResult.applicants, preselectedApplicantId };
 };
 
 export const actions: Actions = {

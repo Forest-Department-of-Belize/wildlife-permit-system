@@ -1,5 +1,5 @@
 import type { Actions, PageServerLoad } from './$types';
-import { error, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { getParrotByUuid } from '$lib/server/queries/parrots';
 import { listSpecies, listRanges } from '$lib/server/queries/common';
 import { searchApplicants } from '$lib/server/queries/applicants';
@@ -24,6 +24,7 @@ export const actions: Actions = {
 	default: async ({ request, params, cookies }) => {
 		const fd = await request.formData();
 
+		try {
 		await updateParrot(params.uuid, {
 			applicantId: fd.get('applicant_id') ? Number(fd.get('applicant_id')) : undefined,
 			speciesId: fd.get('species_id') ? Number(fd.get('species_id')) : undefined,
@@ -48,6 +49,10 @@ export const actions: Actions = {
 		});
 
 		cookies.set('flash', JSON.stringify({ type: 'success', message: 'Parrot updated' }), { path: '/', maxAge: 30 });
+		} catch (e) {
+			if (e instanceof Response || (e as any)?.status) throw e;
+			return fail(500, { error: 'Failed to update parrot' });
+		}
 		redirect(302, `/parrots/${params.uuid}`);
 	}
 };

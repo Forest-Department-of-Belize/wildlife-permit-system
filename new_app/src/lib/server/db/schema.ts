@@ -157,7 +157,7 @@ export const parrots = pgTable(
 		methodObtained: varchar('method_obtained', { length: 100 }),
 		periodOfOwnershipMonths: integer('period_of_ownership_months'),
 		housingDetails: text('housing_details'),
-		hasParrot: varchar('has_parrot', { length: 20 }),
+		hasParrot: boolean('has_parrot').default(false),
 		whyNoParrot: text('why_no_parrot'),
 		isHealthy: boolean('is_healthy').default(true),
 		healthComments: text('health_comments'),

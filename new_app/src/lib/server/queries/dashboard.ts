@@ -35,7 +35,7 @@ export async function getDashboardStats(rangeId: number | null) {
 			pendingInspections: pendingInspectionCount[0]?.total ?? 0,
 			confiscatedParrots: confiscatedCount[0]?.total ?? 0
 		},
-		recentInspections: recentInspections.rows
+		recentInspections
 	};
 }
 
@@ -63,9 +63,9 @@ export async function getDashboardChartData(rangeId: number | null) {
 		]);
 
 	return {
-		permitsByStatus: permitsByStatus.rows,
-		permitsByStation: permitsByStation.rows,
-		applicantsByStation: applicantsByStation.rows,
-		inspectionsByStatus: inspectionsByStatus.rows
+		permitsByStatus,
+		permitsByStation,
+		applicantsByStation,
+		inspectionsByStatus
 	};
 }

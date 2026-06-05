@@ -14,7 +14,7 @@ interface ParrotData {
 	methodObtained?: string;
 	periodOfOwnershipMonths?: number | null;
 	housingDetails?: string;
-	hasParrot?: string;
+	hasParrot?: boolean;
 	whyNoParrot?: string;
 	isHealthy?: boolean;
 	healthComments?: string;
@@ -40,7 +40,7 @@ export async function createParrot(data: ParrotData) {
 			methodObtained: data.methodObtained || null,
 			periodOfOwnershipMonths: data.periodOfOwnershipMonths || null,
 			housingDetails: data.housingDetails || null,
-			hasParrot: data.hasParrot || null,
+			hasParrot: data.hasParrot ?? false,
 			whyNoParrot: data.whyNoParrot || null,
 			isHealthy: data.isHealthy ?? true,
 			healthComments: data.healthComments || null,

@@ -1,5 +1,5 @@
 import type { Actions, PageServerLoad } from './$types';
-import { error, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { getInspectionByUuid } from '$lib/server/queries/inspections';
 import { listRanges } from '$lib/server/queries/common';
 import { searchApplicants } from '$lib/server/queries/applicants';
@@ -23,23 +23,27 @@ export const actions: Actions = {
 	default: async ({ request, params, cookies }) => {
 		const fd = await request.formData();
 
-		await updateInspection(params.uuid, {
-			applicantId: fd.get('applicant_id') ? Number(fd.get('applicant_id')) : undefined,
-			rangeId: fd.get('range_id') ? Number(fd.get('range_id')) : undefined,
-			inspectorName: (fd.get('inspector_name') as string) || undefined,
-			inspectionDate: (fd.get('inspection_date') as string) || undefined,
-			inspectionStatus: (fd.get('inspection_status') as string) || 'scheduled',
-			notes: (fd.get('notes') as string) || undefined,
-			followupDate: (fd.get('followup_date') as string) || undefined,
-			followupNotes: (fd.get('followup_notes') as string) || undefined,
-			birdsDescribed: (fd.get('birds_described') as string) || undefined,
-			handTame: fd.get('hand_tame') === 'on',
-			instructionsForApplicant: (fd.get('instructions_for_applicant') as string) || undefined,
-			expectedRecheck: (fd.get('expected_recheck') as string) || undefined,
-			preconditionsComments: (fd.get('preconditions_comments') as string) || undefined
-		});
-
-		cookies.set('flash', JSON.stringify({ type: 'success', message: 'Inspection updated' }), { path: '/', maxAge: 30 });
+		try {
+			await updateInspection(params.uuid, {
+				applicantId: fd.get('applicant_id') ? Number(fd.get('applicant_id')) : undefined,
+				rangeId: fd.get('range_id') ? Number(fd.get('range_id')) : undefined,
+				inspectorName: (fd.get('inspector_name') as string) || undefined,
+				inspectionDate: (fd.get('inspection_date') as string) || undefined,
+				inspectionStatus: (fd.get('inspection_status') as string) || 'scheduled',
+				notes: (fd.get('notes') as string) || undefined,
+				followupDate: (fd.get('followup_date') as string) || undefined,
+				followupNotes: (fd.get('followup_notes') as string) || undefined,
+				birdsDescribed: (fd.get('birds_described') as string) || undefined,
+				handTame: fd.get('hand_tame') === 'on',
+				instructionsForApplicant: (fd.get('instructions_for_applicant') as string) || undefined,
+				expectedRecheck: (fd.get('expected_recheck') as string) || undefined,
+				preconditionsComments: (fd.get('preconditions_comments') as string) || undefined
+			});
+			cookies.set('flash', JSON.stringify({ type: 'success', message: 'Inspection updated' }), { path: '/', maxAge: 30 });
+		} catch (e) {
+			if (e instanceof Response || (e as any)?.status) throw e;
+			return fail(500, { error: 'Failed to update inspection' });
+		}
 		redirect(302, `/inspections/${params.uuid}`);
 	}
 };
