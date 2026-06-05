@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { hasPermission } from '$lib/utils/permissions';
 	import { goto } from '$app/navigation';
+	import { hasPermission } from '$lib/utils/permissions';
 
 	let { data } = $props();
 	const user = $derived(data.user);
@@ -31,7 +31,7 @@
 			<tbody>
 				{#each data.users as u}
 					<tr class="clickable" ondblclick={() => goto(`/users/${u.uuid}`)}>
-						<td><a href="/users/{u.uuid}">{u.lastName}, {u.firstName}</a></td>
+						<td><a href="/users/{u.uuid}">{u.lastName === null ? u.firstName : `${u.lastName}, ${u.firstName}`}</a></td>
 						<td>{u.email}</td>
 						<td>{u.roleName || '-'}</td>
 						<td>{u.rangeName || 'All Stations'}</td>
