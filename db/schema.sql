@@ -1,6 +1,6 @@
 -- ============================================================
 -- Captive Wildlife Permit Management System
--- Belize Forestry Department
+-- Forest Department of Belize
 -- Database Schema & Seed Data
 -- ============================================================
 

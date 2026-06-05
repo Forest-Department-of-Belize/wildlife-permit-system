@@ -9,7 +9,7 @@
 	<div class="auth-header">
 		<div class="auth-icon"><i class="fas fa-leaf"></i></div>
 		<h2>Wildlife Permit System</h2>
-		<p>Belize Forestry Department</p>
+		<p>Forest Department of Belize</p>
 	</div>
 
 	{#if form?.error}

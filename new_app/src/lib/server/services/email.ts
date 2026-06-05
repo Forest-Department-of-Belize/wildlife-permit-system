@@ -1,5 +1,5 @@
-import { Resend } from 'resend';
 import { env } from '$env/dynamic/private';
+import { Resend } from 'resend';
 
 const resend = new Resend(env.RESEND_API_KEY || 'placeholder');
 
@@ -16,7 +16,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
 				Reset My Password
 			</a>
 			<p>If you did not request this, please ignore this email.</p>
-			<p>Belize Forestry Department</p>
+			<p>Forest Department of Belize</p>
 		`
 	});
 }
@@ -33,7 +33,7 @@ export async function sendInviteEmail(email: string, token: string, name: string
 			<a href="${setupUrl}" style="background:#2E7D32;color:white;padding:12px 24px;text-decoration:none;border-radius:5px;display:inline-block;margin:10px 0;">
 				Set Up My Account
 			</a>
-			<p>Belize Forestry Department</p>
+			<p>Forest Department of Belize</p>
 		`
 	});
 }

@@ -1,9 +1,9 @@
 #  Captive Wildlife Permit Management System
-### Belize Forestry Department — Wildlife Program
+### Forest Department of Belize — Wildlife Program
 
 **Developer:** Jevon Teul  
 **Supervisor:** Mrs. Victoria Chi  
-**Organization:** Belize Forestry Department  
+**Organization:** Forest Department of Belize  
 **Live URL:** https://wildlife-permit-system.onrender.com  
 **GitHub:** https://github.com/JevonTeul/-wildlife-permit-system  
 

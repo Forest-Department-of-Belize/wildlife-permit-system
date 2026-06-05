@@ -95,7 +95,7 @@ const postForgotPassword = async (req, res) => {
                            Reset My Password
                         </a>
                         <p>If you did not request this, please ignore this email.</p>
-                        <p>Belize Forestry Department</p>
+                        <p>Forest Department of Belize</p>
                     `
                 });
                 console.log('Password reset email sent to:', email);

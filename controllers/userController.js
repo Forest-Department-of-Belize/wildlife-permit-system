@@ -103,7 +103,7 @@ if (errors.length > 0) {
                 html: `
                     <h2>Welcome to the Wildlife Permit System</h2>
                     <p>Hello ${req.body.first_name},</p>
-                    <p>You have been invited to access the Belize Forestry Department
+                    <p>You have been invited to access the Forest Department of Belize
                        Wildlife Permit Management System.</p>
                     <p>Click the link below to set up your account.
                        This link expires in 48 hours.</p>
@@ -113,7 +113,7 @@ if (errors.length > 0) {
                        Set Up My Account
                     </a>
                     <p>If you did not expect this invitation, please ignore this email.</p>
-                    <p>Belize Forestry Department</p>
+                    <p>Forest Department of Belize</p>
                 `
             });
             console.log('Resend response:', JSON.stringify(emailResult));
@@ -264,11 +264,11 @@ const deactivate = async (req, res) => {
                 html: `
                     <h2>Account Deactivated</h2>
                     <p>Hello ${deactivateUser.first_name},</p>
-                    <p>Your account on the Belize Forestry Department Wildlife Permit
+                    <p>Your account on the Forest Department of Belize Wildlife Permit
                        Management System has been deactivated by an administrator.</p>
                     <p>If you believe this was done in error please contact your
                        supervisor or the Wildlife Program Manager.</p>
-                    <p>Belize Forestry Department</p>
+                    <p>Forest Department of Belize</p>
                 `
             });
         } catch (mailErr) {
@@ -302,10 +302,10 @@ const reactivate = async (req, res) => {
                 html: `
                     <h2>Account Reactivated</h2>
                     <p>Hello ${reactivateUser.first_name},</p>
-                    <p>Your account on the Belize Forestry Department Wildlife Permit
+                    <p>Your account on the Forest Department of Belize Wildlife Permit
                        Management System has been reactivated.</p>
                     <p>You can now log in at: <a href="${process.env.APP_URL}">${process.env.APP_URL}</a></p>
-                    <p>Belize Forestry Department</p>
+                    <p>Forest Department of Belize</p>
                 `
             });
         } catch (mailErr) {
