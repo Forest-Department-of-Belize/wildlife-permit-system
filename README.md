@@ -1,11 +1,10 @@
-#  Captive Wildlife Permit Management System
+# Captive Wildlife Permit Management System
 ### Forest Department of Belize — Wildlife Program
 
-**Developer:** Jevon Teul  
+**Original Developer:** Jevon Teul  
+**SvelteKit Migration:** Immanuel Garcia  
 **Supervisor:** Mrs. Victoria Chi  
 **Organization:** Forest Department of Belize  
-**Live URL:** https://wildlife-permit-system.onrender.com  
-**GitHub:** https://github.com/JevonTeul/-wildlife-permit-system  
 
 ---
 
@@ -13,13 +12,14 @@
 
 | Layer | Technology |
 |-------|-----------|
-| Backend | Node.js + Express.js |
-| Views | EJS + express-ejs-layouts |
-| Styling | Bootstrap 5 + custom CSS |
-| Database | PostgreSQL (Supabase cloud) |
+| Framework | SvelteKit 2 + Svelte 5 (runes) |
+| ORM | Drizzle ORM |
+| Database | PostgreSQL (Neon) |
+| Database Driver | postgres.js |
+| Architecture | CQRS (queries/commands separation) |
 | Email | Resend API |
-| Hosting | Render.com (free tier) |
-| Charts | Chart.js 4.4.0 |
+| Styling | Custom CSS |
+| Hosting | Vercel (adapter-vercel) |
 
 ---
 
@@ -27,85 +27,84 @@
 
 ```
 wildlife-permit-system/
- app.js                          # Main entry point
- .env                            # Environment variables (never commit!)
- db/
-    index.js                    # Database connection pool
-    schema.sql                  # Full database schema
-    seed.sql                    # Seed data (roles, districts, species)
- controllers/                    # Route handlers
-    applicantController.js
-    parrotController.js
-    permitController.js
-    inspectionController.js
-    callController.js
-    offenseController.js
-    speciesController.js
-    districtController.js
-    rangeController.js
-    userController.js
-    dashboardController.js
-    authController.js
- models/                         # Database queries
-    applicantModel.js
-    parrotModel.js
-    permitModel.js
-    inspectionModel.js
-    callModel.js
-    offenseModel.js
-    speciesModel.js
-    districtModel.js
-    rangeModel.js
-    userModel.js
-    roleModel.js
- routes/                         # Express routes
-    [same modules as controllers]
- middleware/
-    auth.js                     # isLoggedIn check
-    permissions.js              # hasPermission check
-    rangeFilter.js              # getRangeFilter helper
- views/
-    layouts/
-       main.ejs                # Main app layout with sidebar
-       auth.ejs                # Login/reset layout
-    dashboard/index.ejs
-    applicants/                 # index, view, create, edit
-    parrots/
-    permits/
-    inspections/
-    calls/
-    offenses/
-    species/
-    districts/
-    ranges/
-    users/
- public/
-     css/style.css
-     js/main.js
-     images/species/             # Uploaded species images
+  src/
+    app.css                           # Global styles
+    app.html                          # HTML shell
+    app.d.ts                          # App type declarations
+    hooks.server.ts                   # Auth guard + session parsing
+    lib/
+      server/
+        db/
+          index.ts                    # Drizzle + postgres.js connection
+          schema.ts                   # Full Drizzle schema (all tables)
+        queries/                      # CQRS read side
+          applicants.ts
+          calls.ts
+          common.ts                   # Districts, ranges, species, roles, users
+          dashboard.ts
+          inspections.ts
+          offenses.ts
+          parrots.ts
+          permits.ts
+        commands/                     # CQRS write side
+          applicants.ts
+          auth.ts
+          calls.ts
+          inspections.ts
+          offenses.ts
+          parrots.ts
+          permits.ts
+          users.ts                    # Users, districts, ranges, species
+        services/
+          email.ts                    # Resend integration
+      components/
+        Alert.svelte                  # Flash message component
+        Pagination.svelte
+        StatCard.svelte
+      utils/
+        permissions.ts               # RBAC helpers + SessionUser type
+        range-filter.ts              # Range scoping for non-admin users
+    routes/
+      (auth)/                         # Public auth pages
+        login/
+        forgot-password/
+        reset-password/[token]/
+        setup-account/[token]/
+      (app)/                          # Authenticated pages (sidebar layout)
+        dashboard/
+        applicants/
+        parrots/
+        permits/
+        inspections/
+        calls/
+        offenses/
+        species/
+        users/
+        districts/
+        ranges/
+        import/
+      api/                            # JSON endpoints
+      logout/
+  drizzle.config.ts
+  svelte.config.js
+  vite.config.ts
 ```
 
 ---
 
 ## Environment Variables
 
-Create a `.env` file in the root with:
-
 ```
-DATABASE_URL=postgresql://postgres.ilsgioeaeystqyjtnrqk:Forestry%402026-2@aws-1-us-east-1.pooler.supabase.com:5432/postgres
-SESSION_SECRET=wildlife_super_secret_key_change_this_later
-NODE_ENV=production
-RESEND_API_KEY=re_3QUeMXb6_ErW1wXS78oedBPbKQgs5qJT3
-APP_URL=https://wildlife-permit-system.onrender.com
-MAIL_USER=2022215700@ub.edu.bz
-MAIL_PORT=587
+DATABASE_URL=<neon-connection-string>
+RESEND_API_KEY=<resend-api-key>
+APP_URL=<deployed-url>
 ```
 
 ---
 
 ## Database
 
-Hosted on **Supabase**. Connection string above.
+Hosted on **Neon**.
 
 ### Tables
 
@@ -123,12 +122,11 @@ Hosted on **Supabase**. Connection string above.
 | calls | Phone call logs |
 | compound_offenses | Wildlife offense records |
 | audit_logs | System activity log |
-| session | Express session storage |
 
 ### Key Columns in Applicants
 
 - `range_id` — which forest station manages this applicant
-- `process_status` — workflow stage (Pending Call → Called → Inspection Booked → Inspection Done → Pending Compliance → Approved Awaiting Banding → Approved)
+- `process_status` — workflow stage (Pending Call -> Called -> Inspection Booked -> Inspection Done -> Pending Compliance -> Approved Awaiting Banding -> Approved)
 - `applicant_notes` — free text internal notes
 
 ---
@@ -151,14 +149,14 @@ Permissions are stored as a JSON array in the `roles` table. Example:
 
 ## Forest Stations & Districts
 
-| Station | Districts Covered | range_id |
-|---------|-------------------|----------|
-| Orange Walk Forest Station | Corozal + Orange Walk | 1 |
-| Belmopan Headquarters | Belize District | 2 |
-| San Ignacio Forest Station | Cayo | 3 |
-| Douglas D Silva Forest Station | Cayo (Mountain Pine Ridge) | 4 |
-| Savanna Forest Station | Stann Creek | 5 |
-| Machaca Forest Station | Toledo | 6 |
+| Station | Districts Covered |
+|---------|-------------------|
+| Orange Walk Forest Station | Corozal + Orange Walk |
+| Belmopan Headquarters | Belize District |
+| San Ignacio Forest Station | Cayo |
+| Douglas D Silva Forest Station | Cayo (Mountain Pine Ridge) |
+| Savanna Forest Station | Stann Creek |
+| Machaca Forest Station | Toledo |
 
 ---
 
@@ -175,120 +173,116 @@ Permissions are stored as a JSON array in the `roles` table. Example:
 
 ### Workflow for a New Applicant
 
-1. **Create Applicant** → Go to Applicants → Add Applicant
-2. **Add Parrots** → Open applicant profile → Parrots tab → Add Parrot
-3. **Issue Permit** → Permits tab → Add Permit
-4. **Schedule Inspection** → Inspections tab → Schedule Inspection
-5. **Log Calls** → Calls tab → Log Call
-6. **Update Status** → Use the progress tracker dropdown on the profile
+1. **Create Applicant** — Go to Applicants, click Add Applicant
+2. **Add Parrots** — Open applicant profile, Parrots tab, Add Parrot
+3. **Issue Permit** — Permits tab, Add Permit
+4. **Schedule Inspection** — Inspections tab, Schedule Inspection
+5. **Log Calls** — Calls tab, Log Call
+6. **Update Status** — Use the progress tracker dropdown on the profile
 
 ### Process Status Flow
 
 ```
-Pending Call → Called → Inspection Booked → Inspection Done 
-→ Pending Compliance → Approved Awaiting Banding → Approved
+Pending Call -> Called -> Inspection Booked -> Inspection Done
+-> Pending Compliance -> Approved Awaiting Banding -> Approved
 ```
 
 ---
 
 ## Key Features
 
--  Role-based access control with range isolation
--  Mobile responsive sidebar layout
--  10-minute auto logout on inactivity
--  Dashboard with 4 Chart.js charts
--  Inspection calendar view
--  Progress tracker on applicant profile
--  Filter by district, letter, status on applicants
--  Separate search and filter on all list pages
--  Double-click rows to open records
--  Pre-select applicant when adding parrot/permit/inspection/call/offense
--  Pagination on applicants and permits
--  Notes tab on applicant profile
--  User invitation system with copy setup link
+- Role-based access control with range isolation
+- Mobile responsive sidebar layout
+- 10-minute auto logout on inactivity
+- Dashboard with chart data
+- Progress tracker on applicant profile
+- Filter by district, letter, status on applicants
+- Pre-select applicant when adding parrot/permit/inspection/call/offense
+- Pagination on list pages
+- Notes tab on applicant profile
+- User invitation system with setup link
 
 ---
 
 ## Running Locally
 
 ```bash
-git clone https://github.com/JevonTeul/-wildlife-permit-system
+git clone <repo-url>
 cd wildlife-permit-system
 npm install
 # Create .env file with variables above
-node app.js
+npm run dev
 ```
-
-App runs on http://localhost:10000
 
 ---
 
 ## Deployment
 
-Hosted on **Render.com** free tier. Pushes to `main` branch auto-deploy.
+Hosted on **Vercel** with `adapter-vercel`. Pushes to `main` branch auto-deploy.
 
-- Build command: `npm install`
-- Start command: `node app.js`
-- Environment variables set in Render dashboard
-
-**Note:** Free tier spins down after 15 minutes of inactivity. First load may take 30-60 seconds to wake up.
+Environment variables are set in the Vercel dashboard.
 
 ---
 
-## Adding New Features — For Interns
+## Adding New Features
 
 ### Adding a new field to an existing form
 
-1. Add the column to the database via psql
-2. Update the model's `create` and `update` functions to include the new field
-3. Update the view's form to include the new input
-4. Test locally then push to GitHub
+1. Add the column in `src/lib/server/db/schema.ts`
+2. Run `npm run db:push` to sync the schema to the database
+3. Update the query in `src/lib/server/queries/` if needed
+4. Update the command in `src/lib/server/commands/` to handle the new field
+5. Add the input to the relevant `+page.svelte` form
+6. Add the field to the form action in `+page.server.ts`
 
 ### Adding a new module
 
-1. Create `models/newModel.js` with getAll, findByUuid, create, update, remove
-2. Create `controllers/newController.js` with index, view, create, store, edit, update
-3. Create `routes/new.js` with isLoggedIn and hasPermission middleware
-4. Register the route in `app.js`
+1. Define the table in `src/lib/server/db/schema.ts`
+2. Create `src/lib/server/queries/newModule.ts` with list and get functions
+3. Create `src/lib/server/commands/newModule.ts` with create, update, delete functions
+4. Create route files under `src/routes/(app)/newModule/`:
+   - `+page.server.ts` + `+page.svelte` (list)
+   - `create/+page.server.ts` + `create/+page.svelte`
+   - `[uuid]/+page.server.ts` + `[uuid]/+page.svelte` (view)
+   - `[uuid]/edit/+page.server.ts` + `[uuid]/edit/+page.svelte`
 5. Add permissions to roles in the database
-6. Create views in `views/new/` folder (index, view, create, edit)
-7. Add to sidebar in `views/layouts/main.ejs` if needed
+6. Add the link to the sidebar in `src/routes/(app)/+layout.svelte`
 
 ### Database changes
 
-Always run schema changes via psql:
+Use Drizzle Kit to manage schema changes:
 ```bash
-psql "DATABASE_URL" -c "ALTER TABLE tablename ADD COLUMN ..."
+npm run db:push      # Push schema changes to the database
+npm run db:generate  # Generate migration files
+npm run db:migrate   # Run pending migrations
+npm run db:studio    # Open Drizzle Studio to browse data
 ```
-
-Never edit the Supabase dashboard directly as it can cause issues with the connection pool.
 
 ---
 
 ## 9 Parrot Species
 
-| ID | Common Name | Scientific Name |
-|----|-------------|-----------------|
-| - | Scarlet Macaw | Ara macao |
-| - | Yellow-headed Parrot | Amazona oratrix |
-| - | Mealy Parrot | Amazona farinosa |
-| - | Red-lored Parrot | Amazona autumnalis |
-| - | White-fronted Parrot | Amazona albifrons |
-| - | White-crowned Parrot | Pionus senilis |
-| - | Yellow-lored Parrot | Amazona xantholora |
-| - | Brown-hooded Parrot | Pyrilia haematotis |
-| - | Olive-throated Parakeet | Eupsittula nana |
+| Common Name | Scientific Name |
+|-------------|-----------------|
+| Scarlet Macaw | Ara macao |
+| Yellow-headed Parrot | Amazona oratrix |
+| Mealy Parrot | Amazona farinosa |
+| Red-lored Parrot | Amazona autumnalis |
+| White-fronted Parrot | Amazona albifrons |
+| White-crowned Parrot | Pionus senilis |
+| Yellow-lored Parrot | Amazona xantholora |
+| Brown-hooded Parrot | Pyrilia haematotis |
+| Olive-throated Parakeet | Eupsittula nana |
 
 ---
 
-## Email Notes
+## Email
 
-Render.com blocks SMTP. Resend API is integrated but restricted to verified sender until domain is verified. Workaround: copy setup link button on users list page for sharing invite links via WhatsApp.
+Resend API is used for password reset and invitation emails. Restricted to verified sender until domain is verified. Workaround: copy setup link button on users list page for sharing invite links via WhatsApp.
 
 ---
 
 ## Contact
 
-**Developer:** Jevon Teul  
-**Email:** 2022215700@ub.edu.bz  
-**GitHub:** https://github.com/JevonTeul  
+**Original Developer:** Jevon Teul  
+**Migration:** Immanuel Garcia  
