@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx -y sv@latest create new_app --template minimal --types ts --no-add-ons --no-install)"
+    ]
+  }
+}
