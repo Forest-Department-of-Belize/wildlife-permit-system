@@ -1,0 +1,31 @@
+confiscation_id,applicant_id_eri,officer_id_eri,range,illegal_wildlife,conf_date,hand_tame,date_acquired,approx_date_acquired,less_12_months_acquired,prior_history,health_issues,diet_notes,cage_size_feet,cage_confiscated,cage_location,reason_confiscated,signed_officer,signed_offender,signed_date,offense_comments
+Conf_0001,App_1615,,OW,"Deer, Chachalaca, Chachalaca, Faisan, Faisan, Faisan, Peacock, Peacock, Peacock, Gibnut, White-Capped Parrot, Parakeet, Wild duck, Wild duck, Wild duck, Curassow",2014-10-02 00:00:00,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Yes,Yes,2014-10-06 00:00:00,NA
+Conf_0002,App_1452,,OW,One parakeet,MISSING,No,MISSING,MISSING,No,MISSING,One limb under stress,NA,MISSING,No,MISSING,"Not hand tame, health issues",No,No,NA,NA
+Conf_0003,App_1453,,OW,"1 red lored, 1 white fronted parrot",2015-08-19 00:00:00,Yes,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,No,MISSING,Baby bird,Yes,Yes,2015-08-19 00:00:00,NA
+Conf_0004,App_1454,,OW,1 squash/cuatimundi,2016-06-16 00:00:00,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,No,Yes,MISSING,NA
+Conf_0005,App_1455,,OW,2 parakeet and baby parrots,2016-06-17 00:00:00,No,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,Yes,MISSING,"Not hand tame, Baby bird",No,Yes,2016-06-17 00:00:00,NA
+Conf_0006,App_1173,,OW,Baby parakeet,2016-06-17 00:00:00,MISSING,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,No,MISSING,Baby Bird,Yes,Yes,2016-06-17 00:00:00,NA
+Conf_0007,App_726,,OW,Baby parakeet,2016-06-17 00:00:00,MISSING,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,No,MISSING,Baby Bird,Yes,Yes,2016-06-17 00:00:00,NA
+Conf_0008,App_64,,OW,Baby white fronted,2016-06-17 00:00:00,Yes,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,No,MISSING,Baby Bird,Yes,Yes,2016-06-17 00:00:00,NA
+Conf_0009,App_1456,,OW,Baby Parrot,2016-09-23,No,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,MISSING,MISSING,Baby Bird,Yes,Yes,2016-09-23 00:00:00,NA
+Conf_0010,App_1457,,OW,MISSING,2016-09-26 00:00:00,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Other,Yes,Yes,2016-09-26 00:00:00,NA
+Conf_0011,App_104,,OW,White Fronted Parrot,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Other,No,Yes,2016-09-26 00:00:00,NA
+Conf_0012,App_1458,,OW,White Fronted Parrot,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Other,Yes,Yes,MISSING,NA
+Conf_0013,App_1459,,OW,MISSING,2016-10-12 00:00:00,No,MISSING,MISSING,MISSING,MISSING,Bad Conditions,MISSING,Small Cage,MISSING,MISSING,Health Issues,Yes,Yes,2016-10-12 00:00:00,NA
+Conf_0014,App_1460,,OW,MISSING,MISSING,Yes,MISSING,MISSING,Yes,MISSING,MISSING,MISSING,MISSING,No,MISSING,Baby Bird,Yes,Yes,2016-10-17 00:00:00,NA
+Conf_0015,App_381,,OW,Baby White Fronted,2016-10-18 00:00:00,Yes,MISSING,MISSING,Yes,MISSING,NA,Poor,MISSING,No,MISSING,"Health Issues, Baby Bird",Yes,Yes,2016-10-18 00:00:00,NA
+Conf_0016,App_1461,,OW,Baby Parrots,2017-06-22 00:00:00,MISSING,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,MISSING,MISSING,Baby Bird,Yes,Yes,2017-06-22 00:00:00,NA
+Conf_0017,App_1462,,OW,Baby Red Lored Parrot,2017-07-19 00:00:00,Yes,MISSING,MISSING,Yes,Rescued and found in wild.,NA,NA,MISSING,No,MISSING,Baby Bird,Yes,Yes,2017-07-19 00:00:00,NA
+Conf_0301,App_287,,Cayo,White-fronted Parrot,2014-10-01 00:00:00,No,MISSING,6 months ago,Yes,MISSING,NA,NA,MISSING,No,On veranda,Not hand tame,Yes,Yes,2014-10-01 00:00:00,NA
+Conf_0302,App_1629,,Cayo,White-fronted Parrot,2014-10-02 00:00:00,MISSING,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,No,MISSING,Baby Bird,Yes,Yes,2014-10-02 00:00:00,Baby with entire left wing clipped
+Conf_0303,App_164,,Cayo,Red-lored Parrot,2014-10-02 00:00:00,Yes,MISSING,MISSING,No,MISSING,NA,NA,MISSING,No,MISSING,Exceeds permitted number of birds,Yes,Yes,2014-10-02 00:00:00,Going slightly mad
+Conf_0304,App_1630,,Cayo,Howler monkey,2014-12-08 00:00:00,Yes,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,No,MISSING,Prohibited/exotic species,Yes,Yes,2014-12-08 00:00:00,NA
+Conf_0305,App_639,,Cayo,Red-lored Parrot,2015-05-06 00:00:00,No,MISSING,MISSING,No,MISSING,Not healthy,NA,MISSING,No,Hanging from veranda,Not hand tame,Yes,Yes,2014-05-06 00:00:00,NA
+Conf_0306,App_776,,Cayo,White-fronted Parrot,2015-05-06 00:00:00,Yes,MISSING,1yr 2 months,No,MISSING,Missing tail,Poor,MISSING,No,In front of house,Health issues,Yes,Yes,2015-05-06 00:00:00,NA
+Conf_0307,App_1631,,Cayo,3 collared peccaries,2015-05-12 00:00:00,No,MISSING,8 months,Yes,MISSING,NA,NA,MISSING,No,Beside house,Not hand tame,No,Yes,2015-05-12 00:00:00,NA
+Conf_0308,App_1632,,Cayo,Gibnut,2015-05-12 00:00:00,No,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,"Not hand tame, prohibited/exotic species",Yes,Yes,2015-05-12 00:00:00,NA
+Conf_0309,App_669,,Cayo,Red-lored Parrot,2015-05-14 00:00:00,Yes,MISSING,19 years,No,MISSING,NA,NA,MISSING,No,In front of house,Exceeds permitted number of birds,Yes,Yes,2015-05-14 00:00:00,NA
+Conf_0310,App_1203,,Cayo,2 white-fronted parrot,2015-06-11 00:00:00,No,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,No,MISSING,"Not hand tame, Baby bird",Yes,Yes,2015-06-11 00:00:00,NA
+Conf_0311,App_1633,,Cayo,Yellow-head,2015-06-11 00:00:00,Yes,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Health issues,Yes,Yes,2015-06-11 00:00:00,NA
+Conf_0312,App_1634,,Cayo,Red-lored Parrot,2015-06-16 00:00:00,MISSING,MISSING,3 years,No,MISSING,NA,NA,MISSING,No,MISSING,Failure to comply with precondition directive(s),Yes,Yes,2015-06-16 00:00:00,NA
+Conf_0313,App_1635,,Cayo,"White-fronted Parrot, collared peccary",2015-06-19 00:00:00,MISSING,MISSING,MISSING,Yes,MISSING,NA,NA,MISSING,No,MISSING,"Health isues, Baby bird",Yes,Yes,2015-06-19 00:00:00,NA

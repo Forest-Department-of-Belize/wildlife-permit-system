@@ -1,0 +1,356 @@
+applicant_id_eri,bird_id_eri,banded,band_number,permit_id,species_id,Type of parrot(provided by applicant),Sex,parrot_age_description,parrot_age_months,date_parrot_age_described,pet_name,period_of_ownership_months,period_of_ownership_years,obtain_by,town_obtained,district_obtain,enclosure_type,cage_location,cage_size_feet,shared_separate,Comments
+App_1661,Bird_1829,NO,MISSING,MISSING,MISSING,Green Parrot,Male,MISSING,MISSING,Application,Nene,12.0,1.0,Found in yard,Paraiso Village,Corozal,Free,NA,NA,NA,the bird was found injured
+App_1662,Bird_1830,NO,MISSING,MISSING,MISSING,Parrot,MISSING,5.0,60.0,Application,Lorito,36.0,3.0,Gifted,MISSING,MISSING,Cage,MISSING,5*6*5,NA,
+App_1663,Bird_1831,NO,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,2.0,24.0,Application,Miclo,24.0,2.0,Found in yard,Belize City,Belize,Cage,,MISSING,NA,"Big cage, with branches for it to climb, his water dish and food dish. Everday it is taken out, he loves being on the shoulder."
+App_1664,Bird_1832,NO,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Cucurito,60.0,5.0,Gifted,MISSING,MISSING,Free & Cage,MISSING,MISSING,NA,
+App_1665,Bird_1833,NO,MISSING,MISSING,MISSING,Parrot,MISSING,4.0,48.0,Application,Smigle,48.0,4.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1666,Bird_1834,NO,MISSING,MISSING,MISSING,Amazon Parrot,UNKNOWN,5.0,60.0,Application,Smarty,60.0,5.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING ,
+App_1666,Bird_1834,NO,MISSING,MISSING,MISSING,Amazon Parrot,UNKNOWN,5.0,60.0,Application,Spicy,60.0,5.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING ,
+App_1667,Bird_1836,NO,MISSING,MISSING,MISSING,Parrot,MISSING,3.0,36.0,Application,Blue,36.0,3.0,Bought,MISSING,MISSING,Free,NA,NA,NA,Bought since it was a baby
+App_1668,Bird_1837,NO,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,16.0,192.0,Application,Ginger,192.0,16.0,Gifted,MISSING,MISSING,Cage,Indoor,MISSING,NA,Caged indoor
+App_1669,Bird_1838,NO,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,2.0,24.0,Application,Paco,24.0,2.0,Taken from the wild,Sayanna,MISSING,MISSING,MISSING,MISSING,MISSING ,
+App_1670,Bird_1839,NO,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Marley,12.0,1.0,Rescued,MISSING,MISSING,Free,NA,NA,NA,
+App_1671,Bird_1840,NO,MISSING,MISSING,MISSING,Parrot,MISSING,1.0,12.0,Application,Pauly,12.0,1.0,Gifted,MISSING,MISSING,Cage,On porch,MISSING,NA,Caged on the porch
+App_1672,Bird_1841,NO,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,16.0,192.0,Application,Pepsi,192.0,16.0,Gifted,MISSING,MISSING,Cage,Indoor,MISSING,MISSING ,
+App_1672,Bird_1842,NO,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,16.0,192.0,Application,Sprite,192.0,16.0,Gifted,MISSING,MISSING,Cage,Indoor,MISSING,MISSING ,Sprite was taken care of by owner when the mother(previous owner) passed away on Dec 23
+App_1673,Bird_1843,NO,MISSING,MISSING,MISSING,Parrot,UNKNOWN,15.0,180.0,Application,MISSING,180.0,15.0,Bought,Crooked Tree,Belize,Cage,MISSING,MISSING,MISSING ,
+App_1673,Bird_1844,NO,MISSING,MISSING,MISSING,Parrot,UNKNOWN,15.0,180.0,Application,MISSING,180.0,15.0,Bought,Crooked Tree,Belize,Cage,MISSING,MISSING,MISSING ,
+App_1674,Bird_1845,NO,MISSING,MISSING,MISSING,parrot,MISSING,1.0,12.0,Application,Coco,12.0,1.0,Other- Not specified,MISSING,MISSING,Free,NA,NA,NA,
+App_1675,Bird_1846,NO,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,18.0,216.0,Application,Borito,180.0,15.0,Rescued,MISSING,MISSING,Free,NA,NA,NA,Borito was abandoned by previous owner
+App_1675,Bird_1847,NO,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,14.0,168.0,Application,Polkita,168.0,14.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1675,Bird_1848,NO,MISSING,MISSING,1.0,Red-lored Parrot,Female,10.0,120.0,Application,Rosita,120.0,10.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1676,Bird_1849,NO,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,1.0,12.0,Application,Pauline,12.0,1.0,Rescued,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING ,Rescued from fire in Unitedville
+App_1676,Bird_1850,NO,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,1.0,12.0,Application,Red,12.0,1.0,Rescued,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING ,Rescued from fire in Unitedville
+App_1676,Bird_1851,NO,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,1.0,12.0,Application,Minnie,12.0,1.0,Rescued,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING ,Rescued from fire in Unitedville
+App_1677,Bird_1852,,MISSING,MISSING,Undefined,Undefined,MISSING,0.0,5.0,Application,Lorenzo,5.0,0.0,Gifted,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING ,Only in cage at night
+App_1677,Bird_1853,,MISSING,MISSING,4.0,Mealy Parrot,MISSING,0.0,5.0,Application,Arturo,5.0,0.0,Gifted,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING ,Only in cage at night
+App_1678,Bird_1854,,MISSING,MISSING,MISSING,Parrot,Male,UNKNOWN,UNKNOWN,Application,Pauly,264.0,22.0,Gifted,Isabella Bank,Belize,Free,NA,MISSING,MISSING ,Bird is in the care of grandparents at family home/ kept inside or on veranda
+App_1680,Bird_1856,,MISSING,MISSING,MISSING,Parrot,MISSING,8.0,96.0,Application,Turra,96.0,8.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,Freely moves in garden
+App_1681,Bird_1857,,MISSING,MISSING,MISSING,Blue fronted Parrot,Female,9 months,9.0,Application,El titi,8.0,0.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,MISSING ,Housed in big moveable cage
+App_1682,Bird_1858,,MISSING,MISSING,MISSING,Yellow head Amazon Parrot,Male,UNKNOWN,UNKNOWN,Application,Charlie,6.0,0.0,Found,Las Flores,Cayo,Free/Caged,Indoor,MISSING,MISSING ,"Not purchased nor captured, kept in cage during the day"
+App_1683,Bird_1859,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,3.0,36.0,Application,Pepe,36.0,3.0,Rescued,Buena Vista Village,Cayo,Caged,Outdoor next to a tree,MISSING,MISSING ,"Housed in a spacious outdoor cage, explores tree nearby"
+App_1684,Bird_1860,,MISSING,MISSING,MISSING,Tropical Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Pauly,192.0,16.0,Rescued,MISSING,MISSING,Cage,MISSING,MISSING,MISSING ,Rescued from 2 pitbulls
+App_1685,Bird_1861,,MISSING,MISSING,MISSING,Parrot,Male,MISSING,MISSING,Application,Lorenzo Galindo,MISSING,MISSING,Gifted,MISSING,MISSING,Free,NA,NA,NA,Inside the house
+App_1686,Bird_1862,,MISSING,MISSING,4.0,Mealy Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Pakito,MISSING,MISSING,Gifted,MISSING,MISSING,Undefined,MISSING,MISSING,MISSING ,Undefined- person did not specify which parrot is caged and which is free
+App_1686,Bird_1863,,MISSING,MISSING,4.0,Mealy Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,No name given,MISSING,MISSING,Gifted,MISSING,MISSING,Undefined,MISSING,MISSING,MISSING ,Undefined- person did not specify which parrot is caged and which is free
+App_1687,Bird_1864,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,MISSING,MISSING,Application,Chichico,24.0,12.0,Gifted,MISSING,MISSING,Cage,Room indoor,MISSING,MISSING ,Previous owner did not want the parrot anymore
+App_1688,Bird_1865,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Pancho,30.0,2.5,Rescued,MISSING,MISSING,Free,NA,NA,NA,"Lives inside, taken oudoors"
+App_1689,Bird_1866,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,5.0,60.0,Application,Pally,60.0,5.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,MISSING ,Will spend time outdoors
+App_1690,Bird_1867,,MISSING,MISSING,2.0,Yellow-headed Parrot,Male,1.0,12.0,Application,Charlie,12.0,1.0,Rescued,2nd New Site,Stann Creek,Cage,Indoor,MISSING,MISSING ,Fallen from tree on property
+App_1690,Bird_1868,,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,1.0,12.0,Application,Luna,12.0,1.0,Rescued,2nd New Site,Stann Creek,Cage,Indoor,MISSING,MISSING ,Fallen from tree on property
+App_1691,Bird_1869,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,5.0,60.0,Application,Lola,36.0,3.0,Bought,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING ,
+App_1692,Bird_1870,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,2.0,24.0,Application,Melon,24.0,2.0,Rescued,Orange Walk Town,Orange Walk,Cage,MISSING,MISSING,MISSING ,Rescued after falling from a nest on property
+App_1693,Bird_1871,,MISSING,MISSING,MISSING,Parrot,MISSING,2.0,24.0,Application,Sun,24.0,2.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,Applied for permit for yellow-headed parrot she had
+App_1694,Bird_1872,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,4.0,48.0,Application,Pepper,4.0,48.0,Bought,MISSING,MISSING,Cage,MISSING,NA,NA,
+App_1695,Bird_1873,,MISSING,MISSING,3.0,White-fronted Parrot,UNKNOWN,2.0,24.0,Application,Pepe,24.0,2.0,Taken from the wild,MISSING,MISSING,Cage,MISSING,NA,NA,Bird fell out of a tree as a baby
+App_1696,Bird_1874,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Eko,12.0,1.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,MISSING ,
+App_1697,Bird_1875,,MISSING,MISSING,MISSING,Parrot,Male,1.0,12.0,Application,Cocoo,12.0,1.0,Taken from the wild,Camalote Village,Cayo,Cage,MISSING,NA,NA,Bird was taken from owner's back yard from a cocnut tree
+App_1698,Bird_1876,,MISSING,MISSING,MISSING,Parrot,MISSING,14.0,168.0,Application,Tobby,168.0,14.0,Taken from the wild,Santa Marta Village,Orange Walk,Free,NA,NA,NA,Outdoor enclosures
+App_1699,Bird_1877,,MISSING,MISSING,MISSING,Parrot,MISSING,14.0,168.0,Application,Cotorro,168.0,14.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1700,Bird_1878,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Lilo,16.0,1.5,Gifted,MISSING,MISSING,Cage,Outside in yard,MISSING,NA,
+App_1701,Bird_1879,,MISSING,MISSING,MISSING,MISSING,MISSING,9.0,108.0,Application,Pally,108.0,9.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,Will move parrot in bigger enclosure
+App_1702,Bird_1880,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Chulo,10.0,0.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1703,Bird_1881,,MISSING,MISSING,3.0,White-fronted Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Caramelo,42.0,3.5,Rescued,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1704,Bird_1882,,MISSING,MISSING,MISSING,MISSING,UNKNOWN,7.0,84.0,Application,Gordo,7.0,84.0,Found,MISSING,MISSING,Cage,MISSING,4*6*8,NA,Found on the ground when he was a baby
+App_1705,Bird_1883,,MISSING,MISSING,3.0,White-fronted Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Paco,12.0,1.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,Free in house
+App_1706,Bird_1884,,MISSING,MISSING,4.0,Mealy Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Rosita,12.0,1.0,Gifted,MISSING,MISSING,Cage,Veranda,MISSING,NA,
+App_1707,Bird_1885,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,0.0,10.0,Application,Rico ,10.0,0.0,Taken from the wild,MISSING,MISSING,Cage,Outside in yard,MISSING,NA,
+App_1707,Bird_1886,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,0.0,10.0,Application,Paco,10.0,0.0,Taken from the wild,MISSING,MISSING,Cage,Outside in yard,MISSING,NA,
+App_1708,Bird_1887,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Peckers,MISSING,MISSING,Gifted,MISSING,MISSING,Cage,Veranda,6*4,NA,
+App_1709,Bird_1888,,MISSING,MISSING,4.0,Mealy Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Piojito Gonzalez,108.0,9.0,Found,MISSING,MISSING,Cage,Outside in yard,MISSING,NA,
+App_1710,Bird_1889,,MISSING,MISSING,3.0,White-fronted Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Amor,24.0,2.0,Gifted,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING ,"At day in tree, cage at night"
+App_1710,Bird_1890,,MISSING,MISSING,3.0,White-fronted Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Corazon,24.0,2.0,Gifted,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING ,"At day in tree, cage at night"
+App_1711,Bird_1891,,MISSING,MISSING,MISSING,Parrot,Male,UNKNOWN,UNKNOWN,Application,Panchito,6.0,0.0,Gifted,MISSING,MISSING,Cage,Front porch,MISSING,NA,
+App_1712,Bird_1892,,MISSING,MISSING,4.0,Mealy Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,MISSING,24.0,2.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1713,Bird_1893,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,0.0,10.0,Application,Lolita,10.0,0.0,Gifted,MISSING,MISSING,Cage,Front porch,MISSING,NA,
+App_1714,Bird_1894,,MISSING,MISSING,3.0,White-fronted Parrot,Male,MISSING,MISSING,Application,Pepe,36.0,3.0,Bought,MISSING,MISSING,Cage,Front porch,MISSING,MISSING ,
+App_1714,Bird_1895,,MISSING,MISSING,3.0,White-fronted Parrot,Female,MISSING,MISSING,Application,Lola,36.0,3.0,Bought,MISSING,MISSING,Cage,Front porch,MISSING,MISSING ,
+App_1714,Bird_1896,,MISSING,MISSING,1.0,Red-lored Parrot,Female,MISSING,MISSING,Application,Polly,60.0,5.0,Bought,MISSING,MISSING,Cage,Front porch,MISSING,MISSING ,
+App_1715,Bird_1897,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,2.0,24.0,Application,Kiwi,24.0,2.0,Gifted,MISSING,MISSING,Cage,Inside and outside,MISSING,NA,
+App_1716,Bird_1898,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Paully,120.0,10.0,Gifted,MISSING,MISSING,Cage,MISSING,4*6*6,MISSING ,
+App_1716,Bird_1899,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Bluey,120.0,10.0,Gifted,MISSING,MISSING,Cage,MISSING,4*6*6,MISSING ,
+App_1717,Bird_1900,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Polly,6.0,0.0,Found,Bella Vista Village,Toledo,Cage,MISSING,MISSING,MISSING ,
+App_1717,Bird_1901,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Blue,6.0,0.0,Found,Bella Vista Village,Toledo,Cage,MISSING,MISSING,MISSING ,
+App_1718,Bird_1902,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,30.0,360.0,Application,Pretty Polly,360.0,30.0,Rescued,Swasey River,MISSING,Cage,Indoor porch,MISSING,NA,
+App_1719,Bird_1903,,MISSING,MISSING,MISSING,Parrot,Female,1.0,13.0,Application,Ivy,12.0,1.0,Gifted,Silk Grass,Stann Creek,MISSING,MISSING,MISSING,NA,Rescued from wildfire when it was nestling
+App_1720,Bird_1904,,MISSING,MISSING,MISSING,Parrot,Male,2.0,24.0,Application,Corky,24.0,2.0,Rescued,MISSING,MISSING,Free,NA,NA,NA,Fell off the tree and was rescued
+App_1720,Bird_1905,,MISSING,MISSING,MISSING,Parrot,Male,2.0,24.0,Application,Woody,24.0,2.0,Rescued,MISSING,MISSING,Free,NA,NA,NA,Fell off the tree and was rescued
+App_1720,Bird_1906,,MISSING,MISSING,MISSING,Parrot,Female,2.0,24.0,Application,Lola,24.0,2.0,Rescued,MISSING,MISSING,Free,NA,NA,NA,Fell off the tree and was rescued
+App_1721,Bird_1907,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,3.0,36.0,Application,Pretty,36.0,3.0,Gifted,MISSING,MISSING,Cage,On veranda railing,MISSING,NA,
+App_1722,Bird_1908,,MISSING,MISSING,MISSING,Parrot,Male,MISSING,MISSING,Application,April,48.0,4.0,Undefined,MISSING,MISSING,Cage,MISSING,10*10,MISSING ,Undefined which parrot was gifted and which was taken from the wild
+App_1722,Bird_1909,,MISSING,MISSING,MISSING,Parrot,Male,MISSING,MISSING,Application,Shakira,48.0,4.0,Undefined,MISSING,MISSING,Cage,MISSING,10*10,MISSING ,Undefined which parrot was gifted and which was taken from the wild
+App_1723,Bird_1910,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Pally,12.0,1.0,Gifted,MISSING,MISSING,Cage,Inside,MISSING,NA,"Family member coul not take care of parrot so it was gifted to her, parrot stays inside aswell"
+App_1724,Bird_1911,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Polly,24.0,2.0,Gifted,MISSING,MISSING,MISSING,Indoor,MISSING,MISSING ,
+App_1725,Bird_1912,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Ziggy,10.0,0.0,Gifted,MISSING,MISSING,Cage,MISSING,4*5*8,NA,
+App_1726,Bird_1913,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,3.0,36.0,Application,Sally,36.0,3.0,Taken from the wild,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING ,Parrot is kept mostly outdoor
+App_1727,Bird_1914,,MISSING,MISSING,MISSING,Wild Parrot,Male,4.0,48.0,Application,IEugene,48.0,4.0,Rescued,MISSING,MISSING,Cage,MISSING,MISSING,MISSING ,
+App_1727,Bird_1915,,MISSING,MISSING,MISSING,Wild Parrot,Male,4.0,48.0,Application,Periico,48.0,4.0,Rescued,MISSING,MISSING,Cage,MISSING,MISSING,MISSING ,
+App_1728,Bird_1916,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Nala,1.0,0.0,Found in yard,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1729,Bird_1917,,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,32.0,384.0,Application,Martina,372.0,31.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,In a wire cage
+App_1730,Bird_1918,,MISSING,MISSING,MISSING,Parrot,Male,8.0,96.0,Application,Lorie,96.0,8.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1731,Bird_1919,,MISSING,MISSING,3.0,White-fronted Parrot,Female,15.0,180.0,Application,Lolita Torres,180.0,15.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,Is also taken outside. Applied for permit approx. 13yrs ago and no response
+App_1732,Bird_1920,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,1.0,12.0,Application,Simon Madera,10.0,0.0,Gifted,MISSING,MISSING,Cage,Indoor,4*4*4,NA,
+App_1733,Bird_1921,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,8.0,96.0,Application,MISSING,96.0,8.0,Taken from the wild,Arenal,MISSING,Cage,MISSING,"24""*22""*54""",NA,Metal Cage
+App_1734,Bird_1922,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Lola or Bunny,12.0,1.0,Found in yard,MISSING,MISSING,MISSING,Veranda,MISSING,NA,
+App_1735,Bird_1923,,MISSING,MISSING,MISSING,Parrot,MISSING,20.0,240.0,Application,Crytal Pariente,240.0,20.0,gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1736,Bird_1924,,MISSING,MISSING,MISSING,MISSING,MISSING,2.5,30.0,Application,Ziggy,30.0,2.5,Rescued,MISSING,MISSING,Cage,MISSING,MISSING,Shared,
+App_1736,Bird_1925,,MISSING,MISSING,MISSING,MISSING,MISSING,2.5,30.0,Application,Gordo,30.0,2.5,Rescued,MISSING,MISSING,Cage,MISSING,MISSING,Shared,
+App_1736,Bird_1926,,MISSING,MISSING,MISSING,MISSING,MISSING,2.5,30.0,Application,Bro,30.0,2.5,Rescued,MISSING,MISSING,Cage,MISSING,MISSING,Shared,
+App_1737,Bird_1927,,MISSING,MISSING,3.0,White-fronted Parrot,Male,13.0,156.0,Application,Alejo,156.0,13.0,Taken from the wild,MISSING,MISSING,Cage,Indoor,MISSING,NA,Fell into the yard and saved from a dog attack
+App_1738,Bird_1928,,MISSING,MISSING,MISSING,Parrot,MISSING,1.0,12.0,Application,MISSING,12.0,1.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1739,Bird_1929,,MISSING,MISSING,1.0,Red-lored Parrot,Male,1.0,12.0,Application,Arturo Mayen,12.0,1.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1739,Bird_1930,,MISSING,MISSING,MISSING,Aztec Parakeet,Male,1.0,12.0,Application,Ramon Mayen,12.0,1.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1740,Bird_1931,,MISSING,MISSING,1.0,Red-lored Parrot,Male,2.0,24.0,Application,Pepito,24.0,2.0,Found,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1741,Bird_1932,,MISSING,MISSING,6.0,Yellow-lored Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Pauly,3.0,0.0,Rescued,MISSING,MISSING,Free,NA,NA,NA,"Saved from dog, is kept indoor in the living room"
+App_1742,Bird_1933,,MISSING,MISSING,MISSING,Parrot,Male,3.0,36.0,Application,Paco,24.0,2.0,Found,MISSING,MISSING,Free/Caged,MISSING,53.0,NA,Lives inside house at night and cage at night
+App_1743,Bird_1934,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,MISSING,MISSING,Application,Paquito,12.0,1.0,Gifted,MISSING,MISSING,Free/Caged,MISSING,MISSING,NA,
+App_1744,Bird_1935,,MISSING,MISSING,MISSING,MISSING,MISSING,2.0,22.0,Application,Polly,2.0,22.0,Bought,MISSING,MISSING,Free/Caged,MISSING,MISSING,NA,Caged at night. Free during the day. The phone # only has whatsapp
+App_1745,Bird_1936,,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Application,Polly,24.0,2.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1745,Bird_1937,,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Application,Pancho,24.0,2.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1745,Bird_1938,,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Application,Pancha,24.0,2.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1746,Bird_1939,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,5.0,60.0,Application,Cracker,60.0,5.0,Rescued,MISSING,MISSING,Caged,MISSING,MISSING,NA,Bird was rescued from a wildfire
+App_1747,Bird_1940,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,1.0,12.0,Application,MISSING,12.0,1.0,Rescued,MISSING,MISSING,Caged,MISSING,MISSING,NA,
+App_1748,Bird_1941,,MISSING,MISSING,3.0,White-fronted Parrot,Male,11.0,132.0,Application,Polly,11.0,132.0,Gifted,MISSING,MISSING,Caged,MISSING,MISSING,NA,
+App_1749,Bird_1942,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,MISSING,MISSING,Application,MISSING,9.0,0.0,Gifted,MISSING,MISSING,Cage,Porch,MISSING,NA,It was caught in a chicken coop
+App_1750,Bird_1943,,MISSING,MISSING,MISSING,White head small parrot,Female,MISSING,MISSING,Application,Cookie,72.0,6.0,Gifted,MISSING,MISSING,Free/Caged,Outside in yard,MISSING,NA,It had a previous owner but the person could no longer care for it.
+App_1751,Bird_1944,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,1.0,12.0,Application,Pakiss,12.0,1.0,Found,MISSING,MISSING,Cage,MISSING,MISSING,NA,Found at owner'sn farm and was unable to fly
+App_1752,Bird_1945,,MISSING,MISSING,MISSING,White-lored Amazon,Female,2.0,24.0,Application,Viento,24.0,2.0,Found,MISSING,MISSING,Cage,MISSING,4*4,NA,Viento suffers from prolapsed cloaca and is deemed non-rehabilitable due to illness - several vet visits 
+App_1753,Bird_1946,,MISSING,MISSING,4.0,Mealy Parrot,MISSING,3.0,36.0,Application,Chico,24.0,2.0,Gifted,MISSING,MISSING,Cage,Outside in yard,MISSING,NA,
+App_1754,Bird_1947,,MISSING,MISSING,MISSING,White-lored Amazon,Female,2.0,24.0,Application,Pelon,24.0,2.0,Gifted,MISSING,MISSING,Cage,MISSING,11*12,Shared,
+App_1754,Bird_1948,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Nopal,18.0,1.5,Found,MISSING,MISSING,Cage,MISSING,11*12,Shared,
+App_1755,Bird_1949,,MISSING,MISSING,MISSING,Parrot,MISSING,10.0,120.0,Application,Lulu,120.0,10.0,Bought,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1756,Bird_1950,,MISSING,MISSING,1.0,Red-lored Parrot,Male,2.0,24.0,Application,MISSING,MISSING,MISSING,Bought,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1757,Bird_1951,,MISSING,MISSING,MISSING,MISSING,Male,10.0,120.0,Application,Rico ,96.0,8.0,Gifted,MISSING,MISSING,Cage,MISSING,3*10*5,NA,
+App_1758,Bird_1952,,MISSING,MISSING,1.0,Red-lored Parrot,Female,18.0,216.0,Application,Paly,216.0,18.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1759,Bird_1953,,MISSING,MISSING,2.0,Yellow-headed Parrot,Male,3.0,36.0,Application,Patrick Escobar,36.0,3.0,Taken from the wild,Orange Walk Town,Orange Walk,MISSING,MISSING,MISSING,NA,The bird was found on the ground
+App_1760,Bird_1954,,MISSING,MISSING,MISSING,Parrot,Female,17.0,204.0,Application,Rose,204.0,17.0,Missing,Missing,Missing,MISSING,MISSING,MISSING,NA,
+App_1761,Bird_1955,,MISSING,MISSING,2.0,Yellow-headed Parrot,Male,4.0,48.0,Application,Pally,48.0,4.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1762,Bird_1956,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,3.0,36.0,Application,Kiwi Salazar,MISSING,MISSING,Bought,MISSING,MISSING,Free,NA,NA,NA,Sleeps indoor
+App_1763,Bird_1957,,MISSING,MISSING,MISSING,Parrot,MISSING,12.0,24.0,Application,Twinkle,168.0,14.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1764,Bird_1958,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,5.0,60.0,Application,Sebastian,MISSING,MISSING,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1764,Bird_1959,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,1.0,12.0,Application,Paquito,MISSING,MISSING,Found,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1765,Bird_1960,,MISSING,MISSING,MISSING,MISSING,MISSING,1.0,12.0,Application,Woody,12.0,1.0,Found,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING ,"Transition from tree, cage, and indoors"
+App_1765,Bird_1961,,MISSING,MISSING,MISSING,MISSING,MISSING,1.0,12.0,Application,Trouble,12.0,1.0,Found,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING ,"Transition from tree, cage, and indoors"
+App_1766,Bird_1962,,MISSING,MISSING,MISSING,MISSING,MISSING,8.0,96.0,Application,Chulola,MISSING,MISSING,Found,Belmopan,Cayo,Caged,MISSING,MISSING,NA,Found injured
+App_1767,Bird_1963,,MISSING,MISSING,1.0,Red-lored Parrot,Male,1.0,12.0,Application,Lolito,12.0,1.0,Rescued,MISSING,MISSING,Free/Caged,MISSING,MISSING,NA,"Sleeps in cage at night, indoors  and outdoors during day"
+App_1768,Bird_1964,,MISSING,MISSING,,,,,,Application,,,,,,,,,,,
+App_1769,Bird_1965,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Pally,24.0,2.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,Parrot has its own house
+App_1770,Bird_1966,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,Pally,156.0,13.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1771,Bird_1967,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,3.0,36.0,Application,Meg,36.0,3.0,Bought,Guines-Grass ,Orange Walk,Cage,MISSING,MISSING,Shared,Bought to be rescued-rehabilitated (deydrated and sick)
+App_1771,Bird_1968,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,3.0,36.0,Application,Judy,36.0,3.0,Bought,Guines-Grass,Orange Walk,Cage,MISSING,MISSING,Shared,Bought to be rescued-rehabilitated (deydrated and sick)
+App_1771,Bird_1969,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,3.0,36.0,Application,G-G,36.0,3.0,Bought,Guines-Grass,Orange Walk,Cage,MISSING,MISSING,Shared,Bought to be rescued-rehabilitated (deydrated and sick)
+App_1772,Bird_1970,,MISSING,MISSING,1.0,Red-lored Parrot,Male,18.0,216.0,Application,Lorenzo Antonio Novelo,216.0,18.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,Lives in a large wood and wire cage
+App_1773,Bird_1971,,MISSING,MISSING,UNKNOWN,Parrot,MISSING,2.0,24.0,Application,MISSING,24.0,2.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1774,Bird_1972,,MISSING,MISSING,MISSING,Parrot,Male,1.0,12.0,Application,Chad,12.0,1.0,Gifted,MISSING,MISSING,Free/Caged,Beside the shop,MISSING,NA,They were given parrot as previous owner did not know how to take care of him
+App_1775,Bird_1973,,MISSING,MISSING,UNKNOWN,UNKNOWN,Male,MISSING,MISSING,Application,MISSING,6.0,0.0,Bought,MISSING,MISSING,Caged,MISSING,MISSING,NA,
+App_1776,Bird_1974,,MISSING,MISSING,4.0,Mealy Parrot,MISSING,MISSING,MISSING,Application,Lorito,24.0,2.0,Taken from the wild,MISSING,MISSING,Caged,Indoors,4*4*8,NA,
+App_1777,Bird_1975,,MISSING,MISSING,4.0,Mealy Parrot,MISSING,MISSING,MISSING,Application,Pinocks,24.0,2.0,Taken from the wild,MISSING,MISSING,Caged,Indoors,4*4*8,NA,
+App_1778,Bird_1976,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Pauly,12.0,1.0,Gifted,MISSING,MISSING,Caged,MISSING,4*4*8,NA,
+App_1779,Bird_1977,,MISSING,MISSING,UNKNOWN,UNKNOWN,MISSING,MISSING,MISSING,Application,Pally,12.0,1.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1780,Bird_1978,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,MISSING,15.0,1.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1781,Bird_1979,,MISSING,MISSING,UNKNOWN,Quati Mundi,Female,0.0,9.0,Application,MISSING,9.0,0.0,Found,MISSING,MISSING,MISSING,MISSING,MISSING,NA,It was abandonded by its pack
+App_1782,Bird_1980,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,2.0,24.0,Application,Perri,24.0,12.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1783,Bird_1981,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,2.0,24.0,Application,Cotorito,24.0,12.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1784,Bird_1982,,MISSING,MISSING,UNKNOWN,UNKNOWN,MISSING,3.0,36.0,Application,Paquito,36.0,3.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1785,Bird_1983,,MISSING,MISSING,UNKNOWN,UNKNOWN,MISSING,1.0,12.0,Application,Pepito,12.0,1.0,Gifted,MISSING,MISSING,Caged,Veranda,MISSING,NA,
+App_1786,Bird_1984,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,0.0,10.0,Application,Kiwi,9.0,0.0,Gifted,MISSING,MISSING,Caged,Outside in yard,MISSING,NA,
+App_1787,Bird_1985,,MISSING,MISSING,1.0,Red-lored Parrot,Male,2.0,24.0,Application,Lolo,MISSING,MISSING,Bought,MISSING,MISSING,Caged,MISSING,MISSING,NA,
+App_1788,Bird_1986,,MISSING,MISSING,3.0,White-fronted Parrot,Female,3.0,36.0,Application,Kiwi,MISSING,MISSING,Found,Orange Walk,Orange Walk,MISSING,MISSING,MISSING,NA,The bird flew into the house as a baby and they kept it
+App_1789,Bird_1987,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Bird,12.0,1.0,Gifted,MISSING,MISSING,Free,MISSING,MISSING,NA,Has a cage but lives free indoors
+App_1790,Bird_1988,,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Application,Corazon,6.0,0.0,Gifted,MISSING,MISSING,Caged,MISSING,4*2*2,NA,
+App_1791,Bird_1989,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,MISSING,MISSING,Application,Karla,120.0,10.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1792,Bird_1990,,MISSING,MISSING,MISSING,Parrot,Male,MISSING,MISSING,Application,Pique,3.0,0.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,Enclosure inside house
+App_1793,Bird_1991,,MISSING,MISSING,1.0,Red-lored Parrot,Female,12.0,144.0,Application,Bonita,144.0,12.0,Gifted,MISSING,MISSING,Cage,Indoor,5*5,MISSING,
+App_1793,Bird_1992,,MISSING,MISSING,2.0,Yellow-headed Parrot,Male,18.0,216.0,Application,Paco,216.0,18.0,Gifted,MISSING,MISSING,Cage,Indoor,5*5,MISSING,
+App_1794,Bird_1993,,MISSING,MISSING,MISSING,Parrot,Female,7.0,84.0,Application,Ria,84.0,7.0,Gifted,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING,Has a cage to sleep at night but also lives freely outside
+App_1794,Bird_1994,,MISSING,MISSING,MISSING,Parrot,Male,7.0,84.0,Application,Lencho,84.0,7.0,Gifted,MISSING,MISSING,Free/Caged,MISSING,MISSING,MISSING,Has a cage to sleep at night but also lives freely outside
+App_1795,Bird_1995,,MISSING,MISSING,MISSING,Parrot,Female,UNKNOWN,UNKNOWN,Application,Florita,48.0,4.0,Bought,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1796,Bird_1996,,MISSING,MISSING,MISSING,Parrot,Female,4.0,48.0,Application,Lixey,48.0,4.0,Taken from the wild,MISSING,Corozal,Free,NA,NA,NA,Roams both inside and outside
+App_1797,Bird_1997,,MISSING,MISSING,MISSING,Parrot,Male,5.0,60.0,Application,Lorry,60.0,5.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,Kept in house
+App_1797,Bird_1998,,MISSING,MISSING,MISSING,Parrot,Male,5.0,60.0,Application,Larry,60.0,5.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,Kept in house
+App_1798,Bird_1999,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,5.0,60.0,Application,Loritos,60.0,5.0,Found,MISSING,MISSING,Chicken Coup,NA,NA,NA,Housed in chciken coup but new home is being constructed under guidelines
+App_1798,Bird_2000,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,5.0,60.0,Application,Bonitos,60.0,5.0,Found,MISSING,MISSING,Chicken Coup,NA,NA,NA,Housed in chciken coup but new home is being constructed under guidelines
+App_1799,Bird_2001,,MISSING,MISSING,MISSING,Parrot,Male,UNKNOWN,UNKNOWN,Application,Odiee,84.0,7.0,Found,MISSING,MISSING,MISSING,MISSING,MISSING,NA,Resides at Forest Home Village
+App_1800,Bird_2002,,MISSING,MISSING,MISSING,Parrot,Male,UNKNOWN,UNKNOWN,Application,Mango,7.0,0.0,Found,Corozal Town,Corozal,Caged,MISSING,MISSING,NA,Bird fell in their yard
+App_1801,Bird_2003,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,10.0,120.0,Application,Pally,MISSING,MISSING,Gifted,MISSING,MISSING,Caged,Outside in yard,MISSING,NA,
+App_1802,Bird_2004,,MISSING,MISSING,MISSING,Parrot,MISSING,5.5,66.0,Application,Paquita,66.0,5.5,Found,San Ignacio,Cayo,Caged,Outside in yard,MISSING,NA,"Bird fel in their yard, they believe an eagle had it and somehow it managed to free itself"
+App_1803,Bird_2005,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,MISSING,4.0,0.0,Gifted,MISSING,MISSING,Cage,MISSING,36*46*25,NA,Plan to enlarge cage
+App_1804,Bird_2006,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,1.0,12.0,Application,Frankie,12.0,1.0,Gifted,MISSING,MISSING,Cage,Outside in yard,MISSING,NA,
+App_1804,Bird_2007,,MISSING,MISSING,6.0,Yellow-lored Parrot,MISSING,1.0,12.0,Application,Bella,12.0,1.0,,,,,,,,
+App_1805,Bird_2008,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,MISSING,MISSING,Application,Pally,12.0,1.0,Gifted,MISSING,MISSING,Housed/Cage,Indoor,MISSING,NA,Parrot has its own house and a cage inside for emergencies
+App_1806,Bird_2009,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Lory,48.0,4.0,Gifted,MISSING,MISSING,Cage,MISSING,5*6,NA,
+App_1807,Bird_2010,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Nonito,48.0,4.0,Rescued,MISSING,MISSING,Free,NA,NA,NA,"Daytime-outdoors, nightime-indoors"
+App_1808,Bird_2011,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Coco,48.0,4.0,Gifted,MISSING,MISSING,Cage,MISSING,5*6,NA,
+App_1809,Bird_2012,,MISSING,MISSING,MISSING,Parrot,MISSING,4.0,48.0,Application,Macho,48.0,4.0,Found,MISSING,MISSING,Free,NA,NA,NA,Bird was found after chopping down a tree for firewood
+App_1810,Bird_2013,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Lola,48.0,4.0,Gifted,MISSING,MISSING,Cage,MISSING,5*6,NA,
+App_1811,Bird_2014,,MISSING,MISSING,1.0,Red-lored Parrot,Female,2.0,24.0,Application,Benji,24.0,2.0,Rescued,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1812,Bird_2015,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Kiky,12.0,1.0,Bought,MISSING,MISSING,Caged/Free,MISSING,MISSING,NA,Bird only uses the cage to sleep and eat.
+App_1813,Bird_2016,,MISSING,MISSING,3.0,white-fronted Parrot,female,3.5,41.0,Application,Nana,36.0,3.0,Found,MISSING,MISSING,Cage,In yard,MISSING,NA,In huge cage
+App_1814,Bird_2017,,MISSING,MISSING,MISSING,Parrot,MISSING,1.0,22.0,Application,Cotor,22.0,1.0,Found,MISSING,MISSING,Caged/Free,MISSING,MISSING,NA,Parrot fell from a tree
+App_1815,Bird_2018,,MISSING,MISSING,MISSING,Amazon Parrot,UNKNOWN,UNKNOWN,UNKNOWM,Application,Lola,36.0,3.0,Found in yard,MISSING,MISSING,Cage,MISSING,"19.3""*14""*39.2""",NA,Fell out of the tree at her mom's house- there are more than a dozen on the tree
+App_1816,Bird_2019,,MISSING,MISSING,MISSING,MISSING,MISSING,0.0,10.0,Application,Pelon,10.0,0.0,Bought,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1817,Bird_2020,,MISSING,MISSING,MISSING,Parrot,MISSING,15.0,180.0,Application,Pretty,180.0,15.0,Taken from the wild,MISSING,MISSING,Cage,MISSING,MISSING,Separate,Husband found parrot in tree and she took them in
+App_1817,Bird_2021,,MISSING,MISSING,MISSING,Parrot,MISSING,10.0,120.0,Application,Ringo,120.0,10.0,Taken from the wild,MISSING,MISSING,Cage,MISSING,MISSING,Separate,Husband found parrot in tree and she took them in
+App_1817,Bird_2022,,MISSING,MISSING,MISSING,Parrot,MISSING,7.0,84.0,Application,Mimi,84.0,7.0,Taken from the wild,MISSING,MISSING,Cage,MISSING,MISSING,Separate,Husband found parrot in tree and she took them in
+App_1818,Bird_2023,,MISSING,MISSING,4.0,Mealy Parrot,MISSING,6.0,72.0,Application,Lucky,72.0,6.0,Found,Burrel Boom,Belize,MISSING,MISSING,MISSING,NA,Bird was found with an injured wing
+App_1819,Bird_2024,,MISSING,MISSING,MISSING,MISSING,Male,5.0,60.0,Application,Oliver,60.0,5.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,The size of the cage as given in the instructions
+App_1820,Bird_2025,,MISSING,MISSING,5.0,Olive-throated Parakeet,Male,2.0,24.0,Application,Mayday,MISSING,MISSING,Gifted,MISSING,MISSING,Free/Caged,MISSING,MISSING,NA,Mayday is meticulously looked after with daily fresh fruit. clean environment and lots of attention. He has a large cage and is free most of the day
+App_1821,Bird_2026,,MISSING,MISSING,5.0,Olive-throated Parakeet,MISSING,MISSING,MISSING,Application,Paquito,MISSING,MISSING,Bought,MISSING,MISSING,Caged,MISSING,MISSING,NA,
+App_1822,Bird_2027,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Paquito,120.0,10.0,Found,Belmopan,Cayo,MISSING,MISSING,MISSING,NA,"After the hurricane in 2016, the bird flew inside the house through the window"
+App_1823,Bird_2028,,MISSING,MISSING,3.0,white-fronted Parrot,Male,1.0,12.0,Application,Kylo,3.0,0.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,Kept indoors. Bird gifted by father.
+App_1824,Bird_2029,,MISSING,MISSING,3.0,white-fronted Parrot,Male,2.0,24.0,Application,Luisito,24.0,2.0,Found,MISSING,MISSING,Free,NA,NA,NA,Found infront of house. Parrot cannot fly.
+App_1825,Bird_2030,,MISSING,MISSING,1.0,Red-lored Parrot,Male,3.0,36.0,Application,Pepe,36.0,3.0,MISSING,MISSING,MISSING,Free,NA,NA,NA,
+App_1826,Bird_2031,,MISSING,MISSING,MISSING,Parrot,female,1.0,12.0,Application,Pretty Princess,120.0,10.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,Stays inside the house- no cage
+App_1827,Bird_2032,,MISSING,MISSING,MISSING,MISSING,Male,MISSING,MISSING,Application,Rico,MISSING,MISSING,Gifted,MISSING,MISSING,MISSING,MISSING,Gifted,MISSING,MISSING
+App_1828,Bird_2033,,MISSING,MISSING,MISSING,Parrot,female,14.0,168.0,Application,Berta,168.0,14.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1829,Bird_2034,,MISSING,MISSING,MISSING,Green Parrot,UNKNOWN,UNKNOWN,UNKNOWN,Application,MISSING,36.0,3.0,Found ,MISSING,MISSING,Free/Caged,MISSING,MISSING,NA,Parrot was found injured on the road. Has his cage but usually roams outdoors
+App_1830,Bird_2035,,MISSING,MISSING,3.0,White-fronted Parrot,UNKNOWN,1.5,18.0,Application,Little Little,18.0,1.5,Found,San Ignacio,Cayo,Free,NA,NA,NA,"Bird was founf on property, it fell from a fallen tree"
+App_1831,Bird_2036,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,3.0,36.0,Application,P3,36.0,3.0,Gifted,MISSING,MISSING,Free/Caged,MISSING,MISSING,NA,Has a cage but is allowed to fly indoors
+App_1832,Bird_2037,,MISSING,MISSING,MISSING,Parrot,MISSING,4.0,48.0,Application,MISSING,MISSING,MISSING,Other-not specifed,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1833,Bird_2039,,MISSING,MISSING,MISSING,Green Parrot,Male,3.0,36.0,Application,Cosito,36.0,3.0,Found,MISSING,MISSING,Cage,MISSING,MISSING,MISSING,Cage at farm
+App_1834,Bird_2040,,MISSING,MISSING,MISSING,MISSING,MISSING,3.0,36.0,Application,Paquito,36.0,3.0,Found,Teakettle,Cayo,Free,NA,NA,NA,The bird kept flying around their yard and it never left
+App_1835,Bird_2041,,MISSING,MISSING,MISSING,UNKNOWN,Male,UNKNOWN,UNKNOWN,Application,Rico,Undefined,Undefined,Gifted,MISSING,MISSING,Undefined,MISSING,MISSING,MISSING,Parrot lives at 6973 North Creek house but does not specify free or caged
+App_1836,Bird_2042,,MISSING,MISSING,MISSING,MISSING,MISSING,3.0,36.0,Application,Coco,36.0,3.0,Taken from the wild,San Estevan,Orange Walk,Free,NA,NA,NA,The tree was alone in a tree 
+App_1837,Bird_2043,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,8.0,96.0,Application,Polly Parrot,46.0,4.0,Gifted,MISSING,MISSING,Cage,Outdoor,10*8,NA,Has a broken wing- cannot fly
+App_1838,Bird_2044,,MISSING,MISSING,MISSING,MISSING,Male,18.0,217.0,Application,Lencho,MISSING,MISSING,Taken from the wild,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1839,Bird_2045,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,MISSING,MISSING,Application,Pretty Girl,12.0,1.0,Taken from the wild,Saint Paul Bank,Belize,Cage,MISSING,MISSING,NA,
+App_1840,Bird_2046,,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Application,Bluey,1.0,0.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1841,Bird_2047,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,20.0,240.0,Application,Lorenzo,240.0,20.0,Rescued,San Ignacio Market,Cayo,Free/Caged,MISSING,MISSING,NA,He has had a broken wing since rescued. He has been assessed at BBR and is deemed to be unable to fly. He sleeps in cage but is free during the day
+App_1842,Bird_2048,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,1.5,18.0,Application,Paquito,18.0,1.5,Gifted,MISSING,MISSING,Caged,MISSING,4*4*8,NA,
+App_1843,Bird_2049,,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Application,Lorito,6.0,0.0,Found,San Ignacio,Cayo,Caged,MISSING,MISSING,NA,
+App_1844,Bird_2050,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Coco,12.0,1.0,Bought,MISSING,MISSING,Undefined,MISSING,MISSING,NA,Resides at Trinidad Village
+App_1845,Bird_2051,,MISSING,MISSING,MISSING,Parrot,female,6.0,72.0,Application,Turca,72.0,6.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1846,Bird_2052,,MISSING,MISSING,2.0,Yellow-headed Parrot,female,5.0,60.0,Application,Dolly,60.0,5.0,Bought,MISSING,MISSING,Undefined,MISSING,MISSING,NA,Will be housed at Adriana's Houehold
+App_1847,Bird_2053,,MISSING,MISSING,MISSING,Parrot,MISSING,6.0,72.0,Application,Pretty Pearl,MISSING,MISSING,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1848,Bird_2054,,MISSING,MISSING,1.0,Red-lored Parrot,UNKNOWN,2.0,24.0,Application,Luna,12.0,1.0,Gifted,MISSING,MISSING,Cage,Outdoor,10*8,NA,
+App_1849,Bird_2055,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,3.0,36.0,Application,Chiquito,3.0,36.0,Found,MISSING,MISSING,Cage,MISSING,"16""*23""",MISSING,Found on her avocado tree
+App_1849,Bird_2056,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,3.0,36.0,Application,Terca,3.0,36.0,Found,MISSING,MISSING,Cage,MISSING,"16""*23""",MISSING,Found on her avocado tree
+App_1850,Bird_2057,,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,UNKNOWN,UNKNOWN,Application,Lorie,5.0,0.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,Gifted by parents when they moved. Resides outside underneath the house by the carport
+App_1850,Bird_2058,,MISSING,MISSING,MISSING,Red/Blue head,Male,7.0,84.0,Application,Pacho,5.0,0.0,Gifted,MISSING,MISSING,Free,NA,NA,NA,Gifted by parents when they moved. Resides outside underneath the house by the carport
+App_1851,Bird_2059,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,MISSING,MISSING,Application,Alvin,72.0,6.0,Gifted,MISSING,MISSING,Cage,On veranda,MISSING,NA,
+App_1852,Bird_2060,,MISSING,MISSING,3.0,white-fronted Parrot,MISSING,1.11,23.0,Application,Remi,22.0,1yr 10mnths,Gifted,MISSING,MISSING,Free/Caged,MISSING,NA,NA,Most of the day parrot is in house and not cage
+App_1853,Bird_2061,,MISSING,MISSING,MISSING,Parrot,Female,0.0,7.0,Application,Cosita,5.0,0.0,Gifted,MISSING,MISSING,Undefined,MISSING,MISSING,NA,Does not specify if it is housed by cage or other form of accommodation
+App_1854,Bird_2062,,MISSING,MISSING,MISSING,Red head Parrot,Male,12.0,144.0,Application,Paquito Chulo,144.0,12.0,Gifted,MISSING,MISSING,Undefined,MISSING,MISSING,NA,Housed at Silk Grass
+App_1855,Bird_2063,,MISSING,MISSING,MISSING,White head w/ blue & red,MISSING,1.0,12.0,Application,Pepper Malic,15.0,1.0,Bought,MISSING,MISSING,Undefined,MISSING,MISSING,MISSING,"Gifted to her kids, parrot ives at their residence"
+App_1855,Bird_2064,,MISSING,MISSING,MISSING,White head w/ blue & red,MISSING,1.0,12.0,Application,Pea Malic,15.0,1.0,Bought,MISSING,MISSING,Undefined,MISSING,MISSING,MISSING,"Gifted to her kids, parrot ives at their residence"
+App_1856,Bird_2065,,MISSING,MISSING,1.0,Red-lored Parrot,unKNOWN,MISSING,MISSING,Application,MISSING,12.0,1.0,Gifted,MISSING,MISSING,Cage,MISSING,15*10*10,MISSING,Left to care for parrot as owner left the country
+App_1856,Bird_2066,,MISSING,MISSING,3.0,White-fronted Parrot,UNKNOWN,MISSING,MISSING,Application,Lorito,12.0,1.0,Gifted,MISSING,MISSING,Cage,MISSING,15*10*11,MISSING,Left to care for parrot as owner left the country
+App_1857,Bird_2067,,MISSING,MISSING,MISSING,Parrot,Female,1.0,12.0,Application,Rosa,12.0,1.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,Separate,
+App_1857,Bird_2068,,MISSING,MISSING,MISSING,Parrot,Male,3.0,36.0,Application,Dino,36.0,3.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,Separate,
+App_1858,Bird_2069,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,5.0,60.0,Application,Cupcake,60.0,5.0,Taken in,MISSING,MISSING,Housed,MISSING,MISSING,NA,"Previous owner (father-in-law) passed away and current owner took bird in, will be housed in his own home near tree, cannot fly"
+App_1859,Bird_2070,,MISSING,MISSING,MISSING,Parrot,Male,2.0,30.0,Application,Felix,24.0,2.0,Found,MISSING,MISSING,UNKNOWN,UNKNOWN,UNKNOWN,NA,Note: Apllication is blurry
+App_1860,Bird_2071,,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,3.0,36.0,Application,Kiara,MISSING,MISSING,Bought,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1861,Bird_2072,,MISSING,MISSING,MISSING,Parrot,Female,6.0,72.0,Application,Oly,72.0,6.0,Gifted,MISSING,MISSING,Cage,MISSING,2*2*3,NA,
+App_1862,Bird_2073,,MISSING,MISSING,MISSING,Parrot,MISSING,0.0,10.0,Application,Pally,10.0,0.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,
+App_1863,Bird_2074,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,20.0,240.0,Application,Joe,240.0,20.0,Rescued,MISSING,MISSING,Cage,Outdoor,"8*40''*36""",NA,
+App_1864,Bird_2075,,MISSING,MISSING,MISSING,Parrot,MISSING,1.0,12.0,Application,Paquito,0.0,0.0,Bought,MISSING,MISSING,Cage,MISSING,8*8*8,NA,Owner has the bird  for 2 weeks only
+App_1865,Bird_2076,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Maria,192.0,16.0,Found,San Pedro Village,Corozal,Free,NA,NA,NA,The bird arrived at her home and she adopted it
+App_1866,Bird_2077,,MISSING,MISSING,5.0,Olive-throated Parakeet,UNKNOWN,3.0,36.0,Application,Lorita,36.0,3.0,Found,MISSING,MISSING,Cage,MISSING,MISSING,NA,The bird was found at the river drowning and she took it home for feeding because szhe didnt find her nest.
+App_1867,Bird_2078,,MISSING,MISSING,MISSING,Parrot,,6.0,72.0,Application,Verde,72.0,6.0,Taken from the wild,Agua Viva,Cayo,Cage,MISSING,MISSING,NA,Bird was found on her property
+App_1868,Bird_2079,,MISSING,MISSING,MISSING,Parrot,Male,1.0,12.0,Application,Paco,11.0,0.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,Will be housed in a farm at Armenia Village
+App_1869,Bird_2080,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Tiki,36.0,3.0,Found,MISSING,MISSING,Cage,MISSING,MISSING,NA,Bird was found on the gtround at a park
+App_1870,Bird_2081,,MISSING,MISSING,MISSING,Parrot,MISSING,9.0,108.0,Application,Lori,60.0,5.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1871,Bird_2082,,MISSING,MISSING,2.0,Yellow-headed Parrot,Male,MISSING,MISSING,Application,Alfredo,48.0,4.0,Gifted,MISSING,MISSING,Cage,Outdoor,MISSING,NA,
+App_1872,Bird_2083,,MISSING,MISSING,MISSING,Parrot,MISSING,1.0,12.0,Application,Lori,MISSING,MISSING,Gifted,MISSING,MISSING,Cage,Outdoor,MISSING,NA,
+App_1873,Bird_2084,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Paulie,36.0,3.0,Found,MISSING,MISSING,MISSING,MISSING,MISSING,NA,Found in a yard
+App_1874,Bird_2085,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,15.0,180.0,Application,Paully green,120.0,10.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,NA,Bird will relocate to Hicattee Village
+App_1875,Bird_2086,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,3.0,36.0,Application,Misty,12.0,1.0,Gifted,MISSING,MISSING,Cage,MISSING,4*5*7,NA,
+App_1875,Bird_2087,,MISSING,MISSING,MISSING,Parrot,UNKNOWN,10.0,120.0,Application,Pally,12.0,1.0,Gifted,MISSING,MISSING,Cage,MISSING,4*5*7,NA,
+App_1876,Bird_2088,,MISSING,MISSING,6.0,Yellow-lored Parrot,MISSING,1.0,12.0,Application,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1876,Bird_2089,,MISSING,MISSING,6.0,Yellow-lored Parrot,MISSING,1.0,12.0,Application,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1877,Bird_2090,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Kiko,36.0,3.0,Bought,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1877,Bird_2091,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Dorita,36.0,3.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,NA,
+App_1878,Bird_2092,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,MISSING,MISSING,Application,Jorge,120.0,10.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,Yes,
+App_1878,Bird_2093,,MISSING,MISSING,MISSING,Red head,MISSING,MISSING,MISSING,Application,Pretty Pawly,120.0,10.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,Yes,
+App_1879,Bird_2094,,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,UNKNOWN,UNKNOWN,Application,Gurl,120.0,10.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,MISSING,
+App_1879,Bird_2095,,MISSING,MISSING,4.0,Mealy Parrot,Male,UNKNOWN,UNKNOWN,Application,Raulie,120.0,10.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,MISSING,
+App_1880,Bird_2096,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,7.0,84.0,Application,Lola,84.0,7.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1880,Bird_2097,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,1.0,12.0,Application,Pepito,12.0,1.0,Taken from the wild,MISSING,Orange Walk,MISSING,MISSING,MISSING,MISSING,
+App_1881,Bird_2098,,MISSING,MISSING,MISSING,MISSING,MISSING,6.0,72.0,Application,Orito,72.0,6.0,Gifted,MISSING,MISSING,Free/Caged,Indoor,MISSING,MISSING,In the day they on a tree and at night in a cage in the house
+App_1881,Bird_2099,,MISSING,MISSING,MISSING,MISSING,MISSING,3.0,36.0,Application,Coco,36.0,3.0,Gifted,MISSING,MISSING,Free/Caged,Indoor,MISSING,MISSING,In the day they on a tree and at night in a cage in the house
+App_1882,Bird_2100,,MISSING,MISSING,4.0,Mealy Parrot,UNKNOWN,1.0,22.0,Application,Cachimba,22.0,1.0,Found,Altamira,Corozal,Cageed,MISSING,"42""*38""",NA,Bird was a baby with no feathers when found. It was fragile and they adopted it and fed it witha syringe
+App_1883,Bird_2101,,MISSING,MISSING,2.0,Yellow-headed Parrot,Male,15.0,180.0,Application,Rio,MISSING,MISSING,Bought,MISSING,MISSING,Cage,Outdoor,MISSING,MISSING,
+App_1883,Bird_2102,,MISSING,MISSING,1.0,Red-lored Parrot,Female,8.0,96.0,Application,Daisy,MISSING,MISSING,Gifted,MISSING,MISSING,Cage,Outdoor,MISSING,MISSING,
+App_1884,Bird_2103,,MISSING,MISSING,1.0,Red-lored Parrot,Male,2.0,24.0,Application,Paulie,24.0,2.0,Found,Harmonyville village,Cayo,Free,Indoors,MISSING,Separate,
+App_1884,Bird_2104,,MISSING,MISSING,1.0,Red-lored Parrot,Female,1.0,12.0,Application,Pretty Paulie,12.0,1.0,Found,Harmonyville village,Cayo,Caged,Outdoors,MISSING,Separate,
+App_1885,Bird_2105,,MISSING,MISSING,2.0,Yellow-headed Parrot,Male,UNKNOWN,UNKNOWN,Application,Tito,120.0,10.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,MISSING,
+App_1885,Bird_2106,,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,UNKNOWN,UNKNOWN,Application,Nina,120.0,10.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,MISSING,Nina & Tito are currently incubating 3 eggs
+App_1885,Bird_2107,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,0.0,8.0,Application,Pepper,10.0,0.0,Hatched,Teakettle,Cayo,Cage,MISSING,MISSING,MISSING,
+App_1885,Bird_2108,,MISSING,MISSING,2.0,Yellow-headed Parrot,UNKNOWN,0.0,8.0,Application,Mango,10.0,0.0,Hatched,Teakettle,Cayo,Cage,MISSING,MISSING,MISSING,
+App_1886,Bird_2109,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Lolito,36.0,3.0,Found,St Margaret Village,Cayo,Cage,Outdoor,MISSING,MISSING,Lolito was found on her kitcken sink
+App_1886,Bird_2110,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Molly,24.0,2.0,Gifted,MISSING,MISSING,Cage,Outdoor,MISSING,MISSING,
+App_1887,Bird_2111,,MISSING,MISSING,4.0,Mealy Parrot,MISSING,MISSING,MISSING,Application,Bluey,24.0,2.0,Taken from the wild,Buena Vista Village,Cayo,Cage,MISSING,MISSING,Shared,Was working with a bulldozer and found them
+App_1887,Bird_2112,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Pakito,24.0,2.0,Taken from the wild,Buena Vista Village,Cayo,Cage,MISSING,MISSING,Shared,Was working with a bulldozer and found them
+App_1888,Bird_2113,,MISSING,MISSING,MISSING,Parrot,Male,8.0,96.0,Application,Pepe,48.0,4.0,Bought,MISSING,MISSING,Free,NA,NA,NA,
+App_1888,Bird_2114,,MISSING,MISSING,MISSING,Parrot,Male,1.0,12.0,Application,Pollito,24.0,2.0,Bought,MISSING,MISSING,Free,NA,NA,NA,
+App_1889,Bird_2115,,MISSING,MISSING,MISSING,Parrot,MISSING,5.0,60.0,Application,Sandy,60.0,5.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1889,Bird_2116,,MISSING,MISSING,MISSING,Parrot,MISSING,5.0,60.0,Application,MISSING,60.0,5.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1890,Bird_2117,,MISSING,MISSING,MISSING,Parrot,Male,7.0,84.0,Application,Pally,84.0,7.0,Bought,MISSING,MISSING,Cage,MISSING,MISSING,MISSING,
+App_1890,Bird_2118,,MISSING,MISSING,MISSING,Parrot,Female,6.0,72.0,Application,Nicky,72.0,6.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,MISSING,
+App_1891,Bird_2119,,MISSING,MISSING,MISSING,Parrot,Male,10.0,120.0,Application,Rickey,MISSING,MISSING,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1891,Bird_2120,,MISSING,MISSING,MISSING,Parrot,Male,1.0,12.0,Application,Alexander,MISSING,MISSING,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1892,Bird_2121,,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,2.0,24.0,Application,Sofi,MISSING,MISSING,Taken from the wild,MISSING,MISSING,Cage,MISSING,12*24,NA,
+App_1892,Bird_2122,,MISSING,MISSING,2.0,Yellow-headed Parrot,Male,2.0,24.0,Application,Teo,MISSING,MISSING,Taken from the wild,MISSING,MISSING,Cage,MISSING,12*24,NA,
+App_1893,Bird_2123,,MISSING,MISSING,4.0,Mealy Parrot,MISSING,2.0,24.0,Application,Lola,24.0,2.0,Gifted,Maskall,MISSING,Cage,MISSING,3*4,NA,
+App_1893,Bird_2124,,MISSING,MISSING,4.0,Mealy Parrot,MISSING,2.0,24.0,Application,MISSING,24.0,2.0,Gifted,Maskall,MISSING,Cage,MISSING,3*4,NA,
+App_1894,Bird_2125,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,5.0,60.0,Application,Kiwi,60.0,5.0,Rescued,MISSING,MISSING,Cage,Outdoor,MISSING,Shared,Kiwi has been with them since she was a baby with no feathers
+App_1894,Bird_2126,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,2.0,24.0,Application,Bella,24.0,2.0,Rescued,MISSING,MISSING,Cage,Outdoor,MISSING,Shared,Bella arrived injured
+App_1895,Bird_2127,,MISSING,MISSING,1.0,Red-lored Parrot,Male,8.0,96.0,Application,Ninon,MISSING,MISSING,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1895,Bird_2128,,MISSING,MISSING,1.0,Red-lored Parrot,Female,8.0,96.0,Application,Maya,MISSING,MISSING,Gifted,MISSING,MISSING,Free,NA,NA,NA,
+App_1895,Bird_2129,,MISSING,MISSING,1.0,Red-lored Parrot,Female,4.0,48.0,Application,Lolita,MISSING,MISSING,Hatched,Sarteneja,Corozal,Free,NA,NA,NA,Lolita is the baby from Maya & Ninon. 
+App_1896,Bird_2130,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Yola,48.0,4.0,Gifted,St.Matthews Village,Cayo,Cage,Outdoor,4*4*11,Separate,
+App_1896,Bird_2131,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,MISSING,MISSING,Application,Piolin,12.0,1.0,Found,St.Matthews Village,Cayo,Cage,Outdoor,4*4*11,Separate,
+App_1897,Bird_2132,,MISSING,MISSING,MISSING,Parrot,MISSING,3.0,36.0,Application,Simon,36.0,3.0,Rescued,MISSING,MISSING,Cage,Outdoor,MISSING,Shared,Rescued from wildfire
+App_1897,Bird_2133,,MISSING,MISSING,MISSING,Parrot,MISSING,3.0,36.0,Application,Bolito,36.0,3.0,Rescued,MISSING,MISSING,Cage,Outdoor,MISSING,Shared,Rescued from wildfire
+App_1898,Bird_2134,,MISSING,MISSING,5.0,Olive-throated Parakeet,Male,5.0,60.0,Application,MISSING,60.0,5.0,Gifted,MISSING,MISSING,Cage,Indoor,MISSING,MISSING,
+App_1898,Bird_2135,,MISSING,MISSING,5.0,Olive-throated Parakeet,Male,5.0,60.0,Application,MISSING,60.0,5.0,Gifted,MISSING,MISSING,Cage,Indoor,MISSING,MISSING,
+App_1898,Bird_2136,,MISSING,MISSING,5.0,Olive-throated Parakeet,Female,5.0,60.0,Application,MISSING,60.0,5.0,Gifted,MISSING,MISSING,Cage,Indoor,MISSING,MISSING,
+App_1898,Bird_2137,,MISSING,MISSING,5.0,Olive-throated Parakeet,Female,5.0,60.0,Application,MISSING,60.0,5.0,Gifted,MISSING,MISSING,Cage,Indoor,MISSING,MISSING,
+App_1899,Bird_2138,,MISSING,MISSING,MISSING,Parrot,Female,5.0,60.0,Application,Lolita,60.0,5.0,Gifted,MISSING,MISSING,Cage,MISSING,MISSING,MISSING,
+App_1899,Bird_2139,,MISSING,MISSING,MISSING,Parrot,Female,2.0,24.0,Application,Juan,24.0,2.0,Found,Valley of Peace,Cayo,Cage,MISSING,MISSING,MISSING,
+App_1900,Bird_2140,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,7.0,84.0,Application,Coco,84.0,7.0,Bought,St.Matthews Village,Cayo,Cage,Indoor,MISSING,MISSING,
+App_1900,Bird_2141,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,MISSING,MISSING,Application,Cookie,36.0,3.0,Found,St.Matthews Village,Cayo,Cage,Indoor,MISSING,MISSING,
+App_1901,Bird_2142,,MISSING,MISSING,3.0,White-fronted Parrot,UNKNOWN,2.0,24.0,Application,Rio,24.0,2.0,Found,MISSING,MISSING,Free,Indoor,MISSING,MISSING,
+App_1901,Bird_2143,,MISSING,MISSING,7.0,White-crowned Parrot,UNKNOWN,2.0,24.0,Application,Bluey/Blu,24.0,2.0,Bought,MISSING,MISSING,Free,Indoor,MISSING,MISSING,
+App_1902,Bird_2144,,MISSING,MISSING,MISSING,Parrot,MISSING,5.0,60.0,Application,Mily,60.0,5.0,Bought,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1902,Bird_2145,,MISSING,MISSING,MISSING,Parrot,MISSING,4.0,48.0,Application,Lolo,48.0,4.0,Bought,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1903,Bird_2146,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,6.5,78.0,Application,Pepe,60.0,5.0,Found,MISSING,MISSING,MISSING,Free/Caged,MISSING,MISSING,"Free in the day, caged at night"
+App_1903,Bird_2147,,MISSING,MISSING,1.0,Red-lored Parrot,MISSING,6.5,78.0,Application,Lola,60.0,5.0,Found,MISSING,MISSING,MISSING,Free/Caged,MISSING,MISSING,"Free in the day, caged at night"
+App_1904,Bird_2148,,MISSING,MISSING,2.0,Yellow-headed Parrot,Female,20.0,240.0,Application,Pretty Paule,240.0,20.0,Taken from the wild,Sittee River,Cayo,Cage,MISSING,MISSING,MISSING,
+App_1904,Bird_2149,,MISSING,MISSING,2.0,Yellow-headed Parrot,Male,22.0,264.0,Application,Lorito,264.0,22.0,Taken from the wild,Sittee River,Cayo,Cage,MISSING,MISSING,MISSING,
+App_1905,Bird_2150,,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,Application,Kris,72.0,6.0,Gifted,MISSING,MISSING,Cage,Indoor,MISSING,NA,
+App_1906,Bird_2151,,MISSING,MISSING,MISSING,Parrot,Male,0.0,10.0,Application,Peew,10.0,0.0,Gifted,MISSING,MISSING,Cage,Outdoor,MISSING,MISSING,
+App_1906,Bird_2152,,MISSING,MISSING,MISSING,Parrot,Male,0.0,10.0,Application,Peetrid,10.0,0.0,Gifted,MISSING,MISSING,Cage,Outdoor,MISSING,MISSING,
+App_1907,Bird_2153,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,7.0,84.0,Application,Milo,84.0,7.0,Gifted,MISSING,MISSING,Cage,Outdoor,MISSING,MISSING,
+App_1907,Bird_2154,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,4.0,48.0,Application,Ozzie,48.0,4.0,Gifted,MISSING,MISSING,Cage,Outdoor,MISSING,MISSING,
+App_1908,Bird_2155,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,5.0,60.0,Application,Pretty Pawli,60.0,5.0,Gifted,MISSING,MISSING,Cage,MISSING,12*12,MISSING,
+App_1908,Bird_2156,,MISSING,MISSING,3.0,White-fronted Parrot,MISSING,5.0,60.0,Application,Cotorito,60.0,5.0,Gifted,MISSING,MISSING,Cage,MISSING,12*12,MISSING,
+App_1908,Bird_2157,,MISSING,MISSING,1.0,Red-lored Parrot,Male,5.0,60.0,Application,Mami,60.0,5.0,Gifted,MISSING,MISSING,Cage,MISSING,12*12,MISSING,
+App_1909,Bird_2158,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Danny,60.0,5.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1909,Bird_2159,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Bobby,24.0,2.0,Gifted,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1910,Bird_2160,,MISSING,MISSING,MISSING,Parrot,MISSING,4.0,48.0,Application,Alexander,MISSING,MISSING,Rescued,MISSING,MISSING,Free,NA,NA,NA,
+App_1910,Bird_2161,,MISSING,MISSING,5.0,Olive-throated Parakeet,MISSING,2.0,24.0,Application,Kiko,MISSING,MISSING,Rescued,MISSING,MISSING,Free,NA,NA,NA,
+App_1910,Bird_2162,,MISSING,MISSING,5.0,Olive-throated Parakeet,MISSING,2.0,24.0,Application,Kika,MISSING,MISSING,Rescued,MISSING,MISSING,Free,NA,NA,NA,
+App_1911,Bird_2163,,MISSING,MISSING,7.0,White-crowned Parrot,UNKNOWN,8.0,96.0,Application,Lola,96.0,8.0,Rescued,MISSING,MISSING,Caged,Indoor/Outdoor,MISSING,MISSING,They have a cage inside and outside
+App_1911,Bird_2164,,MISSING,MISSING,3.0,White-fronted Parrot,UNKNOWN,8.0,96.0,Application,Paco,96.0,8.0,Rescued,MISSING,MISSING,Caged,Indoor/Outdoor,MISSING,MISSING,They have a cage inside and outside
+App_1912,Bird_2165,,MISSING,MISSING,MISSING,Parrot,Male,4.0,48.0,Application,Cheeky,48.0,4.0,Bought,MISSING,MISSING,Caged,MISSING,MISSING,MISSING,
+App_1912,Bird_2166,,MISSING,MISSING,MISSING,Parrot,Female,4.0,48.0,Application,Woola,48.0,4.0,Bought,MISSING,MISSING,Caged,MISSING,MISSING,MISSING,
+App_1913,Bird_2167,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Toby,MISSING,MISSING,Gifted,MISSING,MISSING,Caged,MISSING,MISSING,Separate,
+App_1913,Bird_2168,,MISSING,MISSING,MISSING,Parrot,MISSING,MISSING,MISSING,Application,Mary,MISSING,MISSING,Gifted,MISSING,MISSING,Caged,MISSING,MISSING,Separate,
+App_1914,Bird_2169,,MISSING,MISSING,MISSING,Parrot,MISSING,1.0,12.0,Application,Big bird,2.0,0.0,Found,MISSING,MISSING,Caged,MISSING,MISSING,Found on fallen tree,
+App_1914,Bird_2170,,MISSING,MISSING,MISSING,Parrot,MISSING,1.0,12.0,Application,Chico,2.0,0.0,Found,MISSING,MISSING,Caged,MISSING,MISSING,Found on fallen tree,
+App_1915,Bird_2171,,MISSING,MISSING,1.0,Red-lored Parrot,Female,1.0,12.0,Application,Coni,12.0,1.0,Bought,MISSING,MISSING,Cage,Outdoor,MISSING,MISSING,
+App_1915,Bird_2172,,MISSING,MISSING,1.0,Red-lored Parrot,Male,1.5,18.0,Application,Joshua,12.0,1.0,Bought,MISSING,MISSING,Cage,Outdoor,MISSING,MISSING,
+App_1916,Bird_2173,,MISSING,MISSING,2.0,Yellow-headed Parrot,MISSING,1.0,12.0,Application,Zaza,12.0,1.0,Rescued,MISSING,MISSING,Caged,MISSING,MISSING,Rescued from a fallen tree,
+App_1917,Bird_2174,,MISSING,MISSING,MISSING,Parrot,MISSING,3.0,36.0,Application,Risita,36.0,3.0,Taken from the wild,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1917,Bird_2175,,MISSING,MISSING,MISSING,Parrot,MISSING,4.0,48.0,Application,Kiwi,48.0,4.0,Taken from the wild,MISSING,MISSING,MISSING,MISSING,MISSING,MISSING,
+App_1918,Bird_2176,,MISSING,MISSING,MISSING,Parrot,Male,3.0,36.0,Application,Blue,36.0,3.0,Bought,MISSING,MISSING,MISSING,MISSING,MISSING,NA,Resides at owner's house
+App_1919,Bird_2177,,585.0,MISSING,3.0,White-fronted Parrot,Male,7.0,84.0,Application,Harley,72.0,6.0,Bought,MISSING,MISSING,MISSING,MISSING,MISSING,NA,Resides indoors but does no specify free/caged
+App_1920,Bird_2179,,586.0,MISSING,UNKNOWN,UNKNOWN,Male,UNKNOWN,UNKNOWN,Application,Paco,12.0,1.0,Gifted,MISSING,MISSING,Cage,on front porch,MISSING,NA,
+App_1921,Bird_2180,,MISSING,MISSING,MISSING,Parrot,MISSING,6.0,72.0,Application,Sherley,72.0,6.0,Gifted,MISSING,MISSING,Cage,MISSING,6*6,NA,
+App_1922,Bird_2181,,MISSING,MISSING,MISSING,Parrot,Male,UNKNOWN,UNKNOWN,Application,Panchito,6.0,0.0,Gifted,MISSING,MISSING,Cage,Front porch,MISSING,NA,
+,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
