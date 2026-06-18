@@ -23,7 +23,7 @@ Call_21,App_27,6279386,Jocelyn Zavala,NULL,2024-05-23,false,false,NULL,NULL,NULL
 Call_22,App_28,6605420,Jocelyn Zavala,NULL,2024-05-23,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_23,App_30,3032041,Jocelyn Zavala,NULL,2024-05-23,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Disconnected
 Call_24,App_31,6714130,Jocelyn Zavala,English,2024-05-23,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
-Call_25,App_32,6514441,Jocelyn Zavala,English,2024-05-23,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,03:30:00,NULL,NULL,NULL,NULL
+Call_25,App_32,6514441,Jocelyn Zavala,English,2024-05-23,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_26,App_35,6241481,Jocelyn Zavala,English,2024-05-23,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_27,App_37,6016354,Jocelyn Zavala,NULL,2024-05-23,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_28,App_38,6624903,Jocelyn Zavala,Spanish,2024-05-23,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
@@ -123,13 +123,13 @@ Call_121,App_233,2255304,Jocelyn Zavala,NULL,2024-05-27,false,false,NULL,NULL,NU
 Call_122,App_233,6229347,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_123,App_237,6641362,Jocelyn Zavala,NULL,2024-05-27,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_124,App_238,6153104,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
-Call_125,App_239,6215418,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,false,true,In 5 minutes,false,true,In 5 minutes,true,NULL,NULL,NULL
+Call_125,App_239,6215418,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,true,NULL,NULL,NULL
 Call_126,App_239,6215418,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,NULL,NULL,NULL
 Call_127,App_243,6045104,Jocelyn Zavala,NULL,2024-05-27,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_128,App_244,6519204,Jocelyn Zavala,NULL,2024-05-27,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_129,App_246,6611059,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_130,App_248,3022307,Jocelyn Zavala,NULL,2024-05-27,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
-Call_131,App_248,6688388,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,On another number right away,NULL,NULL,NULL,His phone has speaker issues and provided another # to call him on instead
+Call_131,App_248,6688388,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,NULL,NULL,NULL,NULL,His phone has speaker issues and provided another # to call him on instead
 Call_132,App_248,6357385,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,true,NULL,NULL,NULL,NULL,NULL
 Call_133,App_249,6211641,Jocelyn Zavala,English,2024-05-27,true,true,false,true,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_134,App_250,6659775,Jocelyn Zavala,English,2024-05-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
@@ -152,7 +152,7 @@ Call_150,App_272,6324348,Jocelyn Zavala,English,2024-05-28,true,true,false,true,
 Call_151,App_273,6613682,Jocelyn Zavala,NULL,2024-05-28,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_152,App_274,6631005,Jocelyn Zavala,NULL,2024-05-28,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_153,App_276,6207062,Jocelyn Zavala,NULL,2024-05-28,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,false,0,NULL,Network error
-Call_154,App_276,8242828,Jocelyn Zavala,English,2024-05-28,true,true,false,true,Son,6066192,NULL,NULL,NULL,false,true,On another number right away,false,0,NULL,NULL
+Call_154,App_276,8242828,Jocelyn Zavala,English,2024-05-28,true,true,false,true,Son,6066192,NULL,NULL,NULL,false,true,NULL,false,0,NULL,NULL
 Call_155,App_276,6066192,Jocelyn Zavala,English,2024-05-28,true,true,false,true,Son,NULL,true,NULL,NULL,true,true,NULL,false,0,NULL,NULL
 Call_156,App_277,3429032,Jocelyn Zavala,NULL,2024-05-28,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Disconnected
 Call_157,App_277,6355603,Jocelyn Zavala,English,2024-05-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
@@ -185,7 +185,7 @@ Call_183,App_308,6508481,Jocelyn Zavala,NULL,2024-05-28,true,false,NULL,NULL,NUL
 Call_184,App_310,6056476,Jocelyn Zavala,English,2024-05-28,true,true,false,true,NULL,NULL,true,NULL,NULL,false,false,NULL,NULL,NULL,NULL,The person stated miss Debbie moved to the US & that the parrot is no longer around. He wasn't sure what exactly happened to it though.
 Call_185,App_311,6656327,Jocelyn Zavala,English,2024-05-28,true,false,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_186,App_311,6213816,Jocelyn Zavala,NULL,2024-05-28,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_187,App_312,6281912,Jocelyn Zavala,English,2024-05-28,true,true,false,true,NULL,NULL,NULL,NULL,NULL,false,true,04:00:00,NULL,NULL,NULL,He wasn't at home.
+Call_187,App_312,6281912,Jocelyn Zavala,English,2024-05-28,true,true,false,true,NULL,NULL,NULL,NULL,NULL,false,true,NULL,NULL,NULL,NULL,He wasn't at home.
 Call_188,App_314,6522968,Jocelyn Zavala,English,2024-05-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_189,App_315,6522968,Jocelyn Zavala,NULL,2024-05-28,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_190,App_316,6207982,Jocelyn Zavala,Spanish,2024-05-28,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
@@ -232,7 +232,7 @@ Call_230,App_368,6002778,Jocelyn Zavala,English,2024-05-29,true,true,true,NULL,N
 Call_231,App_369,6674407,Jocelyn Zavala,NULL,2024-05-29,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_232,App_370,6011676,Jocelyn Zavala,English,2024-05-29,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_233,App_372,6200641,Jocelyn Zavala,NULL,2024-05-29,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
-Call_234,App_373,4223374,Jocelyn Zavala,English,2024-05-29,true,true,false,true,NULL,NULL,false,true,14:00:00,false,true,14:00:00,NULL,NULL,NULL,NULL
+Call_234,App_373,4223374,Jocelyn Zavala,English,2024-05-29,true,true,false,true,NULL,NULL,false,true,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_235,App_374,6003745,Jocelyn Zavala,English,2024-05-29,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_236,App_383,6021532,Jocelyn Zavala,NULL,2024-05-29,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_237,App_384,8243242,Jocelyn Zavala,NULL,2024-05-29,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Disconnected
@@ -268,7 +268,7 @@ Call_266,App_453,6021898,Jocelyn Zavala,NULL,2024-06-03,true,false,NULL,NULL,NUL
 Call_267,App_458,8044549,Jocelyn Zavala,NULL,2024-06-03,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Disconnected
 Call_268,App_466,6656877,Jocelyn Zavala,NULL,2024-06-03,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_269,App_471,6227511,Jocelyn Zavala,NULL,2024-06-03,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,0,#3 Independence St,Voicemail
-Call_270,App_474,6340381,Jocelyn Zavala,English,2024-06-03,true,true,true,NULL,NULL,NULL,false,true,In 30 mins,false,true,In 30 mins,NULL,NULL,NULL,NULL
+Call_270,App_474,6340381,Jocelyn Zavala,English,2024-06-03,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_271,App_479,6023444,Jocelyn Zavala,NULL,2024-06-03,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_272,App_480,6686303,Jocelyn Zavala,NULL,2024-06-03,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_273,App_484,6512548,Jocelyn Zavala,English,2024-06-03,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,NULL,NULL,NULL
@@ -304,11 +304,11 @@ Call_302,App_521,4022980,Jocelyn Zavala,NULL,2024-06-03,false,false,NULL,NULL,NU
 Call_303,App_522,6629425,Jocelyn Zavala,NULL,2024-06-03,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_304,App_523,6505408,Jocelyn Zavala,NULL,2024-06-03,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_305,App_526,6640060,Jocelyn Zavala,NULL,2024-06-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_306,App_530,6000576,Jocelyn Zavala,English,2024-06-06,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,In 2 hours,true,0,neighbour next door,NULL
+Call_306,App_530,6000576,Jocelyn Zavala,English,2024-06-06,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,NULL,true,0,neighbour next door,NULL
 Call_307,App_531,6354810,Jocelyn Zavala,English,2024-06-06,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_308,App_532,2233473,Jocelyn Zavala,English,2024-06-06,true,true,false,true,NULL,Same dialed number,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,A relative was able to answer the questions on his behalf
 Call_309,App_533,6691222,Jocelyn Zavala,NULL,2024-06-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_310,App_534,6234123,Jocelyn Zavala,English,2024-06-06,true,true,true,NULL,NULL,NULL,false,true,In 5 mins,false,true,5 mins,NULL,NULL,NULL,NULL
+Call_310,App_534,6234123,Jocelyn Zavala,English,2024-06-06,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_311,App_534,6234123,Jocelyn Zavala,NULL,2024-06-06,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_312,App_536,8043714,Jocelyn Zavala,NULL,2024-06-06,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Disconnected
 Call_313,App_537,6681831,Jocelyn Zavala,NULL,2024-06-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
@@ -353,12 +353,12 @@ Call_351,App_616,6711941,Jocelyn Zavala,English,2024-06-06,true,true,true,NULL,N
 Call_352,App_617,6602909,Jocelyn Zavala,English,2024-06-06,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_353,App_619,6357565,Jocelyn Zavala,NULL,2024-06-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_354,App_620,6259088,Jocelyn Zavala,NULL,2024-06-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_355,App_29,6308261,Jocelyn Zavala,English,2024-06-06,true,true,false,true,NULL,Same dialed number,false,true,03:30:00,false,true,03:30:00,NULL,NULL,NULL,NULL
+Call_355,App_29,6308261,Jocelyn Zavala,English,2024-06-06,true,true,false,true,NULL,Same dialed number,false,true,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_356,App_34,4222332,Jocelyn Zavala,NULL,2024-06-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,0,1St North,Voicemail
 Call_357,App_34,6226879,Jocelyn Zavala,English,2024-06-06,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,0,1St North,NULL
 Call_358,App_36,6670657,Jocelyn Zavala,NULL,2024-06-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,0,NULL,Voicemail
 Call_359,App_36,6075179,Jocelyn Zavala,Spanish,2024-06-06,true,true,false,true,Mother,6135294,NULL,NULL,NULL,false,false,NULL,true,0,NULL,NULL
-Call_360,App_36,6135294,Jocelyn Zavala,English,2024-06-06,true,true,true,NULL,NULL,NULL,false,true,02:50:00,false,true,02:50:00,true,0,NULL,NULL
+Call_360,App_36,6135294,Jocelyn Zavala,English,2024-06-06,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,true,0,NULL,NULL
 Call_361,App_40,6531503,Jocelyn Zavala,NULL,2024-06-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_362,App_44,6688290,Jocelyn Zavala,Spanish,2024-06-06,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,1,Up the street,NULL
 Call_363,App_46,6046220,Jocelyn Zavala,English,2024-06-06,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
@@ -384,7 +384,7 @@ Call_382,App_79,6660147,Jocelyn Zavala,English,2024-06-07,true,true,false,false,
 Call_383,App_84,6313968,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_384,App_86,6349822,Jocelyn Zavala,English,2024-06-07,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_385,App_88,2050175,Jocelyn Zavala,NULL,2024-06-07,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Disconnected
-Call_386,App_88,6075956,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,false,true,16:00:00,false,true,16:00:00,NULL,NULL,NULL,NULL
+Call_386,App_88,6075956,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_387,App_93,6271304,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_388,App_93,6283408,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_389,App_95,6313659,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
@@ -394,13 +394,13 @@ Call_392,App_100,6310811,Jocelyn Zavala,English,2024-06-07,true,true,false,false
 Call_393,App_100,6262414,Jocelyn Zavala,NULL,2024-06-07,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_394,App_102,6049987,Jocelyn Zavala,NULL,2024-06-07,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_395,App_103,6311007,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_396,App_105,6101818,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,false,true,12:00:00,false,true,12:00:00,true,0,Georgeville,NULL
+Call_396,App_105,6101818,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,true,0,Georgeville,NULL
 Call_397,App_107,6522976,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_398,App_108,6102890,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_399,App_109,6616727,Jocelyn Zavala,English,2024-06-07,true,true,false,true,Daughter,Same diled number,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_400,App_110,6622696,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_401,App_112,6609861,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_402,App_116,6051335,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,false,true,14:30:00,false,true,14:30:00,false,NULL,NULL,NULL
+Call_402,App_116,6051335,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,false,NULL,NULL,NULL
 Call_403,App_119,6636693,Jocelyn Zavala,English,2024-06-07,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_404,App_119,8042123,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_405,App_120,2234652,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
@@ -446,7 +446,7 @@ Call_444,App_462,6690948,Jocelyn Zavala,NULL,2024-06-10,true,false,NULL,NULL,NUL
 Call_445,App_464,6052652,Jocelyn Zavala,English,2024-06-10,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_446,App_465,6103231,Jocelyn Zavala,NULL,2024-06-10,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_447,App_468,6101339,Jocelyn Zavala,English,2024-06-10,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
-Call_448,App_469,3023724,Jocelyn Zavala,English,2024-06-10,true,true,false,true,NULL,Same dialed number,false,true,14:00:00,false,false,14:00:00,NULL,NULL,NULL,NULL
+Call_448,App_469,3023724,Jocelyn Zavala,English,2024-06-10,true,true,false,true,NULL,Same dialed number,false,true,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_449,App_470,6511827,Jocelyn Zavala,NULL,2024-06-10,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_450,App_475,6277003,Jocelyn Zavala,English,2024-06-10,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_451,App_485,3023418,Jocelyn Zavala,NULL,2024-06-10,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Disconnected
@@ -531,7 +531,7 @@ Call_530,App_655,6228729,Jocelyn Zavala,English,2024-06-11,true,true,false,true,
 Call_531,App_655,6257167,Jocelyn Zavala,English,2024-06-11,true,true,NULL,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,false,0,NULL,NULL
 Call_532,App_656,6624435,Jocelyn Zavala,NULL,2024-06-11,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_533,App_657,6670216,Jocelyn Zavala,NULL,2024-06-11,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_534,App_658,6216637,Jocelyn Zavala,Spanish,2024-06-11,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,12:00:00,false,0,NULL,NULL
+Call_534,App_658,6216637,Jocelyn Zavala,Spanish,2024-06-11,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,NULL,false,0,NULL,NULL
 Call_535,App_660,6058058,Jocelyn Zavala,NULL,2024-06-11,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_536,App_662,6246139,Jocelyn Zavala,NULL,2024-06-11,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_537,App_662,6687522,Jocelyn Zavala,NULL,2024-06-11,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
@@ -640,10 +640,10 @@ Call_639,App_196,6310049,Jocelyn Zavala,NULL,2024-06-17,true,true,NULL,NULL,NULL
 Call_640,App_215,6011718,Jocelyn Zavala,NULL,2024-06-17,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_641,App_217,6634202,Jocelyn Zavala,NULL,2024-06-17,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Beeping
 Call_642,App_223,6241864,Jocelyn Zavala,NULL,2024-06-17,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Invalid
-Call_643,App_62,8233727,Jocelyn Zavala,English,2024-06-17,true,true,false,true,NULL,Same dialed number,false,true,11:00:00,false,true,11:00:00,NULL,NULL,NULL,NULL
+Call_643,App_62,8233727,Jocelyn Zavala,English,2024-06-17,true,true,false,true,NULL,Same dialed number,false,true,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_644,App_225,6740891,Jocelyn Zavala,NULL,2024-06-17,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Beeping
 Call_645,App_226,6665545,Jocelyn Zavala,NULL,2024-06-17,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
-Call_646,App_231,6224703,Jocelyn Zavala,NULL,2024-06-17,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,true,false,Info recieved by miss Nikki,NULL,NULL,NULL,Network error
+Call_646,App_231,6224703,Jocelyn Zavala,NULL,2024-06-17,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,true,false,NULL,NULL,NULL,NULL,Network error
 Call_647,App_232,6636711,Jocelyn Zavala,NULL,2024-06-17,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Invalid
 Call_648,App_234,6251182,Jocelyn Zavala,NULL,2024-06-17,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_649,App_241,6604543,Jocelyn Zavala,NULL,2024-06-17,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Beeping
@@ -753,13 +753,13 @@ Call_752,App_743,3220385,Jocelyn Zavala,Spanish,2024-06-19,true,true,true,NULL,N
 Call_753,App_745,6271982,Jocelyn Zavala,Spanish,2024-06-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_754,App_746,6041506,Jocelyn Zavala,NULL,2024-06-19,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_755,App_748,6265720,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_756,App_751,6306204,Jocelyn Zavala,English,2024-06-19,true,true,true,NULL,NULL,NULL,false,true,02:30:00,false,false,02:30:00,true,0,Burrel Boom,NULL
+Call_756,App_751,6306204,Jocelyn Zavala,English,2024-06-19,true,true,true,NULL,NULL,NULL,false,true,NULL,false,false,NULL,true,0,Burrel Boom,NULL
 Call_757,App_752,6617879,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Beeping
 Call_758,App_753,6249829,Jocelyn Zavala,NULL,2024-06-19,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Disconnected
 Call_759,App_755,6525290,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_760,App_756,6343892,Jocelyn Zavala,English,2024-06-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_761,App_757,6234240,Jocelyn Zavala,NULL,2024-06-19,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
-Call_762,App_758,6680053,Jocelyn Zavala,Spanish,2024-06-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,Thursday or Friday. He will call on whatsapp. Couldn't continue the call bc he was waiting for a call from the clinic for his eye surgery.,NULL,NULL,NULL,NULL
+Call_762,App_758,6680053,Jocelyn Zavala,Spanish,2024-06-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_763,App_751,6306204,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,0,Burrel Boom,Voicemail
 Call_764,App_759,6059247,Jocelyn Zavala,English,2024-06-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_765,App_760,6012821,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
@@ -820,7 +820,7 @@ Call_819,App_810,6668663,Jocelyn Zavala,NULL,2024-06-25,true,false,NULL,NULL,NUL
 Call_820,App_810,6698150,Jocelyn Zavala,English,2024-06-25,true,true,false,true,Husband,NULL,true,NULL,NULL,true,false,NULL,true,He can't provide an exact amount but there are a few.,In Valley of Peace,Miss Alas passed away. her husband answered the questions.
 Call_821,App_812,6056026,Jocelyn Zavala,Spanish,2024-06-25,true,true,false,true,Husband,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_822,App_813,6209512,Jocelyn Zavala,NULL,2024-06-25,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
-Call_823,App_814,6057474,Jocelyn Zavala,English,2024-06-25,true,true,true,NULL,NULL,NULL,false,true,Tomorrow at 10am,false,true,Tomorrow at 10am,NULL,NULL,NULL,NULL
+Call_823,App_814,6057474,Jocelyn Zavala,English,2024-06-25,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_824,App_815,6214975,Jocelyn Zavala,"English, Spanish",2024-06-25,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,NULL,NULL
 Call_825,App_816,6655340,Jocelyn Zavala,NULL,2024-06-25,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Beeping
 Call_826,App_818,6270497,Jocelyn Zavala,Spanish,2024-06-25,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,false,1,next door,NULL
@@ -861,7 +861,7 @@ Call_860,App_854,6240443,Jocelyn Zavala,NULL,2024-06-27,true,false,NULL,NULL,NUL
 Call_861,App_855,6237536,Jocelyn Zavala,NULL,2024-06-27,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_862,App_856,6651187,Jocelyn Zavala,Spanish,2024-06-27,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_863,App_857,6503016,Jocelyn Zavala,NULL,2024-06-27,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_864,App_858,6224416,Jocelyn Zavala,Spanish,2024-06-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,true,15 minutes,true,0,NULL,NULL
+Call_864,App_858,6224416,Jocelyn Zavala,Spanish,2024-06-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,true,NULL,true,0,NULL,NULL
 Call_865,App_859,6268363,Jocelyn Zavala,English,2024-06-27,true,true,false,true,Father,6151974,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_866,App_859,6151974,Jocelyn Zavala,English,2024-06-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_867,App_858,6224416,Jocelyn Zavala,Spanish,2024-06-27,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,NULL,NULL
@@ -1005,7 +1005,7 @@ Call_1004,App_990,8040083,Jocelyn Zavala,NULL,2024-07-08,false,false,NULL,NULL,N
 Call_1005,App_991,2271265,Jocelyn Zavala,NULL,2024-07-08,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,0,NULL,Disconnected
 Call_1006,App_991,6101217,Jocelyn Zavala,English,2024-07-08,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,NULL,NULL
 Call_1007,App_992,6041088,Jocelyn Zavala,NULL,2024-07-08,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
-Call_1008,App_992,2235803,Jocelyn Zavala,English,2024-07-08,true,true,false,true,Worker,NULL,false,true,02:30:00,false,true,02:30:00,NULL,NULL,NULL,NULL
+Call_1008,App_992,2235803,Jocelyn Zavala,English,2024-07-08,true,true,false,true,Worker,NULL,false,true,NULL,false,true,NULL,NULL,NULL,NULL,NULL
 Call_1009,App_993,2276518,Jocelyn Zavala,NULL,2024-07-08,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Disconnected
 Call_1010,App_994,6056019,Jocelyn Zavala,English,2024-07-08,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_1011,App_995,6505817,Jocelyn Zavala,English,2024-07-08,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
@@ -1155,7 +1155,7 @@ Call_1154,App_1110,6045929,Jocelyn Zavala,NULL,2024-07-11,true,false,NULL,NULL,N
 Call_1155,App_1111,6538134,Jocelyn Zavala,NULL,2024-07-11,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Invalid number
 Call_1156,App_1112,6077771,Jocelyn Zavala,Spanish,2024-07-11,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_1157,App_1113,6260361,Jocelyn Zavala,English,2024-07-11,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
-Call_1158,App_1114,6103976,Jocelyn Zavala,English,2024-07-11,true,true,true,NULL,NULL,NULL,false,true,Next week,false,true,Next week,true,0,NULL,NULL
+Call_1158,App_1114,6103976,Jocelyn Zavala,English,2024-07-11,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,true,0,NULL,NULL
 Call_1159,App_1115,6000888,Jocelyn Zavala,NULL,2024-07-15,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,0,90 Barrack Rd,Voicemail
 Call_1160,App_1116,6663370,Jocelyn Zavala,NULL,2024-07-15,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Beeping
 Call_1161,App_1117,6103149,Jocelyn Zavala,NULL,2024-07-15,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Forwarded to voicemail
@@ -1738,7 +1738,7 @@ Call_1736,App_752,6617879,Jocelyn Zavala,NULL,2024-09-06,false,false,NULL,NULL,N
 Call_1737,App_755,6525290,Jocelyn Zavala,NULL,2024-09-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1738,App_751,6306204,Jocelyn Zavala,English,2024-09-06,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,Burrel Boom,NULL
 Call_1739,App_760,6012821,Jocelyn Zavala,NULL,2024-09-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_1740,App_761,6023611,Jocelyn Zavala,English,2024-09-06,true,true,false,true,Daughter,NULL,false,true,Any Monday,false,false,NULL,NULL,NULL,NULL,NULL
+Call_1740,App_761,6023611,Jocelyn Zavala,English,2024-09-06,true,true,false,true,Daughter,NULL,false,true,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_1741,App_765,6617272,Jocelyn Zavala,NULL,2024-09-06,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Beeping
 Call_1742,App_767,6291434,Jocelyn Zavala,NULL,2024-09-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1743,App_770,6022829,Jocelyn Zavala,English,2024-09-06,true,true,false,true,Grandaughter,NULL,true,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Applicant passed away 3 years ago.
@@ -1976,7 +1976,7 @@ Call_1974,App_1507,6690593,Jocelyn Zavala,English,2024-09-25,true,true,true,NULL
 Call_1975,App_1529,6273376,Jocelyn Zavala,English,2024-09-26,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,Louisianatown Road,NULL
 Call_1976,App_1530,6288379,Jocelyn Zavala,Spanish,2024-09-26,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,1,"Halls Layout, 2 blocks down the road",NULL
 Call_1977,App_1531,6132174,Jocelyn Zavala,English,2024-09-26,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,Rocstone Pond,NULL
-Call_1978,App_1532,6061850,Jocelyn Zavala,English,2024-09-26,true,true,true,NULL,NULL,NULL,false,true,14:15:00,false,false,NULL,true,0,San Lorenzo Road,NULL
+Call_1978,App_1532,6061850,Jocelyn Zavala,English,2024-09-26,true,true,true,NULL,NULL,NULL,false,true,NULL,false,false,NULL,true,0,San Lorenzo Road,NULL
 Call_1979,App_1533,6215180,Jocelyn Zavala,NULL,2024-09-26,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_1980,App_1534,6657405,Jocelyn Zavala,NULL,2024-09-26,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,1,"Next door, #8 Smith Sonian",NULL
 Call_1981,App_1534,6657458,Jocelyn Zavala,English,2024-09-26,true,true,false,true,NULL,6642633,NULL,NULL,NULL,false,false,NULL,NULL,1,"Next door, #8 Smith Sonian",NULL
