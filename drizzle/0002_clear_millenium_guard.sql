@@ -58,6 +58,7 @@ ALTER TABLE "parrots" ADD COLUMN "district_obtain" varchar(100);--> statement-br
 ALTER TABLE "parrots" ADD COLUMN "period_of_ownership" text;--> statement-breakpoint
 ALTER TABLE "parrots" ADD COLUMN "date_period_provided" date;--> statement-breakpoint
 ALTER TABLE "parrots" ADD COLUMN "health_comms_by_professional" text;--> statement-breakpoint
+ALTER TABLE "applicants" ALTER COLUMN "contact_secondary" TYPE varchar(255);--> statement-breakpoint
 ALTER TABLE "comments" ADD CONSTRAINT "comments_applicant_id_applicants_id_fk" FOREIGN KEY ("applicant_id") REFERENCES "public"."applicants"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 CREATE INDEX "idx_comments_applicant" ON "comments" USING btree ("applicant_id");--> statement-breakpoint
 ALTER TABLE "inspections" ADD CONSTRAINT "inspections_officer_id_users_id_fk" FOREIGN KEY ("officer_id") REFERENCES "public"."users"("id") ON DELETE no action ON UPDATE no action;
