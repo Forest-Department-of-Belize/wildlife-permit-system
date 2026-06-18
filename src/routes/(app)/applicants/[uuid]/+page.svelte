@@ -65,7 +65,7 @@
 				<div>
 					<h4 style="margin-bottom:12px;color:var(--green-900);">Contact</h4>
 					<p><strong>Phone:</strong> {a.contactNumber || '-'} {a.contactNumberWhatsapp ? '(WhatsApp)' : ''}</p>
-					<p><strong>Secondary:</strong> {a.contactNumberSecondary || '-'}</p>
+					<p><strong>Secondary:</strong> {a.contactSecondary || '-'}</p>
 					<p><strong>Email:</strong> {a.email || '-'}</p>
 					<p><strong>Address:</strong> {a.address1 || '-'} {a.address2 || ''}</p>
 					<p><strong>District:</strong> {a.districtName || '-'}</p>

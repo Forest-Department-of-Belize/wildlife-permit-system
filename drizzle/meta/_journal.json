@@ -15,6 +15,13 @@
       "when": 1780699287291,
       "tag": "0001_hot_dazzler",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1781752565432,
+      "tag": "0002_clear_millenium_guard",
+      "breakpoints": true
     }
   ]
 }

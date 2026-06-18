@@ -13,8 +13,8 @@ interface CreateApplicantData {
 	rangeId?: number | null;
 	contactNumber?: string;
 	contactNumberWhatsapp?: boolean;
-	contactNumberSecondary?: string;
-	contactNumberSecondaryWhatsapp?: boolean;
+	contactSecondary?: string;
+	contactSecondaryWhatsapp?: boolean;
 	email?: string;
 	occupation?: string;
 	company?: string;
@@ -50,8 +50,8 @@ export async function createApplicant(data: CreateApplicantData) {
 			rangeId: data.rangeId || null,
 			contactNumber: data.contactNumber || null,
 			contactNumberWhatsapp: data.contactNumberWhatsapp ?? false,
-			contactNumberSecondary: data.contactNumberSecondary || null,
-			contactNumberSecondaryWhatsapp: data.contactNumberSecondaryWhatsapp ?? false,
+			contactSecondary: data.contactSecondary || null,
+			contactSecondaryWhatsapp: data.contactSecondaryWhatsapp ?? false,
 			email: data.email || null,
 			occupation: data.occupation || null,
 			company: data.company || null,
