@@ -21,11 +21,11 @@ schema = {
             'date_of_birth': ('date', None),
             'address1': ('varchar', 255),
             'address2': ('varchar', 255),
-            'district': ('ref:districts', None),  # FK lookup
+            'district': ('ref:districts', None),
             'contact_number': ('varchar', 20),
             'contact_number_whatsapp': ('boolean', None),
-            'contact_number_secondary': ('varchar', 20),
-            'contact_number_secondary_whatsapp': ('boolean', None),
+            'contact_secondary': ('varchar', 255),
+            'contact_secondary_whatsapp': ('boolean', None),
             'email': ('varchar', 255),
             'occupation': ('varchar', 100),
             'company': ('varchar', 100),
@@ -45,7 +45,6 @@ schema = {
             'ownership_comments': ('text', None),
             'process_status': ('varchar', 100),
             'applicant_notes': ('text', None),
-            # 'id' in CSV is an old system ref, not the serial PK
             'id': ('_old_id', None),
         },
     },
