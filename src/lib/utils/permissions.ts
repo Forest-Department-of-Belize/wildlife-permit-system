@@ -6,6 +6,7 @@ export type Permission =
 	| 'inspections-view' | 'inspections-add' | 'inspections-edit' | 'inspections-delete'
 	| 'calls-view' | 'calls-add' | 'calls-edit' | 'calls-delete'
 	| 'offenses-view' | 'offenses-add' | 'offenses-edit' | 'offenses-delete'
+	| 'comments-view' | 'comments-add' | 'comments-edit' | 'comments-delete'
 	| 'species-view' | 'species-add' | 'species-edit' | 'species-delete'
 	| 'districts-view' | 'districts-add' | 'districts-edit' | 'districts-delete'
 	| 'ranges-view' | 'ranges-add' | 'ranges-edit' | 'ranges-delete'

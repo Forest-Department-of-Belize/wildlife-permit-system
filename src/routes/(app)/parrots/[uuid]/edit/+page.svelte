@@ -91,6 +91,25 @@
 	</div>
 
 	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">Status & Dates</div>
+		<div class="card-body">
+			<div class="grid grid-3">
+				<div class="form-group">
+					<label class="form-check"><input type="checkbox" name="banded" checked={p.banded} /> Banded</label>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Parrot Status</label>
+					<input class="form-input" type="text" name="parrot_status" value={p.parrotStatus || ''} />
+				</div>
+				<div class="form-group">
+					<label class="form-label">End Date</label>
+					<input class="form-input" type="date" name="end_date" value={p.endDate || ''} />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom:20px;">
 		<div class="card-header">Housing & Health</div>
 		<div class="card-body">
 			<div class="form-group">
@@ -117,6 +136,104 @@
 			</div>
 			<div class="form-group">
 				<label class="form-check"><input type="checkbox" name="confiscated" checked={p.confiscated} /> Confiscated</label>
+			</div>
+			<div class="form-group">
+				<label class="form-label">Health Comments by Professional</label>
+				<textarea class="form-textarea" name="health_comms_by_professional" rows="3">{p.healthCommsByProfessional || ''}</textarea>
+			</div>
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">Species & Age Description</div>
+		<div class="card-body">
+			<div class="form-group">
+				<label class="form-label">Justification of Sex by Applicant</label>
+				<textarea class="form-textarea" name="justification_sex_by_applicant" rows="3">{p.justificationSexByApplicant || ''}</textarea>
+			</div>
+			<div class="form-group">
+				<label class="form-label">Species Description by Applicant</label>
+				<textarea class="form-textarea" name="species_descrip_by_applicant" rows="3">{p.speciesDescripByApplicant || ''}</textarea>
+			</div>
+			<div class="grid grid-2">
+				<div class="form-group">
+					<label class="form-label">Parrot Age Description</label>
+					<textarea class="form-textarea" name="parrot_age_description" rows="3">{p.parrotAgeDescription || ''}</textarea>
+				</div>
+				<div class="form-group">
+					<label class="form-label">Date Parrot Age Described</label>
+					<input class="form-input" type="date" name="date_parrot_age_described" value={p.dateParrotAgeDescribed || ''} />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="form-label">Parrot Picture</label>
+				<input class="form-input" type="text" name="parrot_picture" value={p.parrotPicture || ''} />
+			</div>
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">Ownership & Acquisition</div>
+		<div class="card-body">
+			<div class="grid grid-2">
+				<div class="form-group">
+					<label class="form-label">Town Obtained</label>
+					<input class="form-input" type="text" name="town_obtained" value={p.townObtained || ''} />
+				</div>
+				<div class="form-group">
+					<label class="form-label">District Obtained</label>
+					<input class="form-input" type="text" name="district_obtain" value={p.districtObtain || ''} />
+				</div>
+			</div>
+			<div class="grid grid-2">
+				<div class="form-group">
+					<label class="form-label">Period of Ownership</label>
+					<input class="form-input" type="text" name="period_of_ownership" value={p.periodOfOwnership || ''} />
+				</div>
+				<div class="form-group">
+					<label class="form-label">Date Period Provided</label>
+					<input class="form-input" type="date" name="date_period_provided" value={p.datePeriodProvided || ''} />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">Parrot Loss Information</div>
+		<div class="card-body">
+			<div class="grid grid-3">
+				<div class="form-group">
+					<label class="form-label">When No Parrot</label>
+					<input class="form-input" type="text" name="when_no_parrot" value={p.whenNoParrot || ''} />
+				</div>
+				<div class="form-group">
+					<label class="form-label">Where No Parrot</label>
+					<input class="form-input" type="text" name="where_no_parrot" value={p.whereNoParrot || ''} />
+				</div>
+				<div class="form-group">
+					<label class="form-label">Date Parrot Loss Info Provided</label>
+					<input class="form-input" type="date" name="date_parrot_loss_info_provided" value={p.dateParrotLossInfoProvided || ''} />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">New Owner Information</div>
+		<div class="card-body">
+			<div class="grid grid-3">
+				<div class="form-group">
+					<label class="form-label">New Owner</label>
+					<input class="form-input" type="text" name="new_owner" value={p.newOwner || ''} />
+				</div>
+				<div class="form-group">
+					<label class="form-label">New Owner Address</label>
+					<input class="form-input" type="text" name="new_owner_address" value={p.newOwnerAddress || ''} />
+				</div>
+				<div class="form-group">
+					<label class="form-label">New Owner Contact</label>
+					<input class="form-input" type="text" name="new_owner_contact" value={p.newOwnerContact || ''} />
+				</div>
 			</div>
 		</div>
 	</div>

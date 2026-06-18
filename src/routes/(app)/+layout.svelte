@@ -59,10 +59,12 @@
 			<li class="menu-header">Records</li>
 			<li><a href="/applicants" class={isActive('/applicants')}><i class="fas fa-users"></i><span>Applicants</span></a></li>
 			<li><a href="/parrots" class={isActive('/parrots')}><i class="fas fa-dove"></i><span>Parrots</span></a></li>
+			<li><a href="/applications" class={isActive('/applications')}><i class="fas fa-clipboard-list"></i><span>Applications</span></a></li>
 			<li><a href="/permits" class={isActive('/permits')}><i class="fas fa-file-alt"></i><span>Permits</span></a></li>
 			<li><a href="/inspections" class={isActive('/inspections')}><i class="fas fa-search"></i><span>Inspections</span></a></li>
 			<li><a href="/calls" class={isActive('/calls')}><i class="fas fa-phone"></i><span>Calls</span></a></li>
 			<li><a href="/offenses" class={isActive('/offenses')}><i class="fas fa-exclamation-triangle"></i><span>Offenses</span></a></li>
+			<li><a href="/comments" class={isActive('/comments')}><i class="fas fa-comments"></i><span>Comments</span></a></li>
 
 			{#if user && isAdminOrOIC(user.role)}
 				<li class="menu-header">Administration</li>

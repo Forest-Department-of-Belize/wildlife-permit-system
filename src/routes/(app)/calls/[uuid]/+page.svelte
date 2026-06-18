@@ -39,6 +39,10 @@
 				<p><strong>Answered:</strong> <span class="badge" class:badge-green={c.isAnswered} class:badge-red={!c.isAnswered}>{c.isAnswered ? 'Yes' : 'No'}</span></p>
 				<p><strong>Spoke to Applicant:</strong> {c.isApplicant ? 'Yes' : 'No'}</p>
 				<p><strong>Fully Completed:</strong> <span class="badge" class:badge-green={c.isFullyCompleted} class:badge-yellow={!c.isFullyCompleted}>{c.isFullyCompleted ? 'Yes' : 'No'}</span></p>
+				<p><strong>Call ID:</strong> {c.eriCallId || '-'}</p>
+				<p><strong>Knows Applicant:</strong> {c.knowApplicant ? 'Yes' : 'No'}</p>
+				<p><strong>Relation to Applicant:</strong> {c.relationApplicant || '-'}</p>
+				<p><strong>New Applicant Contact:</strong> {c.newApplicantContact || '-'}</p>
 			</div>
 		</div>
 	</div>
@@ -53,6 +57,8 @@
 			<p><strong>Call Later Date:</strong> {c.callLaterDate || '-'}</p>
 		</div>
 		<p><strong>Consents to Digital Resources:</strong> {c.consentsDigitalResources ? 'Yes' : 'No'}</p>
+		<p><strong>Scheduled Follow-up:</strong> {c.scheduledFollowup ? 'Yes' : 'No'}</p>
+		<p><strong>Follow-up Date:</strong> {c.followupDate || '-'}</p>
 	</div>
 </div>
 

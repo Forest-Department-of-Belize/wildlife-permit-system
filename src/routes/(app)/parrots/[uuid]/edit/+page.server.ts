@@ -45,7 +45,26 @@ export const actions: Actions = {
 			birdComments: (fd.get('bird_comments') as string) || undefined,
 			infoSource: (fd.get('info_source') as string) || undefined,
 			confiscated: fd.get('confiscated') === 'on',
-			inspectionId: fd.get('inspection_id') ? Number(fd.get('inspection_id')) : undefined
+			inspectionId: fd.get('inspection_id') ? Number(fd.get('inspection_id')) : undefined,
+			banded: fd.get('banded') === 'on',
+			parrotStatus: (fd.get('parrot_status') as string) || undefined,
+			endDate: (fd.get('end_date') as string) || null,
+			justificationSexByApplicant: (fd.get('justification_sex_by_applicant') as string) || undefined,
+			parrotAgeDescription: (fd.get('parrot_age_description') as string) || undefined,
+			dateParrotAgeDescribed: (fd.get('date_parrot_age_described') as string) || null,
+			townObtained: (fd.get('town_obtained') as string) || undefined,
+			districtObtain: (fd.get('district_obtain') as string) || undefined,
+			periodOfOwnership: (fd.get('period_of_ownership') as string) || undefined,
+			datePeriodProvided: (fd.get('date_period_provided') as string) || null,
+			speciesDescripByApplicant: (fd.get('species_descrip_by_applicant') as string) || undefined,
+			parrotPicture: (fd.get('parrot_picture') as string) || undefined,
+			whenNoParrot: (fd.get('when_no_parrot') as string) || undefined,
+			whereNoParrot: (fd.get('where_no_parrot') as string) || undefined,
+			dateParrotLossInfoProvided: (fd.get('date_parrot_loss_info_provided') as string) || null,
+			newOwner: (fd.get('new_owner') as string) || undefined,
+			newOwnerAddress: (fd.get('new_owner_address') as string) || undefined,
+			newOwnerContact: (fd.get('new_owner_contact') as string) || undefined,
+			healthCommsByProfessional: (fd.get('health_comms_by_professional') as string) || undefined
 		});
 
 		cookies.set('flash', JSON.stringify({ type: 'success', message: 'Parrot updated' }), { path: '/', maxAge: 30 });

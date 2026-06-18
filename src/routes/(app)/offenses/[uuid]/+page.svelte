@@ -38,6 +38,8 @@
 				<p><strong>Reason Confiscated:</strong> {o.reasonConfiscated || '-'}</p>
 				<p><strong>Hand Tame:</strong> {o.handTame ? 'Yes' : 'No'}</p>
 				<p><strong>Prior History:</strong> {o.priorHistory ? 'Yes' : 'No'}</p>
+				<p><strong>Approx Date Acquired:</strong> {o.approxDateAcquired || '-'}</p>
+				<p><strong>Acquired &lt; 12 Months:</strong> {o.lessTwelveMonthsAcquired ? 'Yes' : 'No'}</p>
 			</div>
 		</div>
 	</div>

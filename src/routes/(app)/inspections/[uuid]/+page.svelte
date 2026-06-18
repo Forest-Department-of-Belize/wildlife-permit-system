@@ -62,6 +62,11 @@
 			</div>
 			<div>
 				<p><strong>Instructions for Applicant:</strong> {i.instructionsForApplicant || '-'}</p>
+				<p><strong>Approx Report Date:</strong> {i.approxReportDate || '-'}</p>
+				<p><strong>Date Report Date Provided:</strong> {i.whenApproxReportDateProvided || '-'}</p>
+				<p><strong>Date Acquired:</strong> {i.dateAcquired || '-'}</p>
+				<p><strong>Approx Date Acquired:</strong> {i.approxDateAcquired || '-'}</p>
+				<p><strong>Acquired &lt; 12 Months:</strong> {i.lessTwelveMonthsAcquired ? 'Yes' : 'No'}</p>
 			</div>
 		</div>
 	</div>

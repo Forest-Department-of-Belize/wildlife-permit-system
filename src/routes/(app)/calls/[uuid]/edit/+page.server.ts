@@ -33,7 +33,12 @@ export const actions: Actions = {
 				consentsDigitalResources: fd.get('consents_digital_resources') === 'on',
 				numNeighborsParrots: fd.get('num_neighbors_parrots') ? Number(fd.get('num_neighbors_parrots')) : undefined,
 				neighborhoodDescription: (fd.get('neighborhood_description') as string) || undefined,
-				callComments: (fd.get('call_comments') as string) || undefined
+				callComments: (fd.get('call_comments') as string) || undefined,
+				knowApplicant: fd.get('know_applicant') === 'on',
+				relationApplicant: (fd.get('relation_applicant') as string) || undefined,
+				newApplicantContact: (fd.get('new_applicant_contact') as string) || undefined,
+				scheduledFollowup: fd.get('scheduled_followup') === 'on',
+				followupDate: (fd.get('followup_date') as string) || null
 			});
 			cookies.set('flash', JSON.stringify({ type: 'success', message: 'Call updated' }), { path: '/', maxAge: 30 });
 		} catch (e) {

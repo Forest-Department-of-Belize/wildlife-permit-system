@@ -26,8 +26,11 @@
 				<p><strong>Pet Name:</strong> {p.petName || '-'}</p>
 				<p><strong>Species:</strong> {p.speciesName || '-'}</p>
 				<p><strong>Band Number:</strong> {p.bandNumber || '-'}</p>
+				<p><strong>Banded:</strong> {p.banded ? 'Yes' : 'No'}</p>
 				<p><strong>Sex:</strong> {p.sex || '-'}</p>
 				<p><strong>Age:</strong> {p.parrotAgeMonths != null ? `${p.parrotAgeMonths} months` : '-'}</p>
+				<p><strong>Status:</strong> {p.parrotStatus || '-'}</p>
+				<p><strong>End Date:</strong> {p.endDate || '-'}</p>
 			</div>
 			<div>
 				<h4 style="margin-bottom:12px;color:var(--green-900);">Ownership</h4>
@@ -41,6 +44,12 @@
 				<p><strong>Method Obtained:</strong> {p.methodObtained || '-'}</p>
 				<p><strong>Ownership Period:</strong> {p.periodOfOwnershipMonths != null ? `${p.periodOfOwnershipMonths} months` : '-'}</p>
 				<p><strong>Info Source:</strong> {p.infoSource || '-'}</p>
+				<p><strong>Town Obtained:</strong> {p.townObtained || '-'}</p>
+				<p><strong>District Obtained:</strong> {p.districtObtain || '-'}</p>
+				<p><strong>Period of Ownership:</strong> {p.periodOfOwnership || '-'}</p>
+				<p><strong>Date Period Provided:</strong> {p.datePeriodProvided || '-'}</p>
+				<p><strong>Species Description by Applicant:</strong> {p.speciesDescripByApplicant || '-'}</p>
+				<p><strong>Application ID:</strong> {p.eriApplicationId || '-'}</p>
 			</div>
 		</div>
 	</div>
@@ -56,31 +65,40 @@
 				<p><strong>Has Parrot:</strong> {p.hasParrot ? 'Yes' : 'No'}</p>
 				{#if !p.hasParrot}
 					<p><strong>Why No Parrot:</strong> {p.whyNoParrot || '-'}</p>
+					<p><strong>When No Parrot:</strong> {p.whenNoParrot || '-'}</p>
+					<p><strong>Where No Parrot:</strong> {p.whereNoParrot || '-'}</p>
+					<p><strong>Date Loss Info Provided:</strong> {p.dateParrotLossInfoProvided || '-'}</p>
+					<p><strong>New Owner:</strong> {p.newOwner || '-'}</p>
+					<p><strong>New Owner Address:</strong> {p.newOwnerAddress || '-'}</p>
+					<p><strong>New Owner Contact:</strong> {p.newOwnerContact || '-'}</p>
 				{/if}
 			</div>
 			<div>
 				<h4 style="margin-bottom:12px;color:var(--green-900);">Health</h4>
 				<p><strong>Healthy:</strong> <span class="badge" class:badge-green={p.isHealthy} class:badge-red={!p.isHealthy}>{p.isHealthy ? 'Yes' : 'No'}</span></p>
 				<p><strong>Health Comments:</strong> {p.healthComments || '-'}</p>
+				<p><strong>Professional Health Comments:</strong> {p.healthCommsByProfessional || '-'}</p>
 				<p><strong>Confiscated:</strong> <span class="badge" class:badge-red={p.confiscated} class:badge-green={!p.confiscated}>{p.confiscated ? 'Yes' : 'No'}</span></p>
 			</div>
 		</div>
 	</div>
 </div>
 
-{#if p.stories || p.birdComments}
-	<div class="card" style="margin-bottom:20px;">
-		<div class="card-header">Additional Information</div>
-		<div class="card-body">
-			{#if p.stories}
-				<p><strong>Stories:</strong> {p.stories}</p>
-			{/if}
-			{#if p.birdComments}
-				<p><strong>Bird Comments:</strong> {p.birdComments}</p>
-			{/if}
-		</div>
+<div class="card" style="margin-bottom:20px;">
+	<div class="card-header">Additional Information</div>
+	<div class="card-body">
+		{#if p.stories}
+			<p><strong>Stories:</strong> {p.stories}</p>
+		{/if}
+		{#if p.birdComments}
+			<p><strong>Bird Comments:</strong> {p.birdComments}</p>
+		{/if}
+		<p><strong>Sex Justification:</strong> {p.justificationSexByApplicant || '-'}</p>
+		<p><strong>Age Description:</strong> {p.parrotAgeDescription || '-'}</p>
+		<p><strong>Date Age Described:</strong> {p.dateParrotAgeDescribed || '-'}</p>
+		<p><strong>Has Picture:</strong> {p.parrotPicture ? 'Yes' : 'No'}</p>
 	</div>
-{/if}
+</div>
 
 {#if user && hasPermission(user.permissions, 'parrots-delete')}
 	<div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--gray-200);">

@@ -37,7 +37,12 @@ export const actions: Actions = {
 				handTame: fd.get('hand_tame') === 'on',
 				instructionsForApplicant: (fd.get('instructions_for_applicant') as string) || undefined,
 				expectedRecheck: (fd.get('expected_recheck') as string) || undefined,
-				preconditionsComments: (fd.get('preconditions_comments') as string) || undefined
+				preconditionsComments: (fd.get('preconditions_comments') as string) || undefined,
+				approxReportDate: (fd.get('approx_report_date') as string) || undefined,
+				whenApproxReportDateProvided: (fd.get('when_approx_report_date_provided') as string) || undefined,
+				dateAcquired: (fd.get('date_acquired') as string) || undefined,
+				approxDateAcquired: (fd.get('approx_date_acquired') as string) || undefined,
+				lessTwelveMonthsAcquired: fd.get('less_12_months_acquired') === 'on'
 			});
 			cookies.set('flash', JSON.stringify({ type: 'success', message: 'Inspection updated' }), { path: '/', maxAge: 30 });
 		} catch (e) {

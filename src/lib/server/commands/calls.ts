@@ -12,7 +12,12 @@ interface CallData {
 	isFunctional?: boolean;
 	isAnswered?: boolean;
 	isApplicant?: boolean;
+	knowApplicant?: boolean;
+	relationApplicant?: string;
+	newApplicantContact?: string;
 	isFullyCompleted?: boolean;
+	scheduledFollowup?: boolean;
+	followupDate?: string | null;
 	callNowConsent?: boolean;
 	callLaterConsent?: boolean;
 	callLaterDate?: string | null;
@@ -35,7 +40,12 @@ export async function createCall(data: CallData) {
 			isFunctional: data.isFunctional ?? false,
 			isAnswered: data.isAnswered ?? false,
 			isApplicant: data.isApplicant ?? false,
+			knowApplicant: data.knowApplicant ?? false,
+			relationApplicant: data.relationApplicant || null,
+			newApplicantContact: data.newApplicantContact || null,
 			isFullyCompleted: data.isFullyCompleted ?? false,
+			scheduledFollowup: data.scheduledFollowup ?? false,
+			followupDate: data.followupDate || null,
 			callNowConsent: data.callNowConsent ?? false,
 			callLaterConsent: data.callLaterConsent ?? false,
 			callLaterDate: data.callLaterDate || null,

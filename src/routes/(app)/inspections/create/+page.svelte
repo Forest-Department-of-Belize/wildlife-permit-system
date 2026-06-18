@@ -105,6 +105,35 @@
 		</div>
 	</div>
 
+	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">Acquisition & Reporting</div>
+		<div class="card-body">
+			<div class="grid grid-2">
+				<div class="form-group">
+					<label class="form-label" for="approx_report_date">Approx Report Date</label>
+					<input class="form-input" type="text" id="approx_report_date" name="approx_report_date" />
+				</div>
+				<div class="form-group">
+					<label class="form-label" for="when_approx_report_date_provided">When Approx Report Date Provided</label>
+					<input class="form-input" type="text" id="when_approx_report_date_provided" name="when_approx_report_date_provided" />
+				</div>
+			</div>
+			<div class="grid grid-3">
+				<div class="form-group">
+					<label class="form-label" for="date_acquired">Date Acquired</label>
+					<input class="form-input" type="text" id="date_acquired" name="date_acquired" />
+				</div>
+				<div class="form-group">
+					<label class="form-label" for="approx_date_acquired">Approx Date Acquired</label>
+					<input class="form-input" type="text" id="approx_date_acquired" name="approx_date_acquired" />
+				</div>
+				<div class="form-group">
+					<label class="form-check" style="margin-top:28px;"><input type="checkbox" name="less_12_months_acquired" /> Less Than 12 Months Acquired</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div style="display:flex;gap:10px;">
 		<button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Inspection</button>
 		<a href="/inspections" class="btn btn-outline">Cancel</a>

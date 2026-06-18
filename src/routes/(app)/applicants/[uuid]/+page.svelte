@@ -48,6 +48,7 @@
 	<button class="tab" class:active={activeTab === 'inspections'} onclick={() => activeTab = 'inspections'}>Inspections ({data.inspections.length})</button>
 	<button class="tab" class:active={activeTab === 'calls'} onclick={() => activeTab = 'calls'}>Calls ({data.calls.length})</button>
 	<button class="tab" class:active={activeTab === 'offenses'} onclick={() => activeTab = 'offenses'}>Offenses ({data.offenses.length})</button>
+	<button class="tab" class:active={activeTab === 'comments'} onclick={() => activeTab = 'comments'}>Comments ({data.comments.length})</button>
 	<button class="tab" class:active={activeTab === 'notes'} onclick={() => activeTab = 'notes'}>Notes</button>
 </div>
 
@@ -217,6 +218,30 @@
 						</tr>
 					{:else}
 						<tr><td colspan="4" style="text-align:center;color:var(--gray-600);">No offenses recorded.</td></tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{:else if activeTab === 'comments'}
+	<div class="card">
+		<div class="card-header" style="display:flex;justify-content:space-between;align-items:center;">
+			<span>Comments</span>
+			{#if user && hasPermission(user.permissions, 'comments-add')}
+				<a href="/comments/create?applicant={a.id}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Add Comment</a>
+			{/if}
+		</div>
+		<div class="card-body" style="overflow-x:auto;">
+			<table>
+				<thead><tr><th>Date</th><th>Comment</th></tr></thead>
+				<tbody>
+					{#each data.comments as c}
+						<tr class="clickable" ondblclick={() => window.location.href = `/comments/${c.uuid}`}>
+							<td><a href="/comments/{c.uuid}">{c.commentDate || '-'}</a></td>
+							<td>{c.commentComments?.slice(0, 100) || '-'}</td>
+						</tr>
+					{:else}
+						<tr><td colspan="2" style="text-align:center;color:var(--gray-600);">No comments recorded.</td></tr>
 					{/each}
 				</tbody>
 			</table>

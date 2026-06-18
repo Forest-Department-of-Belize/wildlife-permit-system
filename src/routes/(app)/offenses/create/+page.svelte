@@ -107,6 +107,21 @@
 	</div>
 
 	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">Acquisition</div>
+		<div class="card-body">
+			<div class="grid grid-2">
+				<div class="form-group">
+					<label class="form-label" for="approx_date_acquired">Approx Date Acquired</label>
+					<input class="form-input" type="text" id="approx_date_acquired" name="approx_date_acquired" />
+				</div>
+				<div class="form-group">
+					<label class="form-check" style="margin-top:28px;"><input type="checkbox" name="less_12_months_acquired" /> Less Than 12 Months Acquired</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom:20px;">
 		<div class="card-header">Comments</div>
 		<div class="card-body">
 			<div class="form-group">

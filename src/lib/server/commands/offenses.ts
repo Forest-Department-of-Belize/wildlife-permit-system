@@ -13,6 +13,8 @@ interface OffenseData {
 	cageLocation?: string;
 	reasonConfiscated?: string;
 	handTame?: boolean;
+	approxDateAcquired?: string;
+	lessTwelveMonthsAcquired?: boolean;
 	priorHistory?: boolean;
 	cageConfiscated?: boolean;
 	signedOfficer?: boolean;
@@ -37,6 +39,8 @@ export async function createOffense(data: OffenseData) {
 			cageLocation: data.cageLocation || null,
 			reasonConfiscated: data.reasonConfiscated || null,
 			handTame: data.handTame ?? false,
+			approxDateAcquired: data.approxDateAcquired || null,
+			lessTwelveMonthsAcquired: data.lessTwelveMonthsAcquired ?? false,
 			priorHistory: data.priorHistory ?? false,
 			cageConfiscated: data.cageConfiscated ?? false,
 			signedOfficer: data.signedOfficer ?? false,

@@ -44,7 +44,9 @@ export const actions: Actions = {
 			signedDate: (fd.get('signed_date') as string) || null,
 			healthIssues: (fd.get('health_issues') as string) || undefined,
 			dietNotes: (fd.get('diet_notes') as string) || undefined,
-			offenseComments: (fd.get('offense_comments') as string) || undefined
+			offenseComments: (fd.get('offense_comments') as string) || undefined,
+			approxDateAcquired: (fd.get('approx_date_acquired') as string) || undefined,
+			lessTwelveMonthsAcquired: fd.get('less_12_months_acquired') === 'on'
 		});
 
 		cookies.set('flash', JSON.stringify({ type: 'success', message: 'Offense logged successfully' }), { path: '/', maxAge: 30 });

@@ -71,6 +71,21 @@
 	</div>
 
 	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">Acquisition</div>
+		<div class="card-body">
+			<div class="grid grid-2">
+				<div class="form-group">
+					<label class="form-label">Approx. Date Acquired</label>
+					<input class="form-input" type="text" name="approx_date_acquired" value={o.approxDateAcquired || ''} />
+				</div>
+				<div class="form-group" style="padding-top:24px;">
+					<label class="form-check"><input type="checkbox" name="less_12_months_acquired" checked={o.lessTwelveMonthsAcquired} /> Less than 12 Months Acquired</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom:20px;">
 		<div class="card-header">Signatures & Notes</div>
 		<div class="card-body">
 			<div class="grid grid-3">

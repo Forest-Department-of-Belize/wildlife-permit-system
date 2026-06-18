@@ -86,6 +86,30 @@
 	</div>
 
 	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">Caller & Follow-up</div>
+		<div class="card-body">
+			<div class="grid grid-3">
+				<label class="form-check"><input type="checkbox" name="know_applicant" /> Know Applicant</label>
+				<div class="form-group">
+					<label class="form-label" for="relation_applicant">Relation to Applicant</label>
+					<input class="form-input" type="text" id="relation_applicant" name="relation_applicant" />
+				</div>
+				<div class="form-group">
+					<label class="form-label" for="new_applicant_contact">New Applicant Contact</label>
+					<input class="form-input" type="tel" id="new_applicant_contact" name="new_applicant_contact" />
+				</div>
+			</div>
+			<div class="grid grid-2" style="margin-top:12px;">
+				<label class="form-check" style="align-self:center;"><input type="checkbox" name="scheduled_followup" /> Scheduled Follow-up</label>
+				<div class="form-group">
+					<label class="form-label" for="followup_date">Follow-up Date</label>
+					<input class="form-input" type="date" id="followup_date" name="followup_date" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom:20px;">
 		<div class="card-header">Comments</div>
 		<div class="card-body">
 			<div class="form-group">

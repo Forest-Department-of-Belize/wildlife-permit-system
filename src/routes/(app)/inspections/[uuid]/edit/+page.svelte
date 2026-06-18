@@ -88,6 +88,35 @@
 	</div>
 
 	<div class="card" style="margin-bottom:20px;">
+		<div class="card-header">Acquisition & Reporting</div>
+		<div class="card-body">
+			<div class="grid grid-2">
+				<div class="form-group">
+					<label class="form-label">Approx. Report Date</label>
+					<input class="form-input" type="date" name="approx_report_date" value={i.approxReportDate || ''} />
+				</div>
+				<div class="form-group">
+					<label class="form-label">When Approx. Report Date Provided</label>
+					<input class="form-input" type="date" name="when_approx_report_date_provided" value={i.whenApproxReportDateProvided || ''} />
+				</div>
+			</div>
+			<div class="grid grid-3">
+				<div class="form-group">
+					<label class="form-label">Date Acquired</label>
+					<input class="form-input" type="date" name="date_acquired" value={i.dateAcquired || ''} />
+				</div>
+				<div class="form-group">
+					<label class="form-label">Approx. Date Acquired</label>
+					<input class="form-input" type="text" name="approx_date_acquired" value={i.approxDateAcquired || ''} />
+				</div>
+				<div class="form-group" style="padding-top:24px;">
+					<label class="form-check"><input type="checkbox" name="less_12_months_acquired" checked={i.lessTwelveMonthsAcquired} /> Less than 12 Months Acquired</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card" style="margin-bottom:20px;">
 		<div class="card-header">Follow-up</div>
 		<div class="card-body">
 			<div class="grid grid-2">
