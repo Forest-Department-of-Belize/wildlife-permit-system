@@ -17,7 +17,13 @@
 	let inactivityTimer: ReturnType<typeof setTimeout>;
 	function resetTimer() {
 		clearTimeout(inactivityTimer);
-		inactivityTimer = setTimeout(() => { window.location.href = '/logout'; }, 10 * 60 * 1000);
+		inactivityTimer = setTimeout(() => {
+			const form = document.createElement('form');
+			form.method = 'POST';
+			form.action = '/logout';
+			document.body.appendChild(form);
+			form.submit();
+		}, 10 * 60 * 1000);
 	}
 
 	$effect(() => {
@@ -40,9 +46,11 @@
 			<a href="/users/profile" class="btn btn-sm btn-outline" style="color:white;border-color:rgba(255,255,255,0.3);">
 				<i class="fas fa-user"></i> {user.firstName} {user.lastName}
 			</a>
-			<a href="/logout" class="btn btn-sm btn-danger">
-				<i class="fas fa-sign-out-alt"></i> Logout
-			</a>
+			<form method="POST" action="/logout" style="display:inline;">
+				<button type="submit" class="btn btn-sm btn-danger">
+					<i class="fas fa-sign-out-alt"></i> Logout
+				</button>
+			</form>
 		{/if}
 		<button class="sidebar-toggle" onclick={() => sidebarOpen = !sidebarOpen}>
 			<i class="fas fa-bars"></i>
@@ -80,7 +88,13 @@
 
 			<li class="menu-header">Account</li>
 			<li><a href="/users/profile"><i class="fas fa-user"></i><span>{user?.firstName} {user?.lastName}</span></a></li>
-			<li><a href="/logout" class="text-danger-sidebar"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+			<li>
+				<form method="POST" action="/logout">
+					<button type="submit" class="text-danger-sidebar" style="background:none;border:none;cursor:pointer;width:100%;text-align:left;padding:0;font:inherit;color:inherit;display:flex;align-items:center;gap:8px;">
+						<i class="fas fa-sign-out-alt"></i><span>Logout</span>
+					</button>
+				</form>
+			</li>
 		</ul>
 	</aside>
 
