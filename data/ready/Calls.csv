@@ -190,7 +190,7 @@ Call_188,App_314,6522968,Jocelyn Zavala,English,2024-05-28,true,true,true,NULL,N
 Call_189,App_315,6522968,Jocelyn Zavala,NULL,2024-05-28,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_190,App_316,6207982,Jocelyn Zavala,Spanish,2024-05-28,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_191,App_318,6691703,Jocelyn Zavala,English,2024-05-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,false,0,NULL,NULL
-Call_192,App_320,6253897,Jocelyn Zavala,English,2024-05-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,4 or 5 in one cage,Around the corner,NULL
+Call_192,App_320,6253897,Jocelyn Zavala,English,2024-05-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,4,Around the corner,NULL
 Call_193,App_312,6281912,Jocelyn Zavala,English,2024-05-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_194,App_739,6226390,Jocelyn Zavala,English,2024-05-29,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_195,App_321,6024017,Jocelyn Zavala,NULL,2024-05-29,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
@@ -413,7 +413,7 @@ Call_411,App_105,6101818,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NUL
 Call_412,App_105,6101818,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,0,Georgeville,Voicemail
 Call_413,App_376,6239504,Jocelyn Zavala,English,2024-06-07,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_414,App_387,6710133,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
-Call_415,App_405,6078526,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,Several,Kennedy St,Voicemail
+Call_415,App_405,6078526,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,NULL,Kennedy St,Voicemail
 Call_416,App_409,6604794,Jocelyn Zavala,English,2024-06-07,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_417,App_411,6008371,Jocelyn Zavala,English,2024-06-07,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_418,App_413,6006981,Jocelyn Zavala,NULL,2024-06-07,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
@@ -710,7 +710,7 @@ Call_709,App_472,6071370,Jocelyn Zavala,NULL,2024-06-18,false,false,NULL,NULL,NU
 Call_710,App_476,6678790,Jocelyn Zavala,Spanish,2024-06-18,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,2,On the same street she lives on,NULL
 Call_711,App_478,6513294,Jocelyn Zavala,English,2024-06-18,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_712,App_481,6349327,Jocelyn Zavala,NULL,2024-06-18,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_713,App_482,6305459,Jocelyn Zavala,NULL,2024-06-18,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,o,Sand Hill,NULL
+Call_713,App_482,6305459,Jocelyn Zavala,NULL,2024-06-18,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,NULL,Sand Hill,NULL
 Call_714,App_493,6369011,Jocelyn Zavala,NULL,2024-06-18,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_715,App_525,6040697,Jocelyn Zavala,English,2024-06-18,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,false,0,NULL,NULL
 Call_716,App_546,6659486,Jocelyn Zavala,NULL,2024-06-18,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
@@ -745,8 +745,8 @@ Call_744,App_734,6662561,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NUL
 Call_745,App_734,6602561,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_746,App_735,6207004,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_747,App_738,6307981,Jocelyn Zavala,Spanish,2024-06-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,NULL,NULL
-Call_748,App_740,4033130,Jocelyn Zavala,NULL,2024-06-19,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,2 0r 3,Near San Roman Village,Disconnected
-Call_749,App_740,6028451,Jocelyn Zavala,English,2024-06-19,true,true,NULL,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,2 0r 3,Near San Roman Village,NULL
+Call_748,App_740,4033130,Jocelyn Zavala,NULL,2024-06-19,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,2,Near San Roman Village,Disconnected
+Call_749,App_740,6028451,Jocelyn Zavala,English,2024-06-19,true,true,NULL,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,2,Near San Roman Village,NULL
 Call_750,App_741,6043282,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_751,App_742,6211737,Jocelyn Zavala,NULL,2024-06-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_752,App_743,3220385,Jocelyn Zavala,Spanish,2024-06-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
@@ -805,7 +805,7 @@ Call_804,App_796,6270177,Jocelyn Zavala,English,2024-06-25,true,true,true,NULL,N
 Call_805,App_798,6256725,Jocelyn Zavala,NULL,2024-06-25,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_806,App_799,6045549,Jocelyn Zavala,Spanish,2024-06-25,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_807,App_800,6610141,Jocelyn Zavala,NULL,2024-06-25,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
-Call_808,App_801,6056220,Jocelyn Zavala,English,2024-06-25,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,Not sure of exact amount but there are a few,2-3 blocks down,NULL
+Call_808,App_801,6056220,Jocelyn Zavala,English,2024-06-25,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,NULL,2-3 blocks down,NULL
 Call_809,App_802,6201097,Jocelyn Zavala,Spanish,2024-06-25,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,false,0,NULL,NULL
 Call_810,App_803,6669557,Jocelyn Zavala,NULL,2024-06-25,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Beeping
 Call_811,App_804,6682156,Jocelyn Zavala,NULL,2024-06-25,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
@@ -816,8 +816,8 @@ Call_815,App_807,6103359,Jocelyn Zavala,English,2024-06-25,true,true,false,true,
 Call_816,App_807,6320719,Jocelyn Zavala,NULL,2024-06-25,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,1,Next door beside the church,NULL
 Call_817,App_807,6320719,Jocelyn Zavala,English,2024-06-25,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,1,Next door beside the church,NULL
 Call_818,App_808,6681621,Jocelyn Zavala,NULL,2024-06-25,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Beeping
-Call_819,App_810,6668663,Jocelyn Zavala,NULL,2024-06-25,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,He can't provide an exact amount but there are a few.,In Valley of Peace,NULL
-Call_820,App_810,6698150,Jocelyn Zavala,English,2024-06-25,true,true,false,true,Husband,NULL,true,NULL,NULL,true,false,NULL,true,He can't provide an exact amount but there are a few.,In Valley of Peace,Miss Alas passed away. her husband answered the questions.
+Call_819,App_810,6668663,Jocelyn Zavala,NULL,2024-06-25,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,NULL,In Valley of Peace,NULL
+Call_820,App_810,6698150,Jocelyn Zavala,English,2024-06-25,true,true,false,true,Husband,NULL,true,NULL,NULL,true,false,NULL,true,NULL,In Valley of Peace,Miss Alas passed away. her husband answered the questions.
 Call_821,App_812,6056026,Jocelyn Zavala,Spanish,2024-06-25,true,true,false,true,Husband,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_822,App_813,6209512,Jocelyn Zavala,NULL,2024-06-25,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_823,App_814,6057474,Jocelyn Zavala,English,2024-06-25,true,true,true,NULL,NULL,NULL,false,true,NULL,false,true,NULL,NULL,NULL,NULL,NULL
@@ -1092,7 +1092,7 @@ Call_1091,App_1074,6509033,Jocelyn Zavala,NULL,2024-07-10,false,false,NULL,NULL,
 Call_1092,App_1075,6004225,Jocelyn Zavala,English,2024-07-10,true,true,false,true,Daughter,6142132,NULL,NULL,NULL,false,false,NULL,NULL,1,"Burrel Boom, Butter Cup Area- Same yard as Mr. Florez",NULL
 Call_1093,App_1075,6142132,Jocelyn Zavala,English,2024-07-10,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,1,"Burrel Boom, Butter Cup Area- Same yard as Mr. Florez",NULL
 Call_1094,App_1076,6648809,Jocelyn Zavala,NULL,2024-07-10,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_1095,App_1077,6103000,Jocelyn Zavala,NULL,2024-07-10,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,No,"Jew Fish St San Pedro Town ,Belize",Voicemail
+Call_1095,App_1077,6103000,Jocelyn Zavala,NULL,2024-07-10,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,"Jew Fish St San Pedro Town ,Belize",Voicemail
 Call_1096,App_1078,6698804,Jocelyn Zavala,NULL,2024-07-10,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1097,App_1079,6606637,Jocelyn Zavala,English,2024-07-10,true,true,false,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,false,0,"Tiger St, Kontiki",NULL
 Call_1098,App_1079,6289248,Jocelyn Zavala,Spanish,2024-07-10,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,false,0,"Tiger St, Kontiki",NULL
@@ -1130,7 +1130,7 @@ Call_1129,App_903,6647427,Jocelyn Zavala,NULL,2024-07-11,true,false,NULL,NULL,NU
 Call_1130,App_593,6329333,Jocelyn Zavala,NULL,2024-07-11,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Forwarded to Voicemail
 Call_1131,App_593,6329333,Jocelyn Zavala,NULL,2024-07-11,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Forwarded to Voicemail
 Call_1132,App_593,6216701,Jocelyn Zavala,NULL,2024-07-11,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_1133,App_1092,6049919,Jocelyn Zavala,"English, Spanish",2024-07-11,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,2024-02-04 00:00:00,32 Kennedy St,NULL
+Call_1133,App_1092,6049919,Jocelyn Zavala,"English, Spanish",2024-07-11,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,NULL,32 Kennedy St,NULL
 Call_1134,App_1093,6227797,Jocelyn Zavala,Spanish,2024-07-11,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,2,"One is on the lot behind the applicant's home, owned by a welder and the other is by the corner of the street.",NULL
 Call_1135,App_1094,6227616,Jocelyn Zavala,NULL,2024-07-11,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_1136,App_1095,6241423,Jocelyn Zavala,NULL,2024-07-11,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,1,Same street- has no name,NULL
@@ -1348,7 +1348,7 @@ Call_1347,App_1321,6228621,Jocelyn Zavala,NULL,2024-07-18,false,false,NULL,NULL,
 Call_1348,App_1322,6150118,Jocelyn Zavala,NULL,2024-07-18,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1349,App_1323,6153652,Jocelyn Zavala,English,2024-07-18,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_1350,App_1324,6291548,Jocelyn Zavala,NULL,2024-07-18,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
-Call_1351,App_1326,6388640,Jocelyn Zavala,Spanish,2024-07-18,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,Several,Entire village- Franks Eddy,NULL
+Call_1351,App_1326,6388640,Jocelyn Zavala,Spanish,2024-07-18,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,NULL,Entire village- Franks Eddy,NULL
 Call_1352,App_1327,6084791,Jocelyn Zavala,English,2024-07-19,true,true,false,true,Neighbour,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_1353,App_1328,6022531,Jocelyn Zavala,Spanish,2024-07-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,By the first bump near Armenia Primary School,NULL
 Call_1354,App_1330,6340281,Jocelyn Zavala,Spanish,2024-07-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
@@ -1608,7 +1608,7 @@ Call_1606,App_107,6522976,Jocelyn Zavala,NULL,2024-08-28,true,false,NULL,NULL,NU
 Call_1607,App_110,6622696,Jocelyn Zavala,NULL,2024-08-28,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1608,App_112,6609861,Jocelyn Zavala,NULL,2024-08-28,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1609,App_105,6101818,Jocelyn Zavala,English,2024-08-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,Georgeville,NULL
-Call_1610,App_405,6078526,Jocelyn Zavala,Spanish,2024-08-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,Several,Kennedy St,NULL
+Call_1610,App_405,6078526,Jocelyn Zavala,Spanish,2024-08-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,NULL,Kennedy St,NULL
 Call_1611,App_413,6006981,Jocelyn Zavala,English,2024-08-28,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,NULL,NULL
 Call_1612,App_414,6664136,Jocelyn Zavala,NULL,2024-08-28,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1613,App_415,6654982,Jocelyn Zavala,NULL,2024-08-28,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
@@ -1716,7 +1716,7 @@ Call_1714,App_439,6653225,Jocelyn Zavala,English,2024-09-06,true,true,false,fals
 Call_1715,App_442,6011359,Jocelyn Zavala,English,2024-09-06,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_1716,App_450,6250740,Jocelyn Zavala,NULL,2024-09-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1717,App_481,6349327,Jocelyn Zavala,NULL,2024-09-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_1718,App_482,6305459,Jocelyn Zavala,English,2024-09-06,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,o,Sand Hill,NULL
+Call_1718,App_482,6305459,Jocelyn Zavala,English,2024-09-06,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,NULL,Sand Hill,NULL
 Call_1719,App_546,6659486,Jocelyn Zavala,NULL,2024-09-06,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1720,App_571,6655067,Jocelyn Zavala,Spanish,2024-09-06,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_1721,App_618,6024172,Jocelyn Zavala,English,2024-09-06,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
@@ -1848,7 +1848,7 @@ Call_1846,App_1063,6651914,Jocelyn Zavala,NULL,2024-09-13,true,false,NULL,NULL,N
 Call_1847,App_1071,6650076,Jocelyn Zavala,NULL,2024-09-13,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,true,0,San Antonio,NULL
 Call_1848,App_1071,6693988,Jocelyn Zavala,English,2024-09-13,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,San Antonio,NULL
 Call_1849,App_1076,6648809,Jocelyn Zavala,NULL,2024-09-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
-Call_1850,App_1077,6103000,Jocelyn Zavala,English,2024-09-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,No,"Jew Fish St San Pedro Town ,Belize",NULL
+Call_1850,App_1077,6103000,Jocelyn Zavala,English,2024-09-19,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,NULL,NULL,"Jew Fish St San Pedro Town ,Belize",NULL
 Call_1851,App_1078,6698804,Jocelyn Zavala,NULL,2024-09-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1852,App_1085,6103964,Jocelyn Zavala,NULL,2024-09-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
 Call_1853,App_1086,6539029,Jocelyn Zavala,NULL,2024-09-19,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
@@ -2057,7 +2057,7 @@ Call_2055,App_1613,6697569,Jocelyn Zavala,NULL,2024-09-30,false,false,NULL,NULL,
 Call_2056,App_1621,6316064,Jocelyn Zavala,NULL,2024-10-02,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Network error
 Call_2057,App_1636,6021278,Jocelyn Zavala,English,2024-10-02,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_2058,App_1638,6216562,Jocelyn Zavala,NULL,2024-10-02,false,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
-Call_2059,App_1640,6275482,Jocelyn Zavala,English,2024-10-02,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,A few,near Manatee St.,NULL
+Call_2059,App_1640,6275482,Jocelyn Zavala,English,2024-10-02,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,NULL,near Manatee St.,NULL
 Call_2060,App_1641,6369934,Jocelyn Zavala,Spanish,2024-10-02,true,true,true,NULL,NULL,NULL,true,NULL,NULL,true,false,NULL,true,0,#1 Sultana Street,NULL
 Call_2061,App_1643,6299598,Jocelyn Zavala,English,2024-10-02,true,true,false,false,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,NULL
 Call_2062,App_1644,6675253,Jocelyn Zavala,NULL,2024-10-02,true,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,false,NULL,NULL,NULL,NULL,Voicemail
