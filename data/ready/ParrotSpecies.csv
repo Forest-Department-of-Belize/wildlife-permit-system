@@ -11,6 +11,6 @@ id,common_name,scientific_name
 5,Olive-throated Parakeet,Eupsittula nana
 9,Scarlet Macaw,Ara macao
 10,Blue-and-yellow Macaw,Ara ararauna
-13,Unknown Parakeet,
-14,Unknown Parrot,
-15,Unknown,
+13,Unknown Parakeet,NULL
+14,Unknown Parrot,NULL
+15,Unknown,NULL

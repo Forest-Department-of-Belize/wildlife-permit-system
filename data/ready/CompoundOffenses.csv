@@ -1,31 +1,31 @@
 eri_confiscation_id,applicant_id_eri,range,illegal_wildlife,offense_date,hand_tame,approx_date_acquired,less_12_months_acquired,prior_history,health_issues,diet_notes,cage_size_feet,cage_confiscated,cage_location,reason_confiscated,signed_officer,signed_offender,signed_date,offense_comments
-Conf_0001,App_1615,OW,"Deer, Chachalaca, Chachalaca, Faisan, Faisan, Faisan, Peacock, Peacock, Peacock, Gibnut, White-Capped Parrot, Parakeet, Wild duck, Wild duck, Wild duck, Curassow",2014-10-02,,,,,,,,,,,true,true,2014-10-06,
-Conf_0002,App_1452,OW,One parakeet,,false,,false,,One limb under stress,,,false,,"Not hand tame, health issues",false,false,,
-Conf_0003,App_1453,OW,"1 red lored, 1 white fronted parrot",2015-08-19,true,,true,,,,,false,,Baby bird,true,true,2015-08-19,
-Conf_0004,App_1454,OW,1 squash/cuatimundi,2016-06-16,,,,,,,,,,,false,true,,
-Conf_0005,App_1455,OW,2 parakeet and baby parrots,2016-06-17,false,,true,,,,,true,,"Not hand tame, Baby bird",false,true,2016-06-17,
-Conf_0006,App_1173,OW,Baby parakeet,2016-06-17,,,true,,,,,false,,Baby Bird,true,true,2016-06-17,
-Conf_0007,App_726,OW,Baby parakeet,2016-06-17,,,true,,,,,false,,Baby Bird,true,true,2016-06-17,
-Conf_0008,App_64,OW,Baby white fronted,2016-06-17,true,,true,,,,,false,,Baby Bird,true,true,2016-06-17,
-Conf_0009,App_1456,OW,Baby Parrot,2016-09-23,false,,true,,,,,,,Baby Bird,true,true,2016-09-23,
-Conf_0010,App_1457,OW,,2016-09-26,,,,,,,,,,Other,true,true,2016-09-26,
-Conf_0011,App_104,OW,White Fronted Parrot,,,,,,,,,,,Other,false,true,2016-09-26,
-Conf_0012,App_1458,OW,White Fronted Parrot,,,,,,,,,,,Other,true,true,,
-Conf_0013,App_1459,OW,,2016-10-12,false,,,,Bad Conditions,,Small Cage,,,Health Issues,true,true,2016-10-12,
-Conf_0014,App_1460,OW,,,true,,true,,,,,false,,Baby Bird,true,true,2016-10-17,
-Conf_0015,App_381,OW,Baby White Fronted,2016-10-18,true,,true,,,Poor,,false,,"Health Issues, Baby Bird",true,true,2016-10-18,
-Conf_0016,App_1461,OW,Baby Parrots,2017-06-22,,,true,,,,,,,Baby Bird,true,true,2017-06-22,
-Conf_0017,App_1462,OW,Baby Red Lored Parrot,2017-07-19,true,,true,,,,,false,,Baby Bird,true,true,2017-07-19,
-Conf_0301,App_287,Cayo,White-fronted Parrot,2014-10-01,false,6 months ago,true,,,,,false,On veranda,Not hand tame,true,true,2014-10-01,
-Conf_0302,App_1629,Cayo,White-fronted Parrot,2014-10-02,,,true,,,,,false,,Baby Bird,true,true,2014-10-02,Baby with entire left wing clipped
-Conf_0303,App_164,Cayo,Red-lored Parrot,2014-10-02,true,,false,,,,,false,,Exceeds permitted number of birds,true,true,2014-10-02,Going slightly mad
-Conf_0304,App_1630,Cayo,Howler monkey,2014-12-08,true,,,,,,,false,,Prohibited/exotic species,true,true,2014-12-08,
-Conf_0305,App_639,Cayo,Red-lored Parrot,2015-05-06,false,,false,,Not healthy,,,false,Hanging from veranda,Not hand tame,true,true,2014-05-06,
-Conf_0306,App_776,Cayo,White-fronted Parrot,2015-05-06,true,1yr 2 months,false,,Missing tail,Poor,,false,In front of house,Health issues,true,true,2015-05-06,
-Conf_0307,App_1631,Cayo,3 collared peccaries,2015-05-12,false,8 months,true,,,,,false,Beside house,Not hand tame,false,true,2015-05-12,
-Conf_0308,App_1632,Cayo,Gibnut,2015-05-12,false,,,,,,,,,"Not hand tame, prohibited/exotic species",true,true,2015-05-12,
-Conf_0309,App_669,Cayo,Red-lored Parrot,2015-05-14,true,19 years,false,,,,,false,In front of house,Exceeds permitted number of birds,true,true,2015-05-14,
-Conf_0310,App_1203,Cayo,2 white-fronted parrot,2015-06-11,false,,true,,,,,false,,"Not hand tame, Baby bird",true,true,2015-06-11,
-Conf_0311,App_1633,Cayo,Yellow-head,2015-06-11,true,,,,,,,,,Health issues,true,true,2015-06-11,
-Conf_0312,App_1634,Cayo,Red-lored Parrot,2015-06-16,,3 years,false,,,,,false,,Failure to comply with precondition directive(s),true,true,2015-06-16,
-Conf_0313,App_1635,Cayo,"White-fronted Parrot, collared peccary",2015-06-19,,,true,,,,,false,,"Health isues, Baby bird",true,true,2015-06-19,
+Conf_0001,App_1615,OW,"Deer, Chachalaca, Chachalaca, Faisan, Faisan, Faisan, Peacock, Peacock, Peacock, Gibnut, White-Capped Parrot, Parakeet, Wild duck, Wild duck, Wild duck, Curassow",2014-10-02,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,true,true,2014-10-06,NULL
+Conf_0002,App_1452,OW,One parakeet,NULL,false,NULL,false,NULL,One limb under stress,NULL,NULL,false,NULL,"Not hand tame, health issues",false,false,NULL,NULL
+Conf_0003,App_1453,OW,"1 red lored, 1 white fronted parrot",2015-08-19,true,NULL,true,NULL,NULL,NULL,NULL,false,NULL,Baby bird,true,true,2015-08-19,NULL
+Conf_0004,App_1454,OW,1 squash/cuatimundi,2016-06-16,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,false,true,NULL,NULL
+Conf_0005,App_1455,OW,2 parakeet and baby parrots,2016-06-17,false,NULL,true,NULL,NULL,NULL,NULL,true,NULL,"Not hand tame, Baby bird",false,true,2016-06-17,NULL
+Conf_0006,App_1173,OW,Baby parakeet,2016-06-17,NULL,NULL,true,NULL,NULL,NULL,NULL,false,NULL,Baby Bird,true,true,2016-06-17,NULL
+Conf_0007,App_726,OW,Baby parakeet,2016-06-17,NULL,NULL,true,NULL,NULL,NULL,NULL,false,NULL,Baby Bird,true,true,2016-06-17,NULL
+Conf_0008,App_64,OW,Baby white fronted,2016-06-17,true,NULL,true,NULL,NULL,NULL,NULL,false,NULL,Baby Bird,true,true,2016-06-17,NULL
+Conf_0009,App_1456,OW,Baby Parrot,2016-09-23,false,NULL,true,NULL,NULL,NULL,NULL,NULL,NULL,Baby Bird,true,true,2016-09-23,NULL
+Conf_0010,App_1457,OW,NULL,2016-09-26,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,Other,true,true,2016-09-26,NULL
+Conf_0011,App_104,OW,White Fronted Parrot,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,Other,false,true,2016-09-26,NULL
+Conf_0012,App_1458,OW,White Fronted Parrot,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,Other,true,true,NULL,NULL
+Conf_0013,App_1459,OW,NULL,2016-10-12,false,NULL,NULL,NULL,Bad Conditions,NULL,Small Cage,NULL,NULL,Health Issues,true,true,2016-10-12,NULL
+Conf_0014,App_1460,OW,NULL,NULL,true,NULL,true,NULL,NULL,NULL,NULL,false,NULL,Baby Bird,true,true,2016-10-17,NULL
+Conf_0015,App_381,OW,Baby White Fronted,2016-10-18,true,NULL,true,NULL,NULL,Poor,NULL,false,NULL,"Health Issues, Baby Bird",true,true,2016-10-18,NULL
+Conf_0016,App_1461,OW,Baby Parrots,2017-06-22,NULL,NULL,true,NULL,NULL,NULL,NULL,NULL,NULL,Baby Bird,true,true,2017-06-22,NULL
+Conf_0017,App_1462,OW,Baby Red Lored Parrot,2017-07-19,true,NULL,true,true,NULL,NULL,NULL,false,NULL,Baby Bird,true,true,2017-07-19,NULL
+Conf_0301,App_287,Cayo,White-fronted Parrot,2014-10-01,false,6 months ago,true,NULL,NULL,NULL,NULL,false,On veranda,Not hand tame,true,true,2014-10-01,NULL
+Conf_0302,App_1629,Cayo,White-fronted Parrot,2014-10-02,NULL,NULL,true,NULL,NULL,NULL,NULL,false,NULL,Baby Bird,true,true,2014-10-02,Baby with entire left wing clipped
+Conf_0303,App_164,Cayo,Red-lored Parrot,2014-10-02,true,NULL,false,NULL,NULL,NULL,NULL,false,NULL,Exceeds permitted number of birds,true,true,2014-10-02,Going slightly mad
+Conf_0304,App_1630,Cayo,Howler monkey,2014-12-08,true,NULL,NULL,NULL,NULL,NULL,NULL,false,NULL,Prohibited/exotic species,true,true,2014-12-08,NULL
+Conf_0305,App_639,Cayo,Red-lored Parrot,2015-05-06,false,NULL,false,NULL,Not healthy,NULL,NULL,false,Hanging from veranda,Not hand tame,true,true,2014-05-06,NULL
+Conf_0306,App_776,Cayo,White-fronted Parrot,2015-05-06,true,1yr 2 months,false,NULL,Missing tail,Poor,NULL,false,In front of house,Health issues,true,true,2015-05-06,NULL
+Conf_0307,App_1631,Cayo,3 collared peccaries,2015-05-12,false,8 months,true,NULL,NULL,NULL,NULL,false,Beside house,Not hand tame,false,true,2015-05-12,NULL
+Conf_0308,App_1632,Cayo,Gibnut,2015-05-12,false,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"Not hand tame, prohibited/exotic species",true,true,2015-05-12,NULL
+Conf_0309,App_669,Cayo,Red-lored Parrot,2015-05-14,true,19 years,false,NULL,NULL,NULL,NULL,false,In front of house,Exceeds permitted number of birds,true,true,2015-05-14,NULL
+Conf_0310,App_1203,Cayo,2 white-fronted parrot,2015-06-11,false,NULL,true,NULL,NULL,NULL,NULL,false,NULL,"Not hand tame, Baby bird",true,true,2015-06-11,NULL
+Conf_0311,App_1633,Cayo,Yellow-head,2015-06-11,true,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,Health issues,true,true,2015-06-11,NULL
+Conf_0312,App_1634,Cayo,Red-lored Parrot,2015-06-16,NULL,3 years,false,NULL,NULL,NULL,NULL,false,NULL,Failure to comply with precondition directive(s),true,true,2015-06-16,NULL
+Conf_0313,App_1635,Cayo,"White-fronted Parrot, collared peccary",2015-06-19,NULL,NULL,true,NULL,NULL,NULL,NULL,false,NULL,"Health isues, Baby bird",true,true,2015-06-19,NULL
