@@ -1,115 +1,115 @@
-inspection_id_eri,preconditions_id,officer_id_eri,applicant_id_eri,report_date,approx_report_date,when_approx_report_date_provided,birds_described,hand_tame,date_acquired,approx_date_acquired,less_12_months_acquired,instructions_for_applicant,expected_recheck,preconditions_comments
-Inspection_1,Precon_0051,Officer_1,App_371,2020-06-03 00:00:00,NA,NA,4 birds,No,,2014.0,No,"Need perches, cage to maintain cler at all times, seeds of all sort to be green",,NA
-Inspection_2,Precon_00151,,App_1641,2021-04-20 00:00:00,NA,NA,2 White-fronted,Yes,,Over 2 years ago,No,,2021-07-20 00:00:00,NA
-Inspection_3,Precon_00152,Officer_2,App_1642,2021-02-08 00:00:00,NA,NA,Coatimundi,Yes,2020-08-23 00:00:00,NA,No,"Water changed daily, 8x8x8 cage, not in public, fed fruits, large water container, fresh food not fermented, perches in cage",2021-09-23 00:00:00,Needs large outdoor cage
-Inspection_4,Precon_0501,Officer_3,App_1092,2020-10-01 00:00:00,NA,NA,White-fronted Parrot,,,,,"Change perches often, no squared sticks, give fruits and vegetables",2020-11-05 00:00:00,NA
-Inspection_5,Precon_0502,Officer_3,App_1525,2020-10-01 00:00:00,NA,NA,"White-fronted Parrot, Red-Lored Parrot, Yellow-headed Parrot",,,,,"Put natural perches, change water often, give only fruits and vegetable",2020-11-05 00:00:00,NA
-Inspection_6,Precon_0503,Officer_3,App_1527,2020-10-01 00:00:00,NA,NA,2 Mealy Parrots,,,,,"Parrots need 8x8ft cage, bigger water ocntainer, natural perches, fruits/vegetables, change water often",2020-11-05 00:00:00,NA
-Inspection_7,Precon_0504,Officer_3,App_719,2020-10-01 00:00:00,NA,NA,Yellow-headed Parrot,,,,,"Proper door on cage, natural branches",2020-11-05 00:00:00,NA
-Inspection_8,Precon_0505,Officer_3,App_924,2020-10-01 00:00:00,NA,NA,"Red-lored, Mealy, Yellow-headed",,,,,"Natural perches, water container, fruits and vegetables for feeding",2020-11-05 00:00:00,NA
-Inspection_9,,,App_1559,2016.0,NA,NA,,,,,,,,NA
-Inspection_10,,,App_1567,,NA,NA,,,,,,,,In probation
-Inspection_11,,,App_1570,2016-07-05 00:00:00,NA,NA,,,,,,,,NA
-Inspection_12,,,App_1572,,NA,NA,,,,,,,,In probation
-Inspection_13,,,App_1573,,NA,NA,,,,,,,,In probation
-Inspection_14,,,App_1574,2017-08-23 00:00:00,NA,NA,,,,,,,,In probation
-Inspection_15,,,App_1575,,NA,NA,,,,,,,,In probation
-Inspection_16,,,App_1576,2017-08-22 00:00:00,NA,NA,,,,,,,,In probation
-Inspection_17,,,App_1577,,NA,NA,,,,,,,,In probation
-Inspection_18,,,App_1578,,NA,NA,,,,,,,,In probation
-Inspection_19,,,App_1579,,NA,NA,,,,,,,,In probation
-Inspection_20,,,App_1581,2017-09-05 00:00:00,NA,NA,,,,,,,,In probation due to cage size
-Inspection_21,,,App_1582,2019-03-20 00:00:00,NA,NA,,,,,,,,NA
-Inspection_22,,,App_1589,2017-10-04 00:00:00,NA,NA,,,,,,,,NA
-Inspection_23,,,App_1592,,NA,NA,,,,,,,,In probation
-Inspection_24,,,App_1602,,NA,NA,,,,,,,,NA
-Inspection_25,,,App_1612,,NA,NA,,,,,,,,NA
-Inspection_26,,,App_3,,2 yrs,Call date,,,,,,,,NA
-Inspection_27,,,App_18,2019.0,NA,NA,,,,,,,,NA
-Inspection_28,,,App_33,,NA,NA,,,,,,,,NA
-Inspection_29,,,App_36,,1 year ago,Call date,,,,,,,,NA
-Inspection_30,,,App_58,,NA,NA,,,,,,,,NA
-Inspection_31,,,App_64,,8 years ago,Call date,,,,,,,,NA
-Inspection_32,,,App_105,,NA,NA,,,,,,,,NA
-Inspection_33,,,App_151,,3-4 yrs ago,Call date,,,,,,,,NA
-Inspection_34,,,App_212,,NA,NA,,,,,,,,NA
-Inspection_35,,,App_239,,NA,NA,,,,,,,,NA
-Inspection_36,,,App_258,,NA,NA,,,,,,,,NA
-Inspection_37,,,App_276,,4-5 years ago,Call date,,,,,,,,NA
-Inspection_38,,,App_294,,8 years ago,Call date,,,,,,,,NA
-Inspection_39,,,App_304,,NA,NA,,,,,,,,NA
-Inspection_40,,,App_305,,4 yrs ago,Call date,,,,,,,,NA
-Inspection_41,,,App_306,,7 years,Call date,,,,,,,,NA
-Inspection_42,,,App_309,,NA,NA,,,,,,,,NA
-Inspection_43,,,App_318,,NA,NA,,,,,,,,NA
-Inspection_44,,,App_320,2013.0,NA,NA,,,,,,,,NA
-Inspection_45,,,App_375,,NA,NA,,,,,,,,NA
-Inspection_46,,,App_405,2024.0,NA,NA,,,,,,,,NA
-Inspection_47,,,App_455,,NA,NA,,,,,,,,NA
-Inspection_48,,,App_483,,NA,NA,,,,,,,,NA
-Inspection_49,,,App_520,,NA,NA,,,,,,,,NA
-Inspection_50,,,App_525,,6 years ago,Call date,,,,,,,,NA
-Inspection_51,,,App_549,,NA,NA,,,,,,,,NA
-Inspection_52,,,App_555,,NA,NA,,,,,,,,NA
-Inspection_53,,,App_562,,1-2 yrs,Call date,,,,,,,,NA
-Inspection_54,,,App_570,,NA,NA,,,,,,,,NA
-Inspection_55,,,App_577,,NA,NA,,,,,,,,NA
-Inspection_56,,,App_642,,NA,NA,,,,,,,,NA
-Inspection_57,,,App_648,,NA,NA,,,,,,,,NA
-Inspection_58,,,App_649,,NA,NA,,,,,,,,NA
-Inspection_59,,,App_655,,NA,NA,,,,,,,,NA
-Inspection_60,,,App_658,,NA,NA,,,,,,,,NA
-Inspection_61,,,App_670,,NA,NA,,,,,,,,NA
-Inspection_62,,,App_679,,NA,NA,,,,,,,,NA
-Inspection_63,,,App_688,,NA,NA,,,,,,,,NA
-Inspection_64,,,App_732,,5-6 years ago,Call date,,,,,,,,NA
-Inspection_65,,,App_738,,NA,NA,,,,,,,,NA
-Inspection_66,,,App_740,,NA,NA,,,,,,,,NA
-Inspection_67,,,App_744,,NA,NA,,,,,,,,NA
-Inspection_68,,,App_751,,NA,NA,,,,,,,,NA
-Inspection_69,,,App_775,,10 months ago,Call date,,,,,,,,NA
-Inspection_70,,,App_779,,NA,NA,,,,,,,,NA
-Inspection_71,,,App_801,,NA,NA,,,,,,,,NA
-Inspection_72,,,App_802,2022 or 2023,NA,NA,,,,,,,,NA
-Inspection_73,,,App_818,,NA,NA,,,,,,,,NA
-Inspection_74,,,App_834,,NA,NA,,,,,,,,NA
-Inspection_75,,,App_852,,NA,NA,,,,,,,,NA
-Inspection_76,,,App_858,,NA,NA,,,,,,,,NA
-Inspection_77,,,App_891,,NA,NA,,,,,,,,NA
-Inspection_78,,,App_899,,NA,NA,,,,,,,,NA
-Inspection_79,,,App_918,,NA,NA,,,,,,,,NA
-Inspection_80,,,App_965,,NA,NA,,,,,,,,NA
-Inspection_81,,,App_968,,NA,NA,,,,,,,,NA
-Inspection_82,,,App_988,,NA,NA,,,,,,,,NA
-Inspection_83,,,App_991,,NA,NA,,,,,,,,NA
-Inspection_84,,,App_1008,,NA,NA,,,,,,,,NA
-Inspection_85,,,App_1018,,NA,NA,,,,,,,,NA
-Inspection_86,,,App_1036,,NA,NA,,,,,,,,NA
-Inspection_87,,,App_1062,,NA,NA,,,,,,,,NA
-Inspection_88,,,App_1071,,NA,NA,,,,,,,,NA
-Inspection_89,,,App_1072,,NA,NA,,,,,,,,NA
-Inspection_90,,,App_1073,,NA,NA,,,,,,,,NA
-Inspection_91,,,App_1093,,NA,NA,,,,,,,,NA
-Inspection_92,,,App_1122,,NA,NA,,,,,,,,NA
-Inspection_93,,,App_1133,,NA,NA,,,,,,,,NA
-Inspection_94,,,App_1142,,NA,NA,,,,,,,,NA
-Inspection_95,,,App_1158,,NA,NA,,,,,,,,NA
-Inspection_96,,,App_1177,,NA,NA,,,,,,,,NA
-Inspection_97,,,App_1179,,10 years ago,Call date,,,,,,,,NA
-Inspection_98,,,App_1197,,NA,NA,,,,,,,,NA
-Inspection_99,,,App_1201,,NA,NA,,,,,,,,NA
-Inspection_100,,,App_1215,,NA,NA,,,,,,,,NA
-Inspection_101,,,App_1316,,NA,NA,,,,,,,,NA
-Inspection_102,,,App_1326,,NA,NA,,,,,,,,NA
-Inspection_103,,,App_1328,,NA,NA,,,,,,,,NA
-Inspection_104,,,App_1351,,NA,NA,,,,,,,,NA
-Inspection_105,,,App_1356,,NA,NA,,,,,,,,NA
-Inspection_106,,,App_1361,,NA,NA,,,,,,,,NA
-Inspection_107,,,App_1438,,NA,NA,,,,,,,,NA
-Inspection_108,,,App_1443,,NA,NA,,,,,,,,NA
-Inspection_109,,,App_1493,,NA,NA,,,,,,,,NA
-Inspection_110,,,App_1522,,NA,NA,,,,,,,,NA
-Inspection_111,,,App_1523,,NA,NA,,,,,,,,NA
-Inspection_112,,,App_1535,,6 months ago,Call date,,,,,,,,NA
-Inspection_113,,,App_1606,,NA,NA,,,,,,,,NA
-Inspection_114,,,App_1640,,NA,NA,,,,,,,,NA
+eri_inspection_id,eri_preconditions_id,officer_id_eri,applicant_id_eri,inspection_date,approx_report_date,when_approx_report_date_provided,birds_described,hand_tame,date_acquired,approx_date_acquired,less_12_months_acquired,instructions_for_applicant,expected_recheck,preconditions_comments
+Inspection_1,Precon_0051,Officer_1,App_371,2020-06-03,,,4 birds,false,,2014.0,false,"Need perches, cage to maintain cler at all times, seeds of all sort to be green",,
+Inspection_2,Precon_00151,,App_1641,2021-04-20,,,2 White-fronted,true,,Over 2 years ago,false,,2021-07-20,
+Inspection_3,Precon_00152,Officer_2,App_1642,2021-02-08,,,Coatimundi,true,2020-08-23,,false,"Water changed daily, 8x8x8 cage, not in public, fed fruits, large water container, fresh food not fermented, perches in cage",2021-09-23,Needs large outdoor cage
+Inspection_4,Precon_0501,Officer_3,App_1092,2020-10-01,,,White-fronted Parrot,,,,,"Change perches often, no squared sticks, give fruits and vegetables",2020-11-05,
+Inspection_5,Precon_0502,Officer_3,App_1525,2020-10-01,,,"White-fronted Parrot, Red-Lored Parrot, Yellow-headed Parrot",,,,,"Put natural perches, change water often, give only fruits and vegetable",2020-11-05,
+Inspection_6,Precon_0503,Officer_3,App_1527,2020-10-01,,,2 Mealy Parrots,,,,,"Parrots need 8x8ft cage, bigger water ocntainer, natural perches, fruits/vegetables, change water often",2020-11-05,
+Inspection_7,Precon_0504,Officer_3,App_719,2020-10-01,,,Yellow-headed Parrot,,,,,"Proper door on cage, natural branches",2020-11-05,
+Inspection_8,Precon_0505,Officer_3,App_924,2020-10-01,,,"Red-lored, Mealy, Yellow-headed",,,,,"Natural perches, water container, fruits and vegetables for feeding",2020-11-05,
+Inspection_9,,,App_1559,2016.0,,,,,,,,,,
+Inspection_10,,,App_1567,,,,,,,,,,,In probation
+Inspection_11,,,App_1570,2016-07-05,,,,,,,,,,
+Inspection_12,,,App_1572,,,,,,,,,,,In probation
+Inspection_13,,,App_1573,,,,,,,,,,,In probation
+Inspection_14,,,App_1574,2017-08-23,,,,,,,,,,In probation
+Inspection_15,,,App_1575,,,,,,,,,,,In probation
+Inspection_16,,,App_1576,2017-08-22,,,,,,,,,,In probation
+Inspection_17,,,App_1577,,,,,,,,,,,In probation
+Inspection_18,,,App_1578,,,,,,,,,,,In probation
+Inspection_19,,,App_1579,,,,,,,,,,,In probation
+Inspection_20,,,App_1581,2017-09-05,,,,,,,,,,In probation due to cage size
+Inspection_21,,,App_1582,2019-03-20,,,,,,,,,,
+Inspection_22,,,App_1589,2017-10-04,,,,,,,,,,
+Inspection_23,,,App_1592,,,,,,,,,,,In probation
+Inspection_24,,,App_1602,,,,,,,,,,,
+Inspection_25,,,App_1612,,,,,,,,,,,
+Inspection_26,,,App_3,,2 yrs,Call date,,,,,,,,
+Inspection_27,,,App_18,2019.0,,,,,,,,,,
+Inspection_28,,,App_33,,,,,,,,,,,
+Inspection_29,,,App_36,,1 year ago,Call date,,,,,,,,
+Inspection_30,,,App_58,,,,,,,,,,,
+Inspection_31,,,App_64,,8 years ago,Call date,,,,,,,,
+Inspection_32,,,App_105,,,,,,,,,,,
+Inspection_33,,,App_151,,3-4 yrs ago,Call date,,,,,,,,
+Inspection_34,,,App_212,,,,,,,,,,,
+Inspection_35,,,App_239,,,,,,,,,,,
+Inspection_36,,,App_258,,,,,,,,,,,
+Inspection_37,,,App_276,,4-5 years ago,Call date,,,,,,,,
+Inspection_38,,,App_294,,8 years ago,Call date,,,,,,,,
+Inspection_39,,,App_304,,,,,,,,,,,
+Inspection_40,,,App_305,,4 yrs ago,Call date,,,,,,,,
+Inspection_41,,,App_306,,7 years,Call date,,,,,,,,
+Inspection_42,,,App_309,,,,,,,,,,,
+Inspection_43,,,App_318,,,,,,,,,,,
+Inspection_44,,,App_320,2013.0,,,,,,,,,,
+Inspection_45,,,App_375,,,,,,,,,,,
+Inspection_46,,,App_405,2024.0,,,,,,,,,,
+Inspection_47,,,App_455,,,,,,,,,,,
+Inspection_48,,,App_483,,,,,,,,,,,
+Inspection_49,,,App_520,,,,,,,,,,,
+Inspection_50,,,App_525,,6 years ago,Call date,,,,,,,,
+Inspection_51,,,App_549,,,,,,,,,,,
+Inspection_52,,,App_555,,,,,,,,,,,
+Inspection_53,,,App_562,,1-2 yrs,Call date,,,,,,,,
+Inspection_54,,,App_570,,,,,,,,,,,
+Inspection_55,,,App_577,,,,,,,,,,,
+Inspection_56,,,App_642,,,,,,,,,,,
+Inspection_57,,,App_648,,,,,,,,,,,
+Inspection_58,,,App_649,,,,,,,,,,,
+Inspection_59,,,App_655,,,,,,,,,,,
+Inspection_60,,,App_658,,,,,,,,,,,
+Inspection_61,,,App_670,,,,,,,,,,,
+Inspection_62,,,App_679,,,,,,,,,,,
+Inspection_63,,,App_688,,,,,,,,,,,
+Inspection_64,,,App_732,,5-6 years ago,Call date,,,,,,,,
+Inspection_65,,,App_738,,,,,,,,,,,
+Inspection_66,,,App_740,,,,,,,,,,,
+Inspection_67,,,App_744,,,,,,,,,,,
+Inspection_68,,,App_751,,,,,,,,,,,
+Inspection_69,,,App_775,,10 months ago,Call date,,,,,,,,
+Inspection_70,,,App_779,,,,,,,,,,,
+Inspection_71,,,App_801,,,,,,,,,,,
+Inspection_72,,,App_802,2022 or 2023,,,,,,,,,,
+Inspection_73,,,App_818,,,,,,,,,,,
+Inspection_74,,,App_834,,,,,,,,,,,
+Inspection_75,,,App_852,,,,,,,,,,,
+Inspection_76,,,App_858,,,,,,,,,,,
+Inspection_77,,,App_891,,,,,,,,,,,
+Inspection_78,,,App_899,,,,,,,,,,,
+Inspection_79,,,App_918,,,,,,,,,,,
+Inspection_80,,,App_965,,,,,,,,,,,
+Inspection_81,,,App_968,,,,,,,,,,,
+Inspection_82,,,App_988,,,,,,,,,,,
+Inspection_83,,,App_991,,,,,,,,,,,
+Inspection_84,,,App_1008,,,,,,,,,,,
+Inspection_85,,,App_1018,,,,,,,,,,,
+Inspection_86,,,App_1036,,,,,,,,,,,
+Inspection_87,,,App_1062,,,,,,,,,,,
+Inspection_88,,,App_1071,,,,,,,,,,,
+Inspection_89,,,App_1072,,,,,,,,,,,
+Inspection_90,,,App_1073,,,,,,,,,,,
+Inspection_91,,,App_1093,,,,,,,,,,,
+Inspection_92,,,App_1122,,,,,,,,,,,
+Inspection_93,,,App_1133,,,,,,,,,,,
+Inspection_94,,,App_1142,,,,,,,,,,,
+Inspection_95,,,App_1158,,,,,,,,,,,
+Inspection_96,,,App_1177,,,,,,,,,,,
+Inspection_97,,,App_1179,,10 years ago,Call date,,,,,,,,
+Inspection_98,,,App_1197,,,,,,,,,,,
+Inspection_99,,,App_1201,,,,,,,,,,,
+Inspection_100,,,App_1215,,,,,,,,,,,
+Inspection_101,,,App_1316,,,,,,,,,,,
+Inspection_102,,,App_1326,,,,,,,,,,,
+Inspection_103,,,App_1328,,,,,,,,,,,
+Inspection_104,,,App_1351,,,,,,,,,,,
+Inspection_105,,,App_1356,,,,,,,,,,,
+Inspection_106,,,App_1361,,,,,,,,,,,
+Inspection_107,,,App_1438,,,,,,,,,,,
+Inspection_108,,,App_1443,,,,,,,,,,,
+Inspection_109,,,App_1493,,,,,,,,,,,
+Inspection_110,,,App_1522,,,,,,,,,,,
+Inspection_111,,,App_1523,,,,,,,,,,,
+Inspection_112,,,App_1535,,6 months ago,Call date,,,,,,,,
+Inspection_113,,,App_1606,,,,,,,,,,,
+Inspection_114,,,App_1640,,,,,,,,,,,
